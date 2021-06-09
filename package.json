@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
+    "create-react-app": "^4.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^5.12.13",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "concurrently \"npm run dev\"   \"npm start --prefix client\" "
+  },
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "Social Media website for creative writers",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "Brujo, Stella, Lara, Maha, Dries",
+  "license": "ISC"
+}
