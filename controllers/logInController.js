@@ -14,8 +14,8 @@ exports.logIn = (req, res) => {  try {
 }
 };
 
-exports.logInPost = (
-    async (req, res)) => {
+exports.logInPost = 
+    async (req, res) => {
         //destructing req.body object
         const {email, password} = req.body;
 
@@ -28,8 +28,8 @@ exports.logInPost = (
         //match the password
         const isMatch = await bcrypt.compare(password, user.password)
         
-        if (!isMatch)? res.status(400).json({msg: 'password is not correct! Please try again!'})
-        
+        if (!isMatch) { return  res.status(400).json({msg: 'password is not correct! Please try again!'})
+        }
             
             // jwt
  
