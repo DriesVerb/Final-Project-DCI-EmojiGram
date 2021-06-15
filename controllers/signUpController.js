@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
 require("dotenv").config();
-const User = require('../models/User')
+/* const User = require('../models/User') */
 
 
 exports.signUp = (req, res) => {
