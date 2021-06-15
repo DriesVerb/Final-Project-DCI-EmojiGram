@@ -1,8 +1,3 @@
-
-
-
-
-
 const express = require(`express`);
 require("dotenv").config();
 
@@ -43,11 +38,11 @@ app.post(
 );
 
 //Routes
-const signUpRouter = require('./routes/signUpRouter')
-app.use('/auth/signUp', signUpRouter)
+const signUpRouter = require("./routes/signUpRouter");
+app.use("/auth/signUp", signUpRouter);
 
-const logInRouter = require('./routes/logInRouter')
-app.use('/auth/logIn', logInRouter)
+const logInRouter = require("./routes/logInRouter");
+app.use("/auth/logIn", logInRouter);
 
 //Github login
 app.get("/login/passport/github", passport.authenticate("github"));
@@ -65,4 +60,3 @@ app.get(
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
