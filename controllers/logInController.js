@@ -1,34 +1,35 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
 require("dotenv").config();
-const User = require('../models/User')
+const jwt = require('jsonwebtoken');
 
 
-exports.logIn = (req, res) => {
 
+exports.logIn = (req, res) => {  try {
+  const user = await User.findById(req.user.id).select('-password');
+  res.json(user);
+} catch (err) {
+  console.error(err.message);
+  res.status(500).send('Server Error');
 }
-exports.logInPost = 
-    async (req, res) => {
+};
+
+exports.logInPost = (
+    async (req, res)) => {
         //destructing req.body object
-        const { name, email} = req.body;
+        const {email, password} = req.body;
 
-        //check the user if already exist 
-         try { let user = await User.findOne({ email })
-        if (user) { res.status(400).json({ msg: 'User already exists' }) }
+        //check the user available
+      try
+      {
+        let user = await User.findOne({ email })
+        if (!user) { res.status(400).json({ msg: 'please sign up' }) }
         
-        //create new user 
-        user = new User({
-            name,
-            email,
-            password
-        });
-
-        //Hash Password
-        const salt = await bcrypt.genDalt(10);
-        user.password = await bcrypt.hash(password, salt);
-
-        //save user 
-            await user.save()
+        //match the password
+        const isMatch = await bcrypt.compare(password, user.password)
+        
+        if (!isMatch)? res.status(400).json({msg: 'password is not correct! Please try again!'})
+        
             
             // jwt
  
@@ -41,9 +42,6 @@ exports.logInPost =
               jwt.sign(
                 payload,
                 config.get('jwtSecret'),
-                {
-                  expiresIn: 360000,
-                },
                 (err, token) => {
                   if (err) throw err;
                   res.json({token});
