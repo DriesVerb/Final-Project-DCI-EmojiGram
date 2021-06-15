@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-module.export = function (req, res, next) {
+module.exports = function (req, res, next) {
   //send token from the header
   const token = req.header(user - auth - token);
 
