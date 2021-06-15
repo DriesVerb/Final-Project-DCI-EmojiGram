@@ -38,10 +38,10 @@ app.post(
 );
 
 //Routes
-const signUp = require("./routes/signUpRouter");
+const signUpRouter = require("./routes/signUpRouter");
 app.use("/auth/signUp", signUpRouter);
 
-const logIn = require("./routes/logInRouter");
+const logInRouter = require("./routes/logInRouter");
 app.use("/auth/logIn", logInRouter);
 
 //Github login
