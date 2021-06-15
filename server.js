@@ -44,6 +44,9 @@ app.use("/auth/signUp", signUpRouter);
 const logInRouter = require("./routes/logInRouter");
 app.use("/auth/logIn", logInRouter);
 
+const profileRouter = require("./routes/profileRouter");
+app.use("/profile", profileRouter);
+
 //Github login
 app.get("/login/passport/github", passport.authenticate("github"));
 app.get(
