@@ -8,6 +8,12 @@ const emojiSchema = new Schema({
   codePoint: String,
   group: String,
   subGroup: String,
+  variants: [
+    {
+      slug: String,
+      character: String,
+    },
+  ],
 });
 
 const Emoji = mongoose.model("Emoji", emojiSchema);
