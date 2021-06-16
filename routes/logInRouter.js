@@ -7,8 +7,4 @@ router.get("/", auth, logInController.logIn);
 
 router.post("/", logInController.logInPost);
 
-router.get("/test", auth, (req, res) => {
-  res.json({ msg: "you can read this" });
-});
-
 module.exports = router;
