@@ -3,7 +3,9 @@ require('dotenv').config();
 
 module.exports = function (req, res, next) {
   //send token from the header
+
   const token = req.header('x-auth-token');
+
 
   // if there is no token
 
@@ -13,8 +15,10 @@ module.exports = function (req, res, next) {
 
   //validate token
   try {
+
     const jwtSecret = process.env.JWT_SECRET;
     const decoded = jwt.verify(token, jwtSecret); //payload object will be in the decoded
+
 
     //sign the user in the request
 

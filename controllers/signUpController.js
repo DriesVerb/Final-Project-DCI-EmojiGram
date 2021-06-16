@@ -3,7 +3,9 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-exports.signUp = (req, res) => {};
+exports.signUp = (req, res) => {
+  res.json({ msg: "welcome to sing up" });
+};
 exports.signUpPost = async (req, res) => {
   //destructing req.body object
   const { username, email, password } = req.body;
@@ -33,12 +35,14 @@ exports.signUpPost = async (req, res) => {
       user: {
         id: user.id,
       },
-    };
+
     const jwtSecret = process.env.JWT_SECRET;
     jwt.sign(
       payload,
       jwtSecret,
-     
+
+
+   
 
       (err, token) => {
         if (err) throw err;
