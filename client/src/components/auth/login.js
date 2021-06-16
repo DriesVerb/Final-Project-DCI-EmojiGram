@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios'
+// import AuthContext from '../../context/auth/authContext';
 
 function Login() {
+    
+    // const authContext = useContext(AuthContext);
 
     const [user, setUser] = useState({
         email: "",
