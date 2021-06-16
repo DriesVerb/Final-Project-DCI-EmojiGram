@@ -71,7 +71,7 @@ module.exports = function (passport) {
   passport.use(
     new FacebookStrategy(
       {
-        clientIdD: process.env.FB_CLIENT_ID,
+        clientID: process.env.FB_CLIENT_ID,
         clientSecret: process.env.FB_CLIENT_SECRET,
         callbackURL: "http://localhost:5000/login/passport/facebook/callback",
       },

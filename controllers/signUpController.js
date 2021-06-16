@@ -1,10 +1,11 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
-
 const jwt = require("jsonwebtoken");
 
-exports.signUp = (req, res) => {};
+exports.signUp = (req, res) => {
+  res.json({ msg: "welcome to sing up" });
+};
 exports.signUpPost = async (req, res) => {
   //destructing req.body object
   const { username, email, password } = req.body;
@@ -29,19 +30,22 @@ exports.signUpPost = async (req, res) => {
 
     //save user
     await user.save();
-
     // jwt
-
     const payload = {
       user: {
         id: user.id,
       },
     };
+    const jwtSecret = process.env.JWT_SECRET;
+    jwt.sign(
+      payload,
+      jwtSecret,
 
-    jwt.sign(payload, config.get("jwtSecret"), (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    });
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
