@@ -34,6 +34,7 @@ exports.logInPost = async (req, res) => {
         .json({ msg: "password is not correct! Please try again!" });
     }
 
+    const jwsSecret = process.env.JWT_SECRET;
     // jwt
 
     const payload = {
@@ -42,7 +43,7 @@ exports.logInPost = async (req, res) => {
       },
     };
 
-    jwt.sign(payload, config.get("jwtSecret"), (err, token) => {
+    jwt.sign(payload, jwsSecret, (err, token) => {
       if (err) throw err;
       res.json({ token });
     });

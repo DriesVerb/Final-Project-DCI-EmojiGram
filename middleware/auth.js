@@ -3,7 +3,7 @@ require("dotenv").config();
 
 module.exports = function (req, res, next) {
   //send token from the header
-  const token = req.header(user - auth - token);
+  const token = req.header("token");
 
   // if there is no token
 
@@ -13,7 +13,8 @@ module.exports = function (req, res, next) {
 
   //validate token
   try {
-    const decoded = jwt.verify(token, config.get("jwtSecret")); //payload object will be in the decoded
+    const jwsSecret = process.env.JWT_SECRET;
+    const decoded = jwt.verify(token, jwsSecret); //payload object will be in the decoded
 
     //sign the user in the request
 

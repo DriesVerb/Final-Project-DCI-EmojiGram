@@ -4,7 +4,9 @@ require("dotenv").config();
 
 const jwt = require("jsonwebtoken");
 
-exports.signUp = (req, res) => {};
+exports.signUp = (req, res) => {
+  res.json({ msg: "welcome to sing up" });
+};
 exports.signUpPost = async (req, res) => {
   //destructing req.body object
   const { username, email, password } = req.body;
@@ -24,7 +26,7 @@ exports.signUpPost = async (req, res) => {
     });
 
     //Hash Password
-    const salt = await bcrypt.genDalt(10);
+    const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
     //save user
@@ -38,9 +40,11 @@ exports.signUpPost = async (req, res) => {
       },
     };
 
+    const jwsSecret = process.env.JWT_SECRET;
+
     jwt.sign(
       payload,
-      config.get("jwtSecret"),
+      jwsSecret,
 
       (err, token) => {
         if (err) throw err;
