@@ -23,7 +23,7 @@ function App() {
             <Alerts />
         <Switch>
           {/* <Route path='/' exact component={}/> */}
-          <Route path="/" component={LandingPage} />
+          <Route path="/" exact component={LandingPage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           {/*  <Route path='/signIn' component={}/> */}
