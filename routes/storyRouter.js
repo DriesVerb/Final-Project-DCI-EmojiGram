@@ -1,19 +1,12 @@
 const express = require('express')
 const router = express.Router();
-const Story = require('../models/Story')
+const storyController = require("../controllers/storyController")
+const auth = require("../middleware/auth")
 
-router.post("/create", (req,res)=>{
-    console.log(req.body)
-    const newStory = new Story({
-       /*  Here req.body */
-    })
-    newStory.save((req,res)=>{
-        res.json('New Story added')
-    })
-})
+router.post("/create",auth, storyController.create)
 
-router.get("/publishedStory", (req,res)=>{
-    
-})
+router.get("/publishedStory/:id", storyController.published)
+
+router.put("/editStory/:id",auth, storyController.edit)
 
 module.exports = router;
