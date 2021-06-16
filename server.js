@@ -42,7 +42,10 @@ const signUpRouter = require("./routes/signUpRouter");
 app.use("/auth/signUp", signUpRouter);
 
 const logInRouter = require("./routes/logInRouter");
-app.use("/auth/logIn", logInRouter);
+app.use("/auth/login", logInRouter);
+
+const userRouter = require("./routes/userRouter");
+app.use("/user", userRouter);
 
 //Github login
 app.get("/login/passport/github", passport.authenticate("github"));
