@@ -1,7 +1,7 @@
-const User = require('../models/User');
-const bcrypt = require('bcrypt');
-require('dotenv').config();
-const jwt = require('jsonwebtoken');
+const User = require("../models/User");
+const bcrypt = require("bcrypt");
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 exports.signUp = (req, res) => {
   res.json({ msg: "welcome to sing up" });
@@ -14,7 +14,7 @@ exports.signUpPost = async (req, res) => {
   try {
     let user = await User.findOne({ email });
     if (user) {
-      res.status(400).json({ msg: 'User already exists' });
+      res.status(400).json({ msg: "User already exists" });
     }
 
     //create new user
@@ -25,6 +25,7 @@ exports.signUpPost = async (req, res) => {
     });
 
     //Hash Password
+
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
@@ -35,6 +36,7 @@ exports.signUpPost = async (req, res) => {
       user: {
         id: user.id,
       },
+
     }
     const jwtSecret = process.env.JWT_SECRET;
     jwt.sign(
@@ -49,8 +51,9 @@ exports.signUpPost = async (req, res) => {
         res.json({ token });
       }
     );
+
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };

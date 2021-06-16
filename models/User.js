@@ -18,7 +18,10 @@ const userSchema = new Schema({
     },
   ],
   socialMedia: {},
-  createdAt: Date,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
   facebook_id: String,
   Twitter_id: String,
   instagram_id: String,
