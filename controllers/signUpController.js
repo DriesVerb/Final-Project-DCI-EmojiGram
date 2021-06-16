@@ -1,10 +1,11 @@
-const User = require("../models/User");
-const bcrypt = require("bcrypt");
-require("dotenv").config();
+const User = require('../models/User');
+const bcrypt = require('bcrypt');
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
 
-const jwt = require("jsonwebtoken");
-
-exports.signUp = (req, res) => {};
+exports.signUp = (req, res) => {
+  res.json({ msg: "welcome to sing up" });
+};
 exports.signUpPost = async (req, res) => {
   //destructing req.body object
   const { username, email, password } = req.body;
@@ -13,7 +14,7 @@ exports.signUpPost = async (req, res) => {
   try {
     let user = await User.findOne({ email });
     if (user) {
-      res.status(400).json({ msg: "User already exists" });
+      res.status(400).json({ msg: 'User already exists' });
     }
 
     //create new user
@@ -24,23 +25,24 @@ exports.signUpPost = async (req, res) => {
     });
 
     //Hash Password
-    const salt = await bcrypt.genDalt(10);
+    const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
     //save user
     await user.save();
-
     // jwt
-
     const payload = {
       user: {
         id: user.id,
       },
-    };
-
+    }
+    const jwtSecret = process.env.JWT_SECRET;
     jwt.sign(
       payload,
-      config.get("jwtSecret"),
+      jwtSecret,
+    
+
+   
 
       (err, token) => {
         if (err) throw err;
@@ -49,6 +51,6 @@ exports.signUpPost = async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
