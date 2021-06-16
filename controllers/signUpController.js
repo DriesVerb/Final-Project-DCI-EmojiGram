@@ -36,12 +36,22 @@ exports.signUpPost = async (req, res) => {
       user: {
         id: user.id,
       },
-    };
+
+    }
     const jwtSecret = process.env.JWT_SECRET;
-    jwt.sign(payload, jwtSecret, (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    });
+    jwt.sign(
+      payload,
+      jwtSecret,
+    
+
+   
+
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
+
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
