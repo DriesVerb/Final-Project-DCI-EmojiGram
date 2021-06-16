@@ -1,4 +1,6 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 // components
 import Navbar from "./components/Navbar";
 import Login from "./components/auth/login";

@@ -52,11 +52,17 @@ function Login() {
       {/* <button>Facebook</button>
                 <button>Instagram</button>
                 <button>Github</button> */}
-      <a href="http://localhost:5000/login/passport/github">
-        Continue with Github Login
+      <a
+        href="http://localhost:5000/login/passport/github"
+        className="btn btn-primary  font-weight-bold"
+      >
+        Github
       </a>
-      <a href="http://localhost:5000/login/passport/facebook">
-        Continue with Facebook Login
+      <a
+        href="http://localhost:5000/login/passport/facebook"
+        className="btn btn-danger ml-4 font-weight-bold"
+      >
+        Facebook
       </a>
     </div>
   );

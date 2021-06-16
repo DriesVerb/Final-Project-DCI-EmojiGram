@@ -25,6 +25,7 @@ exports.signUpPost = async (req, res) => {
     });
 
     //Hash Password
+
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
@@ -37,15 +38,10 @@ exports.signUpPost = async (req, res) => {
       },
     };
     const jwtSecret = process.env.JWT_SECRET;
-    jwt.sign(
-      payload,
-      jwtSecret,
-
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
+    jwt.sign(payload, jwtSecret, (err, token) => {
+      if (err) throw err;
+      res.json({ token });
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
