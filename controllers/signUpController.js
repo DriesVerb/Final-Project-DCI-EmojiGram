@@ -1,11 +1,13 @@
+const User = require("../models/User");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
-/* const User = require('../models/User') */
+
+const jwt = require("jsonwebtoken");
 
 exports.signUp = (req, res) => {};
 exports.signUpPost = async (req, res) => {
   //destructing req.body object
-  const { name, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   //check the user if already exist
   try {
@@ -16,13 +18,13 @@ exports.signUpPost = async (req, res) => {
 
     //create new user
     user = new User({
-      name,
+      username,
       email,
       password,
     });
 
     //Hash Password
-    const salt = await bcrypt.genDalt(10);
+    const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
     //save user
@@ -36,17 +38,10 @@ exports.signUpPost = async (req, res) => {
       },
     };
 
-    jwt.sign(
-      payload,
-      config.get("jwtSecret"),
-      {
-        expiresIn: 360000,
-      },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
+    jwt.sign(payload, config.get("jwtSecret"), (err, token) => {
+      if (err) throw err;
+      res.json({ token });
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
