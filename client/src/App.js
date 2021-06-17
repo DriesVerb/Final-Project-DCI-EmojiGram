@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/auth/login";
 import SignUp from "./components/auth/SignUp";
 import LandingPage from "./components/layout/LandingPage";
-
+import PrivateRoute from './components/privateRoute';
 // context
 import AuthState from './context/auth/authState';
 import AlertState from './context/alert/alertState';
@@ -23,7 +23,7 @@ function App() {
             <Alerts />
         <Switch>
           {/* <Route path='/' exact component={}/> */}
-          <Route path="/" exact component={LandingPage} />
+          <PrivateRoute path="/" exact component={LandingPage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           {/*  <Route path='/signIn' component={}/> */}

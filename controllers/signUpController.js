@@ -16,7 +16,7 @@ exports.signUpPost = async (req, res) => {
     if (user) {
       res.status(400).json({ msg: "User already exists" });
     }
-
+else {
     //create new user
     user = new User({
       username,
@@ -50,10 +50,10 @@ exports.signUpPost = async (req, res) => {
         if (err) throw err;
         res.json({ token });
       }
-    );
+    );}
 
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send("Server Error ");
   }
 };

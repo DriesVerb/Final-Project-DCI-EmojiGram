@@ -14,8 +14,10 @@ const DB = process.env.DB_LINK;
 
 // add your own db link
 mongoose
-  .connect("mongodb+srv://admin:admin1234@fbw41.txtbm.mongodb.net/finalProject?retryWrites=true&w=majorit",
-    {
+
+  .connect("mongodb+srv://admin:4321@cluster0.wonwy.mongodb.net/finalProject", {
+
+  
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
