@@ -1,20 +1,26 @@
+import React, { Fragment, useState, useContext, useEffect } from 'react';
 
-import React, { Fragment,useState, useContext, useEffect } from 'react';
-
-// import AuthContext from '../../context/auth/authContext';
-import AlertContext from "../../context/alert/alertContext";
+import AlertContext from '../../context/alert/alertContext';
+import AuthContext from '../../context/auth/authContext';
 
 const SignUp = () => {
-
-  // const authContext = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
 
-  // const{}= authContext
-  const {setAlert} = alertContext
+  const { register, error } = authContext;
+
+  //to check and load the error
+  useEffect(() => {
+    if (error === 'User already exists') {
+      setAlert(error, 'danger');
+    }
+  }, [error]);
+
+  const { setAlert } = alertContext;
   const [user, setUser] = useState({
-    username: "",
-    email: "",
-    password: "",
+    username: '',
+    email: '',
+    password: '',
   });
 
   const { username, email, password } = user;
@@ -23,15 +29,18 @@ const SignUp = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     // e.preventDefault();
     //validation or call the alert
     if (username === '' || email === '' || password === '') {
-      setAlert('Please enter all fields', 'danger');
+      setAlert('Please enter all fields', 'warning');
     }
-     // else if (password !== password2) {
+    // else if (password !== password2) {
     //   setAlert('Passwords do not match', 'danger');}
-     else { console.log(user) };
+    else {
+      console.log(user);
+      register(user);
+    }
   };
 
   return (
@@ -69,7 +78,7 @@ const SignUp = () => {
             id="password"
             value={password}
             onChange={(e) => onChange(e)}
-            minLength='6'
+            minLength="6"
           />
         </div>
         <button type="submit">Sign Up</button>

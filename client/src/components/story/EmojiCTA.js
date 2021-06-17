@@ -8,8 +8,6 @@ const EmojiCTA = () => {
     axios.get(`/emoji/story`).then((response) => setEmojiList(response.data));
   }, []);
 
-  console.log(emojiList);
-
   return (
     <div>
       <div className="test">
