@@ -1,7 +1,16 @@
-import React from "react";
-import { Fragment, useState } from "react";
+
+import React, { Fragment,useState, useContext, useEffect } from 'react';
+
+// import AuthContext from '../../context/auth/authContext';
+import AlertContext from "../../context/alert/alertContext";
 
 const SignUp = () => {
+
+  // const authContext = useContext(AuthContext);
+  const alertContext = useContext(AlertContext);
+
+  // const{}= authContext
+  const {setAlert} = alertContext
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -14,8 +23,15 @@ const SignUp = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (e) => {
-    console.log(user);
+  const onSubmit = e => {
+    // e.preventDefault();
+    //validation or call the alert
+    if (username === '' || email === '' || password === '') {
+      setAlert('Please enter all fields', 'danger');
+    }
+     // else if (password !== password2) {
+    //   setAlert('Passwords do not match', 'danger');}
+     else { console.log(user) };
   };
 
   return (
@@ -53,6 +69,7 @@ const SignUp = () => {
             id="password"
             value={password}
             onChange={(e) => onChange(e)}
+            minLength='6'
           />
         </div>
         <button type="submit">Sign Up</button>

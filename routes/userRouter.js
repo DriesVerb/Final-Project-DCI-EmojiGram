@@ -12,8 +12,8 @@ const auth = require("../middleware/auth");
 // routes
 router.get("/normal", userController.test);
 router.get("/private", auth, userController.testPrivate);
-
-// router.post("/profile/:user_id", userController.profile);
+router.post("/profile/:user_id", auth, userController.createProfile);
+router.put("/edit/:user_id", auth, userController.editProfile);
 
 // router.post("/profile/:user_id", (req, res) => {
 //   User.findOne({

@@ -47,6 +47,12 @@ app.use("/auth/login", logInRouter);
 const userRouter = require("./routes/userRouter");
 app.use("/user", userRouter);
 
+const emojiRouter = require("./routes/emojiRouter");
+app.use("/emoji", emojiRouter);
+
+const storyRouter = require("./routes/storyRouter");
+app.use("/user/story", storyRouter);
+
 //Github login
 app.get("/login/passport/github", passport.authenticate("github"));
 app.get(
