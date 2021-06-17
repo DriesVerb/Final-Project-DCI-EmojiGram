@@ -6,7 +6,7 @@ import Login from "./components/auth/login";
 import SignUp from "./components/auth/SignUp";
 
 // context
-// import AuthState from './context/auth/authState';
+import AuthState from './context/auth/authState';
 import AlertState from './context/alert/alertState';
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    //  <authState>
+     <AuthState>
        <AlertState>
     <div className="App">
       <Router>
@@ -29,7 +29,7 @@ function App() {
       </Router>
         </div>
       </AlertState>
-    //  </authState>
+     </AuthState>
   );
 }
 
