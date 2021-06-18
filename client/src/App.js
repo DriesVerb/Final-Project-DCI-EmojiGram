@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -15,7 +15,6 @@ import Footer from "./components/Footer";
 // context
 
 import AuthContext from "./context/auth/authContext";
-import AuthState from "./context/auth/authState";
 import AlertState from "./context/alert/alertState";
 import "./App.css";
 
@@ -27,12 +26,6 @@ if (localStorage.token) {
 }
 
 function App() {
-  const authContext = useContext(AuthContext);
-
-  useEffect(() => {
-    authContext.loadUser();
-  }, []);
-
   return (
     <AlertState>
       <div className="App">
@@ -47,6 +40,7 @@ function App() {
             <Route exact path="/signup" component={SignUp} />
             {/*  <Route path='/signIn' component={}/> */}
           </Switch>
+          <Footer />
         </Router>
       </div>
     </AlertState>

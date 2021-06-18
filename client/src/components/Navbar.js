@@ -1,16 +1,11 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/auth/authContext";
 
 function Navbar() {
   const authContext = useContext(AuthContext);
 
-  const { logout, user, isAuthenticated, loadUser, clearContacts } =
-    authContext;
-
-  // useEffect(() => {
-  //   loadUser();
-  // }, []);
+  const { logout, user, isAuthenticated } = authContext;
 
   const onLogout = () => {
     logout();
