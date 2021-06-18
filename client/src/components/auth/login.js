@@ -4,6 +4,10 @@ import axios from "axios";
 
 function Login() {
   // const authContext = useContext(AuthContext);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
 
   const getData = (e) => {
     setUser({
@@ -52,13 +56,13 @@ function Login() {
                 <button>Github</button> */}
       <a
         href="http://localhost:5000/login/passport/github"
-        className="btn btn-primary  font-weight-bold"
+        className="btn btn-dark  font-weight-bold"
       >
         Github
       </a>
       <a
         href="http://localhost:5000/login/passport/facebook"
-        className="btn btn-danger ml-4 font-weight-bold"
+        className="btn btn-primary ml-4 font-weight-bold"
       >
         Facebook
       </a>

@@ -24,9 +24,8 @@ const userSchema = new Schema({
   },
   facebook_id: String,
   Twitter_id: String,
-  instagram_id: String,
-  Google_id: String,
   github_id: String,
+  instagram_id: String,
   instagramActivity: [{}],
 });
 
