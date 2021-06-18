@@ -64,10 +64,23 @@ function Login(props) {
                 <button type="submit" className="btn btn-success">Login</button>
             </form>
                 <button>Facebook</button>
+
                 <button>Instagram</button>
-                <button>Github</button>
-        </div>
-    )
+                <button>Github</button> */}
+      <a
+        href="http://localhost:5000/login/passport/github"
+        className="btn btn-dark  font-weight-bold"
+      >
+        Github
+      </a>
+      <a
+        href="http://localhost:5000/login/passport/facebook"
+        className="btn btn-primary ml-4 font-weight-bold"
+      >
+        Facebook
+      </a>
+    </div>
+  );
 }
 
-export default Login
+export default Login;

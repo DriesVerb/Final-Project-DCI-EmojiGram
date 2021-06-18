@@ -1,4 +1,6 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 // components
 import Alerts from './components/Alert';
 import Navbar from "./components/Navbar";

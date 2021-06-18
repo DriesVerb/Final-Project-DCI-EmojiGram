@@ -15,7 +15,7 @@ const DB = process.env.DB_LINK;
 // add your own db link
 mongoose
 
-  .connect("mongodb+srv://admin:4321@cluster0.wonwy.mongodb.net/finalProject", {
+  .connect("", {
 
   
     useNewUrlParser: true,
@@ -23,6 +23,7 @@ mongoose
     useFindAndModify: false,
     useUnifiedTopology: true,
   })
+
   .then(() => {
     console.log(`DB connection successful`);
   });
