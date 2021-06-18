@@ -14,13 +14,16 @@ const DB = process.env.DB_LINK;
 
 // add your own db link
 mongoose
-  .connect("mongodb+srv://admin:admin1234@fbw41.txtbm.mongodb.net/finalProject?retryWrites=true&w=majorit",
-    {
+
+  .connect("", {
+
+  
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
     useUnifiedTopology: true,
   })
+
   .then(() => {
     console.log(`DB connection successful`);
   });

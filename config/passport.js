@@ -3,8 +3,9 @@ const User = require("../models/User");
 //Local Strategy
 const LocalStrategy = require("passport-local").Strategy;
 
-//Third Party
+//Third Party Strategy
 const GithubStrategy = require("passport-github").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 
 //Serialize and deserialize
 module.exports = function (passport) {
@@ -39,12 +40,15 @@ module.exports = function (passport) {
   );
 
   //Third Party Authentication
+  //Github
   passport.use(
     new GithubStrategy(
       {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: "http://5000/auth/github/callback",
+        // callbackURL: "auth/github/callback",
+        callbackURL: "http://localhost:5000/auth/github/callback",
+
       },
       function (accessToken, refreshToken, profile, done) {
         User.findOne({ github_id: profile.id }, (err, user) => {
@@ -55,6 +59,33 @@ module.exports = function (passport) {
             let newUser = new User({
               github_id: profile.id,
               username: profile.username,
+            });
+            newUser.save((err, doc) => {
+              return done(null, doc);
+            });
+          }
+        });
+      }
+    )
+  );
+
+  //Facebook Strategy
+  passport.use(
+    new FacebookStrategy(
+      {
+        clientID: process.env.FB_CLIENT_ID,
+        clientSecret: process.env.FB_CLIENT_SECRET,
+        callbackURL: "http://localhost:5000/login/passport/facebook/callback",
+      },
+      function (accessToken, refreshToken, profile, done) {
+        User.findOne({ facebook_id: profile.id }, (err, user) => {
+          if (err) return done(err);
+          if (user) {
+            return done(null, user);
+          } else {
+            let newUser = new User({
+              facebook_id: profile.id,
+              username: profile.displayName,
             });
             newUser.save((err, doc) => {
               return done(null, doc);

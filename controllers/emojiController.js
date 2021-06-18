@@ -32,12 +32,20 @@ exports.generateStory = async (req, res) => {
     await Emoji.find({}, "character", (err, docs) => {
       const array = docs;
 
+      // set only accepts unique arrays.
       const emojiOutput = new Set();
 
+      // loop until 5 times, disregard if emoji is already there.
       for (let i = 0; i < 5; i++) {
         const randomNum = Math.trunc(Math.random() * docs.length);
         emojiOutput.add(array[randomNum]);
       }
+
+      // loop until the set is filled with 5 random emojis
+      // while(emojiOutput.size !== 5) {
+      //   const randomNum = Math.trunc(Math.random() * docs.length);
+      //   emojiOutput.add(array[randomNum]);
+      // }
 
       const toJson = [...emojiOutput];
 
