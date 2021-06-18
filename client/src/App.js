@@ -14,7 +14,6 @@ import Footer from "./components/Footer";
 
 // context
 
-import AuthContext from "./context/auth/authContext";
 import AlertState from "./context/alert/alertState";
 import "./App.css";
 
