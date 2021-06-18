@@ -10,6 +10,7 @@ import SignUp from "./components/auth/SignUp";
 import LandingPage from "./components/layout/LandingPage";
 import PrivateRoute from "./components/privateRoute";
 import HomePublic from "./components/layout/HomePublic";
+import Footer from "./components/Footer";
 
 // context
 
