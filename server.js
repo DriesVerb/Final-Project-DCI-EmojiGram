@@ -66,6 +66,18 @@ app.get(
   }
 );
 
+//Facebook login
+app.get("/login/passport/facebook", passport.authenticate("facebook"));
+app.get(
+  "/login/passport/facebook/callback",
+  passport.authenticate("facebook", {
+    failureRedirect: "http//localhost:3000",
+  }),
+  (req, res) => {
+    res.redirect("http://localhost:3000/profile/" + req.user.id);
+  }
+);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

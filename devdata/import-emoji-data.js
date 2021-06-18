@@ -14,12 +14,16 @@ const DB = process.env.DB_LINK;
 
 // add your own db link
 mongoose
-  .connect("inset your db link", {
+
+  .connect("", {
+
+  
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
     useUnifiedTopology: true,
   })
+
   .then(() => {
     console.log(`DB connection successful`);
   });
