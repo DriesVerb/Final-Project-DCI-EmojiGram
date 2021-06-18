@@ -12,11 +12,7 @@ const auth = require("../middleware/auth");
 // routes
 router.get("/normal", userController.test);
 router.get("/private", auth, userController.testPrivate);
+router.post("/create", userController.create);
 
-router.post("/profile/:user_id", (req, res) => {
-  User.findOne({
-    user: req.params.user_id,
-  });
-});
-
+router.put("/editProfile/:user_id", userController.editProfile)
 module.exports = router;
