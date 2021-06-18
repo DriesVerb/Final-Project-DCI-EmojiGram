@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 
 // context
 
+import AuthContext from "./context/auth/authContext";
 import AlertState from "./context/alert/alertState";
 import "./App.css";
 
@@ -25,6 +26,12 @@ if (localStorage.token) {
 }
 
 function App() {
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    if (localStorage.token) authContext.loadUser();
+  }, []);
+
   return (
     <AlertState>
       <div className="App">

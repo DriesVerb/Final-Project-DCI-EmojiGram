@@ -28,7 +28,7 @@ export default (state, action) => {
       return {
         //put token in state
         ...state,
-        // ...action.payload,
+        ...action.payload,
         isAuthenticated: true,
         error: null,
       };
