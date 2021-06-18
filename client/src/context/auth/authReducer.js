@@ -3,38 +3,48 @@ import {
   REGISTER_FAIL,
   USER_LOADED,
   LOGIN_SUCCESS,
-  // REMOVE_ERROR
+  LOGIN_FAIL,
+  AUTH_ERROR,
+  LOGOUT
  
 } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
+   
+    
+    // Load User
     case USER_LOADED:
-      return {
-       
+      const token = state.token;
+      console.log(token);
+      
+      localStorage.setItem('token', state.token);
+      console.log(action.payload)
+      console.log(state)
+      return  {
+        ...state,
+          user: action.payload,
+          isAuthenticated: true
+        //loading:false
       };
+ 
     
-    
+    // redister User & Log in -Both Return the token-
+    case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
       //put the token in the local storage
       localStorage.setItem('token', action.payload.token);
       return {
-        //put taken in state
+        //put token in state
         ...state,
         ...action.payload,
-        isAuthenticated: true
-        //loading:false
-
-       
+        isAuthenticated: true,
+        error:null
       };
-    
-    // case LOGIN_SUCCESS:
-    //   localStorage.setItem('token', action.payload.token);
-    //   return {
-       
-    //   };
- 
+    case LOGIN_FAIL:
+    case AUTH_ERROR:
     case REGISTER_FAIL:
+    case LOGOUT:
      //remove the token in the local storage
       localStorage.removeItem('token');
       return {
@@ -44,6 +54,9 @@ export default (state, action) => {
         loading: false,
         error: action.payload
       };
+    
+    //  case LOGIN_SUCCESS:
+      
     
     // case REMOVE_ERROR:
     //   return {

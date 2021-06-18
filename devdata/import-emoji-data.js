@@ -14,15 +14,16 @@ const DB = process.env.DB_LINK;
 
 // add your own db link
 mongoose
-  .connect(
-    "mongodb+srv://stella:onaopemipo13@cluster0.gil98.mongodb.net/final-project",
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true,
-    }
-  )
+
+  .connect("", {
+
+  
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
+
   .then(() => {
     console.log(`DB connection successful`);
   });
