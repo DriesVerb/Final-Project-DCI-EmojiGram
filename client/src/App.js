@@ -9,6 +9,7 @@ import SignUp from "./components/auth/SignUp";
 import LandingPage from "./components/layout/LandingPage";
 import PrivateRoute from "./components/privateRoute";
 import HomePublic from "./components/layout/HomePublic";
+import Footer from './components/Footer'
 
 // context
 import AuthState from "./context/auth/authState";
@@ -16,23 +17,25 @@ import AlertState from "./context/alert/alertState";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-function App() {
+function App () {
   return (
     <AuthState>
       <AlertState>
         <div className="App">
+
           <Router>
             <Navbar />
             <Alerts />
             <Switch>
               {/* <Route path='/' exact component={}/> */}
+
               <Route path="/" exact component={HomePublic} />
               <PrivateRoute path="/landing" exact component={LandingPage} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
               {/*  <Route path='/signIn' component={}/> */}
             </Switch>
+   <Footer />
           </Router>
         </div>
       </AlertState>
@@ -40,4 +43,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

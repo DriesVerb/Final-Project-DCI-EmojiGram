@@ -1,0 +1,74 @@
+import React from 'react'
+
+function Footer () {
+  return (
+    <div className='main'>
+      <div className='container'>
+        <div className='row'>
+          {/*Column 1*/}
+          <div className='col-md-3 col-sm-6'>
+            <h4 className='header-title'>About Us</h4>
+            <ul className='list-unstyled'>
+              <li>
+                <a href='#' target='_blank'>
+                  Our Goal
+                </a>
+              </li>
+              <li>
+                <a href='#' target='_blank'>
+                  Our Vision
+                </a>
+              </li>
+              <li>
+                <a href='#' target='_blank'>
+                  Our Sponsor
+                </a>
+              </li>
+              <li>
+                <a href='#' target='_blank'>
+                  Press
+                </a>
+              </li>
+            </ul>
+          </div>
+          {/*Column 2*/}
+          <div className='col-md-3 col-sm-6'>Social Media</div>
+          <ul className='list-unstyled'>
+            <li>
+              <a href='https://facebook.com/login' target='_blank'>
+                <i className='fab fa-facebook'>
+                  <span style={{ marginLeft: '10px' }}>Facebook</span>
+                </i>
+              </a>
+            </li>
+            <li>
+              <a href='https://instagram.com/login'target='_blank'>
+                <i className='fab fa-instagram-square'>
+                  <span style={{ marginLeft: '10px' }}>Instagram</span>
+                </i>
+              </a>
+            </li>
+            <li>
+              <a href='http://twitter.com/login' target='_blank'>
+               <i className='fab fa-twitter'>
+                  <span style={{ marginLeft: '10px' }}>Twitter</span>
+                </i>
+              </a>
+            </li>
+          </ul>
+          <div className='col-md-3 col-sm-6'>
+            <h4 className='header-title'>Contact Us</h4>
+            <ul className='list-unstyled'>
+              <li>
+                <a href='#' target='_blank'>
+                  Contact Support
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+export default Footer
