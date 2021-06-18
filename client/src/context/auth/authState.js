@@ -84,7 +84,7 @@ const AuthState = (props) => {
       },
     };
     try {
-      const res = await axios.post("/auth/logIn", formData, config);
+      const res = await axios.post("/auth/login", formData, config);
       dispatch({
         type: LOGIN_SUCCESS,
         //res.data is the token
@@ -101,16 +101,6 @@ const AuthState = (props) => {
   };
   // Logout
   const logout = () => dispatch({ type: LOGOUT });
-
-  // Clear Errors
-
-  // const clearErrors = async () => {
-  //   dispatch({
-  //     type: REMOVE_ERROR ,
-
-  //   });
-
-  // };
 
   return (
     <AuthContext.Provider
