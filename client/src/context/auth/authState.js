@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
-// import setAuthToken from '../../utils/setAuthToken';
+import setAuthToken from './setAuthToken';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -15,6 +15,9 @@ import {
 } from '../types';
 
 const AuthState = props => {
+
+
+  
   const initialState = {
     //javaScript method to access the browser local storage
     token: localStorage.getItem('token'),
@@ -29,6 +32,9 @@ const AuthState = props => {
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
+
+
+
   // Register User
   const register = async formData => {
     const config = {
@@ -37,7 +43,6 @@ const AuthState = props => {
         'Content-Type': 'application/json'
       }
     };
-
     try {  
       const res = await axios.post('/auth/signUp', formData, config);
 
@@ -46,9 +51,10 @@ const AuthState = props => {
         //res.data is the token 
         payload: res.data
       });
-
-   
-    } catch (err) {
+       console.log (res.data)
+      loadUser();
+    }
+    catch (err) {
       dispatch({
         type: REGISTER_FAIL,
         //error -400 bad request- msg from backend in case the user exists 
@@ -57,19 +63,57 @@ const AuthState = props => {
     }
   };
   
+
+
+
+
+
   // Load User
-  const loadUser = async () => {
-    
+  const loadUser = async () => { 
+    setAuthToken(localStorage.token);
+    try {
+        //we have token in the localStorage so we can make the request because we pass the middleware
+        const res = await axios.get('/auth/login');
+  
+        dispatch({
+          type: USER_LOADED,
+          payload: res.data
+        });
+      } catch (err) {
+        dispatch({ type: AUTH_ERROR });
+      }  
   };
+
+
 
 
   // Login User
-  const login = async formData => {
-   
+  const login = async formData => { 
+   const config = {
+      // the header for token  
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    try {  
+      const res = await axios.post('/auth/logIn', formData, config);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        //res.data is the token 
+        payload: res.data
+      });
+      loadUser();
+    }
+    catch (err) {
+      dispatch({
+        type: LOGIN_FAIL,
+        //error -400 bad request- msg from backend in case the user exists 
+        payload: err.response.data.msg
+      });
+    }
   };
-
-  // Logout
-
+// Logout
+const logout = () => dispatch({ type: LOGOUT });
 
   // Clear Errors
 
@@ -80,6 +124,7 @@ const AuthState = props => {
   //   });
     
   // };
+  
   return (
     <AuthContext.Provider
       value={{
@@ -90,9 +135,11 @@ const AuthState = props => {
         error: state.error,
         register,
         loadUser,
-        login
+        login,
+        logout
 
       }}
+      
     >
       {props.children}
     </AuthContext.Provider>
