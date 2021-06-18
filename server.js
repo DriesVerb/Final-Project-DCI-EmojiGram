@@ -32,7 +32,6 @@ app.post(
   "/login/passport/local",
   passport.authenticate("local"),
   (req, res) => {
-    console.log(req.user);
     res.send(req.user);
   }
 );

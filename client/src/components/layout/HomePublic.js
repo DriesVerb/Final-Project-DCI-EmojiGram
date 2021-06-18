@@ -8,14 +8,10 @@ const HomePublic = () => {
   //////should be where we want to redirect after log in ////
   const authContext = useContext(AuthContext);
   const { loadUser } = authContext;
-  useEffect(() => {
-    loadUser();
-  }, []);
-  //////////////////////////////////////////////////////
 
   return (
     <div>
-      <h1>Home</h1>
+      <h1>Home Public</h1>
       <EmojiCTA />
     </div>
   );

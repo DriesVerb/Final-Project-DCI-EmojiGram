@@ -16,7 +16,7 @@ function Login(props) {
     // redirect to Home Page
     if (isAuthenticated) {
       //should pass the props in the function component
-      props.history.push("/");
+      props.history.push("/landing");
     }
   }, [isAuthenticated, props.history]);
   const getData = (e) => {
@@ -42,7 +42,7 @@ function Login(props) {
         <h2>Login</h2>
         <label htmlFor="email">Email</label>
         <input
-          type="email"
+          type="text"
           name="email"
           placeholder="Your Email.."
           onChange={getData}
