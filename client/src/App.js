@@ -15,7 +15,6 @@ import Footer from "./components/Footer";
 // context
 
 import AuthContext from "./context/auth/authContext";
-import AuthState from "./context/auth/authState";
 import AlertState from "./context/alert/alertState";
 import "./App.css";
 
@@ -30,7 +29,7 @@ function App() {
   const authContext = useContext(AuthContext);
 
   useEffect(() => {
-    authContext.loadUser();
+    if (localStorage.token) authContext.loadUser();
   }, []);
 
   return (

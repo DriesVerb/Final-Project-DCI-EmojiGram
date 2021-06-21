@@ -12,15 +12,12 @@ export default (state, action) => {
   switch (action.type) {
     // Load User
     case USER_LOADED:
-      const token = state.token;
-
       localStorage.setItem("token", state.token);
 
       return {
         ...state,
         user: action.payload,
         isAuthenticated: true,
-        //loading:false
       };
 
     // redister User & Log in -Both Return the token-

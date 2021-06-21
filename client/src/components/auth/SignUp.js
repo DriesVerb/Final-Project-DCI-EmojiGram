@@ -30,7 +30,6 @@ const SignUp = (props) => {
   };
 
   const onSubmit = (e) => {
-    // e.preventDefault();
     //validation or call the alert
     if (username === "" || email === "" || password === "") {
       setAlert("Please enter all fields", "warning");
