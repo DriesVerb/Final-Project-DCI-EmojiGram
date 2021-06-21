@@ -47,6 +47,7 @@ function App() {
             <Route exact path="/signup" component={SignUp} />
             {/*  <Route path='/signIn' component={}/> */}
           </Switch>
+          <Footer />
         </Router>
       </div>
     </AlertState>
