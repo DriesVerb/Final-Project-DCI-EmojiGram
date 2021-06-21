@@ -7,9 +7,9 @@ function Navbar() {
 
   const { logout, user, isAuthenticated, loadUser, clearContacts } = authContext;
     
-  useEffect(() => {
+  /* useEffect(() => {
     loadUser();
-  }, []);
+  }, []); */
    
   const onLogout = () => {
     logout();
