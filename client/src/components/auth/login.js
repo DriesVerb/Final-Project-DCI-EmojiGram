@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
 function Login(props) {
@@ -16,7 +15,9 @@ function Login(props) {
     // redirect to Home Page
     if (isAuthenticated) {
       //should pass the props in the function component
+
       props.history.push("/UserInterface");
+
     }
   }, [isAuthenticated, props.history]);
   const getData = (e) => {
@@ -25,8 +26,7 @@ function Login(props) {
       [e.target.name]: e.target.value,
     });
   };
-  const submToServer = (e) => {
-    e.preventDefault();
+  const submToServer = () => {
     if (email === "" || password === "") {
       setAlert("Please fill in all fields", "warning");
     } else {
@@ -38,11 +38,16 @@ function Login(props) {
   };
   return (
     <div>
-      <form onSubmit={submToServer}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          submToServer();
+        }}
+      >
         <h2>Login</h2>
         <label htmlFor="email">Email</label>
         <input
-          type="email"
+          type="text"
           name="email"
           placeholder="Your Email.."
           onChange={getData}
@@ -59,9 +64,27 @@ function Login(props) {
           Login
         </button>
       </form>
-      <button>Facebook</button>
+      {/* <button>Facebook</button>
       <button>Instagram</button>
-      <button>Github</button>
+      <button>Github</button> */}
+      <a
+        href="http://localhost:5000/login/passport/github"
+        className="fab-fa-github btn btn-dark font-weight-bold "
+      >
+        Github
+      </a>
+      <a
+        href="http://localhost:5000/login/passport/instagram"
+        className="btn btn-danger ml-4 font-weight-bold"
+      >
+        Instagram
+      </a>
+      <a
+        href="http://localhost:5000/login/passport/facebook"
+        className="btn btn-primary ml-4 font-weight-bold "
+      >
+        Facebook
+      </a>
     </div>
   );
 }

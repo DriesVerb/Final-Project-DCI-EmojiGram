@@ -10,12 +10,44 @@ exports.testPrivate = (req, res) => {
   res.json({ msg: "this route works in private" });
 };
 
-exports.editProfile = (req, res) => {
-  console.log(req.body);
-  User.findOneAndUpdate(req.params.id, req.body, (err, doc) => {
-    if (err) throw err.message;
-    res.json(doc);
-  });
+//Edit Profile
+exports.editProfile = async (req, res) => {
+  // console.log(req.body);
+  const { username, name, email, password, location, avatar } = req.body;
+
+  //Build Profile Object by initializing an Object
+  const profileFields = {};
+  if (username) profileFields.username = username;
+  if (name) profileFields.name = name;
+  if (email) profileFields.email = email;
+  if (password) profileFields.password = password;
+  if (location) profileFields.location = location;
+  if (avatar) profileFields.avatar = avatar;
+  try {
+    let profile = await User.findById(req.params.id);
+    console.log(profile);
+    // check if profile exits
+    if (!profile) return res.status(404).json({ msg: "User not found" });
+    // console.log(profile);
+
+    // Making sure its the user profile
+    // if (profile.user.toString() !== req.user.id) {
+    //   return res.status(401).json({ mgs: "Not authorized" });
+    // }
+
+    //calling from User Model to update
+    //setting the profileFields above
+    profile = await User.findByIdAndUpdate(
+      req.params.id,
+      { $set: profileFields },
+      { new: true }
+    );
+    // update User Profile
+    res.json(profile);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Error");
+  }
 };
 
 exports.myStories = (req, res) => {

@@ -1,8 +1,8 @@
-import React, { useReducer } from 'react';
-import axios from 'axios';
-import AuthContext from './authContext';
-import authReducer from './authReducer';
-import setAuthToken from './setAuthToken';
+import React, { useReducer } from "react";
+import axios from "axios";
+import AuthContext from "./authContext";
+import authReducer from "./authReducer";
+import setAuthToken from "./setAuthToken";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -11,135 +11,110 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  // REMOVE_ERROR 
-} from '../types';
+  // REMOVE_ERROR
+} from "../types";
 
-const AuthState = props => {
-
-
-  
+const AuthState = (props) => {
   const initialState = {
     //javaScript method to access the browser local storage
-    token: localStorage.getItem('token'),
+    token: localStorage.getItem("token"),
     //if could logged in or not
     isAuthenticated: null,
-   // for the spinner 
+    // for the spinner
     // loading:true,
     user: null,
     //when register/log in fail will fill it with the backend msg
-    error: null
+    error: null,
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-
-
-
   // Register User
-  const register = async formData => {
+  const register = async (formData) => {
     const config = {
-      // the header for token  
+      // the header for token
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     };
-    try {  
-      const res = await axios.post('/auth/signUp', formData, config);
+    try {
+      const res = await axios.post("/auth/signUp", formData, config);
 
       dispatch({
         type: REGISTER_SUCCESS,
-        //res.data is the token 
-        payload: res.data
+        //res.data is the token
+        payload: res.data,
       });
-       console.log (res.data)
+
       loadUser();
-    }
-    catch (err) {
+    } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
-        //error -400 bad request- msg from backend in case the user exists 
-        payload: err.response.data.msg
+        //error -400 bad request- msg from backend in case the user exists
+        payload: err.response.data.msg,
       });
     }
   };
-  
-
-
-
-
 
   // Load User
-  const loadUser = async () => { 
-    setAuthToken(localStorage.token);
+  const loadUser = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+
     try {
-        //we have token in the localStorage so we can make the request because we pass the middleware
-        const res = await axios.get('/auth/login');
-  
-        dispatch({
-          type: USER_LOADED,
-          payload: res.data
-        });
-      } catch (err) {
-        dispatch({ type: AUTH_ERROR });
-      }  
+      //we have token in the localStorage so we can make the request because we pass the middleware
+      const res = await axios.get("/auth/login");
+
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({ type: AUTH_ERROR });
+    }
   };
-
-
-
 
   // Login User
-  const login = async formData => { 
-   const config = {
-      // the header for token  
+  const login = async (formData) => {
+    const config = {
+      // the header for token
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     };
-    try {  
-      const res = await axios.post('/auth/logIn', formData, config);
+    try {
+      const res = await axios.post("/auth/login", formData, config);
       dispatch({
         type: LOGIN_SUCCESS,
-        //res.data is the token 
-        payload: res.data
+        //res.data is the token
+        payload: res.data,
       });
       loadUser();
-    }
-    catch (err) {
+    } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
-        //error -400 bad request- msg from backend in case the user exists 
-        payload: err.response.data.msg
+        //error -400 bad request- msg from backend in case the user exists
+        payload: err.response.data.msg,
       });
     }
   };
-// Logout
-const logout = () => dispatch({ type: LOGOUT });
+  // Logout
+  const logout = () => dispatch({ type: LOGOUT });
 
-  // Clear Errors
-
-  // const clearErrors = async () => {
-  //   dispatch({
-  //     type: REMOVE_ERROR ,
-        
-  //   });
-    
-  // };
-  
   return (
     <AuthContext.Provider
       value={{
         token: state.token,
         isAuthenticated: state.isAuthenticated,
         loadin: state.loading,
-        user:state.user,
+        user: state.user,
         error: state.error,
         register,
         loadUser,
         login,
-        logout
-
+        logout,
       }}
-      
     >
       {props.children}
     </AuthContext.Provider>
