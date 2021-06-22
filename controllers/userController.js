@@ -19,7 +19,7 @@ exports.editProfile = (req, res) => {
 };
 
 exports.myStories = (req, res) => {
-  console.log(req.body);
+  /* console.log(req.body); */
   Story.find((err, data) => {
     if (err) throw err.message;
     res.json(data);

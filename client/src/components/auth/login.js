@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
 function Login(props) {
@@ -16,7 +15,7 @@ function Login(props) {
     // redirect to Home Page
     if (isAuthenticated) {
       //should pass the props in the function component
-      props.history.push("/");
+      props.history.push("/landing");
     }
   }, [isAuthenticated, props.history]);
   const getData = (e) => {
@@ -25,8 +24,7 @@ function Login(props) {
       [e.target.name]: e.target.value,
     });
   };
-  const submToServer = (e) => {
-    e.preventDefault();
+  const submToServer = () => {
     if (email === "" || password === "") {
       setAlert("Please fill in all fields", "warning");
     } else {
@@ -38,11 +36,16 @@ function Login(props) {
   };
   return (
     <div>
-      <form onSubmit={submToServer}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          submToServer();
+        }}
+      >
         <h2>Login</h2>
         <label htmlFor="email">Email</label>
         <input
-          type="email"
+          type="text"
           name="email"
           placeholder="Your Email.."
           onChange={getData}
