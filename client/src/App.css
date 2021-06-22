@@ -45,3 +45,27 @@
   display: flex;
   justify-content: center;
 }
+
+
+.img{
+
+  height: 200px;
+  width: 200px;
+}
+
+.container {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .container{
+    width: 100%;
+  }
+}
