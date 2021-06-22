@@ -45,3 +45,8 @@
   display: flex;
   justify-content: center;
 }
+
+.nav {
+  width: 100vw;
+  margin-left: -3vw;
+}

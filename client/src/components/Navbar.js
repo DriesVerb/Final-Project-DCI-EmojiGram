@@ -1,8 +1,17 @@
 import React, { Fragment, useContext } from "react";
+import {
+  Navbar,
+  NavLink,
+  Nav,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/auth/authContext";
 
-function Navbar() {
+function navbar() {
   const authContext = useContext(AuthContext);
 
   const { logout, user, isAuthenticated } = authContext;
@@ -13,15 +22,56 @@ function Navbar() {
 
   const userLinks = (
     <Fragment>
-      <li>Hello {user && user.name}</li>
-      <li>
-        <a onClick={onLogout} href="#!">
-          <i className="fas fa-sign-out-alt" /> <span>Logout</span>
-        </a>
-      </li>
-      <li className="nav-item">
-        <Link to="/writestory">Write a Story</Link>
-      </li>
+      <Navbar bg="light" expand="lg" className="nav">
+        <Navbar.Brand href="/" className="text-bold">
+          EmojiGram
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="mr-auto my-2 my-lg-0"
+            style={{ maxHeight: "100px" }}
+            navbarScroll
+          >
+            <div>
+              Hello <span> {user && user.username}</span>
+            </div>
+            <NavDropdown title="" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="">
+                <i className="fas fa-cog" /> Settings & Privacy
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={onLogout} href="#!">
+                <i className="fas fa-sign-out-alt" /> Logout
+              </NavDropdown.Item>
+            </NavDropdown>
+            <NavLink to="" className="ml-5">
+              <i className="fas fa-bell" /> Notification
+            </NavLink>
+            <NavLink to="">
+              <i className="fas fa-envelope" /> Messages
+            </NavLink>
+          </Nav>
+          <Form className="d-flex ml-5 ">
+            <FormControl
+              type="search"
+              placeholder="Search"
+              className="mr-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-info ">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Navbar>
+
+      {/* <li>Hello {user && user.name}</li>
+     <li>
+       <a onClick={onLogout} href="#!">
+         <i className="fas fa-sign-out-alt" /> <span>Logout</span>
+      </a>
+     </li>
+     <li className="nav-item">
+       <Link to="/writestory">Write a Story</Link>
+     </li> */}
     </Fragment>
   );
 
@@ -50,4 +100,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default navbar;
