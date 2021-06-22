@@ -11,6 +11,7 @@ import LandingPage from "./components/layout/LandingPage";
 import PrivateRoute from "./components/privateRoute";
 import HomePublic from "./components/layout/HomePublic";
 import Footer from "./components/Footer";
+import StoryEditor from "./components/story/StoryEditor";
 
 // context
 
@@ -42,6 +43,7 @@ function App() {
             {/* <Route path='/' exact component={}/> */}
             <Route path="/" exact component={HomePublic} />
             <PrivateRoute path="/landing" exact component={LandingPage} />
+            <PrivateRoute path="/writestory" exact component={StoryEditor} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             {/*  <Route path='/signIn' component={}/> */}
