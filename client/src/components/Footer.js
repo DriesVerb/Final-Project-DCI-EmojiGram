@@ -10,22 +10,38 @@ function Footer() {
             <h4 className="header-title">About Us</h4>
             <ul className="list-unstyled">
               <li>
+
+                <a href='/ourgoal' target='_blank' rel='noopener noreferrer'>
+
                 <a href="#!" target="_blank">
+
                   Our Goal
                 </a>
               </li>
               <li>
+
+                <a href='/ourvision' target='_blank' rel='noopener noreferrer'>
+
                 <a href="#!" target="_blank">
+
                   Our Vision
                 </a>
               </li>
               <li>
+
+                <a href='oursponsor' target='_blank' rel='noopener noreferrer'>
+
                 <a href="#!" target="_blank">
+
                   Our Sponsor
                 </a>
               </li>
               <li>
+
+                <a href='/press' target='_blank' rel='noopener noreferrer'>
+
                 <a href="#!" target="_blank">
+
                   Press
                 </a>
               </li>
