@@ -19,6 +19,9 @@ function Navbar() {
           <i className="fas fa-sign-out-alt" /> <span>Logout</span>
         </a>
       </li>
+      <li className="nav-item">
+        <Link to="/writestory">Write a Story</Link>
+      </li>
     </Fragment>
   );
 
