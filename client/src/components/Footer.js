@@ -13,7 +13,7 @@ function Footer() {
 
                 <a href='/ourgoal' target='_blank' rel='noopener noreferrer'>
 
-                <a href="#!" target="_blank">
+             
 
                   Our Goal
                 </a>
@@ -22,7 +22,7 @@ function Footer() {
 
                 <a href='/ourvision' target='_blank' rel='noopener noreferrer'>
 
-                <a href="#!" target="_blank">
+             
 
                   Our Vision
                 </a>
@@ -31,7 +31,7 @@ function Footer() {
 
                 <a href='oursponsor' target='_blank' rel='noopener noreferrer'>
 
-                <a href="#!" target="_blank">
+               
 
                   Our Sponsor
                 </a>
@@ -40,7 +40,7 @@ function Footer() {
 
                 <a href='/press' target='_blank' rel='noopener noreferrer'>
 
-                <a href="#!" target="_blank">
+               
 
                   Press
                 </a>
@@ -97,6 +97,7 @@ function Footer() {
         </div>
       </div>
     </div>
+      
   );
 }
 export default Footer;

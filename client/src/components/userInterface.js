@@ -35,7 +35,7 @@ function userInterface() {
               <img className='img' src={Images} alt='userImage'></img>
 
               <p>CREATE YOUR STORY</p>
-              <Link to='/createStory' className='link'>
+              <Link to='/writestory' className='link'>
                 <button className='btn btn-success'>Click to create</button>
               </Link>
             </div>
