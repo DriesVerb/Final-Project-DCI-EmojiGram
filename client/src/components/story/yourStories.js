@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import ShowStory from './showStory'
 import ReactPaginate from 'react-paginate'
 import axios from 'axios'
 import './yourStories.css'
@@ -6,9 +7,11 @@ import './yourStories.css'
 
 function YourStories() {
 
-
+    
     const [stories, setStories] = useState([])
     const [pageNumber, SetPageNumber] = useState(0)
+    const [singleStory, setSingleStory] = useState();
+
 
 
     useEffect(()=>{
@@ -32,23 +35,39 @@ function YourStories() {
         SetPageNumber(selected)
     }
 
+/*     const storyDetails = (id)=>{
+        axios.get('/user/story/show/'+id)
+        .then(response=> {
+           setSingleStory(response.data)
+           window.location.href = '/showstory'
+        })
+    } */
+
+    const storyDetails = (id)=>{
+        setSingleStory({
+            id:id
+        })
+        
+        window.location.href ='/showstory/'+id
+       
+    }
 
     return (
         <div className="map">
             {
                 displayStories.map((story)=>{
                     return (
-                        <div className="card" key={story._id}>
-                           <figure className="cards__item__wrap" data={"Thriller"}> 
+                        <div className="card" key={story._id} onClick={()=>storyDetails(story._id)}>
+                           <figure className="cards__item__wrap" data={story.genre,"Thriller"}> 
                            <h3><span>Title: </span>{story.title}</h3>
                            <br />
-                           <p> {story.text}</p>
+                           <p className="storyTag fades"> {story.text}</p>
                            <footer>
                           
                                <span className="like"><i className="fa fa-thumbs-up"/> &nbsp;{(story.likes.length)}</span>
-                               <span className="comments"><i class="fas fa-comment"/> &nbsp;{story.comments.length}</span>
-                               <span className="emojisClass"><i class="far fa-smile-beam"/> : &nbsp;{story.emojis}</span>
-
+                               <span className="comments"><i className="fas fa-comment"/> &nbsp;{story.comments.length}</span>
+                               <span className="emojisClass"><i className="far fa-smile-beam"/> : &nbsp;{story.emojis}</span>
+                               
                            </footer>
                            </figure>
                         </div>
@@ -67,6 +86,8 @@ function YourStories() {
             disabledClassName={"paginationDisabled"}
             activeClassName={"paginationActive"}
             />
+     
+            
         </div>
     )
 }

@@ -9,10 +9,8 @@ const storySchema = new Schema({
     username: String,
     name: String,
   },
-  genre: {
-    mainGenre: String,
-    subGenre: String,
-  },
+  genre: String,
+  subGenre: String,
   likes: [
     {
       userId: Number,

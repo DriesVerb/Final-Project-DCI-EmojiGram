@@ -82,3 +82,26 @@ span i,  h3 span {
     box-sizing: border-box;
     border-radius: 0 10px 0 0;
   }
+
+  .storyTag{
+    overflow: hidden;
+    width: 100%;
+    line-height: 1.4em;
+     }
+
+
+     .fades {
+        position: relative;
+        height: 5.6em; /* exactly three lines */
+      }
+      .fades:after {
+        content: "";
+        text-align: right;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 70%;
+        height: 1.4em;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 80%);
+      }
+  
