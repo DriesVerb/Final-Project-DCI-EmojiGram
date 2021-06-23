@@ -15,8 +15,15 @@ exports.published = (req, res) => {
   }).populate("");
 };
 
+exports.show = (req,res) =>{
+  Story.findById(req.params.id, (err,data)=>{
+    res.json(data)
+  })
+}
+
+
 exports.edit = (req, res) => {
-  console.log(req.body);
+  /* console.log(req.body); */
 
   Story.findByIdAndUpdate(req.params.id, req.body, (err, doc) => {
     if (err) throw err.message;

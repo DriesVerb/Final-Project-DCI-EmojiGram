@@ -10,6 +10,8 @@ router.post("/create", auth, storyController.create);
 
 router.get("/publishedStory/:id", storyController.published);
 
+router.get("/show/:id", auth, storyController.show)
+
 router.put("/editStory/:id", auth, storyController.edit);
 
 module.exports = router;

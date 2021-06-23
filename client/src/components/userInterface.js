@@ -7,15 +7,15 @@ import '../App.css';
 function userInterface() {
   return (
     <div>
-      <nav class='navbar navbar-inverse'>
-        <div class='container-fluid'>
-          <div class='navbar-header'>
-            <a class='navbar-brand' href='#'>
+      <nav className='navbar navbar-inverse'>
+        <div className='container-fluid'>
+          <div className='navbar-header'>
+            <a className='navbar-brand' href='#'>
               EmojiGram
             </a>
           </div>
-          <ul class='nav navbar-nav navbar-right '>
-            <li class='active'>
+          <ul className='nav navbar-nav navbar-right '>
+            <li className='active'>
               <a href='/yourprofile'>Lara</a>
             </li>
             <li>
@@ -60,7 +60,7 @@ function userInterface() {
               <img className='img' src={Images} alt='userImage'></img>
               <p>YOUR STORIES</p>
             
-              <Link to='/friendsStories' className='link'>
+              <Link to='/yourstories' className='link'>
                 <button className='btn btn-success'>Access to your stories</button>
               </Link>
             </div>

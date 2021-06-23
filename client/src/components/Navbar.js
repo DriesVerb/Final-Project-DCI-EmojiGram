@@ -22,6 +22,9 @@ function Navbar() {
       <li className="nav-item">
         <Link to="/writestory">Write a Story</Link>
       </li>
+      <li className="nav-item">
+        <Link to="/yourstories">Your Stories</Link>
+      </li>
     </Fragment>
   );
 
