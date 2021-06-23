@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import ShowStory from './showStory'
 import ReactPaginate from 'react-paginate'
 import axios from 'axios'
 import './yourStories.css'
@@ -35,13 +34,6 @@ function YourStories() {
         SetPageNumber(selected)
     }
 
-/*     const storyDetails = (id)=>{
-        axios.get('/user/story/show/'+id)
-        .then(response=> {
-           setSingleStory(response.data)
-           window.location.href = '/showstory'
-        })
-    } */
 
     const storyDetails = (id)=>{
         setSingleStory({
