@@ -14,6 +14,9 @@ function Navbar() {
   const userLinks = (
     <Fragment>
       <li>Hello {user && user.name}</li>
+      <li className="nav-item">
+        <Link to="/">Home</Link>
+      </li>
       <li>
         <a onClick={onLogout} href="#!">
           <i className="fas fa-sign-out-alt" /> <span>Logout</span>

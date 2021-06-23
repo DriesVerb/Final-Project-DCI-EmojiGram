@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 // store
 import { storyStore } from "../../store";
+import { emojiStore } from "../../store";
 
 const StoryEditor = () => {
+  // variables from the zustand store
   const getValues = storyStore((state) => state.getValues);
-  const convertText = storyStore((state) => state.convertText);
-  const newText = storyStore((state) => state.newText);
+  const emojisGlobal = emojiStore((state) => state.emojis);
 
+  // state of current inputs
   const [formData, setFromData] = useState({
-    emojis: ["🛳️", "💈", "🌽", "🐶", "🛰️"],
     title: "",
     genre: "",
     text: "",
@@ -17,31 +19,44 @@ const StoryEditor = () => {
 
   const { title, genre, text } = formData;
 
-  const onChange = (e) =>
-    setFromData({ ...formData, [e.target.name]: e.target.value });
+  useEffect(() => {
+    setFromData({ ...formData });
+  }, []);
 
-  const onSubmit = (e) => {
+  let history = useHistory();
+
+  const onChange = (e) => {
+    setFromData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmit = () => {
     getValues(formData);
+    history.push("/previewstory");
   };
 
   return (
     <div>
-      {/* for testing: */}
-      <div
-        contentEditable="true"
-        dangerouslySetInnerHTML={{ __html: newText }}
-      ></div>
-      {/* for testing end. */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
           onSubmit();
-          convertText(text);
         }}
       >
-        <button type="submit">Publish Story</button>
+        <button type="submit">Preview to Publish</button>
         <p>You will be a writing a story inspired by these emojis:</p>
-        <div className="emojiSize">🛳️ 💈 🌽 🐶 🛰️</div>
+        <div className="test">
+          {emojisGlobal.length > 0 &&
+            emojisGlobal.map((emoji) => {
+              return (
+                <div className="emojiSize" key={emoji._id}>
+                  {emoji.character}
+                </div>
+              );
+            })}
+        </div>
         <div>
           <label htmlFor="title">Title of the Piece:</label>
           <input

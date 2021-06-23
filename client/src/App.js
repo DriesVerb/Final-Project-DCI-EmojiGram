@@ -12,7 +12,8 @@ import PrivateRoute from "./components/privateRoute";
 import HomePublic from "./components/layout/HomePublic";
 import Footer from "./components/Footer";
 import StoryEditor from "./components/story/StoryEditor";
-import UserInterface from './components/userInterface';
+import PreviewStory from "./components/story/PreviewStory";
+import UserInterface from "./components/userInterface";
 
 // context
 
@@ -45,16 +46,16 @@ function App() {
             <Route path="/" exact component={HomePublic} />
             <PrivateRoute path="/landing" exact component={LandingPage} />
             <PrivateRoute path="/writestory" exact component={StoryEditor} />
+            <PrivateRoute path="/previewstory" exact component={PreviewStory} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
-            <Route path='/UserInterface' component={UserInterface} />
+            <Route path="/UserInterface" component={UserInterface} />
             {/*  <Route path='/signIn' component={}/> */}
           </Switch>
           <Footer />
         </Router>
       </div>
     </AlertState>
-
   );
 }
 
