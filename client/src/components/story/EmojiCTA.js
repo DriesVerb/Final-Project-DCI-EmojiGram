@@ -1,24 +1,38 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+
+// components
+import Spinner from "../../components/layout/Spinner";
+
+// store
+import { emojiStore } from "../../store";
 
 const EmojiCTA = () => {
-  const [emojiList, setEmojiList] = useState([]);
+  const { getEmojis } = emojiStore.getState();
+  const emojis = emojiStore((state) => state.emojis);
+  const loading = emojiStore((state) => state.loading);
 
   useEffect(() => {
-    axios.get(`/emoji/story`).then((response) => setEmojiList(response.data));
+    getEmojis();
   }, []);
 
   return (
     <div>
-      <div className="test">
-        {emojiList.map((emoji) => {
-          return (
-            <div className="emojiSize" key={emoji._id}>
-              {emoji.character}
-            </div>
-          );
-        })}
-      </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="test">
+          {emojis.length > 0 &&
+            emojis.map((emoji) => {
+              return (
+                <div className="emojiSize" key={emoji._id}>
+                  {emoji.character}
+                </div>
+              );
+            })}{" "}
+        </div>
+      )}
+
+      <button onClick={getEmojis}>Generate new story</button>
     </div>
   );
 };
