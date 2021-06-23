@@ -6,8 +6,6 @@ import { storyStore } from "../../store";
 const PreviewStory = () => {
   const { emojis, title, genre, richText, sendToDb } = storyStore.getState();
 
-  console.log(storyStore.getState());
-
   return (
     <div>
       <button onClick={sendToDb}>Publish</button>

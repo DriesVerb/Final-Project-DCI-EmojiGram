@@ -9,6 +9,7 @@ const StoryEditor = () => {
   // variables from the zustand store
   const getValues = storyStore((state) => state.getValues);
   const emojisGlobal = emojiStore((state) => state.emojis);
+  const getEmojis = emojiStore((state) => state.getEmojis);
 
   // state of current inputs
   const [formData, setFromData] = useState({
@@ -20,7 +21,7 @@ const StoryEditor = () => {
   const { title, genre, text } = formData;
 
   useEffect(() => {
-    setFromData({ ...formData });
+    if (emojisGlobal.length === 0) getEmojis();
   }, []);
 
   let history = useHistory();
