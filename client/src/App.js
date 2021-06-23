@@ -11,10 +11,11 @@ import LandingPage from "./components/layout/LandingPage";
 import PrivateRoute from "./components/privateRoute";
 import HomePublic from "./components/layout/HomePublic";
 import Footer from "./components/Footer";
+import YourStories from "./components/story/yourStories";
 import StoryEditor from "./components/story/StoryEditor";
 import PreviewStory from "./components/story/PreviewStory";
 import UserInterface from "./components/userInterface";
-
+import ShowStory from "./components/story/showStory";
 // context
 
 import AuthContext from "./context/auth/authContext";
@@ -42,15 +43,15 @@ function App() {
           <Navbar />
           <Alerts />
           <Switch>
-            {/* <Route path='/' exact component={}/> */}
             <Route path="/" exact component={HomePublic} />
             <PrivateRoute path="/landing" exact component={LandingPage} />
+            <PrivateRoute path="/yourstories" exact component={YourStories} />
             <PrivateRoute path="/writestory" exact component={StoryEditor} />
             <PrivateRoute path="/previewstory" exact component={PreviewStory} />
+            <Route path="/showstory/:id" exact component={ShowStory} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
-            <Route path="/UserInterface" component={UserInterface} />
-            {/*  <Route path='/signIn' component={}/> */}
+            <PrivateRoute path="/UserInterface" component={UserInterface} />
           </Switch>
           <Footer />
         </Router>

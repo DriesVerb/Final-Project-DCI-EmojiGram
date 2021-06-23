@@ -10,7 +10,7 @@ function userInterface() {
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a className="navbar-brand" href="#!">
+            <a className="navbar-brand" href="#">
               EmojiGram
             </a>
           </div>
@@ -62,7 +62,7 @@ function userInterface() {
               <img className="img" src={Images} alt="userImage"></img>
               <p>YOUR STORIES</p>
 
-              <Link to="/friendsStories" className="link">
+              <Link to="/yourstories" className="link">
                 <button className="btn btn-success">
                   Access to your stories
                 </button>
