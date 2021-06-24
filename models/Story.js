@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const storySchema = new Schema({
   emojis: [],
   title: String,
-  text: {},
+  text: String,
+  richText: String,
   createdBy: {
     username: String,
     name: String,
