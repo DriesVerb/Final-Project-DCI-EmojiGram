@@ -15,7 +15,9 @@ function Login(props) {
     // redirect to Home Page
     if (isAuthenticated) {
       //should pass the props in the function component
-      props.history.push("/landing");
+
+      props.history.push("/UserInterface");
+
     }
   }, [isAuthenticated, props.history]);
   const getData = (e) => {

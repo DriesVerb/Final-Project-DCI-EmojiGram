@@ -23,22 +23,27 @@ function navbar() {
   const userLinks = (
     <Fragment>
       <Navbar bg="light" expand="lg" className="nav">
-        <Navbar.Brand href="/" className="text-bold">
+        <Navbar.Brand href="/" className=" brand text-bold">
           EmojiGram
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="mr-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          >
-            <div>
-              Hello <span> {user && user.username}</span>
-            </div>
+          <Nav style={{ maxHeight: "100px" }} navbarScroll>
+            <li className="ml-2">
+              <a className="nav-link" href="#">
+                Hello{" "}
+                {user &&
+                  user.username.charAt(0).toUpperCase() +
+                    user.username.slice(1)}
+                <span className="sr-only">(current)</span>
+              </a>
+            </li>
             <NavDropdown title="" id="navbarScrollingDropdown">
               <NavDropdown.Item href="">
-                <i className="fas fa-cog" /> Settings & Privacy
+                <i className="fas fa-cog " /> Settings & Privacy
+              </NavDropdown.Item>
+              <NavDropdown.Item href="">
+                <i className="fas fa-question-circle" /> Help & Support
               </NavDropdown.Item>
               <NavDropdown.Item onClick={onLogout} href="#!">
                 <i className="fas fa-sign-out-alt" /> Logout
@@ -62,16 +67,6 @@ function navbar() {
           </Form>
         </Navbar.Collapse>
       </Navbar>
-
-      {/* <li>Hello {user && user.name}</li>
-     <li>
-       <a onClick={onLogout} href="#!">
-         <i className="fas fa-sign-out-alt" /> <span>Logout</span>
-      </a>
-     </li>
-     <li className="nav-item">
-       <Link to="/writestory">Write a Story</Link>
-     </li> */}
     </Fragment>
   );
 

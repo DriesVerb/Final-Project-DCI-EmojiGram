@@ -37,6 +37,15 @@
   }
 }
 
+.brand {
+  font-size: 30px;
+}
+.nav {
+  width: 100vw;
+  margin-left: -3vw;
+  font-size: 20px;
+}
+
 .emojiSize {
   font-size: 5rem;
 }
@@ -46,7 +55,24 @@
   justify-content: center;
 }
 
-.nav {
-  width: 100vw;
-  margin-left: -3vw;
+.img {
+  height: 200px;
+  width: 200px;
+}
+
+.container {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
 }

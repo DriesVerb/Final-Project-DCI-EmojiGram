@@ -12,6 +12,7 @@ import PrivateRoute from "./components/privateRoute";
 import HomePublic from "./components/layout/HomePublic";
 import Footer from "./components/Footer";
 import StoryEditor from "./components/story/StoryEditor";
+import UserInterface from './components/userInterface';
 
 // context
 
@@ -46,12 +47,14 @@ function App() {
             <PrivateRoute path="/writestory" exact component={StoryEditor} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
+            <Route path='/UserInterface' component={UserInterface} />
             {/*  <Route path='/signIn' component={}/> */}
           </Switch>
           <Footer />
         </Router>
       </div>
     </AlertState>
+
   );
 }
 
