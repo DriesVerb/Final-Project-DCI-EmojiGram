@@ -51,7 +51,7 @@ function YourStories() {
                 displayStories.map((story)=>{
                     return (
                         <div className="card" key={story._id} onClick={()=>storyDetails(story._id)}>
-                           <figure className="cards__item__wrap" data={story.genre,"Thriller"}> 
+                           <figure className="cards__item__wrap" data={story.genre}> 
                            <h3><span>Title: </span>{story.title}</h3>
                            <br />
                            <p className="storyTag fades"> {story.text}</p>
@@ -59,7 +59,7 @@ function YourStories() {
                           
                                <span className="like"><i className="fa fa-thumbs-up"/> &nbsp;{(story.likes.length)}</span>
                                <span className="comments"><i className="fas fa-comment"/> &nbsp;{story.comments.length}</span>
-                               <span className="emojisClass"><i className="far fa-smile-beam"/> : &nbsp;{story.emojis}</span>
+                               <span className="emojisClass"><i className="far fa-smile-beam"/> : &nbsp;{story.emojis.map((emoj)=>( <span key={emoj._id}>&nbsp;{emoj.character}{" "}</span>))}</span>
                                
                            </footer>
                            </figure>
