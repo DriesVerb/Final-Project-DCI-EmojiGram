@@ -5,6 +5,9 @@ import { useHistory } from "react-router-dom";
 import { storyStore } from "../../store";
 import { emojiStore } from "../../store";
 
+// components
+import StoryEditorSubGenre from "./StoryEditorSubGenre";
+
 const StoryEditor = () => {
   // variables from the zustand store
   const getValues = storyStore((state) => state.getValues);
@@ -14,7 +17,7 @@ const StoryEditor = () => {
   // state of current inputs
   const [formData, setFromData] = useState({
     title: "",
-    genre: "",
+    genre: "default",
     text: "",
   });
 
@@ -68,16 +71,24 @@ const StoryEditor = () => {
           />
         </div>
         <div>
-          <label htmlFor="genre">Genre</label>
-          <select name="genre" value={genre} onChange={(e) => onChange(e)}>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Horror">Horror</option>
-            <option value="Mystery">Mystery</option>
-            <option value="Romance">Romance</option>
-            <option value="Science Fiction">Science Fiction</option>
-            <option value="Thriller and Suspense">Thriller and Suspense</option>
-            <option value="Western">Western</option>
-          </select>
+          <div>
+            <label htmlFor="genre">Genre</label>
+            <select name="genre" value={genre} onChange={(e) => onChange(e)}>
+              <option value="default">- Choose a genre -</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Horror">Horror</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Romance">Romance</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Thriller and Suspense">
+                Thriller and Suspense
+              </option>
+              <option value="Western">Western</option>
+            </select>
+          </div>
+          <div>
+            {genre == "default" ? null : <StoryEditorSubGenre genre={genre} />}
+          </div>
         </div>
         <div>
           <label
