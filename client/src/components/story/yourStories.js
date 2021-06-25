@@ -51,10 +51,7 @@ function YourStories() {
             key={story._id}
             onClick={() => storyDetails(story._id)}
           >
-            <figure
-              className="cards__item__wrap"
-              data={(story.genre, "Thriller")}
-            >
+            <figure className="cards__item__wrap" data={story.genre}>
               <h3>
                 <span>Title: </span>
                 {story.title}
@@ -69,7 +66,10 @@ function YourStories() {
                   <i className="fas fa-comment" /> &nbsp;{story.comments.length}
                 </span>
                 <span className="emojisClass">
-                  <i className="far fa-smile-beam" /> : &nbsp;{story.emojis}
+                  <i className="far fa-smile-beam" /> : &nbsp;
+                  {story.emojis.map((emoj) => (
+                    <span key={emoj._id}>&nbsp;{emoj.character} </span>
+                  ))}
                 </span>
               </footer>
             </figure>
