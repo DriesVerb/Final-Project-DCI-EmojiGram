@@ -4,15 +4,8 @@ import ProfileContext from "../context/profile/profileContext";
 const editProfile = () => {
   const profileContext = useContext(ProfileContext);
 
-  const [profile, setProfile] = useState({
-    username: "",
-    name: "",
-    email: "",
-    password: "",
-    age: "",
-    location: "",
-  });
-  console.log(profile);
+  const { users } = profileContext;
+
   const { username, name, email, password, age, location } = profile;
 
   const onChange = (e) =>

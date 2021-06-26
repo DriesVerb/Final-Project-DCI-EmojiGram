@@ -31,11 +31,13 @@ function navbar() {
           <Nav style={{ maxHeight: "100px" }} navbarScroll>
             <li className="ml-2">
               <a className="nav-link" href="#">
-                Hello{" "}
-                {user &&
-                  user.username.charAt(0).toUpperCase() +
-                    user.username.slice(1)}
-                <span className="sr-only">(current)</span>
+                Hello
+                <span className="nav-msg ml-1">
+                  {user &&
+                    user.username.charAt(0).toUpperCase() +
+                      user.username.slice(1)}
+                  <span className="sr-only">(current)</span>
+                </span>
               </a>
             </li>
             <NavDropdown title="" id="navbarScrollingDropdown">

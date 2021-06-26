@@ -6,15 +6,20 @@ import profileReducer from "./profileReducer";
 
 const ProfileState = (props) => {
   const initialState = {
-    username: null,
-    name: null,
-    email: null,
-    password: null,
-    age: null,
-    location: null,
+    users: [
+      {
+        username: null,
+        name: null,
+        email: null,
+        password: null,
+        age: null,
+        location: null,
+      },
+    ],
   };
   const [state, dispatch] = useReducer(profileReducer, initialState);
 
+  // Methods...........
   //Action
   //Edit Profile
   const editProfile = (profile) => {
@@ -24,12 +29,8 @@ const ProfileState = (props) => {
   return (
     <ProfileContext.Provider
       value={{
-        username: state.username,
-        name: state.name,
-        email: state.email,
-        password: state.password,
-        age: state.password,
-        location: state.location,
+        users: state.users,
+        editProfile,
       }}
     >
       {props.children}
