@@ -1,46 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext,useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import axios from "axios";
+// import axios from "axios";
 import "./yourStories.css";
+import StoryContext  from '../../context/story/storyContext';
 
 function YourStories() {
-  const [stories, setStories] = useState([]);
-  const [pageNumber, SetPageNumber] = useState(0);
-  const [singleStory, setSingleStory] = useState();
 
+
+
+  ////////////////////////////////////////////
+  const storyContext = useContext(StoryContext)
+  const { publishStory, stories, showStory  } = storyContext;
+
+  
+  
+///////////////////////////////////////////////
   useEffect(() => {
-    axios
-      .get("/user/profile/mystories")
-      .then((res) => {
-        console.log(res.data);
-        setStories(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    publishStory ()
+  }, [stories]);
 
+
+  
+
+  const storyDetails = (id) => {
+    // console.log (STORY_ERROR._id)
+   
+    window.location.href = '/showstory/' + id
+    showStory(id)
+    console.log (stories)
+  }
+  
+
+  const [pageNumber, SetPageNumber] = useState(0);
   const storiesPerPage = 5;
   const pagesVisited = pageNumber * storiesPerPage;
-
   const displayStories = stories.slice(
     pagesVisited,
     pagesVisited + storiesPerPage
   );
-
   const pageCount = Math.ceil(stories.length / storiesPerPage);
-
   const changePage = ({ selected }) => {
     SetPageNumber(selected);
   };
 
-  const storyDetails = (id) => {
-    setSingleStory({
-      id: id,
-    });
 
-    window.location.href = "/showstory/" + id;
-  };
+
 
   return (
     <div className="map">
@@ -54,7 +58,7 @@ function YourStories() {
             <figure className="cards__item__wrap" data={story.genre}>
               <h3>
                 <span>Title: </span>
-                {story.title}
+                {story.title && story.title.charAt(0).toUpperCase() + story.title.slice(1)}
               </h3>
               <br />
               <p className="storyTag fades"> {story.text}</p>

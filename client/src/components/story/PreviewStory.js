@@ -1,14 +1,44 @@
-import React from "react";
+import React,{useContext,useEffect }  from "react";
 
 // store
 import { storyStore } from "../../store";
+  ///////////////////////////////////////////////////////////////////////////////
+ 
+  import StoryContext  from '../../context/story/storyContext';
+  //////////////////////////////////////////////////////////////////////////////
 
-const PreviewStory = () => {
-  const { emojis, title, genre, richText, sendToDb } = storyStore.getState();
+const PreviewStory = (props) => {
+  const { emojis, title, genre, richText, sendToDb ,updateStory} = storyStore.getState();
+  ////////////////////////////////////////////////////////////////////////////////
+  const storyContext = useContext(StoryContext)
+  const { storyToEdit} = storyContext;
+  //////////////////////////////////////////////////////////////////////////////
 
+  useEffect(() => {
+    console.log (storyToEdit)
+  }, []);
+
+ 
+  const onClick = e => {
+    e.preventDefault();
+    if (storyToEdit === null) {
+      console.log(storyToEdit)
+      sendToDb()
+      props.history.push("/yourstories");
+    } else {
+      updateStory()
+      props.history.push("/yourstories");
+      console.log(storyToEdit)
+    }
+
+  }
+  
+  
+  
   return (
-    <div>
-      <button onClick={sendToDb}>Publish</button>
+   
+      
+      <div>{<button onClick={onClick}>Publish</button>}
       <h1>{title}</h1>
       <h3>{genre}</h3>
       <div className="test">
@@ -21,8 +51,9 @@ const PreviewStory = () => {
       <p
         className="text-align-left"
         dangerouslySetInnerHTML={{ __html: richText }}
-      ></p>
-    </div>
+      ></p></div>
+      
+   
   );
 };
 
