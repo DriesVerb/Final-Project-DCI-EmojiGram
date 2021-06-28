@@ -1,47 +1,79 @@
-import React, { useState } from "react";
+import React, { useState, useEffect,useContext } from "react";
+import { useHistory } from "react-router-dom";
 
 // store
 import { storyStore } from "../../store";
+import { emojiStore } from "../../store";
+  ///////////////////////////////////////////////////////////////////////////////
+  import StoryContext  from '../../context/story/storyContext';
+  //////////////////////////////////////////////////////////////////////////////
+// components
+import StoryEditorSubGenre from "./StoryEditorSubGenre";
 
 const StoryEditor = () => {
+////////////////////////////////////////////////////////////////////////////////
+  const storyContext = useContext(StoryContext)
+  const { storyToEdit, setEditedStory, clearEditStory,updateStory } = storyContext;
+  //////////////////////////////////////////////////////////////////////////////
+  // variables from the zustand store
   const getValues = storyStore((state) => state.getValues);
-  const convertText = storyStore((state) => state.convertText);
-  const newText = storyStore((state) => state.newText);
+  const emojisGlobal = emojiStore((state) => state.emojis);
+  const getEmojis = emojiStore((state) => state.getEmojis);
 
+  // state of current inputs
   const [formData, setFromData] = useState({
-    emojis: ["🛳️", "💈", "🌽", "🐶", "🛰️"],
     title: "",
-    genre: "",
+    genre: "default",
     text: "",
+    _id:"",
   });
 
-  const { title, genre, text } = formData;
+  const { title, genre, text,_id } = formData;
 
-  const onChange = (e) =>
-    setFromData({ ...formData, [e.target.name]: e.target.value });
+  useEffect(() => {
+    if (emojisGlobal.length === 0) getEmojis();
+    ////////////////////////////////////////////////////////////////////////////////
+    if (storyToEdit !== null) setFromData(storyToEdit)
+    else (setFromData ({title: "",
+    genre: "default",
+    text: "",}))
+  }, [StoryContext,storyToEdit,clearEditStory]);
+      ////////////////////////////////////////////////////////////////////////////////
+  let history = useHistory();
 
-  const onSubmit = (e) => {
+  const onChange = (e) => {
+    setFromData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmit = () => {
     getValues(formData);
+    history.push("/previewstory");
   };
 
   return (
     <div>
-      {/* for testing: */}
-      <div
-        contentEditable="true"
-        dangerouslySetInnerHTML={{ __html: newText }}
-      ></div>
-      {/* for testing end. */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
           onSubmit();
-          convertText(text);
         }}
       >
-        <button type="submit">Publish Story</button>
+        {storyToEdit?<button  style={{ backgroundColor: '#98DDCA', color: 'black' }} type="submit">Preview edited story</button> : <button type="submit">Preview to share</button> }
+        
         <p>You will be a writing a story inspired by these emojis:</p>
-        <div className="emojiSize">🛳️ 💈 🌽 🐶 🛰️</div>
+        <div className="test">
+          {emojisGlobal.length > 0 &&
+            emojisGlobal.map((emoji) => {
+              return (
+                <div className="emojiSize" key={emoji._id}>
+                  {emoji.character}
+                </div>
+              );
+            })}
+        </div>
         <div>
           <label htmlFor="title">Title of the Piece:</label>
           <input
@@ -52,16 +84,24 @@ const StoryEditor = () => {
           />
         </div>
         <div>
-          <label htmlFor="genre">Genre</label>
-          <select name="genre" value={genre} onChange={(e) => onChange(e)}>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Horror">Horror</option>
-            <option value="Mystery">Mystery</option>
-            <option value="Romance">Romance</option>
-            <option value="Science Fiction">Science Fiction</option>
-            <option value="Thriller and Suspense">Thriller and Suspense</option>
-            <option value="Western">Western</option>
-          </select>
+          <div>
+            <label htmlFor="genre">Genre</label>
+            <select name="genre" value={genre} onChange={(e) => onChange(e)}>
+              <option value="default">- Choose a genre -</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Horror">Horror</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Romance">Romance</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Thriller and Suspense">
+                Thriller and Suspense
+              </option>
+              <option value="Western">Western</option>
+            </select>
+          </div>
+          <div>
+            {genre == "default" ? null : <StoryEditorSubGenre genre={genre} />}
+          </div>
         </div>
         <div>
           <label
@@ -75,6 +115,15 @@ const StoryEditor = () => {
             cols="90"
             rows="45"
           ></textarea>
+          {/* /////////////////////////////////// */}
+          <input
+            
+            type="text"
+            name="_id"
+            value={_id}
+            onChange={(e) => onChange(e)}
+          />
+          {/* ////////////////////////////////////////////////// */}
         </div>
       </form>
     </div>
