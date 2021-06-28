@@ -7,6 +7,7 @@ const storySlice = (set) => ({
   emojis: null,
   title: null,
   genre: null,
+  subGenre: null,
   text: null,
   richText: null,
   // convert rich text to state and storing the values in our state
@@ -21,6 +22,10 @@ const storySlice = (set) => ({
       .split("\n")
       .join("<p/><p>");
     set((state) => ({ richText }));
+  },
+  // get subGenre
+  getSubGenre: (value) => {
+    set((state) => ({ subGenre: value }));
   },
   // send all the values to DB
   sendToDb: async () => {

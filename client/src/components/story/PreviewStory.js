@@ -1,14 +1,24 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 // store
 import { storyStore } from "../../store";
 
 const PreviewStory = () => {
+  let history = useHistory();
+
   const { emojis, title, genre, richText, sendToDb } = storyStore.getState();
 
   return (
     <div>
-      <button onClick={sendToDb}>Publish</button>
+      <button
+        onClick={() => {
+          sendToDb();
+          history.push("/yourstories");
+        }}
+      >
+        Publish
+      </button>
       <h1>{title}</h1>
       <h3>{genre}</h3>
       <div className="test">

@@ -12,7 +12,6 @@ function YourStories() {
     axios
       .get("/user/profile/mystories")
       .then((res) => {
-        console.log(res.data);
         setStories(res.data);
       })
       .catch((err) => {
@@ -67,8 +66,8 @@ function YourStories() {
                 </span>
                 <span className="emojisClass">
                   <i className="far fa-smile-beam" /> : &nbsp;
-                  {story.emojis.map((emoj) => (
-                    <span key={emoj._id}>&nbsp;{emoj.character} </span>
+                  {story.emojis.map((emoj, id) => (
+                    <span key={id}>&nbsp;{emoj.character} </span>
                   ))}
                 </span>
               </footer>
