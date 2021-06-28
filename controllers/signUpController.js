@@ -42,9 +42,6 @@ else {
     jwt.sign(
       payload,
       jwtSecret,
-    
-
-   
 
       (err, token) => {
         if (err) throw err;
