@@ -17,7 +17,7 @@ import PreviewStory from "./components/story/PreviewStory";
 import UserInterface from "./components/userInterface";
 import ShowStory from "./components/story/showStory";
 // context
-
+import StoryState from "./context/story/storyState";
 import AuthContext from "./context/auth/authContext";
 import AlertState from "./context/alert/alertState";
 import "./App.css";
@@ -37,6 +37,7 @@ function App() {
   }, []);
 
   return (
+    <StoryState>
     <AlertState>
       <div className="App">
         <Router>
@@ -56,7 +57,8 @@ function App() {
           <Footer />
         </Router>
       </div>
-    </AlertState>
+      </AlertState>
+      </StoryState>
   );
 }
 

@@ -9,6 +9,7 @@ const connectDB = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
+    mongoose.set('useFindAndModify', false);
     console.log(`MongoDB Connected...`);
   } catch (err) {
     console.error(err.message);
