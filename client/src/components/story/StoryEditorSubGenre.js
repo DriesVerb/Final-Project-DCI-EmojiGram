@@ -1,8 +1,16 @@
 import React, { Fragment, useEffect, useState } from "react";
 
+// store
+import { storyStore } from "../../store";
+
 const StoryEditorSubGenre = ({ genre }) => {
+  const [currentGenre, setCurrentGenre] = useState("");
   const [currentSubGenre, setCurrentSubGenre] = useState("");
   const [currentList, setCurrentList] = useState([]);
+
+  const getSubGenre = storyStore((state) => state.getSubGenre);
+
+  const subGenre = storyStore((state) => state.subGenre);
 
   const subGenres = {
     Fantasy: [
@@ -66,27 +74,129 @@ const StoryEditorSubGenre = ({ genre }) => {
       "Woman in Peril",
       "Young Adult",
     ],
+    Romance: [
+      "Comedy",
+      "Billionaires",
+      "Contemporary",
+      "Fantasy Romance",
+      "Gothic",
+      "Historical",
+      "Holidays",
+      "Inspirational",
+      "Military",
+      "Paranormal",
+      "Regency",
+      "Romantic Suspense",
+      "Science Fiction Romance",
+      "Sports",
+      "Time Travel",
+      "Western Romance",
+      "Young Adult",
+    ],
+    SciFi: [
+      "Aliens",
+      "Alternate History",
+      "Alternate Universe",
+      "Apocalyptic",
+      "Biopunk",
+      "Children's Story",
+      "Colonization",
+      "Comedy",
+      "Cyberpunk",
+      "Dying Earth",
+      "Dystopia",
+      "Galactic Empire",
+      "Generation Ship",
+      "Hard Science Fiction",
+      "Immortality",
+      "Lost Worlds",
+      "Military",
+      "Mind Transfer",
+      "Mundane Science Fiction",
+      "Mythic",
+      "Nanopunk",
+      "Post-Apocalyptic",
+      "Robots/A.I.",
+      "Science Fantasy",
+      "Science Horror",
+      "Slipstream",
+      "Soft Science Fiction",
+      "Space Exploration",
+      "Space Opera",
+      "SpyFi",
+      "Steampunk",
+      "Time Travel",
+      "Utopia",
+      "Young Adult",
+    ],
+    Thriller: [
+      "Action",
+      "Comedy",
+      "Conspiracy",
+      "Crime",
+      "Disaster",
+      "Espionage",
+      "Forensic",
+      "Historical",
+      "Legal",
+      "Medical",
+      "Military",
+      "Mystery Thriller",
+      "Paranormal",
+      "Political",
+      "Psychological",
+      "Religious",
+      "Technothriller",
+      "Young Adult",
+    ],
+    Western: [
+      "Bounty Hunters",
+      "Cattle Drive",
+      "Children's Story",
+      "Comedy",
+      "Gold Rush",
+      "Gunfighters",
+      "Land Rush",
+      "Lawmen",
+      "Mountain Men",
+      "Outlaws",
+      "Prairie Settlement",
+      "Revenge",
+      "Wagon Train",
+      "Young Adult",
+    ],
   };
 
   const matchPropToObj = (input) => {
     for (const [key, value] of Object.entries(subGenres)) {
       if (key === input) {
-        setCurrentSubGenre(key);
+        setCurrentGenre(key);
         setCurrentList(value);
       }
     }
   };
 
+  const onChange = (e) => {
+    setCurrentSubGenre(e.target.value);
+    getSubGenre(e.target.value);
+  };
+
   useEffect(() => {
-    if (currentSubGenre !== genre) matchPropToObj(genre);
-  }, [currentSubGenre, genre]);
+    if (currentGenre !== genre) matchPropToObj(genre);
+  }, [currentGenre, genre]);
 
   return (
     <Fragment>
-      {currentSubGenre === genre ? (
+      {currentGenre === genre ? (
         <Fragment>
           <label htmlFor="subGenre">Sub Genre</label>
-          <select name="genre">
+          <select
+            name="genre"
+            value={currentSubGenre}
+            onChange={(e) => {
+              onChange(e);
+            }}
+          >
             <option value="default">- Choose a sub genre -</option>
             {currentList.map((subGen, id) => {
               return (

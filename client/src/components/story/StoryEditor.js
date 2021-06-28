@@ -92,10 +92,8 @@ const StoryEditor = () => {
               <option value="Horror">Horror</option>
               <option value="Mystery">Mystery</option>
               <option value="Romance">Romance</option>
-              <option value="Science Fiction">Science Fiction</option>
-              <option value="Thriller and Suspense">
-                Thriller and Suspense
-              </option>
+              <option value="SciFi">SciFi</option>
+              <option value="Thriller">Thriller</option>
               <option value="Western">Western</option>
             </select>
           </div>

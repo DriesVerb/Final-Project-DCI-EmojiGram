@@ -1,35 +1,26 @@
-import React, { useContext,useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 // import axios from "axios";
 import "./yourStories.css";
-import StoryContext  from '../../context/story/storyContext';
+import StoryContext from "../../context/story/storyContext";
 
 function YourStories() {
-
-
-
   ////////////////////////////////////////////
-  const storyContext = useContext(StoryContext)
-  const { publishStory, stories, showStory  } = storyContext;
+  const storyContext = useContext(StoryContext);
+  const { publishStory, stories, showStory } = storyContext;
 
-  
-  
-///////////////////////////////////////////////
+  ///////////////////////////////////////////////
   useEffect(() => {
-    publishStory ()
+    publishStory();
   }, [stories]);
-
-
-  
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)
-   
-    window.location.href = '/showstory/' + id
-    showStory(id)
-    console.log (stories)
-  }
-  
+
+    window.location.href = "/showstory/" + id;
+    showStory(id);
+    console.log(stories);
+  };
 
   const [pageNumber, SetPageNumber] = useState(0);
   const storiesPerPage = 5;
@@ -43,9 +34,6 @@ function YourStories() {
     SetPageNumber(selected);
   };
 
-
-
-
   return (
     <div className="map">
       {displayStories.map((story) => {
@@ -58,7 +46,8 @@ function YourStories() {
             <figure className="cards__item__wrap" data={story.genre}>
               <h3>
                 <span>Title: </span>
-                {story.title && story.title.charAt(0).toUpperCase() + story.title.slice(1)}
+                {story.title &&
+                  story.title.charAt(0).toUpperCase() + story.title.slice(1)}
               </h3>
               <br />
               <p className="storyTag fades"> {story.text}</p>
@@ -71,8 +60,8 @@ function YourStories() {
                 </span>
                 <span className="emojisClass">
                   <i className="far fa-smile-beam" /> : &nbsp;
-                  {story.emojis.map((emoj) => (
-                    <span key={emoj._id}>&nbsp;{emoj.character} </span>
+                  {story.emojis.map((emoj, id) => (
+                    <span key={id}>&nbsp;{emoj.character} </span>
                   ))}
                 </span>
               </footer>
