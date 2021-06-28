@@ -84,32 +84,47 @@ app.get(
 
 //! Email sent by the customer from the contactus.js
 app.post('/sendEmail', (req, res) => {
-  console.log(req.body);
-  // const { username, message, email } = req.body;
+    console.log(req.body);
+    const { username, message, email } = req.body;
+    // const user = User.findOne({ message: req.body.message })
+    // user.message = req.body.message;
+    // console.log(user)
 
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
+      to: email,
+      //  to: 'lotuseylie@outlook.com', //username.body.user
+      from: 'metalrocks71.79@gmail.com',
+     
+      // subject: 'Email sent by sendgrid',
+      templateId: process.env.TEMPLATE_EMAIL_ID,
+    };
 
-  const user = User.findOne({ email: req.body.email })
-  user.message = req.body.message;
-  console.log(user)
-
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  const msg = {
-    to: 'lotuseylie@outlook.com',//username.body.user
-    from: 'metalrocks71.79@gmail.com', // 
-    // subject: 'Email sent by sendgrid',
-    templateId: process.env.TEMPLATE_EMAIL_ID,
-  };
-  sgMail
-    .send(msg)
-    .then(() => {
-      console.log('Email Successfully send!');
-    })
-    .catch((err) => console.log(err));
-  res.json(
-    'Email Successfully sent! We will get back to you within the next 24hours'
-  );
-});
-
+    //!admin msg
+    const adminMsg = {
+      to: 'metalrocks71.79@gmail.com',
+      //  to: 'lotuseylie@outlook.com', //username.body.user
+      subject: 'TBD',
+      from: email,
+      html: `<p>${message}</p>`,
+      // subject: 'Email sent by sendgrid',
+      // templateId: process.env.TEMPLATE_SENT_ID,
+    };
+    sgMail
+      .send(msg)
+      .then(() => {
+        console.log('Email sent successfully to the user');
+         sgMail
+        .send(adminMsg)
+        .then(() => {
+          console.log(' msg sent to Admin!!');
+        })
+        .catch((err) => console.log(err));
+      res.json('');
+    
+      })
+      .catch((err) => console.log(err));
+  })
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

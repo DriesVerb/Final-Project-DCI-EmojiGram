@@ -12,7 +12,7 @@ import PrivateRoute from './components/privateRoute';
 import HomePublic from './components/layout/HomePublic';
 import Footer from './components/Footer';
 import StoryEditor from './components/story/StoryEditor';
-import UserInterface from './components/UserInterface';
+import UserInterface from './components/userInterface';
 import ContactUs from './components/ContactUs'
 
 // context

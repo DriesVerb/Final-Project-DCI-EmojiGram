@@ -7,6 +7,7 @@ function Contactus() {
     username: '',
     message: '',
     email: '',
+    confirm: '',
   });
 
   // get form values
@@ -29,9 +30,13 @@ function Contactus() {
         username: '',
         message: '',
         email: '',
+        confirm:
+          'Thank you!!! An Email has been sent to your mailbox. Thank you to follow the steps to contact our Support Team',
       });
     });
   };
+
+  
   return (
     <div>
       <div>
@@ -57,9 +62,10 @@ function Contactus() {
             onChange={getValue}
             name='message'
             value={stateEmail.message}
+            
           />
 
-          <label>Your Email</label>
+          <label onSubmit={sendEmail}>Your Email</label>
           <input
             type='text'
             onChange={getValue}
@@ -70,6 +76,13 @@ function Contactus() {
           <button className='btn btn-success' type='submit'>
             Contact Us
           </button>
+          <form>
+            <span
+              className='confirm alert-success'
+              onSubmit={stateEmail.confirm}>
+              {stateEmail.confirm}
+            </span>
+          </form>
         </form>
       </div>
     </div>
