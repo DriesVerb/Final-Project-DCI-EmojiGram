@@ -1,16 +1,16 @@
-const User = require("../models/User");
-const bcrypt = require("bcrypt");
-require("dotenv").config();
+const User = require('../models/User');
+const bcrypt = require('bcrypt');
+require('dotenv').config();
 
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 exports.logIn = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("-password");
+    const user = await User.findById(req.user.id).select('-password');
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -22,7 +22,7 @@ exports.logInPost = async (req, res) => {
   try {
     let user = await User.findOne({ email });
     if (!user) {
-      res.status(400).json({ msg: "please sign up" });
+      res.status(400).json({ msg: 'please sign up' });
     }
 
     //match the password
@@ -31,9 +31,10 @@ exports.logInPost = async (req, res) => {
     if (!isMatch) {
       return res
         .status(400)
-        .json({ msg: "password is not correct! Please try again!" });
+        .json({ msg: 'password is not correct! Please try again!' });
     }
-// jwt
+
+    // jwt
     const jwtSecret = process.env.JWT_SECRET;
 
     const payload = {
@@ -48,6 +49,6 @@ exports.logInPost = async (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };

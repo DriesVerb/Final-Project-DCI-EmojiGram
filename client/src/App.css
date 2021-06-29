@@ -37,6 +37,15 @@
   }
 } */
 
+.brand {
+  font-size: 30px;
+}
+.nav {
+  width: 100vw;
+  margin-left: -3vw;
+  font-size: 20px;
+}
+
 .emojiSize {
   font-size: 5rem;
 }
