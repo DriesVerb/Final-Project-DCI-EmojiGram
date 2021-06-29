@@ -5,22 +5,29 @@ import "./yourStories.css";
 import StoryContext from "../../context/story/storyContext";
 
 function YourStories() {
-  ////////////////////////////////////////////
+
   const storyContext = useContext(StoryContext);
   const { publishStory, stories, showStory } = storyContext;
 
-  ///////////////////////////////////////////////
+
   useEffect(() => {
-    publishStory();
-  }, [stories]);
+
+    publishStory ()
+  }, []);
+
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)
 
-    window.location.href = "/showstory/" + id;
-    showStory(id);
-    console.log(stories);
-  };
+   
+    window.location.href = '/showstory/' + id
+    // showStory(id)
+    // console.log (stories)
+  }
+  
+
+
+
 
   const [pageNumber, SetPageNumber] = useState(0);
   const storiesPerPage = 5;
