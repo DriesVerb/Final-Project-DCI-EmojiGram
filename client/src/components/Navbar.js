@@ -10,14 +10,18 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/auth/authContext";
+import ProfileContext from "../context/profile/profileContext";
 
 function navbar() {
   const authContext = useContext(AuthContext);
+  const profileContext = useContext(ProfileContext);
 
   const { logout, user, isAuthenticated } = authContext;
+  const { clearProfile } = profileContext;
 
   const onLogout = () => {
     logout();
+    clearProfile();
   };
 
   const userLinks = (
@@ -30,19 +34,18 @@ function navbar() {
         <Navbar.Collapse id="navbarScroll">
           <Nav style={{ maxHeight: "100px" }} navbarScroll>
             <li className="ml-2">
-              <a className="nav-link" href="#">
-                Hello
-                <span className="nav-msg ml-1">
-                  {user &&
-                    user.username.charAt(0).toUpperCase() +
-                      user.username.slice(1)}
-                  <span className="sr-only">(current)</span>
-                </span>
+              <a className="nav-link" href="#!">
+                Hello{" "}
+                {user &&
+                  user.username.charAt(0).toUpperCase() +
+                    user.username.slice(1)}
+                <span className="sr-only">(current)</span>
               </a>
             </li>
             <NavDropdown title="" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="">
-                <i className="fas fa-cog " /> Settings & Privacy
+              <NavDropdown.Item href="/profile">
+                <i className=" fas fa-cog" />
+                Settings & Privacy
               </NavDropdown.Item>
               <NavDropdown.Item href="">
                 <i className="fas fa-question-circle" /> Help & Support
@@ -51,10 +54,10 @@ function navbar() {
                 <i className="fas fa-sign-out-alt" /> Logout
               </NavDropdown.Item>
             </NavDropdown>
-            <NavLink to="" className="ml-5">
+            <NavLink to="/notification" className="ml-5">
               <i className="fas fa-bell" /> Notification
             </NavLink>
-            <NavLink to="">
+            <NavLink to="/message">
               <i className="fas fa-envelope" /> Messages
             </NavLink>
           </Nav>

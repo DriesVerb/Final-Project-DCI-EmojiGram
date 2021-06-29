@@ -16,10 +16,12 @@ import StoryEditor from "./components/story/StoryEditor";
 import PreviewStory from "./components/story/PreviewStory";
 import UserInterface from "./components/userInterface";
 import ShowStory from "./components/story/showStory";
+import UserItem from "./components/user/UserItem";
 // context
-
+import StoryState from "./context/story/storyState";
 import AuthContext from "./context/auth/authContext";
 import AlertState from "./context/alert/alertState";
+import ProfileState from "./context/profile/ProfileState";
 import "./App.css";
 
 // import setAuthToken
@@ -37,26 +39,43 @@ function App() {
   }, []);
 
   return (
-    <AlertState>
-      <div className="App">
-        <Router>
-          <Navbar />
-          <Alerts />
-          <Switch>
-            <Route path="/" exact component={HomePublic} />
-            <PrivateRoute path="/landing" exact component={LandingPage} />
-            <PrivateRoute path="/yourstories" exact component={YourStories} />
-            <PrivateRoute path="/writestory" exact component={StoryEditor} />
-            <PrivateRoute path="/previewstory" exact component={PreviewStory} />
-            <Route path="/showstory/:id" exact component={ShowStory} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={SignUp} />
-            <PrivateRoute path="/UserInterface" component={UserInterface} />
-          </Switch>
-          <Footer />
-        </Router>
-      </div>
-    </AlertState>
+    <ProfileState>
+      <StoryState>
+        <AlertState>
+          <div className="App">
+            <Router>
+              <Navbar />
+              <Alerts />
+              <Switch>
+                <Route path="/" exact component={HomePublic} />
+                <PrivateRoute path="/landing" exact component={LandingPage} />
+                <PrivateRoute
+                  path="/yourstories"
+                  exact
+                  component={YourStories}
+                />
+                <PrivateRoute
+                  path="/writestory"
+                  exact
+                  component={StoryEditor}
+                />
+                <PrivateRoute
+                  path="/previewstory"
+                  exact
+                  component={PreviewStory}
+                />
+                <Route path="/showstory/:id" exact component={ShowStory} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={SignUp} />
+                <PrivateRoute path="/UserInterface" component={UserInterface} />
+                <Route path="/profile" exact component={UserItem} />
+              </Switch>
+              <Footer />
+            </Router>
+          </div>
+        </AlertState>
+      </StoryState>
+    </ProfileState>
   );
 }
 

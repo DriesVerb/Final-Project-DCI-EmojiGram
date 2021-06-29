@@ -13,3 +13,24 @@ export const LOGOUT = "LOGOUT ";
 
 //story Types
 export const STORY_PUBLISH = "STORY_PUBLISH";
+
+///////////
+export const ADD_STORY = "ADD_STORY ";
+export const DELETE_STORY = "DELETE_STORY";
+export const SET_STORY = "SET_STORY";
+export const CLEAR_EDITEDSTORY = "SCLEAR_EDITEDSTORY";
+export const CLEAR_STORY = "CLEAR_STORY";
+
+export const STORY_ERROR = "STORY_ERROR ";
+export const SET_EDITEDSTORY = "SET_EDITEDSTORY ";
+export const SHOW_STORY = "SHOW_STORY ";
+export const UPDATE_STORY = "UPDATE_STORY ";
+
+//Edit Profile Type
+export const GET_PROFILE = "GET_PROFILE";
+export const EDIT_PROFILE = "EDIT_PROFILE";
+export const DELETE_PROFILE = "DELETE_PROFILE";
+export const SET_CURRENT = "SET_CURRENT";
+export const CLEAR_CURRENT = "CLEAR_CURRENT";
+export const EDIT_ERROR = "EDIT_ERROR";
+export const CLEAR_PROFILE = "CLEAR_PROFILE";
