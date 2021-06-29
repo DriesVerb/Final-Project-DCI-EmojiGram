@@ -1,0 +1,47 @@
+.PublicStories {
+    display: grid;
+    height: 88vh;
+    
+    grid-template: auto 1fr auto / 1fr 3fr 2fr
+  }
+  
+
+  
+  header {
+    background: lightpink;
+    padding: 2rem;
+    grid-column: 1 / 4;
+  }
+  
+  .left-sidebar {
+    background: lightblue;
+    grid-column: 1 / 2;
+  }
+  
+  main {
+    background: coral;
+    grid-column: 2 / 3;
+  }
+  
+  .right-sidebar {
+    background: yellow;
+    grid-column: 3 / 4;
+  }
+  
+  footer {
+    background: wheat;
+    padding: 2rem;
+    text-align: center;
+    grid-column: 1 / 4;
+    width: 100%;
+    
+  }
+  
+  body {
+    font-family: system-ui, sans-serif;
+  }
+  
+  .left-sidebar,
+  .right-sidebar {
+    padding: 1rem;
+  }

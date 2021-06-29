@@ -16,6 +16,7 @@ import StoryEditor from "./components/story/StoryEditor";
 import PreviewStory from "./components/story/PreviewStory";
 import UserInterface from "./components/userInterface";
 import ShowStory from "./components/story/showStory";
+import PublicLandingPage from "./components/publicLandingPage";
 // context
 import StoryState from "./context/story/storyState";
 import AuthContext from "./context/auth/authContext";
@@ -24,6 +25,7 @@ import "./App.css";
 
 // import setAuthToken
 import setAuthToken from "./context/auth/setAuthToken";
+
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -50,6 +52,7 @@ function App() {
             <PrivateRoute path="/writestory" exact component={StoryEditor} />
             <PrivateRoute path="/previewstory" exact component={PreviewStory} />
             <Route path="/showstory/:id" exact component={ShowStory} />
+            <Route path="/storys" exact component={PublicLandingPage}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <PrivateRoute path="/UserInterface" component={UserInterface} />

@@ -107,7 +107,7 @@ exports.deleteStorie = async (req, res) => {
 
     let story = await Story.findById(req.params.id);
     if (!story) return res.status(404).json({ msg: 'Story not found' });
-    
+  
      // Make sure user owns contact
     if (story.user.toString() !== req.user.id) {
       return res.status(401).json({msg: 'Not authorized'});

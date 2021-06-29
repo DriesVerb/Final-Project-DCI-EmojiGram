@@ -1,5 +1,4 @@
-import React, {useEffect,useState,useContext, Fragment} from 'react'
-import axios from 'axios'
+import React, {useEffect,useContext, Fragment} from 'react'
 import { useParams } from 'react-router-dom'
 import './showStory.css'
 import { Button} from 'react-bootstrap';
@@ -9,16 +8,15 @@ function showStory(props) {
     const storyContext = useContext(StoryContext)
     const { singleStory ,deleteStory,showStory,stories, storyToEdit,setEditedStory  } = storyContext;
     // const { _id} = stories;
-    const [story,setStory] = useState({
+  /*   const [story,setStory] = useState({
         title:"",
         text:""
-    })
+    }) */
 
     const { id } = useParams()
 
-    useEffect(() => {
-        
-        showStory(id)
+   useEffect(() => {
+        showStory(id) 
         // axios.get('/user/story/show/'+id)
         // .then((res)=>{
         //     setStory(res.data)
@@ -27,7 +25,7 @@ function showStory(props) {
         // })
     }, [singleStory])
     
-    // console.log(singleStory)
+    
  
     const onDelete = () => {
         deleteStory(singleStory._id);

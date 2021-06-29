@@ -17,17 +17,17 @@ function YourStories() {
 ///////////////////////////////////////////////
   useEffect(() => {
     publishStory ()
-  }, [stories]);
+
+  },[]);
 
 
   
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)
-   
-    window.location.href = '/showstory/' + id
-    showStory(id)
-    console.log (stories)
+    
+    window.location.href = '/showstory/'+id
+    /* showStory(id) */
   }
   
 
