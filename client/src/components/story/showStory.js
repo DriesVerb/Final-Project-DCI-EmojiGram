@@ -25,7 +25,7 @@ function showStory(props) {
         // }).catch(err=>{
         //     console.log(err)
         // })
-    }, [singleStory])
+    }, [])
     
     // console.log(singleStory)
  
