@@ -36,7 +36,6 @@ function Contactus() {
     });
   };
 
-  
   return (
     <div>
       <div>
@@ -62,7 +61,6 @@ function Contactus() {
             onChange={getValue}
             name='message'
             value={stateEmail.message}
-            
           />
 
           <label onSubmit={sendEmail}>Your Email</label>

@@ -84,47 +84,44 @@ app.get(
 
 //! Email sent by the customer from the contactus.js
 app.post('/sendEmail', (req, res) => {
-    console.log(req.body);
-    const { username, message, email } = req.body;
-    // const user = User.findOne({ message: req.body.message })
-    // user.message = req.body.message;
-    // console.log(user)
+  console.log(req.body);
+  const { username, message, email } = req.body;
+  // const user = User.findOne({ message: req.body.message })
+  // user.message = req.body.message;
+  // console.log(user)
 
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    const msg = {
-      to: email,
-      //  to: 'lotuseylie@outlook.com', //username.body.user
-      from: 'metalrocks71.79@gmail.com',
-     
-      // subject: 'Email sent by sendgrid',
-      templateId: process.env.TEMPLATE_EMAIL_ID,
-    };
+  sgMail.setApiKey(process.env.API_KEY_ID);
+  const msg = {
+    to: email,
+    from: process.env.EMAIL_FROM_TO,
+    subject: 'mail sent by the Admin account',
+    templateId: process.env.TEMPLATE_EMAIL_ID,
+  };
 
-    //!admin msg
-    const adminMsg = {
-      to: 'metalrocks71.79@gmail.com',
-      //  to: 'lotuseylie@outlook.com', //username.body.user
-      subject: 'TBD',
-      from: email,
-      html: `<p>${message}</p>`,
-      // subject: 'Email sent by sendgrid',
-      // templateId: process.env.TEMPLATE_SENT_ID,
-    };
-    sgMail
-      .send(msg)
-      .then(() => {
-        console.log('Email sent successfully to the user');
-         sgMail
+  //!admin msg
+  const adminMsg = {
+    to: process.env.EMAIL_TO_FROM,
+    from: email,
+    subject: 'Mail sent by customer',
+    html: `<p>${message}</p>`,
+  };
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log('Email sent successfully to the user');
+      sgMail
         .send(adminMsg)
         .then(() => {
           console.log(' msg sent to Admin!!');
         })
         .catch((err) => console.log(err));
       res.json('');
-    
-      })
-      .catch((err) => console.log(err));
-  })
+    })
+    .catch((err) => console.log(err));
+});
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
