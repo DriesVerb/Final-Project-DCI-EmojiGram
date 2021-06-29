@@ -11,12 +11,13 @@ import LandingPage from "./components/layout/LandingPage";
 import PrivateRoute from "./components/privateRoute";
 import HomePublic from "./components/layout/HomePublic";
 import Footer from "./components/Footer";
-import YourStories from "./components/story/yourStories";
 import StoryEditor from "./components/story/StoryEditor";
-import PreviewStory from "./components/story/PreviewStory";
 import UserInterface from "./components/userInterface";
+import YourStories from "./components/story/yourStories";
+import PreviewStory from "./components/story/PreviewStory";
 import ShowStory from "./components/story/showStory";
 import UserItem from "./components/user/UserItem";
+import ContactUs from "./components/ContactUs";
 // context
 import StoryState from "./context/story/storyState";
 import AuthContext from "./context/auth/authContext";
@@ -69,6 +70,7 @@ function App() {
                 <Route exact path="/signup" component={SignUp} />
                 <PrivateRoute path="/UserInterface" component={UserInterface} />
                 <Route path="/profile" exact component={UserItem} />
+                <Route path="/contactus" exact component={ContactUs} />
               </Switch>
               <Footer />
             </Router>

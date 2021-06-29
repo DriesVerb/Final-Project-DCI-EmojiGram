@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const {ObjectId} = mongoose.Schema;
+const { ObjectId } = mongoose.Schema;
+
 const userSchema = new Schema({
   username: String,
   name: String,
@@ -8,16 +9,22 @@ const userSchema = new Schema({
   password: String,
   age: Number,
   location: String,
+  message: String,
 
   avatar: String,
 
-
-  following: [{
-                type: ObjectId,
-                ref:'User' }],
-  followers: [{
-                type: ObjectId,
-                ref:'User'}],
+  following: [
+    {
+      type: ObjectId,
+      ref: 'User',
+    },
+  ],
+  followers: [
+    {
+      type: ObjectId,
+      ref: 'User',
+    },
+  ],
 
   liked: [
     {
@@ -38,5 +45,5 @@ const userSchema = new Schema({
   instagramActivity: [{}],
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;

@@ -1,7 +1,12 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const storySchema = new Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
+  },
+
   emojis: [],
   title: String,
   text: String,
@@ -37,5 +42,5 @@ const storySchema = new Schema({
   ],
 });
 
-const Story = mongoose.model("Story", storySchema);
+const Story = mongoose.model('Story', storySchema);
 module.exports = Story;
