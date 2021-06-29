@@ -17,7 +17,7 @@ function YourStories() {
 ///////////////////////////////////////////////
   useEffect(() => {
     publishStory ()
-  }, [stories]);
+  }, []);
 
 
   
@@ -26,8 +26,8 @@ function YourStories() {
     // console.log (STORY_ERROR._id)
    
     window.location.href = '/showstory/' + id
-    showStory(id)
-    console.log (stories)
+    // showStory(id)
+    // console.log (stories)
   }
   
 
