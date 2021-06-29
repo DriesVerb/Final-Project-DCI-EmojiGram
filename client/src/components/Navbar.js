@@ -23,6 +23,9 @@ function Navbar() {
         </a>
       </li>
       <li className="nav-item">
+        <Link to="/UserInterface">My Options</Link>
+      </li>
+      <li className="nav-item">
         <Link to="/writestory">Write a Story</Link>
       </li>
       <li className="nav-item">
