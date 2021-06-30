@@ -52,3 +52,5 @@ exports.logInPost = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+exports.changePassword;

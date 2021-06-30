@@ -10,7 +10,7 @@ function userInterface() {
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="#!">
               EmojiGram
             </a>
           </div>
