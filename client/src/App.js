@@ -17,6 +17,7 @@ import ContactUs from "./components/ContactUs";
 import YourStories from "./components/story/yourStories";
 import PreviewStory from "./components/story/PreviewStory";
 import ShowStory from "./components/story/showStory";
+import GenreMainPage from "./components/genre/GenreMainPage";
 
 // context
 
@@ -60,6 +61,8 @@ function App() {
               <Route path="/showstory/:id" exact component={ShowStory} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/genre" component={GenreMainPage} />
+
               <PrivateRoute path="/UserInterface" component={UserInterface} />
             </Switch>
             <Footer />

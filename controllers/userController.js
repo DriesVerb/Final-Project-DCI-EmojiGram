@@ -51,7 +51,6 @@ exports.editProfile = async (req, res) => {
 };
 
 exports.myStories = (req, res) => {
-  
   Story.find((err, data) => {
     if (err) throw err.message;
     res.json(data);
