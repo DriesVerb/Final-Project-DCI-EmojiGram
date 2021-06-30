@@ -1,5 +1,5 @@
 import React, {useEffect,useState,useContext, Fragment} from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import './showStory.css'
 import { Button} from 'react-bootstrap';
@@ -7,12 +7,12 @@ import StoryContext  from '../../context/story/storyContext';
 function showStory(props) {
 
     const storyContext = useContext(StoryContext)
-    const { singleStory ,deleteStory,showStory,stories, storyToEdit,setEditedStory  } = storyContext;
+    const { singleStory ,deleteStory,showStory, storyToEdit,setEditedStory  } = storyContext;
     // const { _id} = stories;
-    const [story,setStory] = useState({
-        title:"",
-        text:""
-    })
+    // const [story,setStory] = useState({
+    //     title:"",
+    //     text:""
+    // })
 
     const { id } = useParams()
 

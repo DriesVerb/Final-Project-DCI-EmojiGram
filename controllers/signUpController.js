@@ -9,13 +9,16 @@ exports.signUp = (req, res) => {
 exports.signUpPost = async (req, res) => {
   //destructing req.body object
   const { username, email, password } = req.body;
-
+ 
   //check the user if already exist
   try {
     let user = await User.findOne({ email });
     if (user) {
       res.status(400).json({ msg: "User already exists" });
     }
+
+  
+
 else {
     //create new user
     user = new User({

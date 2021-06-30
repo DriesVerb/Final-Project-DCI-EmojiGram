@@ -1,15 +1,16 @@
 import React, { useState, Fragment, useContext, useEffect } from "react";
 import ProfileContext from "../../context/profile/profileContext";
-
-const userForm = () => {
+import { Button} from 'react-bootstrap';
+const userForm = (props) => {
   const profileContext = useContext(ProfileContext);
   const { current, clearAll, editProfile } = profileContext;
 
   useEffect(() => {
-    if (current !== null) {
+    console.log(current)
+    if (current !== null) 
       setUser(current);
-
-      //} else {
+ 
+    else (
       setUser({
         name: "",
         username: "",
@@ -17,9 +18,12 @@ const userForm = () => {
         password: "",
         age: "",
         location: "",
-      });
-    }
+      }));
+    
   }, [profileContext, current]);
+
+
+
 
   const [user, setUser] = useState({
     name: "",
@@ -36,9 +40,9 @@ const userForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (current === null) {
       editProfile(user);
-    }
+    console.log(user)
+    props.history.push("/profile");
   };
 
   const clear = () => {
@@ -54,7 +58,7 @@ const userForm = () => {
           type="text"
           name="username"
           placeholder="User name.."
-          value={username}
+          defaultValue={username}
           onChange={onChange}
         />
 
@@ -63,7 +67,7 @@ const userForm = () => {
           type="text"
           name="name"
           placeholder="Name."
-          value={name}
+          defaultValue={name}
           onChange={onChange}
         />
 
@@ -72,7 +76,7 @@ const userForm = () => {
           type="text"
           name="email"
           placeholder="enter email..."
-          value={email}
+          defaultValue={email}
           onChange={onChange}
         />
 
@@ -80,8 +84,8 @@ const userForm = () => {
         <input
           type="text"
           name="password"
-          placeholder="password..."
-          value={password}
+          placeholder={password}
+          defaultValue="*****"
           onChange={onChange}
         />
 
@@ -90,7 +94,7 @@ const userForm = () => {
           type="text"
           name="age"
           placeholder="age..."
-          value={age}
+          defaultValue={age}
           onChange={onChange}
         />
 
@@ -98,25 +102,24 @@ const userForm = () => {
         <select
           id="location"
           name="location"
-          value={location}
+          defaultValue={location}
           onChange={(e) => onChange(e)}
         >
-          <option value="Australia">Australia</option>
-          <option value="Germany">Germany</option>
-          <option value="Canada">Canada</option>
-          <option value="USA">USA</option>
-          <option value="Spain">Spain</option>
-          <option value="France">France</option>
-          <option value="UK">UK</option>
-          <option value="Italy">Italy</option>
+          <option defaultValue="Australia">Australia</option>
+          <option defaultValue="Germany">Germany</option>
+          <option defaultValue="Canada">Canada</option>
+          <option defaultValue="USA">USA</option>
+          <option defaultValue="Spain">Spain</option>
+          <option defaultValue="France">France</option>
+          <option defaultValue="UK">UK</option>
+          <option defaultValue="Italy">Italy</option>
         </select>
 
-        <button type="submit" value="Submit" class="btn">
-          Update
-        </button>
+        <Button variant="info" className="pl-3 pr-4 ml-2" type="submit" >Update</Button>
+
         {current && (
           <div>
-            <button className="btn btn-light btn-block" onclick={clear}>
+            <button className="btn btn-light btn-block" onClick={clear}>
               Clear
             </button>
           </div>

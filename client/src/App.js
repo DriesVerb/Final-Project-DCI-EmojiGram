@@ -3,21 +3,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // components
-import Alerts from "./components/Alert";
-import Navbar from "./components/navbar";
+import Alerts from "./components/layout/Alert";
+import Navbar from "./components/layout/navbar";
 import Login from "./components/auth/login";
 import SignUp from "./components/auth/SignUp";
-import LandingPage from "./components/layout/LandingPage";
+import LandingPage from "./components/pages/LandingPage";
 import PrivateRoute from "./components/privateRoute";
-import HomePublic from "./components/layout/HomePublic";
-import Footer from "./components/Footer";
+import HomePublic from "./components/pages/HomePublic";
+import Footer from "./components/layout/Footer";
 import StoryEditor from "./components/story/StoryEditor";
-import UserInterface from "./components/userInterface";
+import UserInterface from "./components/pages/userInterface";
 import YourStories from "./components/story/yourStories";
 import PreviewStory from "./components/story/PreviewStory";
 import ShowStory from "./components/story/showStory";
 import UserItem from "./components/user/UserItem";
-import ContactUs from "./components/ContactUs";
+import userForm from "./components/user/userForm";
+import ContactUs from "./components/pages/ContactUs";
 // context
 import StoryState from "./context/story/storyState";
 import AuthContext from "./context/auth/authContext";
@@ -35,8 +36,10 @@ if (localStorage.token) {
 function App() {
   const authContext = useContext(AuthContext);
 
+
   useEffect(() => {
     if (localStorage.token) authContext.loadUser();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -50,11 +53,8 @@ function App() {
               <Switch>
                 <Route path="/" exact component={HomePublic} />
                 <PrivateRoute path="/landing" exact component={LandingPage} />
-                <PrivateRoute
-                  path="/yourstories"
-                  exact
-                  component={YourStories}
-                />
+                <PrivateRoute path="/UserInterface" exact component={UserInterface} />
+                <PrivateRoute path="/yourstories" exact component={YourStories} />
                 <PrivateRoute
                   path="/writestory"
                   exact
@@ -65,11 +65,12 @@ function App() {
                   exact
                   component={PreviewStory}
                 />
-                <Route path="/showstory/:id" exact component={ShowStory} />
+                <PrivateRoute path="/showstory/:id" exact component={ShowStory} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
-                <PrivateRoute path="/UserInterface" component={UserInterface} />
-                <Route path="/profile" exact component={UserItem} />
+               
+                <Route  path="/profile" exact component={UserItem} />
+                <Route path="/userform" exact component={userForm} />
                 <Route path="/contactus" exact component={ContactUs} />
               </Switch>
               <Footer />

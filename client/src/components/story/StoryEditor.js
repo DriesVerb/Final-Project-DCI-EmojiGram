@@ -13,7 +13,7 @@ import StoryEditorSubGenre from "./StoryEditorSubGenre";
 const StoryEditor = () => {
 ////////////////////////////////////////////////////////////////////////////////
   const storyContext = useContext(StoryContext)
-  const { storyToEdit, setEditedStory, clearEditStory,updateStory } = storyContext;
+  const { storyToEdit,  clearEditStory } = storyContext;
   //////////////////////////////////////////////////////////////////////////////
   // variables from the zustand store
   const getValues = storyStore((state) => state.getValues);
@@ -98,7 +98,7 @@ const StoryEditor = () => {
             </select>
           </div>
           <div>
-            {genre == "default" ? null : <StoryEditorSubGenre genre={genre} />}
+            {genre === "default" ? null : <StoryEditorSubGenre genre={genre} />}
           </div>
         </div>
         <div>

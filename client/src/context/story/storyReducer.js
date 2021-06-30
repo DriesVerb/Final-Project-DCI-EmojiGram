@@ -4,11 +4,11 @@ import {
   DELETE_STORY ,
   // SET_STORY , 
   CLEAR_EDITEDSTORY ,
-  UPDATE_STORY ,
+  // UPDATE_STORY ,
   // CLEAR_STORY,
   SET_EDITEDSTORY,
   SHOW_STORY,
-  STORY_ERROR 
+  // STORY_ERROR 
  } from "../types";
  
 export default (state, action) => {

@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 import "./yourStories.css";
 import StoryContext from "../../context/story/storyContext";
 
-function YourStories() {
+function YourStories(props) {
 
   const storyContext = useContext(StoryContext);
   const { publishStory, stories, showStory } = storyContext;
@@ -13,14 +13,14 @@ function YourStories() {
   useEffect(() => {
 
     publishStory ()
-  }, []);
+  }, [stories]);
 
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)
-
-   
-    window.location.href = '/showstory/' + id
+    
+    props.history.push(`/showstory/${id}`);
+    // window.location.href = '/showstory/' + id
     // showStory(id)
     // console.log (stories)
   }
