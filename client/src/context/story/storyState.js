@@ -7,77 +7,75 @@ import setAuthToken from "../auth/setAuthToken";
 import StoryContext from "./storyContext";
 import storyReducer from "./storyReducer";
 import {
- STORY_PUBLISH,
- ADD_STORY ,
+  STORY_PUBLISH,
+  ADD_STORY,
   DELETE_STORY,
- EDIT_STORY,
-//  SET_STORY , 
-//  CLEAR_EDITEDSTORY ,
- UPDATE_STORY ,
-//  CLEAR_STORY ,
+  EDIT_STORY,
+  //  SET_STORY ,
+  //  CLEAR_EDITEDSTORY ,
+  UPDATE_STORY,
+  //  CLEAR_STORY ,
   SET_EDITEDSTORY,
   CLEAR_EDITEDSTORY,
   SHOW_STORY,
-  STORY_ERROR 
+  STORY_ERROR,
 } from "../types";
 
 const StoryState = (props) => {
   const initialState = {
-   
-    stories: [{
-      user: "",
-      title: '',
-      text: '',
-      genre: '',
-      subGenre:'',
-      likes: "",
-      
-      favorite:'',
-      _id: "",
-      comments: "",
-      emojis:[]
-      
-    }],
-    singleStory:null,
-    storyToEdit:null,
-    msg:null,
-    error:null
-  }
-  ;
+    stories: [
+      {
+        user: "",
+        title: "",
+        text: "",
+        genre: "",
+        subGenre: "",
+        likes: "",
+
+        favorite: "",
+        _id: "",
+        comments: "",
+        emojis: [],
+      },
+    ],
+    singleStory: null,
+    storyToEdit: null,
+    msg: null,
+    error: null,
+  };
   const [state, dispatch] = useReducer(storyReducer, initialState);
   //Create Story
 
-
-  const addStory = async story => {
+  const addStory = async (story) => {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     };
 
     try {
-      const res = await axios.post('story/create', story, config);
+      const res = await axios.post("story/create", story, config);
 
       dispatch({
         type: ADD_STORY,
-        payload: res.data
-      }
-      )
+        payload: res.data,
+      });
     } catch (err) {
       dispatch({
         type: STORY_ERROR,
-        payload: err.response
+        payload: err.response,
       });
-    }console.log(state.stories)
+    }
+    console.log(state.stories);
   };
-  
-  
+
   //Publish Story
 
-  const publishStory = async story => {
+  const publishStory = async (story) => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
-    } try {
+    }
+    try {
       //we have token in the localStorage so we can make the request because we pass the middleware
       const res = await axios.get("/user/profile/mystories");
       dispatch({
@@ -87,12 +85,11 @@ const StoryState = (props) => {
     } catch (err) {
       dispatch({ type: STORY_ERROR });
     }
-  }
-//////////////////////////////////////////////////////////////////////
-   //Show Story
-  
-  const showStory = async id => {
-        
+  };
+  //////////////////////////////////////////////////////////////////////
+  //Show Story
+
+  const showStory = async (id) => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
@@ -104,39 +101,27 @@ const StoryState = (props) => {
         type: SHOW_STORY,
         payload: res.data,
       });
-      
     } catch (err) {
       dispatch({ type: STORY_ERROR });
     }
-
-  }
-//////////////////////////////////////////////////////////////////////
-  //set editedStory
-
-  const setEditedStory = story => {
-   
-     
-
-      dispatch({ type: SET_EDITEDSTORY, payload: story });
-       
-    
-     
   };
- 
-  
- 
- //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
   //set editedStory
-  //don't need payload, just need it to set editedText to null 
- const clearEditedStory = ()=> {
-  dispatch({ type: CLEAR_EDITEDSTORY });
-};
-  
-  
-  
+
+  const setEditedStory = (story) => {
+    dispatch({ type: SET_EDITEDSTORY, payload: story });
+  };
+
+  //////////////////////////////////////////////////////////////////////
+  //set editedStory
+  //don't need payload, just need it to set editedText to null
+  const clearEditedStory = () => {
+    dispatch({ type: CLEAR_EDITEDSTORY });
+  };
+
   //////////////////////////////////////////////////////////////////////
   //edit story
- 
+
   // const updateStory = async story => {
   //   const config = {
   //     headers: {
@@ -150,7 +135,7 @@ const StoryState = (props) => {
   //       story,
   //       config
   //     );
-     
+
   //     dispatch({
   //       type:  UPDATE_STORY,
   //       payload: res.data
@@ -162,31 +147,29 @@ const StoryState = (props) => {
   //     });
   //   }
   // }
-    
 
-//////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
 
-  // delete story 
-    
-  const deleteStory = async id=> {
+  // delete story
+
+  const deleteStory = async (id) => {
     try {
       await axios.delete(`/user/story/delete/${id}`);
 
       dispatch({
-        type: DELETE_STORY ,
-        payload: id
+        type: DELETE_STORY,
+        payload: id,
       });
     } catch (err) {
       dispatch({
-        type: STORY_ERROR ,
-        payload: err.response.msg
+        type: STORY_ERROR,
+        payload: err.response.msg,
       });
-    } }
+    }
+  };
 
   //////////////////////////////////////////////////////////////////////
-  
-  
-  
+
   return (
     <StoryContext.Provider
       value={{
@@ -196,10 +179,10 @@ const StoryState = (props) => {
         deleteStory,
         showStory,
         singleStory: state.singleStory,
-      
+
         setEditedStory,
         clearEditedStory,
-        storyToEdit: state.storyToEdit
+        storyToEdit: state.storyToEdit,
       }}
     >
       {props.children}
