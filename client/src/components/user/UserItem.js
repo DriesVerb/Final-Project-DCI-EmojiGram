@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import ProfileContext from "../../context/profile/profileContext";
 
-const UserItem = ({}) => {
+const UserItem = () => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;

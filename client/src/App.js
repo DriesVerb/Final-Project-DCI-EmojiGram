@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // components
 import Alerts from "./components/Alert";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 import Login from "./components/auth/login";
 import SignUp from "./components/auth/SignUp";
 import LandingPage from "./components/layout/LandingPage";
@@ -16,6 +16,8 @@ import UserInterface from "./components/userInterface";
 import YourStories from "./components/story/yourStories";
 import PreviewStory from "./components/story/PreviewStory";
 import ShowStory from "./components/story/showStory";
+import GenreMainPage from "./components/genre/GenreMainPage";
+
 import UserItem from "./components/user/UserItem";
 import ContactUs from "./components/ContactUs";
 // context
@@ -67,6 +69,7 @@ function App() {
                 />
                 <Route path="/showstory/:id" exact component={ShowStory} />
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/genre" component={GenreMainPage} />
                 <Route exact path="/signup" component={SignUp} />
                 <PrivateRoute path="/UserInterface" component={UserInterface} />
                 <Route path="/profile" exact component={UserItem} />

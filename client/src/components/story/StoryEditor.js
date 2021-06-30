@@ -1,19 +1,19 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 // store
 import { storyStore } from "../../store";
 import { emojiStore } from "../../store";
-  ///////////////////////////////////////////////////////////////////////////////
-  import StoryContext  from '../../context/story/storyContext';
-  //////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+import StoryContext from "../../context/story/storyContext";
+//////////////////////////////////////////////////////////////////////////////
 // components
 import StoryEditorSubGenre from "./StoryEditorSubGenre";
 
 const StoryEditor = () => {
-////////////////////////////////////////////////////////////////////////////////
-  const storyContext = useContext(StoryContext)
-  const { storyToEdit, setEditedStory, clearEditStory,updateStory } = storyContext;
+  ////////////////////////////////////////////////////////////////////////////////
+  const storyContext = useContext(StoryContext);
+  const { storyToEdit, clearEditStory } = storyContext;
   //////////////////////////////////////////////////////////////////////////////
   // variables from the zustand store
   const getValues = storyStore((state) => state.getValues);
@@ -25,20 +25,18 @@ const StoryEditor = () => {
     title: "",
     genre: "default",
     text: "",
-    _id:"",
+    _id: "",
   });
 
-  const { title, genre, text,_id } = formData;
+  const { title, genre, text, _id } = formData;
 
   useEffect(() => {
     if (emojisGlobal.length === 0) getEmojis();
     ////////////////////////////////////////////////////////////////////////////////
-    if (storyToEdit !== null) setFromData(storyToEdit)
-    else (setFromData ({title: "",
-    genre: "default",
-    text: "",}))
-  }, [StoryContext,storyToEdit,clearEditStory]);
-      ////////////////////////////////////////////////////////////////////////////////
+    if (storyToEdit !== null) setFromData(storyToEdit);
+    else setFromData({ title: "", genre: "default", text: "" });
+  }, [StoryContext, storyToEdit, clearEditStory]);
+  ////////////////////////////////////////////////////////////////////////////////
   let history = useHistory();
 
   const onChange = (e) => {
@@ -61,8 +59,17 @@ const StoryEditor = () => {
           onSubmit();
         }}
       >
-        {storyToEdit?<button  style={{ backgroundColor: '#98DDCA', color: 'black' }} type="submit">Preview edited story</button> : <button type="submit">Preview to share</button> }
-        
+        {storyToEdit ? (
+          <button
+            style={{ backgroundColor: "#98DDCA", color: "black" }}
+            type="submit"
+          >
+            Preview edited story
+          </button>
+        ) : (
+          <button type="submit">Preview to share</button>
+        )}
+
         <p>You will be a writing a story inspired by these emojis:</p>
         <div className="test">
           {emojisGlobal.length > 0 &&
@@ -98,7 +105,7 @@ const StoryEditor = () => {
             </select>
           </div>
           <div>
-            {genre == "default" ? null : <StoryEditorSubGenre genre={genre} />}
+            {genre === "default" ? null : <StoryEditorSubGenre genre={genre} />}
           </div>
         </div>
         <div>
@@ -115,7 +122,6 @@ const StoryEditor = () => {
           ></textarea>
           {/* /////////////////////////////////// */}
           <input
-            
             type="text"
             name="_id"
             value={_id}
