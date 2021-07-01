@@ -22,7 +22,9 @@ exports.logInPost = async (req, res) => {
   try {
     let user = await User.findOne({ email });
     if (!user) {
-      res.status(400).json({ msg: "please sign up" });
+      return res
+        .status(400)
+        .json({ msg: "Either your email or password or both are not correct.. Please try again" });
     }
 
     //match the password
@@ -31,10 +33,10 @@ exports.logInPost = async (req, res) => {
     if (!isMatch) {
       return res
         .status(400)
-        .json({ msg: "password is not correct! Please try again!" });
+        .json({ msg: "Either your email or password or both are not correct.. Please try again" });
     }
 
-    const jwtSecret = process.env.JWT_SECRET;
+   
     // jwt
 
     const payload = {
@@ -42,7 +44,7 @@ exports.logInPost = async (req, res) => {
         id: user.id,
       },
     };
-
+    const jwtSecret = process.env.JWT_SECRET;
     jwt.sign(payload, jwtSecret, (err, token) => {
       if (err) throw err;
       res.json({ token });

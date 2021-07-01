@@ -71,7 +71,13 @@ const ProfileState = (props) => {
   //Set Current user
   const setCurrent = (user) => {
     dispatch({ type: SET_CURRENT, payload: user });
+    
   };
+
+    //Clear Current user
+    const clearCurrent = () => {
+      dispatch({ type: CLEAR_CURRENT });
+    };
 
   //Delete Current
   const deleteProfile = async (id) => {
@@ -89,10 +95,7 @@ const ProfileState = (props) => {
     }
   };
 
-  //Clear Current user
-  const clearCurrent = () => {
-    dispatch({ type: CLEAR_CURRENT });
-  };
+
 
   //Clear Profile
   const clearProfile = () => {
