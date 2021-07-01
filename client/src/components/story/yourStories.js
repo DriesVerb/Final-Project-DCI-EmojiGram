@@ -4,12 +4,14 @@ import ReactPaginate from "react-paginate";
 import "./yourStories.css";
 import StoryContext from "../../context/story/storyContext";
 
+
 function YourStories(props) {
 
+
   const storyContext = useContext(StoryContext);
-  const { publishStory, stories, showStory } = storyContext;
+  const { publishStory, stories } = storyContext;
 
-
+  ///////////////////////////////////////////////
   useEffect(() => {
 
     publishStory ()
@@ -18,16 +20,12 @@ function YourStories(props) {
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)
-
-    props.history.push("/showstory/"+id)
-    /* window.location.href = '/showstory/' + id */
+    
+    props.history.push(`/showstory/${id}`);
+    // window.location.href = '/showstory/' + id
     // showStory(id)
     // console.log (stories)
-  }
-  
-
-
-
+  };
 
   const [pageNumber, SetPageNumber] = useState(0);
   const storiesPerPage = 5;
@@ -67,8 +65,8 @@ function YourStories(props) {
                 </span>
                 <span className="emojisClass">
                   <i className="far fa-smile-beam" /> : &nbsp;
-                  {story.emojis.map((emoj, id) => (
-                    <span key={id}>&nbsp;{emoj.character} </span>
+                  {story.emojis.map((emoj) => (
+                    <span key={emoj._id}>&nbsp;{emoj.character} </span>
                   ))}
                 </span>
               </footer>

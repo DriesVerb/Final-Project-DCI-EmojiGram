@@ -1,7 +1,7 @@
 import React from "react";
-import Images from "../img/minions1.jpg";
+import Images from "../../img/minions1.jpg";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../../App.css";
 
 // Navbar user interface
 function userInterface() {
@@ -10,7 +10,7 @@ function userInterface() {
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="#!">
               EmojiGram
             </a>
           </div>

@@ -1,0 +1,23 @@
+.genre__row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.genre__card {
+  height: 70px;
+  background-color: orangered;
+  width: 100px;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genre__story--card {
+  width: 50%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 1rem;
+}

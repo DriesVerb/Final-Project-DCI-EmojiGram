@@ -22,9 +22,8 @@ export default (state, action) => {
     case EDIT_PROFILE:
       return {
         ...state,
-        user: state.user.map((user) =>
-          user._id === action.payload._id ? action.payload : user
-        ),
+        user: action.payload 
+        ,
       };
 
     //DELETE_CURRENT
@@ -36,6 +35,7 @@ export default (state, action) => {
 
     //SET_CURRENT
     case SET_CURRENT:
+      // console.log(action.payload)
       return {
         ...state,
         current: action.payload,
@@ -52,7 +52,7 @@ export default (state, action) => {
     case CLEAR_PROFILE:
       return {
         ...state,
-        user: null,
+        user: {},
         error: null,
         current: null,
       };
