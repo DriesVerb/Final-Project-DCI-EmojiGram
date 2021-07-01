@@ -3,19 +3,17 @@ const Story = require("../models/Story");
 //create sroty
 
 exports.create = async (req, res) => {
-  try {
-    const newStory = new Story({
-      ...req.body,
-      user: req.user.id,
-      author: req.user.name,
-    });
-    const story = await newStory.save();
-    res.json({ msg: "A new Story has been added :)" });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
+  try {   
+    
+      const newStory = new Story({...req.body , user: req.user.id});
+      const story = await newStory.save();
+      res.json({ msg: "A new Story has been added :)" });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
   }
-};
+
 
 //////////////////////////////////////////////////////////////////////
 
@@ -23,14 +21,15 @@ exports.create = async (req, res) => {
 
 exports.published = async (req, res) => {
   try {
-    const publicStories = await Story.find().sort({
-      date: -1,
-    });
-    res.json(publicStories);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
+    const publicStories = await Story.find()
+        .sort({
+        date: -1,
+      }).populate('user').limit(5);
+      res.json(publicStories );
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -139,8 +138,12 @@ exports.sortTime = async (req, res) => {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
+<<<<<<< HEAD
 };
 
+=======
+}
+>>>>>>> 58c607d3b77b61d2843b83610524190c5d05957e
 exports.getGenre = async (req, res) => {
   await Story.find((err, stories) => {
     res.json(stories);

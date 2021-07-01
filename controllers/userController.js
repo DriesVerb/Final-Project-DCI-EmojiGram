@@ -60,22 +60,19 @@ exports.editProfile = async (req, res) => {
   }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-exports.myStories = (req, res) => {
-  Story.find((err, data) => {
-    if (err) throw err.message;
+exports.myStories = async (req, res) => {
+  const user = req.user.id
+  try {
+    const stories =  Story.find({user:user}, (err,data)=>{
     res.json(data);
-  });
+    })
+    
+  } catch (err) {
+    console.error(err.message)
+        res.status(500).send('Server Error')
+  }
+  
+
 };
 
 exports.followers = (req, res) => {

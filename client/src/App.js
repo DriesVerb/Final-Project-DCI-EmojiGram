@@ -31,6 +31,7 @@ import './App.css';
 // import setAuthToken
 import setAuthToken from './context/auth/setAuthToken';
 
+
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -67,6 +68,8 @@ function App() {
                   exact
                   component={PreviewStory}
                 />
+                <Route path="/publicstories" exact component={PublicLandingPage} />
+                <PrivateRoute path="/showstory/:id" exact component={ShowStory} />
                 <PrivateRoute
                   path="/showstory/:id"
                   exact
@@ -75,6 +78,8 @@ function App() {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/genre" component={GenreMainPage} />
                 <Route exact path="/signup" component={SignUp} />
+                <PrivateRoute path="/UserInterface" component={UserInterface} />
+                <Route path="/profile" component={UserItem} />
 
                 <Route path="/profile" exact component={UserItem} />
                 <Route path="/userform" exact component={userForm} />
