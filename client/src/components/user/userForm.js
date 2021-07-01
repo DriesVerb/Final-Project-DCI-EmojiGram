@@ -117,13 +117,13 @@ const userForm = (props) => {
 
         <Button variant="info" className="pl-3 pr-4 ml-2" type="submit" >Update</Button>
 
-        {current && (
+        {/* {current && (
           <div>
             <button className="btn btn-light btn-block" onClick={clear}>
               Clear
             </button>
           </div>
-        )}
+        )} */}
       </form>
     </Fragment>
   );
