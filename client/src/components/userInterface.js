@@ -7,7 +7,7 @@ import "../App.css";
 function userInterface() {
   return (
     <div>
-      <nav className="navbar navbar-inverse">
+      {/* <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
             <a className="navbar-brand" href="#!">
@@ -26,8 +26,8 @@ function userInterface() {
             </li>
           </ul>
         </div>
-      </nav>
-      {/* @create your Storie */}
+      </nav> */}
+
       <div className="container-fluid">
         <div className="container">
           <div className="row">
