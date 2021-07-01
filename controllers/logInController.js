@@ -43,7 +43,6 @@ exports.logInPost = async (req, res) => {
       },
     };
 
-    /* const jwtSecret = process.env.JWT_SECRET; */
     jwt.sign(payload, jwtSecret, (err, token) => {
       if (err) throw err;
       res.json({ token });

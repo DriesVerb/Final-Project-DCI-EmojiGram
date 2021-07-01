@@ -1,5 +1,5 @@
 import React, {useContext,useState,useEffect} from 'react'
-/* import './publicLandingPage.css' */
+import './publicLandingPage.css'
 import StoryContext from '../context/story/storyContext'
 
  const PublicLandingPage = () => {
@@ -10,33 +10,51 @@ import StoryContext from '../context/story/storyContext'
 
     useEffect(()=>{
         publishStoryPublic()
-        console.log(stories)
     },[])
 
 
     return (
         <div className="PublicStories">
-{/*             <h1>
-                {
+            <header className="header-publicStories"><h1 className="text-center">Story</h1></header>
+            <div class="left-sidebar">Left Sidebar</div>
+                <main>{
                     stories.map((story)=>{
                         return(
-                            <div key={story._id}>
+                            <div className="mainStories" key={story._id}>
                                 <p>
                                     {story.title}
                                 </p>
                                 <p>
                                     {story.text}
                                 </p>
+                                <p>
+                                   createdBy: {story.user.username}
+                                </p>
+                                <p>
+                                    {story.comments.length}
+                                </p>
+                                <p>
+                                    {story.likes.length}
+                                </p>
+                                <p>
+                                  {story.createdAt}
+                                      
+                                </p>
+                              
+                                <p>
+                                    {
+                                        story.emojis.map((emoji,id)=>(
+                                            
+                                            <span key={id}>&nbsp;{emoji.character}</span>
+                                        ))
+                                    }
+                                </p>
                             </div>
                         )
-                    })
-                }
-            </h1> */}
-            <header><h1 contenteditable>Header.com</h1></header>
-<div class="left-sidebar" contenteditable>Left Sidebar</div>
-<main contenteditable></main>
-<div class="right-sidebar" contenteditable>Right Sidebar</div>
-<footer contenteditable>Footer Content — Header.com 2020</footer>
+                    })              
+                }</main>
+            <div class="right-sidebar">Right Sidebar</div>
+
         </div>
     )
 }

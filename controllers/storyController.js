@@ -7,7 +7,7 @@ const Story = require("../models/Story");
 exports.create = async (req, res) => {
   try {   
     
-      const newStory = new Story({...req.body , user: req.user.id});
+      const newStory = new Story({...req.body , user: req.user.id, createdBy: req.user.id});
       const story = await newStory.save();
       res.json({ msg: "A new Story has been added :)" });
     } catch (err) {
@@ -25,7 +25,7 @@ exports.published = async (req, res) => {
     const publicStories = await Story.find()
         .sort({
         date: -1,
-      });
+      }).populate('user').limit(5);
       res.json(publicStories );
     } catch (err) {
       console.error(err.message);

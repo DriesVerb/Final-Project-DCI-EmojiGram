@@ -17,13 +17,8 @@ function showStory(props) {
 
    useEffect(() => {
         showStory(id) 
-        // axios.get('/user/story/show/'+id)
-        // .then((res)=>{
-        //     setStory(res.data)
-        // }).catch(err=>{
-        //     console.log(err)
-        // })
-    }, [singleStory])
+       
+    }, [])
     
     
  
