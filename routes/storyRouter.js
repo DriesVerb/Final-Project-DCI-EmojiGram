@@ -20,3 +20,5 @@ router.get("/filter", storyController.alphabetical);
 
 router.get("/time", storyController.sortTime);
 module.exports = router;
+
+router.get("/genre/:genre", storyController.getGenre);

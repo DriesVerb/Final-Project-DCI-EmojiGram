@@ -135,4 +135,10 @@ exports.sortTime = async (req, res) => {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
+exports.getGenre = async (req, res) => {
+  await Story.find((err, stories) => {
+    res.json(stories);
+  })
+    .where("genre")
+    .equals(req.params.genre);
 };
