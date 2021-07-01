@@ -136,6 +136,18 @@ exports.sortTime = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+//Sort By Likes
+exports.sortLikes = async (req, res) => {
+  try {
+    await Story.find((err, like) => {
+      res.json(like);
+    }).sort({ likes: -1 });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
 exports.getGenre = async (req, res) => {
   await Story.find((err, stories) => {
     res.json(stories);
