@@ -1,4 +1,5 @@
-import React, { Fragment, useContext } from "react";
+import { STATES } from "mongoose";
+import React, { Fragment, useContext, useEffect } from "react";
 import {
   Navbar,
   NavLink,
@@ -9,8 +10,8 @@ import {
   Button,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import AuthContext from "../context/auth/authContext";
-import ProfileContext from "../context/profile/profileContext";
+import AuthContext from "../../context/auth/authContext";
+import ProfileContext from "../../context/profile/profileContext";
 
 function navbar() {
   const authContext = useContext(AuthContext);
@@ -22,6 +23,7 @@ function navbar() {
   const onLogout = () => {
     logout();
     clearProfile();
+   
   };
 
   const userLinks = (
@@ -35,11 +37,11 @@ function navbar() {
           <Nav style={{ maxHeight: "100px" }} navbarScroll>
             <li className="ml-2">
               <a className="nav-link" href="#!">
-                Hello{" "}
+                Hello{"   "}
                 {user &&
                   user.username.charAt(0).toUpperCase() +
                     user.username.slice(1)}
-                <span className="sr-only">(current)</span>
+              
               </a>
             </li>
             <NavDropdown title="" id="navbarScrollingDropdown">
@@ -50,7 +52,7 @@ function navbar() {
               <NavDropdown.Item href="">
                 <i className="fas fa-question-circle" /> Help & Support
               </NavDropdown.Item>
-              <NavDropdown.Item onClick={onLogout} href="#!">
+              <NavDropdown.Item onClick={onLogout} href="/login">
                 <i className="fas fa-sign-out-alt" /> Logout
               </NavDropdown.Item>
             </NavDropdown>

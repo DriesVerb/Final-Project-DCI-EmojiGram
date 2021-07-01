@@ -11,7 +11,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  // REMOVE_ERROR
+  CLEAR_ERRORS
 } from "../types";
 
 const AuthState = (props) => {
@@ -76,20 +76,21 @@ const AuthState = (props) => {
   };
 
   // Login User
-  const login = async (formData) => {
+  const login = async formData => {
     const config = {
-      // the header for token
       headers: {
-        "Content-Type": "application/json",
-      },
+        'Content-Type': 'application/json'
+      }
     };
+
     try {
-      const res = await axios.post("/auth/login", formData, config);
+      const res = await axios.post('auth/login', formData, config);
+
       dispatch({
         type: LOGIN_SUCCESS,
-        //res.data is the token
-        payload: res.data,
+        payload: res.data
       });
+
       loadUser();
     } catch (err) {
       dispatch({
@@ -97,10 +98,17 @@ const AuthState = (props) => {
         //error -400 bad request- msg from backend in case the user exists
         payload: err.response.data.msg,
       });
+      console.log(state.error)
     }
   };
   // Logout
-  const logout = () => dispatch({ type: LOGOUT });
+  const logout = () => {
+    dispatch({ type: LOGOUT })
+   
+  };
+
+  //clear errors
+  const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
   return (
     <AuthContext.Provider
@@ -114,6 +122,7 @@ const AuthState = (props) => {
         loadUser,
         login,
         logout,
+        clearErrors
       }}
     >
       {props.children}

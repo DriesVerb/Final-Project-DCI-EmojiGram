@@ -9,7 +9,7 @@ import {
   SET_EDITEDSTORY,
   SHOW_STORY,
   // STORY_ERROR
-} from "../types";
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {

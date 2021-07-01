@@ -1,31 +1,46 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
+
+
+
+
+
 function Login(props) {
   const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
-  const { login, isAuthenticated } = authContext;
+  const { login, isAuthenticated ,error, clearErrors, } = authContext;
   const { setAlert } = alertContext;
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const { email, password } = user;
+
   useEffect(() => {
+    if (error === 'Either your email or password or both are not correct.. Please try again') {
+      setAlert(error, 'danger');
+      clearErrors();
+      setUser({
+        email: '',
+        password:''})
+    }
     // redirect to Home Page
     if (isAuthenticated) {
       //should pass the props in the function component
-
-      props.history.push("/UserInterface");
-
+      props.history.push("/userInterface");
     }
-  }, [isAuthenticated, props.history]);
+    // eslint-disable-next-line
+  }, [isAuthenticated, props.history, error, user]);
+
+
   const getData = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
     });
   };
+
   const submToServer = () => {
     if (email === "" || password === "") {
       setAlert("Please fill in all fields", "warning");
@@ -47,6 +62,7 @@ function Login(props) {
         <h2>Login</h2>
         <label htmlFor="email">Email</label>
         <input
+          value={email}
           type="text"
           name="email"
           placeholder="Your Email.."
@@ -55,6 +71,7 @@ function Login(props) {
         <br />
         <label htmlFor="password">Password</label>
         <input
+          value={password}
           type="password"
           name="password"
           placeholder="Your Password.."
