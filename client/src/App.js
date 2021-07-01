@@ -38,6 +38,7 @@ if (localStorage.token) {
 function App() {
   const authContext = useContext(AuthContext);
 
+
   useEffect(() => {
     if (localStorage.token) authContext.loadUser();
     // eslint-disable-next-line
@@ -54,16 +55,8 @@ function App() {
               <Switch>
                 <Route path="/" exact component={HomePublic} />
                 <PrivateRoute path="/landing" exact component={LandingPage} />
-                <PrivateRoute
-                  path="/UserInterface"
-                  exact
-                  component={UserInterface}
-                />
-                <PrivateRoute
-                  path="/yourstories"
-                  exact
-                  component={YourStories}
-                />
+                <PrivateRoute path="/UserInterface" exact component={UserInterface} />
+                <PrivateRoute path="/yourstories" exact component={YourStories} />
                 <PrivateRoute
                   path="/writestory"
                   exact

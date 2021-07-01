@@ -52,7 +52,7 @@ export default (state, action) => {
     case CLEAR_PROFILE:
       return {
         ...state,
-        user: null,
+        user: {},
         error: null,
         current: null,
       };
