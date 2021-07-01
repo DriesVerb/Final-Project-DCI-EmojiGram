@@ -50,7 +50,7 @@ function navbar() {
               <NavDropdown.Item href="">
                 <i className="fas fa-question-circle" /> Help & Support
               </NavDropdown.Item>
-              <NavDropdown.Item onClick={onLogout} href="#!">
+              <NavDropdown.Item onClick={onLogout} href="/login">
                 <i className="fas fa-sign-out-alt" /> Logout
               </NavDropdown.Item>
             </NavDropdown>
