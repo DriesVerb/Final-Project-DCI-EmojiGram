@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import React, { useState, useContext, useEffect, Link} from 'react';
-import AlertContext from '../../context/alert/alertContext';
-import AuthContext from '../../context/auth/authContext';
-=======
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
@@ -11,7 +6,6 @@ import AuthContext from "../../context/auth/authContext";
 
 
 
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
 function Login(props) {
   const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
@@ -39,13 +33,6 @@ function Login(props) {
     // eslint-disable-next-line
   }, [isAuthenticated, props.history, error, user]);
 
-<<<<<<< HEAD
-      props.history.push('/UserInterface');
-    }
-  }, [isAuthenticated, props.history]);
-=======
-
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
   const getData = (e) => {
     setUser({
       ...user,
@@ -73,31 +60,19 @@ function Login(props) {
         <h2>Login</h2>
         <label htmlFor='email'>Email</label>
         <input
-<<<<<<< HEAD
-          type='text'
-          name='email'
-          placeholder='Your Email..'
-=======
           value={email}
           type="text"
           name="email"
           placeholder="Your Email.."
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
           onChange={getData}
         />
         <br />
         <label htmlFor='password'>Password</label>
         <input
-<<<<<<< HEAD
-          type='password'
-          name='password'
-          placeholder='Your Password..'
-=======
           value={password}
           type="password"
           name="password"
           placeholder="Your Password.."
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
           onChange={getData}
         />
         <button type='submit' className='btn btn-success'>
