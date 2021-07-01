@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import AlertContext from '../context/alert/alertContext';
-import { Alert } from 'react-bootstrap';
+import AlertContext from '../../context/alert/alertContext';
+import { Alert,Col,Row } from 'react-bootstrap';
 
 const Alerts = () => {
     const alertContext = useContext(AlertContext);
@@ -12,7 +12,9 @@ const Alerts = () => {
     alerts.length > 0 &&
     alerts.map(alert => (
       <Alert key={alert.id} variant={`${alert.alertStyle}`}>
-        <i className='fas fa-info-circle' /> {alert.msg}
+        <Row>
+           <Col  md={{ span: 8, offset: 3 }} className='fas fa-info-circle' >
+ <span>{""} </span>{alert.msg} </Col></Row>
       </Alert>
     ))
   );

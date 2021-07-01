@@ -4,27 +4,25 @@ import ReactPaginate from "react-paginate";
 import "./yourStories.css";
 import StoryContext from "../../context/story/storyContext";
 
-function YourStories() {
-<<<<<<< HEAD
-  ////////////////////////////////////////////
-=======
->>>>>>> 781b59940b05b5ac3be095e0c326ce7c71aa5454
+
+function YourStories(props) {
+
+
   const storyContext = useContext(StoryContext);
   const { publishStory, stories } = storyContext;
 
   ///////////////////////////////////////////////
   useEffect(() => {
-    publishStory();
-<<<<<<< HEAD
+
+    publishStory ()
   }, [stories]);
-=======
-  }, []);
->>>>>>> 781b59940b05b5ac3be095e0c326ce7c71aa5454
+
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)
-
-    window.location.href = "/showstory/" + id;
+    
+    props.history.push(`/showstory/${id}`);
+    // window.location.href = '/showstory/' + id
     // showStory(id)
     // console.log (stories)
   };
