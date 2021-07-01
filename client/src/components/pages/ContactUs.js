@@ -27,19 +27,11 @@ function Contactus() {
       const successMsg = res.data;
       setmsg(successMsg);
       setStateEmail({
-<<<<<<< HEAD:client/src/components/ContactUs.js
-        username: '',
-        message: '',
-        email: '', 
-        confirm:
-          'Thank you!!! An Email confirmation has been sent to your mailbox.'
-=======
         username: "",
         message: "",
         email: "",
         confirm:
           "Thank you!!! An Email has been sent to your mailbox. Thank you to follow the steps to contact our Support Team",
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae:client/src/components/pages/ContactUs.js
       });
     });
   };
@@ -70,19 +62,11 @@ function Contactus() {
             onChange={getValue}
             name="message"
             value={stateEmail.message}
-<<<<<<< HEAD:client/src/components/ContactUs.js
-            required
-=======
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae:client/src/components/pages/ContactUs.js
           />
 
           <label onSubmit={sendEmail}>Your Email</label>
           <input
-<<<<<<< HEAD:client/src/components/ContactUs.js
-            type='email'
-=======
             type="text"
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae:client/src/components/pages/ContactUs.js
             onChange={getValue}
             name="email"
             value={stateEmail.email}

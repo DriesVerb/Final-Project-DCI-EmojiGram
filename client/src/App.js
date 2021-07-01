@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // components
 import Alerts from "./components/layout/Alert";
@@ -23,15 +23,14 @@ import UserItem from "./components/user/UserItem";
 import userForm from "./components/user/userForm";
 import ContactUs from "./components/pages/ContactUs";
 // context
-import StoryState from './context/story/storyState';
-import AuthContext from './context/auth/authContext';
-import AlertState from './context/alert/alertState';
-import ProfileState from './context/profile/ProfileState';
-import ResetPassword from './components/resetPsswrd'
-import './App.css';
+import StoryState from "./context/story/storyState";
+import AuthContext from "./context/auth/authContext";
+import AlertState from "./context/alert/alertState";
+import ProfileState from "./context/profile/ProfileState";
+import "./App.css";
 
 // import setAuthToken
-import setAuthToken from './context/auth/setAuthToken';
+import setAuthToken from "./context/auth/setAuthToken";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -49,13 +48,13 @@ function App() {
     <ProfileState>
       <StoryState>
         <AlertState>
-          <div className='App'>
+          <div className="App">
             <Router>
               <Navbar />
               <Alerts />
               <Switch>
-                <Route path='/' exact component={HomePublic} />
-                <PrivateRoute path='/landing' exact component={LandingPage} />
+                <Route path="/" exact component={HomePublic} />
+                <PrivateRoute path="/landing" exact component={LandingPage} />
                 <PrivateRoute
                   path="/UserInterface"
                   exact
@@ -67,12 +66,12 @@ function App() {
                   component={YourStories}
                 />
                 <PrivateRoute
-                  path='/writestory'
+                  path="/writestory"
                   exact
                   component={StoryEditor}
                 />
                 <PrivateRoute
-                  path='/previewstory'
+                  path="/previewstory"
                   exact
                   component={PreviewStory}
                 />
