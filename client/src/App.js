@@ -3,23 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // components
-<<<<<<< HEAD
-import Alerts from './components/Alert';
-import Navbar from './components/navbar';
-import Login from './components/auth/login';
-import SignUp from './components/auth/SignUp';
-import LandingPage from './components/layout/LandingPage';
-import PrivateRoute from './components/privateRoute';
-import HomePublic from './components/layout/HomePublic';
-import Footer from './components/Footer';
-import StoryEditor from './components/story/StoryEditor';
-import UserInterface from './components/userInterface';
-import YourStories from './components/story/yourStories';
-import PreviewStory from './components/story/PreviewStory';
-import ShowStory from './components/story/showStory';
-import UserItem from './components/user/UserItem';
-import ContactUs from './components/ContactUs';
-=======
 import Alerts from "./components/layout/Alert";
 import Navbar from "./components/layout/navbar";
 import Login from "./components/auth/login";
@@ -39,7 +22,6 @@ import PublicLandingPage from "./components/publicLandingPage";
 import UserItem from "./components/user/UserItem";
 import userForm from "./components/user/userForm";
 import ContactUs from "./components/pages/ContactUs";
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
 // context
 import StoryState from './context/story/storyState';
 import AuthContext from './context/auth/authContext';
@@ -75,16 +57,12 @@ function App() {
                 <Route path='/' exact component={HomePublic} />
                 <PrivateRoute path='/landing' exact component={LandingPage} />
                 <PrivateRoute
-<<<<<<< HEAD
-                  path='/yourstories'
-=======
                   path="/UserInterface"
                   exact
                   component={UserInterface}
                 />
                 <PrivateRoute
                   path="/yourstories"
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
                   exact
                   component={YourStories}
                 />
@@ -98,15 +76,6 @@ function App() {
                   exact
                   component={PreviewStory}
                 />
-<<<<<<< HEAD
-                <Route path='/showstory/:id' exact component={ShowStory} />
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/signup' component={SignUp} />
-                <PrivateRoute path='/UserInterface' component={UserInterface} />
-                <Route exact path='/profile' exact component={UserItem} />
-                <Route path='/contactus' exact component={ContactUs} />
-                <Route exact path='/resetpassword' exact component={ResetPassword} />
-=======
                 <Route
                   path="/publicstories"
                   exact
@@ -131,7 +100,6 @@ function App() {
                 <Route path="/profile" exact component={UserItem} />
                 <Route path="/userform" exact component={userForm} />
                 <Route path="/contactus" exact component={ContactUs} />
->>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
               </Switch>
               <Footer />
             </Router>
