@@ -85,12 +85,13 @@ app.get(
 //! Email sent by the customer from the contactus.js
 app.post("/sendEmail", (req, res) => {
   console.log(req.body);
-  const { username, message, email } = req.body;
+  const { message, email } = req.body;
   // const user = User.findOne({ message: req.body.message })
   // user.message = req.body.message;
   // console.log(user)
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
   const msg = {
     to: email,
     //  to: 'lotuseylie@outlook.com', //username.body.user
@@ -110,6 +111,7 @@ app.post("/sendEmail", (req, res) => {
     // subject: 'Email sent by sendgrid',
     // templateId: process.env.TEMPLATE_SENT_ID,
   };
+
   sgMail
     .send(msg)
     .then(() => {

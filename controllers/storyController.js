@@ -4,7 +4,11 @@ const Story = require("../models/Story");
 
 exports.create = async (req, res) => {
   try {
-    const newStory = new Story({ ...req.body, user: req.user.id });
+    const newStory = new Story({
+      ...req.body,
+      user: req.user.id,
+      author: req.user.name,
+    });
     const story = await newStory.save();
     res.json({ msg: "A new Story has been added :)" });
   } catch (err) {
@@ -114,6 +118,7 @@ exports.deleteStorie = async (req, res) => {
   }
 };
 
+// public // get genre from selection frontend
 exports.getGenre = async (req, res) => {
   await Story.find((err, stories) => {
     res.json(stories);

@@ -1,10 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const storySchema = new Schema({
+  author: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
+    ref: "users",
   },
 
   emojis: [],
@@ -42,5 +43,5 @@ const storySchema = new Schema({
   ],
 });
 
-const Story = mongoose.model('Story', storySchema);
+const Story = mongoose.model("Story", storySchema);
 module.exports = Story;
