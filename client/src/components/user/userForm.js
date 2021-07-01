@@ -1,7 +1,13 @@
 import React, { useState, Fragment, useContext, useEffect } from "react";
 import ProfileContext from "../../context/profile/profileContext";
+<<<<<<< HEAD
+
+const userForm = () => {
+  
+=======
 import { Button} from 'react-bootstrap';
 const userForm = (props) => {
+>>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
   const profileContext = useContext(ProfileContext);
   const { current, clearAll, editProfile } = profileContext;
 

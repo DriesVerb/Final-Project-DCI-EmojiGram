@@ -36,7 +36,7 @@ const userSchema = new Schema({
   socialMedia: {},
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
   facebook_id: String,
   Twitter_id: String,

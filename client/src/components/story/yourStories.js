@@ -14,9 +14,15 @@ function YourStories(props) {
   ///////////////////////////////////////////////
   useEffect(() => {
 
+<<<<<<< HEAD
+    publishStory()
+    
+  }, [stories]);
+=======
     publishStory ()
   }, [stories]);
 
+>>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)
