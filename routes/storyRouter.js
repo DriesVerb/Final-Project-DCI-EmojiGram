@@ -15,6 +15,10 @@ router.get("/show/:id", auth, storyController.show);
 router.put("/editStory/:id", auth, storyController.edit);
 
 router.delete("/delete/:id", auth, storyController.deleteStorie);
+
+router.get("/filter", storyController.alphabetical);
+
+router.get("/time", storyController.sortTime);
 module.exports = router;
 
 router.get("/genre/:genre", storyController.getGenre);

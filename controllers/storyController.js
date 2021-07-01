@@ -114,6 +114,27 @@ exports.deleteStorie = async (req, res) => {
   }
 };
 
+//Filter Alphabetically
+exports.alphabetical = async (req, res) => {
+  try {
+    await Story.find((err, story) => {
+      res.json(story);
+    }).sort({ title: 1 });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
+//Sort By Time
+exports.sortTime = async (req, res) => {
+  try {
+    await Story.find((err, time) => {
+      res.json(time);
+    }).sort({ createdAt: 1 });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
 exports.getGenre = async (req, res) => {
   await Story.find((err, stories) => {
     res.json(stories);
