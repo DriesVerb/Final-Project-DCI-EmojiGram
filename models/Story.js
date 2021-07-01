@@ -1,20 +1,21 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const storySchema = new Schema({
+  author: String,
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
 
   emojis: [],
   title: String,
   text: String,
   richText: String,
-  
+
   createdBy: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
   genre: String,
   subGenre: String,
@@ -47,5 +48,5 @@ const storySchema = new Schema({
   },
 });
 
-const Story = mongoose.model('Story', storySchema);
+const Story = mongoose.model("Story", storySchema);
 module.exports = Story;
