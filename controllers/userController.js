@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const Story = require("../models/Story");
-
+const bcrypt = require("bcrypt");
 // test
 exports.test = (req, res) => {
   res.json({ msg: "this route works" });
@@ -21,17 +21,17 @@ exports.userProfile = async (req, res) => {
   }
 };
 
+
 //Edit Profile
 exports.editProfile = async (req, res) => {
   // console.log(req.body);
   const { username, name, email, password, location, avatar } = req.body;
-
   //Build Profile Object by initializing an Object
   const profileFields = {};
   if (username) profileFields.username = username;
   if (name) profileFields.name = name;
   if (email) profileFields.email = email;
-  if (password) profileFields.password = password;
+  if (password) profileFields.password = password
   if (location) profileFields.location = location;
   if (avatar) profileFields.avatar = avatar;
   try {
@@ -40,12 +40,10 @@ exports.editProfile = async (req, res) => {
     // check if profile exits
     if (!profile) return res.status(404).json({ msg: "User not found" });
     // console.log(profile);
-
     // Making sure its the user profile
     // if (profile.user.toString() !== req.user.id) {
     //   return res.status(401).json({ mgs: "Not authorized" });
     // }
-
     //calling from User Model to update
     //setting the profileFields above
     profile = await User.findByIdAndUpdate(
@@ -53,6 +51,7 @@ exports.editProfile = async (req, res) => {
       { $set: profileFields },
       { new: true }
     );
+   
     // update User Profile
     res.json(profile);
   } catch (err) {
@@ -61,11 +60,19 @@ exports.editProfile = async (req, res) => {
   }
 };
 
-exports.myStories = (req, res) => {
-  Story.find((err, data) => {
-    if (err) throw err.message;
+exports.myStories = async (req, res) => {
+  const user = req.user.id
+  try {
+    const stories =  Story.find({user:user}, (err,data)=>{
     res.json(data);
-  });
+    })
+    
+  } catch (err) {
+    console.error(err.message)
+        res.status(500).send('Server Error')
+  }
+  
+
 };
 
 exports.followers = (req, res) => {

@@ -10,10 +10,10 @@ import {
   STORY_PUBLISH,
   ADD_STORY,
   DELETE_STORY,
-  EDIT_STORY,
+  // EDIT_STORY,
   //  SET_STORY ,
   //  CLEAR_EDITEDSTORY ,
-  UPDATE_STORY,
+  // UPDATE_STORY,
   //  CLEAR_STORY ,
   SET_EDITEDSTORY,
   CLEAR_EDITEDSTORY,
@@ -85,7 +85,29 @@ const StoryState = (props) => {
     } catch (err) {
       dispatch({ type: STORY_ERROR });
     }
-  };
+  }
+//////////////////////////////////////////////////////////////////////
+
+const publishStoryPublic = async story =>{
+  
+  try {
+    const res = await axios.get("/user/story/publishedStory")
+    dispatch({
+      type: STORY_PUBLISH,
+      payload: res.data,
+    });
+  }catch (err) {
+      dispatch({ type: STORY_ERROR})
+    }
+  }
+
+
+
+   //Show Story
+  
+ /*  const showStory = async id => {
+        
+  }; */
   //////////////////////////////////////////////////////////////////////
   //Show Story
 
@@ -176,6 +198,7 @@ const StoryState = (props) => {
         stories: state.stories,
         addStory,
         publishStory,
+        publishStoryPublic,
         deleteStory,
         showStory,
         singleStory: state.singleStory,

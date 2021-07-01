@@ -5,6 +5,10 @@ import { devtools } from "zustand/middleware";
 import storySlice from "./slices/storySlice";
 import emojiSlice from "./slices/emojiSlice";
 
+// genre
+import { mainGenreSlice } from "./slices/genreSlice";
+
 // export to store
 export const storyStore = create(devtools(storySlice));
 export const emojiStore = create(devtools(emojiSlice));
+export const genreStore = create(devtools(mainGenreSlice));

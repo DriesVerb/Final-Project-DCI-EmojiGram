@@ -15,6 +15,7 @@ const DB = process.env.DB_LINK;
 // add your own db link
 mongoose
 
+<<<<<<< HEAD
   .connect(
     'mongodb+srv://admin:admin1234@fbw41.txtbm.mongodb.net/finalProject?retryWrites=true&w=majority',
     {
@@ -24,6 +25,15 @@ mongoose
       useUnifiedTopology: true,
     }
   )
+=======
+  .connect("mongodb+srv://admin:admin21@cluster0.cdluj.mongodb.net/final-project", {
+
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
+>>>>>>> d880ec3b067df5dae1cbd17fb402fb79d68a63ae
 
   .then(() => {
     console.log(`DB connection successful`);
