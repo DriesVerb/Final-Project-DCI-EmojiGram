@@ -53,6 +53,7 @@ function Contactus() {
             onChange={getValue}
             name="username"
             value={stateEmail.username}
+            required
           />
 
           <label> Your Message:</label>
@@ -69,6 +70,7 @@ function Contactus() {
             onChange={getValue}
             name="email"
             value={stateEmail.email}
+            required
           />
 
           <button className="btn btn-success" type="submit">

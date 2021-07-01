@@ -1,4 +1,3 @@
-import { STATES } from "mongoose";
 import React, { Fragment, useContext, useEffect } from "react";
 import {
   Navbar,
@@ -23,7 +22,6 @@ function navbar() {
   const onLogout = () => {
     logout();
     clearProfile();
-   
   };
 
   const userLinks = (
@@ -37,11 +35,11 @@ function navbar() {
           <Nav style={{ maxHeight: "100px" }} navbarScroll>
             <li className="ml-2">
               <a className="nav-link" href="#!">
-                Hello{"   "}
+                Hello{" "}
                 {user &&
                   user.username.charAt(0).toUpperCase() +
                     user.username.slice(1)}
-              
+                <span className="sr-only">(current)</span>
               </a>
             </li>
             <NavDropdown title="" id="navbarScrollingDropdown">
