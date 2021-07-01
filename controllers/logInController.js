@@ -42,6 +42,8 @@ exports.logInPost = async (req, res) => {
     const payload = {
       user: {
         id: user.id,
+        // added to test username
+        name: user.username,
       },
     };
     const jwtSecret = process.env.JWT_SECRET;
