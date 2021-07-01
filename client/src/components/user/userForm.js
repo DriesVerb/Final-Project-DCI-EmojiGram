@@ -2,6 +2,7 @@ import React, { useState, Fragment, useContext, useEffect } from "react";
 import ProfileContext from "../../context/profile/profileContext";
 
 const userForm = () => {
+  
   const profileContext = useContext(ProfileContext);
   const { current, clearAll, editProfile } = profileContext;
 

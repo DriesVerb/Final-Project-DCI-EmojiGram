@@ -85,43 +85,49 @@ app.get(
 //! Email sent by the customer from the contactus.js
 app.post('/sendEmail', (req, res) => {
   console.log(req.body);
-  const { username, message, email } = req.body;
+  const { username, message, email} = req.body;
+  
   // const user = User.findOne({ message: req.body.message })
   // user.message = req.body.message;
   // console.log(user)
 
   sgMail.setApiKey(process.env.API_KEY_ID);
+  //! email sent admin to user
+
   const msg = {
-    to: email,
-    from: process.env.EMAIL_FROM_TO,
+    to:email,
+    from: process.env.EMAIL_TO_FROM,
     subject: 'mail sent by the Admin account',
     templateId: process.env.TEMPLATE_EMAIL_ID,
   };
-
-  //!admin msg
+  //!mail receive by the admim from the user account
   const adminMsg = {
-    to: process.env.EMAIL_TO_FROM,
-    from: email,
+    to: process.env.EMAIL_FROM_TO, // admin
+    from: {
+      $email
+    },
     subject: 'Mail sent by customer',
-    html: `<p>${message}</p>`,
+    html: `<p>${username}</p>,
+    <p>${message}</p>`,
   };
+
+  sgMail.send(msg).then(() => {
+    console.log('Email sent successfully to the user');
+    tls:{
+      emailUnauthorized: false
+    }
+  });
+  // .catch((err) => console.log(err));
+
+  //mail sent to the admin account
   sgMail
-    .send(msg)
+    .send(adminMsg)
     .then(() => {
-      console.log('Email sent successfully to the user');
-      sgMail
-        .send(adminMsg)
-        .then(() => {
-          console.log(' msg sent to Admin!!');
-        })
-        .catch((err) => console.log(err));
-      res.json('');
+      console.log(' msg sent to Admin!!');
     })
     .catch((err) => console.log(err));
+  res.json();
 });
-
-
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

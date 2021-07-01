@@ -29,9 +29,9 @@ function Contactus() {
       setStateEmail({
         username: '',
         message: '',
-        email: '',
+        email: '', 
         confirm:
-          'Thank you!!! An Email has been sent to your mailbox. Thank you to follow the steps to contact our Support Team',
+          'Thank you!!! An Email confirmation has been sent to your mailbox.'
       });
     });
   };
@@ -53,6 +53,7 @@ function Contactus() {
             onChange={getValue}
             name='username'
             value={stateEmail.username}
+            required
           />
 
           <label> Your Message:</label>
@@ -61,14 +62,16 @@ function Contactus() {
             onChange={getValue}
             name='message'
             value={stateEmail.message}
+            required
           />
 
           <label onSubmit={sendEmail}>Your Email</label>
           <input
-            type='text'
+            type='email'
             onChange={getValue}
             name='email'
             value={stateEmail.email}
+            required
           />
 
           <button className='btn btn-success' type='submit'>

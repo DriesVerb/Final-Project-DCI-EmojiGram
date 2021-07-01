@@ -12,9 +12,9 @@ function YourStories() {
 
   useEffect(() => {
 
-    publishStory ()
-  }, []);
-
+    publishStory()
+    
+  }, [stories]);
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)

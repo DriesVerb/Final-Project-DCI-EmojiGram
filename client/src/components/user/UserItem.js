@@ -1,7 +1,7 @@
-import React, { Fragment, useContext, useEffect } from "react";
-import ProfileContext from "../../context/profile/profileContext";
+import React, { Fragment, useContext, useEffect } from 'react';
+import ProfileContext from '../../context/profile/profileContext';
 
-const UserItem = ({}) => {
+const UserItem = () => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
@@ -35,18 +35,16 @@ const UserItem = ({}) => {
 
       <p>
         <button
-          type="submit"
-          className="btn btn-dark btn-sm ml-3"
-          onClick={() => setCurrent(user)}
-        >
+          type='submit'
+          className='btn btn-dark btn-sm ml-3'
+          onClick={() => setCurrent(user)}>
           Edit
         </button>
         <button
-          type="submit"
-          value="Submit"
-          className="btn btn-danger btn-sm ml-5"
-          onClick={onDelete}
-        >
+          type='submit'
+          value='Submit'
+          className='btn btn-danger btn-sm ml-5'
+          onClick={onDelete}>
           Delete
         </button>
       </p>
