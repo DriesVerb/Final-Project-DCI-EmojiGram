@@ -151,19 +151,19 @@ exports.alphabetical = async (req, res) => {
     }
   };
 
-  //Sort By Likes
-  // exports.sortLikes = async (req, res) => {
-  //   try {
-  //     await Story.find((err, like) => {
-  //       res.json(like);
-  //     })
-  //       .sort([["_id", -1]])
-  //       .select("likes _id");
-  //   } catch (err) {
-  //     console.error(err.message);
-  //     res.status(500).send("Server Error");
-  //   }
-  // };
+  // Sort By Likes
+  exports.sortLikes = async (req, res) => {
+    try {
+      await Story.find((err, like) => {
+        res.json(like);
+      })
+        .sort([["_id", -1]])
+        .select("likes _id");
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  };
 
   //Search Author
   // exports.author = async (req, res) => {
