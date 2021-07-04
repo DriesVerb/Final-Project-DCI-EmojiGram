@@ -85,7 +85,29 @@ const StoryState = (props) => {
     } catch (err) {
       dispatch({ type: STORY_ERROR });
     }
-  };
+  }
+//////////////////////////////////////////////////////////////////////
+
+const publishStoryPublic = async story =>{
+  
+  try {
+    const res = await axios.get("/user/story/publishedStory")
+    dispatch({
+      type: STORY_PUBLISH,
+      payload: res.data,
+    });
+  }catch (err) {
+      dispatch({ type: STORY_ERROR})
+    }
+  }
+
+
+
+   //Show Story
+  
+ /*  const showStory = async id => {
+        
+  }; */
   //////////////////////////////////////////////////////////////////////
   //Show Story
 
@@ -176,6 +198,7 @@ const StoryState = (props) => {
         stories: state.stories,
         addStory,
         publishStory,
+        publishStoryPublic,
         deleteStory,
         showStory,
         singleStory: state.singleStory,

@@ -19,9 +19,12 @@ exports.create = async (req, res) => {
 
 exports.published = async (req, res) => {
   try {
-    const publicStories = await Story.find().sort({
-      date: -1,
-    });
+    const publicStories = await Story.find()
+      .sort({
+        date: -1,
+      })
+      .populate("user")
+      .limit(5);
     res.json(publicStories);
   } catch (err) {
     console.error(err.message);
@@ -124,34 +127,61 @@ exports.alphabetical = async (req, res) => {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
-};
-//Sort By Time
-exports.sortTime = async (req, res) => {
-  try {
-    await Story.find((err, time) => {
-      res.json(time);
-    }).sort({ createdAt: 1 });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-};
 
-//Sort By Likes
-exports.sortLikes = async (req, res) => {
-  try {
-    await Story.find((err, like) => {
-      res.json(like);
-    }).sort({ likes: -1 });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-};
-exports.getGenre = async (req, res) => {
-  await Story.find((err, stories) => {
-    res.json(stories);
-  })
-    .where("genre")
-    .equals(req.params.genre);
+  //Filter Alphabetically/number
+  // exports.selectNumber = async (req, res) => {
+  //   try {
+  //     let number = await Story.find(req.params.number, (err, numbers));
+  //     res.json(numbers).limit(req.params.number);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //     res.status(500).send("Server Error");
+  //   }
+  // };
+
+  //Sort By Time
+  exports.sortTime = async (req, res) => {
+    try {
+      await Story.find((err, time) => {
+        res.json(time);
+      }).sort({ createdAt: -1 });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  };
+
+  //Sort By Likes
+  // exports.sortLikes = async (req, res) => {
+  //   try {
+  //     await Story.find((err, like) => {
+  //       res.json(like);
+  //     })
+  //       .sort([["_id", -1]])
+  //       .select("likes _id");
+  //   } catch (err) {
+  //     console.error(err.message);
+  //     res.status(500).send("Server Error");
+  //   }
+  // };
+
+  //Search Author
+  // exports.author = async (req, res) => {
+  //   try {
+  //     await Story.author.find((err, author) => {
+  //       res.json(author);
+  //     })({ $text: { $search: "author" } });
+  //   } catch (err) {
+  //     console.error(err.message);
+  //     res.status(500).send("Server Error");
+  //   }
+  // };
+
+  exports.getGenre = async (req, res) => {
+    await Story.find((err, stories) => {
+      res.json(stories);
+    })
+      .where("genre")
+      .equals(req.params.genre);
+  };
 };

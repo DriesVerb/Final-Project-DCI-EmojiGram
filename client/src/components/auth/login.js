@@ -12,8 +12,8 @@ function Login(props) {
   const { login, isAuthenticated ,error, clearErrors, } = authContext;
   const { setAlert } = alertContext;
   const [user, setUser] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const { email, password } = user;
 
@@ -33,7 +33,6 @@ function Login(props) {
     // eslint-disable-next-line
   }, [isAuthenticated, props.history, error, user]);
 
-
   const getData = (e) => {
     setUser({
       ...user,
@@ -42,8 +41,8 @@ function Login(props) {
   };
 
   const submToServer = () => {
-    if (email === "" || password === "") {
-      setAlert("Please fill in all fields", "warning");
+    if (email === '' || password === '') {
+      setAlert('Please fill in all fields', 'warning');
     } else {
       login({
         email,
@@ -57,10 +56,9 @@ function Login(props) {
         onSubmit={(e) => {
           e.preventDefault();
           submToServer();
-        }}
-      >
+        }}>
         <h2>Login</h2>
-        <label htmlFor="email">Email</label>
+        <label htmlFor='email'>Email</label>
         <input
           value={email}
           type="text"
@@ -69,7 +67,7 @@ function Login(props) {
           onChange={getData}
         />
         <br />
-        <label htmlFor="password">Password</label>
+        <label htmlFor='password'>Password</label>
         <input
           value={password}
           type="password"
@@ -77,29 +75,31 @@ function Login(props) {
           placeholder="Your Password.."
           onChange={getData}
         />
-        <button type="submit" className="btn btn-success">
+        <button type='submit' className='btn btn-success'>
           Login
         </button>
+
+        <a href="http://localhost:3000/resetpassword" target="_blank">
+          Reset Password
+        </a>
+
       </form>
       {/* <button>Facebook</button>
       <button>Instagram</button>
       <button>Github</button> */}
       <a
-        href="http://localhost:5000/login/passport/github"
-        className="fab-fa-github btn btn-dark font-weight-bold "
-      >
+        href='http://localhost:5000/login/passport/github'
+        className='fab-fa-github btn btn-dark font-weight-bold '>
         Github
       </a>
       <a
-        href="http://localhost:5000/login/passport/instagram"
-        className="btn btn-danger ml-4 font-weight-bold"
-      >
+        href='http://localhost:5000/login/passport/instagram'
+        className='btn btn-danger ml-4 font-weight-bold'>
         Instagram
       </a>
       <a
-        href="http://localhost:5000/login/passport/facebook"
-        className="btn btn-primary ml-4 font-weight-bold "
-      >
+        href='http://localhost:5000/login/passport/facebook'
+        className='btn btn-primary ml-4 font-weight-bold '>
         Facebook
       </a>
     </div>

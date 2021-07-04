@@ -1,16 +1,14 @@
 import React, { useState, Fragment, useContext, useEffect } from "react";
 import ProfileContext from "../../context/profile/profileContext";
-import { Button} from 'react-bootstrap';
+import { Button } from "react-bootstrap";
 const userForm = (props) => {
   const profileContext = useContext(ProfileContext);
   const { current, clearAll, editProfile } = profileContext;
 
   useEffect(() => {
-    console.log(current)
-    if (current !== null) 
-      setUser(current);
- 
-    else (
+    console.log(current);
+    if (current !== null) setUser(current);
+    else
       setUser({
         name: "",
         username: "",
@@ -18,12 +16,8 @@ const userForm = (props) => {
         password: "",
         age: "",
         location: "",
-      }));
-    
+      });
   }, [profileContext, current]);
-
-
-
 
   const [user, setUser] = useState({
     name: "",
@@ -40,8 +34,8 @@ const userForm = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-      editProfile(user);
-    console.log(user)
+    editProfile(user);
+    console.log(user);
     props.history.push("/profile");
   };
 
@@ -115,7 +109,9 @@ const userForm = (props) => {
           <option defaultValue="Italy">Italy</option>
         </select>
 
-        <Button variant="info" className="pl-3 pr-4 ml-2" type="submit" >Update</Button>
+        <Button variant="info" className="pl-3 pr-4 ml-2" type="submit">
+          Update
+        </Button>
 
         {current && (
           <div>
@@ -123,7 +119,7 @@ const userForm = (props) => {
               Clear
             </button>
           </div>
-        )} 
+        )}
       </form>
     </Fragment>
   );

@@ -17,8 +17,10 @@ router.put("/editStory/:id", auth, storyController.edit);
 router.delete("/delete/:id", auth, storyController.deleteStorie);
 
 router.get("/filter", storyController.alphabetical);
+// router.get("/filter/:number", storyController.selectNumber);
 router.get("/genre/:genre", storyController.getGenre);
 
 router.get("/time", storyController.sortTime);
-router.get("/likes", storyController.sortLikes);
+// router.get("/likes/:id", storyController.sortLikes);
+// router.put("/author", storyController.author);
 module.exports = router;

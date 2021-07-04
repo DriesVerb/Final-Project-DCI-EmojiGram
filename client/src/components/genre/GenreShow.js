@@ -1,6 +1,10 @@
 import React, { Fragment, useEffect } from "react";
 import { genreStore } from "../../store";
 
+// import the paginate Machine
+import { paginateMachine } from "../../utils/paginateMachine";
+import { useMachine } from "@xstate/react";
+
 // components
 import Spinner from "../layout/Spinner";
 
@@ -12,6 +16,11 @@ const GenreShow = ({ genre }) => {
   useEffect(() => {
     getStoriesByGenre(genre);
   }, [genre]);
+
+  const machine = paginateMachine();
+  const [current, send] = useMachine(machine);
+
+  // set up Machine
 
   return (
     <Fragment>

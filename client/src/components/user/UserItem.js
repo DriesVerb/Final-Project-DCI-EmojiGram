@@ -3,21 +3,19 @@ import ProfileContext from "../../context/profile/profileContext";
 
 const UserItem = (props) => {
   const profileContext = useContext(ProfileContext);
-  const { user, deleteProfile, setCurrent, clearCurrent, getProfile} =
+  const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
 
   useEffect(() => {
-    
-      
-    { !user ? (props.history.push("/")) : getProfile(_id); }
+    {
+      !user ? props.history.push("/") : getProfile(_id);
+    }
     // eslint-disable-next-line
   }, []);
 
   const onEdit = () => {
     setCurrent(user);
     props.history.push("/userform");
-
-  
   };
 
   const onDelete = () => {
@@ -56,7 +54,7 @@ const UserItem = (props) => {
         >
           Edit
         </button>
-      <button
+        <button
           type="submit"
           value="Submit"
           className="btn btn-danger btn-sm ml-5"
