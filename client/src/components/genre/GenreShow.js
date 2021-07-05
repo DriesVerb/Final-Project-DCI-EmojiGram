@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from "react";
 import { genreStore } from "../../store";
 
 // components
-import Spinner from "../layout/Spinner";
 import PaginateComponent from "../../utils/PaginateComponent";
 
 const GenreShow = ({ genre }) => {
