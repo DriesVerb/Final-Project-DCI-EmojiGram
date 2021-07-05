@@ -26,15 +26,22 @@ const StoryEditor = () => {
     genre: "default",
     text: "",
     _id: "",
+    emojis: [],
   });
 
-  const { title, genre, text, _id } = formData;
+  const { title, genre, text, _id, emojis } = formData;
 
   useEffect(() => {
-    if (emojisGlobal.length === 0) getEmojis();
+    if (emojisGlobal.length === 0 && emojis.length === 0) getEmojis();
     ////////////////////////////////////////////////////////////////////////////////
     if (storyToEdit !== null) setFromData(storyToEdit);
-    else setFromData({ title: "", genre: "default", text: "" });
+    else
+      setFromData({
+        title: "",
+        genre: "default",
+        text: "",
+        emojis: emojisGlobal,
+      });
   }, [StoryContext, storyToEdit, clearEditStory]);
   ////////////////////////////////////////////////////////////////////////////////
   let history = useHistory();
@@ -72,28 +79,46 @@ const StoryEditor = () => {
 
         <p>You will be a writing a story inspired by these emojis:</p>
         <div className="test">
-          {emojisGlobal.length > 0 &&
-            emojisGlobal.map((emoji) => {
-              return (
-                <div className="emojiSize" key={emoji._id}>
-                  {emoji.character}
-                </div>
-              );
-            })}
+          {emojis.length > 0 ? (
+            <div>
+              {emojis.map((emoji) => {
+                return (
+                  <div className="emojiSize" key={emoji._id}>
+                    {emoji.character}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div>
+              {emojisGlobal.length > 0 &&
+                emojisGlobal.map((emoji) => {
+                  return (
+                    <div className="emojiSize" key={emoji._id}>
+                      {emoji.character}
+                    </div>
+                  );
+                })}
+            </div>
+          )}
         </div>
         <div>
           <label htmlFor="title">Title of the Piece:</label>
           <input
             type="text"
             name="title"
-            value={title}
+            defaultValue={title}
             onChange={(e) => onChange(e)}
           />
         </div>
         <div>
           <div>
             <label htmlFor="genre">Genre</label>
-            <select name="genre" value={genre} onChange={(e) => onChange(e)}>
+            <select
+              name="genre"
+              defaultValue={genre}
+              onChange={(e) => onChange(e)}
+            >
               <option value="default">- Choose a genre -</option>
               <option value="Fantasy">Fantasy</option>
               <option value="Horror">Horror</option>
@@ -115,7 +140,7 @@ const StoryEditor = () => {
           ></label>
           <textarea
             name="text"
-            value={text}
+            defaultValue={text}
             onChange={(e) => onChange(e)}
             cols="90"
             rows="45"
@@ -124,7 +149,7 @@ const StoryEditor = () => {
           <input
             type="text"
             name="_id"
-            value={_id}
+            defaultValue={_id}
             onChange={(e) => onChange(e)}
           />
           {/* ////////////////////////////////////////////////// */}
