@@ -48,6 +48,11 @@
 
 .emojiSize {
   font-size: 5rem;
+  position: relative;
+}
+
+.emoji__relative {
+  position: absolute;
 }
 
 .test {

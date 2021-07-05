@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 // components
 import Spinner from "../../components/layout/Spinner";
+import EmojiChar from "./EmojiChar";
 
 // store
 import { emojiStore } from "../../store";
@@ -31,11 +32,7 @@ const EmojiCTA = () => {
         <div className="test">
           {emojis.length > 0 &&
             emojis.map((emoji) => {
-              return (
-                <div className="emojiSize" key={emoji._id}>
-                  {emoji.character}
-                </div>
-              );
+              return <EmojiChar key={emoji._id} emoji={emoji} />;
             })}{" "}
         </div>
       )}
