@@ -71,14 +71,6 @@ exports.myStories = async (req, res) => {
   }
 };
 
-// exports.followers = (req, res) => {
-//   console.log(req.params.id);
-//   User.findById(req.params.id, (err, data) => {
-//     if (err) throw err.message;
-//     res.json(data.followers);
-//   });
-// };
-
 //Delete Profile
 exports.deleteProfile = async (req, res) => {
   try {
