@@ -93,7 +93,11 @@ function App() {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/genre" component={GenreMainPage} />
                 <Route exact path="/signup" component={SignUp} />
-                <PrivateRoute path="/UserInterface" component={UserInterface} />
+                <PrivateRoute
+                  exact
+                  path="/UserInterface"
+                  component={UserInterface}
+                />
                 <Route path="/profile" component={UserItem} />
 
                 <Route path="/profile" exact component={UserItem} />
