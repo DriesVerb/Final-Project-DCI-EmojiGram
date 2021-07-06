@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, Fragment } from "react";
 import { useParams } from "react-router-dom";
-import "./showStory.css";
+
 import { Button } from "react-bootstrap";
 import StoryContext from "../../context/story/storyContext";
 function showStory(props) {
@@ -38,8 +38,8 @@ function showStory(props) {
   return (
     <Fragment>
       {singleStory && (
-        <div className="showStory">
-          <div className="storyContainer">
+        <div className="show-story">
+          <div className="show-story__Container">
             <h2 className="text-center">
               {singleStory.title &&
                 singleStory.title.charAt(0).toUpperCase() +

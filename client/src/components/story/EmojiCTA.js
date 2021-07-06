@@ -29,7 +29,7 @@ const EmojiCTA = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="test">
+        <div className="emoji__row">
           {emojis.length > 0 &&
             emojis.map((emoji) => {
               return <EmojiChar key={emoji._id} emoji={emoji} />;

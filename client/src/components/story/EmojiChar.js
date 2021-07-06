@@ -5,9 +5,9 @@ const EmojiChar = ({ emoji }) => {
 
   return (
     <Fragment>
-      <div className="test">
+      <div className="emoji__row">
         <div
-          className="emojiSize"
+          className="emoji__character"
           onMouseEnter={(e) => {
             e.preventDefault();
             setHover(true);
@@ -19,7 +19,7 @@ const EmojiChar = ({ emoji }) => {
         >
           {emoji.character}
           {hover ? (
-            <div className="emoji__relative">{emoji.unicodeName}</div>
+            <div className="emoji__tooltip">{emoji.unicodeName}</div>
           ) : null}
         </div>
       </div>

@@ -26,8 +26,8 @@ function navbar() {
 
   const userLinks = (
     <Fragment>
-      <Navbar bg="light" expand="lg" className="nav">
-        <Navbar.Brand href="/" className=" brand text-bold">
+      <Navbar bg="light" expand="lg" className="navbar">
+        <Navbar.Brand href="/" className="navbar__brand text-bold">
           EmojiGram
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

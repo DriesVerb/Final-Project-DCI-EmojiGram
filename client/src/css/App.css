@@ -1,0 +1,315 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar {
+  width: 100vw;
+  font-size: 1rem;
+}
+.navbar__brand {
+  font-size: 3rem;
+}
+
+.user-card__img {
+  height: 20rem;
+  width: 20rem;
+}
+
+.footer__container {
+  float: left;
+  width: 33.33%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+}
+.genre__row {
+  display: flex;
+  justify-content: space-around;
+}
+.genre__card {
+  height: 7rem;
+  cursor: pointer;
+  width: 10rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.genre__story--card {
+  width: 50%;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #0a0a0a;
+  margin: 1rem;
+}
+
+.pagination__btn {
+  width: 100%;
+  height: 4rem;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+.pagination__btn a {
+  padding: 1rem;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #8ecae6;
+  color: #8ecae6;
+  cursor: pointer;
+}
+.pagination__btn a:hover {
+  color: #e7f0ed;
+  background-color: #8ecae6;
+}
+.pagination__active a {
+  color: #e7f0ed;
+  background-color: #8ecae6;
+}
+
+.preview__paragraph {
+  text-align: left;
+}
+
+.show-story {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #e7f0ed;
+  padding: 2.5rem;
+}
+.show-story__container {
+  width: 80%;
+  background-color: #e7f0ed;
+  padding: 5rem;
+  border-radius: 1rem;
+  box-shadow: 0px 2px 6px -2px #0a0a0a;
+}
+
+.story-card {
+  position: relative;
+  width: 50%;
+  margin: 5px;
+  padding: 1.5rem;
+  height: 25rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 6px -6px #0a0a0a;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+.story-card:hover {
+  box-shadow: 0 1rem 7px -5px #0a0a0a;
+}
+.story-card__footer {
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.story-card__genre::after {
+  content: attr(data);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 8px;
+  max-width: calc((100%) - 60px);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e7f0ed;
+  background-color: #fb8500;
+  box-sizing: border-box;
+  border-radius: 0 10px 0 0;
+}
+.story-card__text {
+  overflow: hidden;
+  width: 100%;
+  line-height: 1.4rem;
+}
+.story-card__emojis {
+  padding: 0px 1rem;
+}
+.story-card__fade {
+  position: relative;
+  height: 5.6rem;
+}
+.story-card__fade::after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 1.4rem;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 80%);
+}
+.story-card__like, .story-card__comments {
+  padding: 0px 2rem;
+  color: grey;
+}
+.story-card span i, .story-card h3 span {
+  color: grey;
+}
+
+.emoji__row {
+  display: flex;
+  justify-content: center;
+}
+.emoji__character {
+  font-size: 5rem;
+  position: relative;
+}
+.emoji__tooltip {
+  position: absolute;
+}
