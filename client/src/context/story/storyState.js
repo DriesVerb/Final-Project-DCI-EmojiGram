@@ -102,6 +102,20 @@ const publishStoryPublic = async story =>{
   }
 
 
+const publishStoryPublicGenre = async story =>{
+  
+  try {
+    const res = await axios.get("/user/story/genre/:genre")
+    dispatch({
+      type: STORY_PUBLISH,
+      payload: res.data,
+    });
+  }catch (err) {
+      dispatch({ type: STORY_ERROR})
+    }
+  }
+
+
 
    //Show Story
   
@@ -201,6 +215,7 @@ const publishStoryPublic = async story =>{
         publishStoryPublic,
         deleteStory,
         showStory,
+        publishStoryPublicGenre,
         singleStory: state.singleStory,
 
         setEditedStory,

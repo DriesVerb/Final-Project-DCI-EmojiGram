@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const storyController = require("../controllers/storyController");
 const User = require("../models/User");
+
 // /user/story/
 
 const auth = require("../middleware/auth");
@@ -19,6 +20,8 @@ router.delete("/delete/:id", auth, storyController.deleteStorie);
 router.get("/filter", storyController.alphabetical);
 
 router.get("/time", storyController.sortTime);
-module.exports = router;
 
 router.get("/genre/:genre", storyController.getGenre);
+module.exports = router;
+
+

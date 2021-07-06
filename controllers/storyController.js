@@ -18,13 +18,16 @@ exports.create = async (req, res) => {
 //publishe sroty
 
 exports.published = async (req, res) => {
+
   try {
     const publicStories = await Story.find()
+      
       .sort({
-        date: -1,
+        createdAt: -1,
       })
       .populate("user")
       .limit(5);
+      
     res.json(publicStories);
   } catch (err) {
     console.error(err.message);
