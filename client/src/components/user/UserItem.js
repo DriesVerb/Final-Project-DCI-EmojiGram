@@ -7,9 +7,8 @@ const UserItem = (props) => {
     profileContext;
 
   useEffect(() => {
-    {
-      !user ? props.history.push("/") : getProfile(_id);
-    }
+    !user ? props.history.push("/") : getProfile(_id);
+
     // eslint-disable-next-line
   }, []);
 
@@ -22,7 +21,7 @@ const UserItem = (props) => {
     deleteProfile(_id);
     clearCurrent();
   };
-  const { _id, name, username, email, age, location, password } = user;
+  const { _id, name, username, email, age, location } = user;
   return (
     <Fragment>
       <ul>

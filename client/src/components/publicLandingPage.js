@@ -1,23 +1,16 @@
-import React, {useContext,useState,useEffect} from 'react'
-import './publicLandingPage.css'
-import StoryContext from '../context/story/storyContext'
-import Moment from 'react-moment';
+import React, { useContext, useEffect } from "react";
+import "./publicLandingPage.css";
+import StoryContext from "../context/story/storyContext";
 
- const PublicLandingPage = () => {
-
+const PublicLandingPage = () => {
     const storyContext = useContext(StoryContext)
     const {publishStoryPublic,  publishStoryPublicGenre, stories} = storyContext
+  useEffect(() => {
+    publishStoryPublic();
+  }, []);
 
+  return (
 
-    useEffect(()=>{
-        publishStoryPublic()
-        publishStoryPublicGenre()
-
-    },[])
-
-
-
-    return (
         <div className="PublicStories">
             <header className="header-publicStories"><h1 className="text-center">Story</h1></header>
             <div className="left-sidebar">Left Sidebar
@@ -68,3 +61,17 @@ import Moment from 'react-moment';
     )
 }
 export default PublicLandingPage
+   {/*            <p>
+                  <span key={id}>&nbsp;{emoji.character}</span>
+                ))}
+              </p>
+            </div>
+          );
+        })}
+      </main>
+      <div class="right-sidebar">Right Sidebar</div>
+    </div>
+  );
+};
+export default PublicLandingPage;
+ */}
