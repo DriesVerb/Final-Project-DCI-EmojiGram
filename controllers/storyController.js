@@ -130,26 +130,26 @@ exports.alphabetical = async (req, res) => {
 };
 
 // Filter story with specific number
-exports.selectNumber = (req, res, next) => {
-  const requestCount = req.query.count;
-  Story.find()
-    .countDocuments()
-    .then((count) => {
-      if (requestCount > count) {
-        const error = new Error("Invalid Request");
-        throw error;
-      }
-      //return stories while limiting to specific number
-      return Story.find().limit(Number(requestCount));
-    })
-    .then((stories) => {
-      res.status(200).json({ stories: stories });
-    })
-    .catch((err) => {
-      const status = error.statusCode || 500;
-      res.status(status).json({ error: err });
-    });
-};
+// exports.selectNumber = (req, res, next) => {
+//   const requestCount = req.query.count;
+//   Story.find()
+//     .countDocuments()
+//     .then((count) => {
+//       if (requestCount > count) {
+//         const error = new Error("Invalid Request");
+//         throw error;
+//       }
+//       //return stories while limiting to specific number
+//       return Story.find().limit(Number(requestCount));
+//     })
+//     .then((stories) => {
+//       res.status(200).json({ stories: stories });
+//     })
+//     .catch((err) => {
+//       const status = error.statusCode || 500;
+//       res.status(status).json({ error: err });
+//     });
+// };
 
 //Sort By Time
 exports.sortTime = async (req, res) => {

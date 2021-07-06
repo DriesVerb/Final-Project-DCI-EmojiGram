@@ -17,7 +17,7 @@ router.put("/editStory/:id", auth, storyController.edit);
 router.delete("/delete/:id", auth, storyController.deleteStorie);
 
 router.get("/filter", storyController.alphabetical);
-router.get("/select/?count={limit}", storyController.selectNumber);
+// router.get("/select/?count={limit}", storyController.selectNumber);
 router.get("/genre/:genre", storyController.getGenre);
 
 router.get("/time", storyController.sortTime);
