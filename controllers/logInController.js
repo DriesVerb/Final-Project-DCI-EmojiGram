@@ -58,4 +58,3 @@ exports.logInPost = async (req, res) => {
   }
 };
 
-exports.changePassword;

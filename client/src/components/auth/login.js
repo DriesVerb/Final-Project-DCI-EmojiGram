@@ -79,7 +79,7 @@ function Login(props) {
           Login
         </button>
 
-        <a href="http://localhost:3000/resetpassword" target="_blank">
+        <a href="http://localhost:3000/resetpassword">
           Reset Password
         </a>
 

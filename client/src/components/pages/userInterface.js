@@ -7,26 +7,6 @@ import "../../App.css";
 function userInterface() {
   return (
     <div>
-      {/* <nav className="navbar navbar-inverse">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <a className="navbar-brand" href="#!">
-              EmojiGram
-            </a>
-          </div>
-          <ul className="nav navbar-nav navbar-right ">
-            <li className="active">
-              <a href="/yourprofile">Lara</a>
-            </li>
-            <li>
-              <a href="/notifications">Notifications</a>
-            </li>
-            <li>
-              <a href="/messages">Messages</a>
-            </li>
-          </ul>
-        </div>
-      </nav> */}
 
       <div className="container-fluid">
         <div className="container">

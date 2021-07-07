@@ -13,6 +13,8 @@ const userSchema = new Schema({
 
   avatar: String,
 
+  
+
   following: [
     {
       type: ObjectId,
