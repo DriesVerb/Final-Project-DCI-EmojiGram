@@ -1,4 +1,5 @@
 const Story = require("../models/Story");
+const User = require("../models/User");
 
 //create sroty
 
@@ -44,7 +45,7 @@ exports.published = async (req, res) => {
 
 exports.show = async (req, res) => {
   try {
-    let story = await Story.findById(req.params.id);
+    let story = await Story.findById(req.params.id).populate('user');
     res.json(story);
     // console.log(data)
   } catch (err) {
@@ -90,7 +91,7 @@ exports.edit = async (req, res) => {
 
 //delete sroty
 
-exports.deleteStorie = async (req, res) => {
+exports.deleteStory = async (req, res) => {
   try {
     // let story = await Story.findById(req.params.id);
 
@@ -117,6 +118,7 @@ exports.deleteStorie = async (req, res) => {
   }
 };
 
+/////////////////////////////////////////////////////////////////////////////////////////////
 //Filter Alphabetically
 exports.alphabetical = async (req, res) => {
   try {
@@ -146,3 +148,114 @@ exports.getGenre = async (req, res) => {
     .where("genre")
     .equals(req.params.genre);
 };
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+exports.likeStory = async (req, res) => {
+
+  try {
+    const story = await Story.findById(req.params.id);
+
+    // Check if the post has already been liked
+    //some is like filtere but return boolean 
+    if (story.likes.some((like) => like.user.toString() === req.user.id)) {
+      return res.status(400).json({ msg: 'Post already liked' });
+    }
+    // unshhift is as push method but will put it on the begining
+    story.likes.unshift({ user: req.user.id });
+
+    await story.save();
+
+    return res.json(story.likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+exports.unlikeStory = async (req, res) => {
+
+  try {
+    const story = await Story.findById(req.params.id);
+
+    // Check if the post has not yet been liked
+    // some is like filtere but return boolean 
+    if (!story.likes.some((like) => like.user.toString() === req.user.id)) {
+      return res.status(400).json({ msg: 'Post has not yet been liked' });
+    }  
+    // remove the like
+    story.likes = story.likes.filter(
+      ({ user }) => user.toString() !== req.user.id
+    );
+
+
+    await story.save();
+
+    return res.json(story.likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+exports.addComment= async (req, res) => {
+
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    const story = await Story.findById(req.params.id).populate('user');
+
+    const newComment = {
+      text: req.body.text,
+      name: user.name,
+      avatar: user.avatar,
+      user: req.user.id
+    };
+     console.log (newComment)
+    story.comments.unshift(newComment);
+
+    await story.save();
+
+    res.json(story.comments);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+}
+  ;
+
+ /////////////////////////////////////////////////////////////////////////////////////////////
+exports.removeComment = async (req, res) =>{
+  
+  
+  try {
+  const story= await Story.findById(req.params.id);
+
+  // Pull out comment
+  const comment = story.comments.find(
+    (comment) => comment.id === req.params.comment_id
+  );
+  // Make sure comment exists
+  if (!comment) {
+    return res.status(404).json({ msg: 'Comment does not exist' });
+  }
+  // Check user
+  if (comment.user.toString() !== req.user.id) {
+    return res.status(401).json({ msg: 'User not authorized' });
+  }
+
+  story.comments = story.comments.filter(
+    ({ id }) => id !== req.params.comment_id
+  );
+
+  await story.save();
+
+  return res.json(story.comments);
+} catch (err) {
+  console.error(err.message);
+  return res.status(500).send('Server Error');
+}}

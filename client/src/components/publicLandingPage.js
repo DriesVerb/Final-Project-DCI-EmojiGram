@@ -16,7 +16,7 @@ import StoryContext from '../context/story/storyContext'
     return (
         <div className="PublicStories">
             <header className="header-publicStories"><h1 className="text-center">Story</h1></header>
-            <div class="left-sidebar">Left Sidebar</div>
+            <div className="left-sidebar">Left Sidebar</div>
                 <main>{
                     stories.map((story)=>{
                         return(
@@ -53,7 +53,7 @@ import StoryContext from '../context/story/storyContext'
                         )
                     })              
                 }</main>
-            <div class="right-sidebar">Right Sidebar</div>
+            <div className="right-sidebar">Right Sidebar</div>
 
         </div>
     )

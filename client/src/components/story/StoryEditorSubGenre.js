@@ -10,6 +10,8 @@ const StoryEditorSubGenre = ({ genre }) => {
 
   const getSubGenre = storyStore((state) => state.getSubGenre);
 
+  const subGenre = storyStore((state) => state.subGenre);
+
   const subGenres = {
     Fantasy: [
       "Alternate History",
