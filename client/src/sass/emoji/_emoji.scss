@@ -1,0 +1,15 @@
+.emoji {
+  &__row {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__character {
+    font-size: 5rem;
+    position: relative;
+  }
+
+  &__tooltip {
+    position: absolute;
+  }
+}

@@ -1,3 +1,4 @@
+
 import React, {useEffect,useState,useContext, Fragment} from 'react'
 // import axios from 'axios'
 import { useParams } from 'react-router-dom'
@@ -6,6 +7,7 @@ import { Button} from 'react-bootstrap';
 import StoryContext from '../../context/story/storyContext';
 import CommentForm from './CommentForm';
 import { Link } from "react-router-dom";
+
 function showStory(props) {
 
     const storyContext = useContext(StoryContext)
@@ -68,6 +70,7 @@ function showStory(props) {
     }
 
 // onClick = {onDelete(story._id)} 
+
 
     return (
         <Fragment>

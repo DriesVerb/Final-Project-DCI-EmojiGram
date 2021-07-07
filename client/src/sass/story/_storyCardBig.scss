@@ -1,0 +1,78 @@
+.story-card {
+  position: relative;
+  width: 50%;
+  margin: 5px;
+  padding: 1.5rem;
+  height: 25rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 6px -6px $main-black;
+  transition: 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 1rem 7px -5px $main-black;
+  }
+  &__footer {
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__genre {
+    &::after {
+      content: attr(data);
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 6px 8px;
+      max-width: calc((100%) - 60px);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $main-white;
+      background-color: $main-orange;
+      box-sizing: border-box;
+      border-radius: 0 10px 0 0;
+    }
+  }
+
+  &__text {
+    overflow: hidden;
+    width: 100%;
+    line-height: 1.4rem;
+  }
+
+  &__emojis {
+    padding: 0px 1rem;
+  }
+
+  &__fade {
+    position: relative;
+    height: 5.6rem;
+
+    &::after {
+      content: "";
+      text-align: right;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 70%;
+      height: 1.4rem;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1) 80%
+      );
+    }
+  }
+
+  &__like,
+  &__comments {
+    padding: 0px 2rem;
+    color: grey;
+  }
+
+  & span i,
+  & h3 span {
+    color: grey;
+  }
+}

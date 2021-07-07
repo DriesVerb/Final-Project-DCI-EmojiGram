@@ -40,13 +40,13 @@ const PreviewStory = (props) => {
       <h3>{genre}</h3>
       <div className="test">
         {emojis.map((emoji, index) => (
-          <div className="emojiSize" key={index}>
+          <div className="emoji__character" key={index}>
             {emoji.character}
           </div>
         ))}
       </div>
       <p
-        className="text-align-left"
+        className="preview__paragraph"
         dangerouslySetInnerHTML={{ __html: richText }}
       ></p>
     </div>

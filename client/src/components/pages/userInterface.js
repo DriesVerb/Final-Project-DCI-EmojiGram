@@ -1,7 +1,6 @@
 import React from "react";
 import Images from "../../img/minions1.jpg";
 import { Link } from "react-router-dom";
-import "../../App.css";
 
 // Navbar user interface
 function userInterface() {
@@ -32,7 +31,11 @@ function userInterface() {
         <div className="container">
           <div className="row">
             <div className="col-md">
-              <img className="img" src={Images} alt="userImage"></img>
+              <img
+                className="user-card__img"
+                src={Images}
+                alt="userImage"
+              ></img>
 
               <p>CREATE YOUR STORY</p>
               <Link to="/writestory" className="link">
@@ -45,7 +48,11 @@ function userInterface() {
         <div className="container">
           <div className="row">
             <div className="col-md">
-              <img className="img" src={Images} alt="userImage"></img>
+              <img
+                className="user-card__img"
+                src={Images}
+                alt="userImage"
+              ></img>
               <p>READ FRIENDS STORIES</p>
               <Link to="/friendStory" className="link">
                 <button className="btn btn-success">
@@ -59,7 +66,11 @@ function userInterface() {
         <div className="container">
           <div className="row">
             <div className="col-md">
-              <img className="img" src={Images} alt="userImage"></img>
+              <img
+                className="user-card__img"
+                src={Images}
+                alt="userImage"
+              ></img>
               <p>YOUR STORIES</p>
 
               <Link to="/yourstories" className="link">

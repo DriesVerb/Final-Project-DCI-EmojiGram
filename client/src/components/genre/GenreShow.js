@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { genreStore } from "../../store";
 
 // components
@@ -12,11 +12,26 @@ const GenreShow = ({ genre }) => {
     getStoriesByGenre(genre);
   }, [genre]);
 
-  // set up Machine
+  const [perPage, setPerPage] = useState(5);
 
+  const onChange = (e) => {
+    setPerPage(e.target.value);
+  };
   return (
     <Fragment>
-      <PaginateComponent data={stories} perPage={2} />
+      {stories.length === 0 ? (
+        <h2>There are no stories yet in the genre of {genre}!</h2>
+      ) : (
+        <div>
+          <label htmlFor="perPageInput">Stories per page</label>
+          <select name="perPage" value={perPage} onChange={onChange}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select>
+          <PaginateComponent data={stories} perPage={perPage} />
+        </div>
+      )}
     </Fragment>
   );
 };
