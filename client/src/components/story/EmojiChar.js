@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from "react";
 
+// components
+import EmojiToolTip from "./EmojiToolTip";
+
 const EmojiChar = ({ emoji }) => {
   const [hover, setHover] = useState(false);
 
@@ -18,9 +21,7 @@ const EmojiChar = ({ emoji }) => {
           }}
         >
           {emoji.character}
-          {hover ? (
-            <div className="emoji__tooltip">{emoji.unicodeName}</div>
-          ) : null}
+          {hover ? <EmojiToolTip unicodeName={emoji.unicodeName} /> : null}
         </div>
       </div>
     </Fragment>

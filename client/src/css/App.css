@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300;1,400&display=swap");
+body {
+  background-color: #e7f0ed;
+}
+
 .mb-xl {
   margin-bottom: 2rem;
 }
@@ -90,6 +94,17 @@ div {
   color: #0a0a0a;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(120deg) scale(0.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
 html,
 body,
 div,
@@ -173,7 +188,6 @@ audio,
 video {
   margin: 0;
   padding: 0;
-  border: 0;
   vertical-align: baseline;
 }
 
@@ -305,6 +319,12 @@ a {
   background-color: #8ecae6;
 }
 
+.spinner {
+  font-size: 5rem;
+  animation: spin 1s linear infinite;
+  z-index: -50;
+}
+
 .preview__paragraph {
   text-align: left;
 }
@@ -388,6 +408,13 @@ a {
   color: grey;
 }
 
+.emoji {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+}
 .emoji__row {
   display: flex;
   justify-content: center;
@@ -396,6 +423,31 @@ a {
   font-size: 6rem;
   position: relative;
 }
-.emoji__tooltip {
+.emoji__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emoji-tooltip {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  border: 1px solid #030301;
+  z-index: 50;
+  background-color: #ffb703;
+  height: 10rem;
+  width: 20rem;
+  padding: 1rem;
+  bottom: 75%;
+  left: 100%;
+}
+.emoji-tooltip__name {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #030301;
 }

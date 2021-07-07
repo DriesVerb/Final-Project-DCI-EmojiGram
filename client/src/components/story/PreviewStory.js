@@ -1,4 +1,3 @@
-import { useHistory } from "react-router-dom";
 import React, { useContext, useEffect } from "react";
 
 // store

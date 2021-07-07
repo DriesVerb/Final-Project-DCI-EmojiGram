@@ -14,6 +14,10 @@ $main-d-grey: #566246;
 $main-black: #0a0a0a;
 $main-d-black: #030301;
 
+body {
+  background-color: $main-white;
+}
+
 // MARGINS:
 // MARGIN VALUES
 
@@ -22,6 +26,15 @@ $margins: (
   "l": 1rem,
   "s": 0.5rem,
 );
+
+// z-index
+$z-front: 100;
+$z-middle: 50;
+$z-surface: 0;
+$z-background: -50;
+
+// border
+$main-border: 1px solid $main-d-black;
 
 // MARGIN BOTTOM
 
