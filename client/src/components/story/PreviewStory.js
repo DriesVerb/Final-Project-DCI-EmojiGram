@@ -17,7 +17,7 @@ const PreviewStory = (props) => {
   //////////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
-    console.log(storyToEdit);
+    console.log(emojis);
   }, []);
 
   const onClick = (e) => {

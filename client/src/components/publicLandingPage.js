@@ -1,16 +1,17 @@
-import React, {useContext,useState,useEffect} from 'react'
-import './publicLandingPage.css'
-import StoryContext from '../context/story/storyContext'
+import React, { useContext, useEffect } from "react";
+import "./publicLandingPage.css";
+import StoryContext from "../context/story/storyContext";
 
- const PublicLandingPage = () => {
+const PublicLandingPage = () => {
+  const storyContext = useContext(StoryContext);
+  const { publishStoryPublic, stories } = storyContext;
 
-    const storyContext = useContext(StoryContext)
-    const {publishStoryPublic, stories} = storyContext
+  useEffect(() => {
+    publishStoryPublic();
+  }, []);
 
+ 
 
-    useEffect(()=>{
-        publishStoryPublic()
-    },[])
 
 
     return (
@@ -59,3 +60,4 @@ import StoryContext from '../context/story/storyContext'
     )
 }
 export default PublicLandingPage
+

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 // components
 import Spinner from "../../components/layout/Spinner";
@@ -14,6 +15,13 @@ const EmojiCTA = () => {
   useEffect(() => {
     getEmojis();
   }, []);
+
+  let history = useHistory();
+
+  const writeThisStory = (e) => {
+    e.preventDefault();
+    history.push("/writestory");
+  };
 
   return (
     <div>
@@ -33,6 +41,7 @@ const EmojiCTA = () => {
       )}
 
       <button onClick={getEmojis}>Generate new story</button>
+      <button onClick={writeThisStory}>Write this story</button>
     </div>
   );
 };
