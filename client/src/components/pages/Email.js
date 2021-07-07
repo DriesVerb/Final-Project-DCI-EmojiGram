@@ -1,4 +1,6 @@
-import React from 'react' 
+import React from 'react'
+
+
 
 export default function Email() {
   const Mailto = ({ email, subject = '', body = '', children }) => {
@@ -16,6 +18,7 @@ export default function Email() {
       <Mailto email='metalrocks71.79@gmail.com' subject=''>
         <p>Contact the support team</p>
       </Mailto>
+
     </div>
   );
 }
