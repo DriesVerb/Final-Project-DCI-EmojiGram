@@ -1,5 +1,4 @@
-import { STATES } from "mongoose";
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useContext } from "react";
 import {
   Navbar,
   NavLink,
@@ -23,13 +22,12 @@ function navbar() {
   const onLogout = () => {
     logout();
     clearProfile();
-   
   };
 
   const userLinks = (
     <Fragment>
-      <Navbar bg='light' expand='lg' className='nav'>
-        <Navbar.Brand href='/' className=' brand text-bold'>
+      <Navbar bg="light" expand="lg" className="nav">
+        <Navbar.Brand href="/" className=" brand text-bold">
           EmojiGram
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -37,40 +35,40 @@ function navbar() {
           <Nav style={{ maxHeight: "100px" }} navbarScroll>
             <li className="ml-2">
               <a className="nav-link" href="#!">
-                Hello{"   "}
+                Hello{" "}
                 {user &&
                   user.username.charAt(0).toUpperCase() +
                     user.username.slice(1)}
-              
+                <span className="sr-only">(current)</span>
               </a>
             </li>
-            <NavDropdown title='' id='navbarScrollingDropdown'>
-              <NavDropdown.Item href='/profile'>
-                <i className=' fas fa-cog' />
+            <NavDropdown title="" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/profile">
+                <i className=" fas fa-cog" />
                 Settings & Privacy
               </NavDropdown.Item>
-              <NavDropdown.Item href=''>
-                <i className='fas fa-question-circle' /> Help & Support
+              <NavDropdown.Item href="">
+                <i className="fas fa-question-circle" /> Help & Support
               </NavDropdown.Item>
               <NavDropdown.Item onClick={onLogout} href="/login">
                 <i className="fas fa-sign-out-alt" /> Logout
               </NavDropdown.Item>
             </NavDropdown>
-            <NavLink to='/notification' className='ml-5'>
-              <i className='fas fa-bell' /> Notification
+            <NavLink to="/notification" className="ml-5">
+              <i className="fas fa-bell" /> Notification
             </NavLink>
-            <NavLink to='/message'>
-              <i className='fas fa-envelope' /> Messages
+            <NavLink to="/message">
+              <i className="fas fa-envelope" /> Messages
             </NavLink>
           </Nav>
-          <Form className='d-flex ml-5 '>
+          <Form className="d-flex ml-5 ">
             <FormControl
-              type='search'
-              placeholder='Search'
-              className='mr-2'
-              aria-label='Search'
+              type="search"
+              placeholder="Search"
+              className="mr-2"
+              aria-label="Search"
             />
-            <Button variant='outline-info '>Search</Button>
+            <Button variant="outline-info ">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>
@@ -79,8 +77,8 @@ function navbar() {
 
   const guestLinks = (
     <Fragment>
-      <li className='nav-item'>
-        <Link to='/'>Home</Link>
+      <li className="nav-item">
+        <Link to="/">Home</Link>
       </li>
       <li className="nav-item">
         <Link to="/genre">Genre</Link>
@@ -88,16 +86,16 @@ function navbar() {
       <li className="nav-item">
         <Link to="/login">Login</Link>
       </li>
-      <li className='nav-item'>
-        <Link to='/signup'>Sign Up</Link>
+      <li className="nav-item">
+        <Link to="/signup">Sign Up</Link>
       </li>
     </Fragment>
   );
 
   return (
-    <div className='navbar'>
-      <ul className='nav-menu'>
-        <Link to='/'></Link>
+    <div className="navbar">
+      <ul className="nav-menu">
+        <Link to="/"></Link>
 
         {isAuthenticated ? userLinks : guestLinks}
       </ul>

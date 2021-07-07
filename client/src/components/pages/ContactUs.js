@@ -27,11 +27,11 @@ function Contactus() {
       const successMsg = res.data;
       setmsg(successMsg);
       setStateEmail({
-        username: '',
-        message: '',
-        email: '', 
+        username: "",
+        message: "",
+        email: "",
         confirm:
-          'Thank you!!! An Email confirmation has been sent to your mailbox.'
+          "Thank you!!! An Email has been sent to your mailbox. Thank you to follow the steps to contact our Support Team",
       });
     });
   };
