@@ -29,6 +29,12 @@ export const SET_EDITEDSTORY = "SET_EDITEDSTORY ";
 export const SHOW_STORY = "SHOW_STORY ";
 export const UPDATE_STORY = "UPDATE_STORY ";
 
+export const UPDATE_LIKES = "UPDATE_LIKES ";
+
+
+export const ADD_COMMENT = "ADD_COMMENT ";
+export const REMOVE_COMMENT = "REMOVE_COMMENT ";
+
 //Edit Profile Type
 export const GET_PROFILE = "GET_PROFILE";
 export const EDIT_PROFILE = "EDIT_PROFILE";

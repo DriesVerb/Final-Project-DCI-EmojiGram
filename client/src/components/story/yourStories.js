@@ -5,22 +5,39 @@ import "./yourStories.css";
 import StoryContext from "../../context/story/storyContext";
 
 function YourStories(props) {
-  const storyContext = useContext(StoryContext);
-  const { publishStory, stories } = storyContext;
 
-  ///////////////////////////////////////////////
+  const storyContext = useContext(StoryContext);
+  const { publishStory, stories, addLike} = storyContext;
+
+
   useEffect(() => {
-    publishStory();
-  }, [stories]);
+
+    publishStory()
+    console.log(stories)
+ 
+  }, []);// 
+
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)
-
+    
     props.history.push(`/showstory/${id}`);
     // window.location.href = '/showstory/' + id
     // showStory(id)
     // console.log (stories)
-  };
+  }
+  // const like = (id) => {
+  //   // console.log (STORY_ERROR._id)
+    
+  //   addLike (id)
+  //   // window.location.href = '/showstory/' + id
+  //   // showStory(id)
+  //   // console.log (stories)
+  //   console.log(id)
+  // }
+
+
+
 
   const [pageNumber, SetPageNumber] = useState(0);
   const storiesPerPage = 5;
@@ -41,9 +58,11 @@ function YourStories(props) {
           <div
             className="card"
             key={story._id}
-            onClick={() => storyDetails(story._id)}
+            
+            
           >
             <figure className="cards__item__wrap" data={story.genre}>
+            <div onClick={() => storyDetails(story._id)}>
               <h3>
                 <span>Title: </span>
                 {story.title &&
@@ -51,18 +70,25 @@ function YourStories(props) {
               </h3>
               <br />
               <p className="storyTag fades"> {story.text}</p>
+              
+              </div>
+
               <footer>
-                <span className="like">
-                  <i className="fa fa-thumbs-up" /> &nbsp;{story.likes.length}
-                </span>
+                
+              <span className="like">
+                  <i className="fa fa-thumbs-up" onClick = {()=> addLike(story._id) } />{story.likes && <span>&nbsp;{story.likes.length}</span> } 
+                            </span>
+                        
+                        
+                      
                 <span className="comments">
-                  <i className="fas fa-comment" /> &nbsp;{story.comments.length}
-                </span>
+                        <i className="fas fa-comment" />{story.comments && <span> &nbsp;{story.comments.length}
+                        </span>} </span>
                 <span className="emojisClass">
-                  <i className="far fa-smile-beam" /> : &nbsp;
-                  {story.emojis.map((emoj) => (
-                    <span key={emoj._id}>&nbsp;{emoj.character} </span>
-                  ))}
+                  <i className="far fa-smile-beam" /> : {story.emojis && <span> &nbsp;
+                  {story.emojis.map((emoj, id) => (
+                    <span key={id}>&nbsp;{emoj.character} </span>
+                  ))} </span>} 
                 </span>
               </footer>
             </figure>
