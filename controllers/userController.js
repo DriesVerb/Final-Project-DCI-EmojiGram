@@ -100,3 +100,6 @@ exports.deleteProfile = async (req, res) => {
     res.status(500).send("Error");
   }
 };
+
+
+

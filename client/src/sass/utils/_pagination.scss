@@ -1,0 +1,30 @@
+.pagination {
+  &__btn {
+    width: 100%;
+    height: 4rem;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+    & a {
+      padding: 1rem;
+      margin: 8px;
+      border-radius: 5px;
+      border: 1px solid $main-l-blue;
+      color: $main-l-blue;
+      cursor: pointer;
+
+      &:hover {
+        color: $main-white;
+        background-color: $main-l-blue;
+      }
+    }
+  }
+
+  &__active {
+    & a {
+      color: $main-white;
+      background-color: $main-l-blue;
+    }
+  }
+}
