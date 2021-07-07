@@ -143,6 +143,7 @@ exports.sortTime = async (req, res) => {
   }
 };
 exports.getGenre = async (req, res) => {
+  /* console.log(req.params.genre) */
   await Story.find((err, stories) => {
     res.json(stories);
   })

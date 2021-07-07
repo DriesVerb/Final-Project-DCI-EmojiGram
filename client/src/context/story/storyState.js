@@ -102,10 +102,22 @@ const publishStoryPublic = async story =>{
   }
 
 
-const publishStoryPublicGenre = async story =>{
+const publishStoryPublicGenre = async genre =>{
   
   try {
-    const res = await axios.get("/user/story/genre/:genre")
+    const res = await axios.get(`/user/story/genre/${genre}`)
+    dispatch({
+      type: STORY_PUBLISH,
+      payload: res.data,
+    });
+  }catch (err) {
+      dispatch({ type: STORY_ERROR})
+    }
+  }
+const publishStoryPublicAlpha = async genre =>{
+  
+  try {
+    const res = await axios.get(`/user/story/filter`)
     dispatch({
       type: STORY_PUBLISH,
       payload: res.data,
@@ -216,6 +228,7 @@ const publishStoryPublicGenre = async story =>{
         deleteStory,
         showStory,
         publishStoryPublicGenre,
+        publishStoryPublicAlpha,
         singleStory: state.singleStory,
 
         setEditedStory,
