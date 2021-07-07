@@ -10,15 +10,8 @@ function YourStories(props) {
 
   ///////////////////////////////////////////////
   useEffect(() => {
-<<<<<<< HEAD
-
-    publishStory ()
-  }, [stories]);
-
-=======
     publishStory();
   }, [stories]);
->>>>>>> b5cc5e296f79a75d198269ce3342068a80a68ab2
 
   const storyDetails = (id) => {
     // console.log (STORY_ERROR._id)

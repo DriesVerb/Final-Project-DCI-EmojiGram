@@ -5,7 +5,6 @@ const morgan = require;
 const cors = require('cors');
 const User = require('./models/User');
 const jwt = require('jsonwebtoken');
-const UserPassword = require('./models/UserPassword')
 const app = express();
 app.use(cors());
 
