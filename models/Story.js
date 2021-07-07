@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 const storySchema = new Schema({
   author: String,
+
+  
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -21,8 +23,11 @@ const storySchema = new Schema({
   subGenre: String,
   likes: [
     {
-      userId: Number,
-    },
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    }
   ],
   rating: [
     {
@@ -35,13 +40,30 @@ const storySchema = new Schema({
       userId: Number,
     },
   ],
-  comments: [
-    {
-      userId: Number,
-      name: String,
-      text: {},
-    },
-  ],
+ 
+    comments: [
+      {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "User"
+        },
+        text: {
+          type: String,
+          required: true
+        },
+        name: {
+          type: String
+        },
+        avatar: {
+          type: String
+        },
+        date: {
+          type: Date,
+          default: Date.now
+        }
+      }
+    ],
+
   createdAt: {
     type: Date,
     default: Date.now,

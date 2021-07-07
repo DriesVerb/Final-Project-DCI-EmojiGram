@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 
-// css
-import "./genre.css";
-
 // components
 import GenreShow from "./GenreShow";
 

@@ -31,24 +31,27 @@ const PaginateComponent = ({ data, perPage }) => {
       {displayStories.map((story, index) => {
         return (
           <div key={index}>
-            <div className="card" onClick={() => storyDetails(story._id)}>
-              <figure className="cards__item__wrap" data={story.genre}>
+            <div className="story-card" onClick={() => storyDetails(story._id)}>
+              <figure className="story-card__genre" data={story.genre}>
                 <h3>
                   <span>Title: </span>
                   {story.title &&
                     story.title.charAt(0).toUpperCase() + story.title.slice(1)}
                 </h3>
                 <br />
-                <p className="storyTag fades"> {story.text}</p>
-                <footer>
-                  <span className="like">
+                <p className="story-card__text story-card__fade">
+                  {" "}
+                  {story.text}
+                </p>
+                <footer className="story-card__footer">
+                  <span className="story-card__like">
                     <i className="fa fa-thumbs-up" /> &nbsp;{story.likes.length}
                   </span>
-                  <span className="comments">
+                  <span className="story-card__comments">
                     <i className="fas fa-comment" /> &nbsp;
                     {story.comments.length}
                   </span>
-                  <span className="emojisClass">
+                  <span className="story-card__emojis">
                     <i className="far fa-smile-beam" /> : &nbsp;
                     {story.emojis.map((emoj) => (
                       <span key={emoj._id}>&nbsp;{emoj.character} </span>
@@ -65,11 +68,11 @@ const PaginateComponent = ({ data, perPage }) => {
         nextLabel={"Next"}
         pageCount={pageCount}
         onPageChange={changePage}
-        containerClassName={"paginationsBttns"}
+        containerClassName={"pagination__btn"}
         previousLinkClassName={"previosBttm"}
         nextLinkClassName={"nextBttn"}
         disabledClassName={"paginationDisabled"}
-        activeClassName={"paginationActive"}
+        activeClassName={"pagination__active"}
       />
     </Fragment>
   );
