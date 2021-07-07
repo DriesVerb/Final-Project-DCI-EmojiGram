@@ -47,7 +47,16 @@ function navbar() {
                 <i className=" fas fa-cog" />
                 Settings & Privacy
               </NavDropdown.Item>
+
+
+           
+
+
+
+
+
               <NavDropdown.Item href="">
+
                 <i className="fas fa-question-circle" /> Help & Support
               </NavDropdown.Item>
               <NavDropdown.Item onClick={onLogout} href="/login">
@@ -57,6 +66,12 @@ function navbar() {
             <NavLink to="/notification" className="ml-5">
               <i className="fas fa-bell" /> Notification
             </NavLink>
+{/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
+            <NavLink href="/UserInterface">
+                <i className=" fas fa-cog" />
+                user
+              </NavLink>
+ {/* //////////////////////////////////////////////////////////////////////////////////////////////////   */}
             <NavLink to="/message">
               <i className="fas fa-envelope" /> Messages
             </NavLink>
