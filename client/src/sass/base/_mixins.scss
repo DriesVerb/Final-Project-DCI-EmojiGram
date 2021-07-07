@@ -1,0 +1,9 @@
+// include flex in projects
+// example @include flex(row, center, center)
+
+@mixin flex($direction, $main-axis, $cross-axis) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $main-axis;
+  align-items: $cross-axis;
+}
