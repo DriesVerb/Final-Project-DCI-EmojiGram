@@ -4,19 +4,13 @@ import StoryContext from "../../context/story/storyContext";
 import PaginateComponent from "../../utils/PaginateComponent";
 
 function YourStories(props) {
-
   const storyContext = useContext(StoryContext);
-  const { publishStory, stories, addLike} = storyContext;
-
+  const { publishStory, stories } = storyContext;
 
   useEffect(() => {
-
-    publishStory()
-    console.log(stories)
- 
-  }, []);// 
-
-
+    publishStory();
+    console.log(stories);
+  }, []); //
 
   return (
     <div>
