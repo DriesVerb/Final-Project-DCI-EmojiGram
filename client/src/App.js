@@ -2,6 +2,9 @@ import React, { useEffect, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+// Sass
+import "./css/App.css";
+
 // components
 import Alerts from "./components/layout/Alert";
 import Navbar from "./components/layout/navbar";
@@ -27,7 +30,6 @@ import StoryState from "./context/story/storyState";
 import AuthContext from "./context/auth/authContext";
 import AlertState from "./context/alert/alertState";
 import ProfileState from "./context/profile/ProfileState";
-import "./App.css";
 
 // import setAuthToken
 import setAuthToken from "./context/auth/setAuthToken";

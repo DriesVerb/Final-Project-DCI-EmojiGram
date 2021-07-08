@@ -14,7 +14,7 @@ router.get("/show/:id", auth, storyController.show);
 
 router.put("/editStory/:id", auth, storyController.edit);
 
-router.delete("/delete/:id", auth, storyController.deleteStorie);
+router.delete("/delete/:id", auth, storyController.deleteStory);
 
 router.get("/filter", storyController.alphabetical);
 // router.get("/select/?count={limit}", storyController.selectNumber);
@@ -22,5 +22,13 @@ router.get("/genre/:genre", storyController.getGenre);
 
 router.get("/time", storyController.sortTime);
 // router.get("/likes/:id", storyController.sortLikes);
-router.put("/author", storyController.searchAuthor);
+// router.put("/author", storyController.searchAuthor);
+
+router.get("/genre/:genre", storyController.getGenre);
+
+router.put("/like/:id", auth, storyController.likeStory);
+router.put("/unlike/:id", auth, storyController.unlikeStory);
+
+router.post("/comment/:id", auth, storyController.addComment);
+router.delete("/comment/:id/:comment_id", auth, storyController.removeComment);
 module.exports = router;

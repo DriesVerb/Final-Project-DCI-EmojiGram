@@ -12,7 +12,7 @@ const AlertState = props => {
 
   const [state, dispatch] = useReducer(alertReducer, initialState);
 
-  // Set Alert
+  // Set Alert // we add time out to be flixable if we want to pass it from component, but by defult it is 5000
   const setAlert = (msg, alertStyle, timeout = 5000) => {
     //generate random Id 
     const id = uuidv4();
@@ -28,7 +28,7 @@ const AlertState = props => {
   return (
     <AlertContext.Provider
       value={{
-        alerts: state,
+         alerts: state,
         setAlert,
       }}>
       {props.children}

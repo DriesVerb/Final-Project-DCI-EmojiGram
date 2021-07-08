@@ -8,7 +8,7 @@ import StoryContext from "../../context/story/storyContext";
 //////////////////////////////////////////////////////////////////////////////
 
 const PreviewStory = (props) => {
-  const { emojis, title, genre, subGenre, richText, sendToDb, updateStory } =
+  const { emojis, title, genre, richText, sendToDb, updateStory } =
     storyStore.getState();
   ////////////////////////////////////////////////////////////////////////////////
   const storyContext = useContext(StoryContext);
@@ -22,11 +22,13 @@ const PreviewStory = (props) => {
   const onClick = (e) => {
     e.preventDefault();
     if (storyToEdit === null) {
+      console.log(storyToEdit);
       sendToDb();
       props.history.push("/yourstories");
     } else {
       updateStory();
       props.history.push("/yourstories");
+      console.log(storyToEdit);
     }
   };
 
@@ -35,16 +37,15 @@ const PreviewStory = (props) => {
       {<button onClick={onClick}>Publish</button>}
       <h1>{title}</h1>
       <h3>{genre}</h3>
-      <h4>{subGenre}</h4>
       <div className="test">
         {emojis.map((emoji, index) => (
-          <div className="emojiSize" key={index}>
+          <div className="emoji__character" key={index}>
             {emoji.character}
           </div>
         ))}
       </div>
       <p
-        className="text-align-left"
+        className="preview__paragraph"
         dangerouslySetInnerHTML={{ __html: richText }}
       ></p>
     </div>

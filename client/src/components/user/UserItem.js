@@ -48,7 +48,7 @@ const UserItem = (props) => {
       <p>
         <button
           type="submit"
-          className="btn btn-dark btn-sm ml-3"
+          className="btn btn-dark btn-sm ml-5"
           onClick={onEdit}
         >
           Edit
@@ -56,7 +56,7 @@ const UserItem = (props) => {
         <button
           type="submit"
           value="Submit"
-          className="btn btn-danger btn-sm ml-5"
+          className="btn btn-info btn-sm ml-2"
           onClick={onDelete}
         >
           Delete
