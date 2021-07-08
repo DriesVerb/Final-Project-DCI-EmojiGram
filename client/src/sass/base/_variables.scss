@@ -18,15 +18,6 @@ body {
   background-color: $main-white;
 }
 
-// MARGINS:
-// MARGIN VALUES
-
-$margins: (
-  "xl": 2rem,
-  "l": 1rem,
-  "s": 0.5rem,
-);
-
 // z-index
 $z-front: 100;
 $z-middle: 50;
@@ -35,6 +26,15 @@ $z-background: -50;
 
 // border
 $main-border: 1px solid $main-d-black;
+
+// MARGINS:
+// MARGIN VALUES
+
+$margins: (
+  "xl": 3rem,
+  "l": 1rem,
+  "s": 0.5rem,
+);
 
 // MARGIN BOTTOM
 
