@@ -24,12 +24,8 @@ import PublicLandingPage from "./components/pages/publicLandingPage";
 
 import UserItem from "./components/user/UserItem";
 import userForm from "./components/user/userForm";
-import ContactSupport from "./components/pages/Email";
-import ReadPublicStory from "./components/readPublicStory";
 
-import UserItem from "./components/user/UserItem";
-import userForm from "./components/user/userForm";
-import ContactSupport from "./components/pages/Email";
+import ReadPublicStory from "./components/readPublicStory";
 
 // context
 import StoryState from "./context/story/storyState";
@@ -108,7 +104,7 @@ function App() {
 
                   <Route path="/profile" exact component={UserItem} />
                   <Route path="/userform" exact component={userForm} />
-                  <Route path="/contactus" exact component={ContactSupport} />
+
                   <Route
                     path="/readpublicstory/:id"
                     exact
