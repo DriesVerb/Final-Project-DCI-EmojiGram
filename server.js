@@ -85,6 +85,25 @@ app.get(
   }
 );
 
+//* Instagram Login
+app.get('/login/passport/instagram', passport.authenticate('instagram'));
+app.get(
+  '/auth/passport/instagram/callback',
+  passport.authenticate('instagram', {
+    failureRedirect: 'http//localhost:3000',
+  }),
+  (req, res) => {
+    res.redirect('http://localhost:3000/profile/' + req.user.id);
+  }
+);
+
+
+
+
+
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

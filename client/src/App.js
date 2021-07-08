@@ -24,8 +24,8 @@ import PublicLandingPage from './components/publicLandingPage';
 
 import UserItem from './components/user/UserItem';
 import userForm from './components/user/userForm';
-// import ContactUs from './components/pages/ContactUs';
 import ContactSupport from './components/pages/Email';
+
 
 // context
 import StoryState from "./context/story/storyState";
@@ -107,6 +107,7 @@ function App() {
                 <Route path='/profile' exact component={UserItem} />
                 <Route path='/userform' exact component={userForm} />
                 <Route path='/contactus' exact component={ContactSupport} />
+           
               </Switch>
               <Footer />
             </Router>
