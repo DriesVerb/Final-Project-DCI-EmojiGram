@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./css/App.css";
 
 // components
+
 import Alerts from "./components/layout/Alert";
 import Navbar from "./components/layout/navbar";
 import Login from "./components/auth/login";
@@ -21,6 +22,7 @@ import PreviewStory from "./components/story/PreviewStory";
 import ShowStory from "./components/story/showStory";
 import GenreMainPage from "./components/genre/GenreMainPage";
 import PublicLandingPage from "./components/pages/publicLandingPage";
+
 
 import UserItem from "./components/user/UserItem";
 import userForm from "./components/user/userForm";
