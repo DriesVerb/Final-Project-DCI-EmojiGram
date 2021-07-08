@@ -1,15 +1,35 @@
 .emoji {
+  @include flex(column, center, center);
+  height: 10rem;
+
   &__row {
     display: flex;
     justify-content: center;
   }
 
   &__character {
-    font-size: 5rem;
+    font-size: 6rem;
     position: relative;
   }
 
-  &__tooltip {
-    position: absolute;
+  &__buttons {
+    @include flex(row, space-between, center);
+  }
+}
+
+.emoji-tooltip {
+  position: absolute;
+  @include flex(column, center, start);
+  border: $main-border;
+  z-index: $z-middle;
+  background-color: $main-yellow;
+  height: 10rem;
+  width: 20rem;
+  padding: 1rem;
+  bottom: 75%;
+  left: 100%;
+
+  &__name {
+    @include main-font(1.2rem, 700, $main-d-black);
   }
 }

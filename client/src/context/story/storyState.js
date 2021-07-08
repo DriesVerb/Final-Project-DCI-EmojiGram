@@ -11,19 +11,18 @@ import {
   STORY_PUBLISH_LIKES,
   ADD_STORY,
   DELETE_STORY,
-  EDIT_STORY,
+  // EDIT_STORY,
   //  SET_STORY ,
   //  CLEAR_EDITEDSTORY ,
-  UPDATE_STORY,
+  // UPDATE_STORY,
   //  CLEAR_STORY ,
   SET_EDITEDSTORY,
   CLEAR_EDITEDSTORY,
   SHOW_STORY,
   STORY_ERROR,
   UPDATE_LIKES,
-
   ADD_COMMENT,
-  REMOVE_COMMENT
+  REMOVE_COMMENT,
 } from "../types";
 
 const StoryState = (props) => {
@@ -76,7 +75,7 @@ const StoryState = (props) => {
     }
     console.log(state.stories);
   };
-/////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
   //Publish Story
 
   const publishStory = async (story) => {
@@ -189,7 +188,7 @@ const publishStoryPublicLikes = async () =>{
     dispatch({ type: CLEAR_EDITEDSTORY });
   };
 
- /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
   //edit story
 
   // const updateStory = async story => {
@@ -218,7 +217,7 @@ const publishStoryPublicLikes = async () =>{
   //   }
   // }
 
- /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
 
   // delete story
 
@@ -242,28 +241,27 @@ const publishStoryPublicLikes = async () =>{
 
   const addLike = async (id, color) => {
     try {
-      const res = await axios.put(`/user/story/like/${id}`);
-  
+      // const res = await axios.put(`/user/story/like/${id}`);
+
       dispatch({
         type: UPDATE_LIKES,
-        payload: {id, likes:applicationCache.payload}
+        payload: { id, likes: applicationCache.payload },
       });
     } catch (err) {
       dispatch({
         type: STORY_ERROR,
-       
       });
     }
   };
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-   const removeLike = async (id) => {
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  const removeLike = async (id) => {
     try {
       const res = await axios.put(`/user/story/unlike/${id}`);
-  
+
       dispatch({
         type: UPDATE_LIKES,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
@@ -271,20 +269,19 @@ const publishStoryPublicLikes = async () =>{
         payload: err.response.data.msg,
       });
     }
-   };
+  };
   /////////////////////////////////////////////////////////////////////////////////////////////
   //add comments
-
 
   const addComment = async (id, formData) => {
     try {
       const res = await axios.post(`/user/story/Comment/${id}`, formData);
-  
+
       dispatch({
         type: ADD_COMMENT,
-        payload: res.data
+        payload: res.data,
       });
-  
+
       // dispatch(setAlert('Comment Added', 'success'));
     } catch (err) {
       dispatch({
@@ -294,18 +291,17 @@ const publishStoryPublicLikes = async () =>{
     }
   };
   /////////////////////////////////////////////////////////////////////////////////////////////
-  
-  
+
   // Delete comment
-   const deleteComment = async (id, commentId)  => {
+  const deleteComment = async (id, commentId) => {
     try {
       await axios.delete(`/user/story/Comment/${id}/${commentId}`);
-  
+
       dispatch({
         type: REMOVE_COMMENT,
-        payload: { commentId, id }
+        payload: { commentId, id },
       });
-  
+
       // dispatch(setAlert('Comment Removed', 'success'));
     } catch (err) {
       dispatch({
@@ -314,8 +310,6 @@ const publishStoryPublicLikes = async () =>{
       });
     }
   };
-
-
 
   return (
     <StoryContext.Provider
@@ -339,11 +333,6 @@ const publishStoryPublicLikes = async () =>{
         // isLiked: state.isLiked
         addComment,
         deleteComment,
-
-        
-
-        
-        
       }}
     >
       {props.children}

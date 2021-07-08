@@ -49,7 +49,7 @@ const PaginateComponent = ({ data, perPage }) => {
                   </span>
                   <span className="story-card__comments">
                     <i className="fas fa-comment" /> &nbsp;
-                    {/* {story.comments.length} */}
+                    {/* {<story className="comments"></story>.length} */}
                   </span>
                   <span className="story-card__emojis">
                     <i className="far fa-smile-beam" /> : &nbsp;
@@ -78,4 +78,4 @@ const PaginateComponent = ({ data, perPage }) => {
   );
 };
 
-export default PaginateComponent;
+export default PaginateComponent; 
