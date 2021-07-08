@@ -4,7 +4,7 @@ const Spinner = () => {
   return (
     <Fragment>
       <span aria-label="Thinking Emoji Loader" role="img" className="spinner">
-        🤔
+        ❓
       </span>
     </Fragment>
   );

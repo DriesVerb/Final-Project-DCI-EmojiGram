@@ -1,5 +1,5 @@
 import React from "react";
-import Contactus from '../pages/Email';
+// import Contactus from "../pages/Email";
 
 function Footer() {
   return (
@@ -73,7 +73,7 @@ function Footer() {
             <ul className="list-unstyled">
               <li>
                 <a href="/contactUs" className="link">
-                  {Contactus}
+                  {/* {Contactus} */}
                   contact us
                 </a>
               </li>
