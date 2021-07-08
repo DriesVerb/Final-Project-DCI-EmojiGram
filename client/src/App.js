@@ -90,11 +90,6 @@ function App() {
                   exact
                   component={ShowStory}
                 />
-                <PrivateRoute
-                  path='/showstory/:id'
-                  exact
-                  component={ShowStory}
-                />
               <Route exact path="/login" component={Login} />
                 <Route exact path="/genre" component={GenreMainPage} />
                 <Route exact path="/signup" component={SignUp} />
