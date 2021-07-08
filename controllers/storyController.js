@@ -21,8 +21,9 @@ exports.create = async (req, res) => {
 exports.published = async (req, res) => {
   try {
     const publicStories = await Story.find()
+
       .sort({
-        date: -1,
+        createdAt: -1,
       })
       .populate("user")
       .limit(5);
@@ -124,7 +125,9 @@ exports.alphabetical = async (req, res) => {
   try {
     await Story.find((err, story) => {
       res.json(story);
-    }).sort({ title: 1 });
+    })
+      .sort({ title: 1 })
+      .limit(5);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -200,6 +203,39 @@ exports.getGenre = async (req, res) => {
   })
     .where("genre")
     .equals(req.params.genre);
+};
+
+exports.sortBylikes = async (req, res) => {
+  try {
+    const storyLikes = await Story.aggregate(
+      [
+        {
+          $project: {
+            title: 1,
+            emojis: 1,
+            text: 1,
+            author: 1,
+            user: 1,
+            genre: 1,
+            likes: 1,
+            length: { $size: "$likes" },
+          },
+        },
+        { $sort: { length: -1 } },
+        { $limit: 10 },
+      ]
+      /*   function(err,results) {
+    console.log(results)
+      res.json(results)
+  } */
+    );
+    await User.populate(storyLikes, { path: "user" }, (err, results) => {
+      res.json(results);
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////
