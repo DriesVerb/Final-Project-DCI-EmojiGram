@@ -1,5 +1,6 @@
 import {
   STORY_PUBLISH,
+  STORY_PUBLISH_LIKES,
   ADD_STORY ,
   DELETE_STORY ,
   // SET_STORY , 
@@ -36,10 +37,17 @@ export default (state, action) => {
        
     //////////////////////////////////////////////////////////////////////   
     case STORY_PUBLISH:
-           
+    
       return {
         ...state,
         stories: action.payload,
+            
+      };
+
+    case STORY_PUBLISH_LIKES:
+      return {
+        ...state,
+        topStories: action.payload,
             
       };
     //////////////////////////////////////////////////////////////////////

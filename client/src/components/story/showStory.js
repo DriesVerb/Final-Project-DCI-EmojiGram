@@ -12,7 +12,6 @@ function showStory(props) {
   const {
     singleStory,
     deleteStory,
-    showStory,
     storyToEdit,
     setEditedStory,
     addLike,

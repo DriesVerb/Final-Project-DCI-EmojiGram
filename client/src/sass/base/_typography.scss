@@ -14,6 +14,13 @@
   color: $font-color;
 }
 
+@mixin sec-font($font-size, $font-weight, $font-color) {
+  font-family: "Lato", sans-serif;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $font-color;
+}
+
 h1 {
   @include main-font(6rem, 500, $main-black);
 }

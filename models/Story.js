@@ -65,7 +65,7 @@ const storySchema = new Schema({
     ],
 
   createdAt: {
-    type: String,
+    type: Date,
     default: Date.now,
   },
 });
