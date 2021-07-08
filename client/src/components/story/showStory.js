@@ -41,7 +41,7 @@ function showStory(props) {
     // console.log(singleStory.comments)
 
     // })
-  }, [liked]); //liked
+  }, [liked]);
 
   // console.log(singleStory)
 
