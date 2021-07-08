@@ -1,37 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
-import Moment from 'react-moment'
-import StoryContext from "../context/story/storyContext";
-import './mostLikes.css'
+import React, { useContext, useEffect } from "react";
 
 const MostLikes = () => {
-    const storyContext = useContext(StoryContext)
-    const {publishStoryPublicLikes ,topStories} = storyContext
+  const storyContext = useContext(StoryContext);
+  const { publishStoryPublicLikes, topStories } = storyContext;
 
-    const test = publishStoryPublicLikes
+  const test = publishStoryPublicLikes;
 
-    useEffect(() => {
-        
-      test()
-  
-     
-    }, [])
+  useEffect(() => {
+    test();
+  }, []);
 
-   console.log(topStories)
+  console.log(topStories);
 
-    return (
-        <div>
-            {
-                topStories.map((sto,id)=>{
-                    return(
-                        <div className="mostLikes__container" key={id}>
-                          
-                            <p> <span className="span-genre">{sto.genre} /</span> {sto.title}</p> <span>{sto.likes.length}</span>
-                        </div>
-                    )
-                })
-            }
-        </div>
-    )
-}
+  return (
+    <div>
+      {topStories.map((sto, id) => {
+        return (
+          <div className="mostLikes__container" key={id}>
+            <p>
+              {" "}
+              <span className="span-genre">{sto.genre} /</span> {sto.title}
+            </p>{" "}
+            <span>{sto.likes.length}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
-export default MostLikes
+export default MostLikes;

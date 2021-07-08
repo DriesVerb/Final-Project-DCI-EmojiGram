@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import "./publicLandingPage.css";
 import StoryContext from "../../context/story/storyContext";
 import { NavDropdown, Nav } from "react-bootstrap";
+
 // Components
 // import MostLikes from "../mostLikes";
 import StoryCardSmall from "../story/StoryCardSmall";
 import StoryCardBig from "../story/StoryCardBig";
 import EmojiCTA from "../story/EmojiCTA";
+
 const PublicLandingPage = () => {
   const storyContext = useContext(StoryContext);
   const {
@@ -17,6 +19,7 @@ const PublicLandingPage = () => {
     topStories,
     stories,
   } = storyContext;
+
   const [sort, setSort] = useState("Latest");
   useEffect(() => {
     if (sort === "Latest") publishStoryPublic();
@@ -24,9 +27,11 @@ const PublicLandingPage = () => {
     else if (sort === "Most liked") publishStoryPublicLikes();
     else if (sort) publishStoryPublicGenre(sort);
   }, [sort]);
+
   const onChange = (e) => {
     setSort(e.target.innerText);
   };
+
   return (
     <div className="landing-page">
       <header className="landing-page__header">

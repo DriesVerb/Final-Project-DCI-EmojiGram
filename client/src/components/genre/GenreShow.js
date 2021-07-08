@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { genreStore } from "../../store";
 
 // components
-import PaginateComponent from "../../utils/PaginateComponent";
+import PaginateComponent from "../utils/PaginateComponent";
 
 const GenreShow = ({ genre }) => {
   const stories = genreStore((state) => state.stories);
