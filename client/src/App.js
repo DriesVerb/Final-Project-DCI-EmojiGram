@@ -24,7 +24,7 @@ import PublicLandingPage from './components/publicLandingPage';
 
 import UserItem from './components/user/UserItem';
 import userForm from './components/user/userForm';
-import ContactSupport from './components/pages/Email';
+import ContactSupport from './components/pages/ContactUs';
 
 
 // context
@@ -84,11 +84,6 @@ function App() {
                   path='/publicstories'
                   exact
                   component={PublicLandingPage}
-                />
-                <PrivateRoute
-                  path='/showstory/:id'
-                  exact
-                  component={ShowStory}
                 />
                 <PrivateRoute
                   path='/showstory/:id'
