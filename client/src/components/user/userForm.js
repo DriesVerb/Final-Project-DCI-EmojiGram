@@ -11,12 +11,12 @@ const userForm = (props) => {
   }, [profileContext, current]);
 
   const [user, setUser] = useState({
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-    age: "",
-    location: "",
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+    age: '',
+    location: '',
   });
 
   const { name, username, email, age, location } = user;
@@ -27,7 +27,7 @@ const userForm = (props) => {
     e.preventDefault();
     editProfile(user);
     console.log(user);
-    props.history.push("/profile");
+    props.history.push('/profile');
   };
 
   const clear = () => {
@@ -103,7 +103,7 @@ const userForm = (props) => {
           type="text"
           name="password"
           placeholder={password}
-          defaultValue="*****"
+          defaultValue='*****'
           onChange={onChange}
         /></Col> 
           </div> */}
