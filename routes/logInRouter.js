@@ -8,7 +8,4 @@ router.get("/", auth, logInController.logIn);
 
 router.post("/", logInController.logInPost);
 
-
-
-
 module.exports = router;

@@ -42,7 +42,7 @@ const StoryState = (props) => {
         emojis: [],
       },
     ],
-    isLiked:false,
+    isLiked: false,
     topStories: [],
     singleStory: null,
     storyToEdit: null,
@@ -92,65 +92,58 @@ const StoryState = (props) => {
     } catch (err) {
       dispatch({ type: STORY_ERROR });
     }
-  }
-//////////////////////////////////////////////////////////////////////
+  };
+  //////////////////////////////////////////////////////////////////////
 
-const publishStoryPublic = async story =>{
-  
-  try {
-    const res = await axios.get("/user/story/publishedStory")
-    dispatch({
-      type: STORY_PUBLISH,
-      payload: res.data,
-    });
-  }catch (err) {
-      dispatch({ type: STORY_ERROR})
+  const publishStoryPublic = async (story) => {
+    try {
+      const res = await axios.get("/user/story/publishedStory");
+      dispatch({
+        type: STORY_PUBLISH,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({ type: STORY_ERROR });
     }
-  }
+  };
 
-
-const publishStoryPublicGenre = async genre =>{
-  
-  try {
-    const res = await axios.get(`/user/story/genre/${genre}`)
-    dispatch({
-      type: STORY_PUBLISH,
-      payload: res.data,
-    });
-  }catch (err) {
-      dispatch({ type: STORY_ERROR})
+  const publishStoryPublicGenre = async (genre) => {
+    try {
+      const res = await axios.get(`/user/story/genre/${genre}`);
+      dispatch({
+        type: STORY_PUBLISH,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({ type: STORY_ERROR });
     }
-  }
-const publishStoryPublicAlpha = async () =>{
-  
-  try {
-    const res = await axios.get(`/user/story/filter`)
-    dispatch({
-      type: STORY_PUBLISH,
-      payload: res.data,
-    });
-  }catch (err) {
-      dispatch({ type: STORY_ERROR})
+  };
+  const publishStoryPublicAlpha = async () => {
+    try {
+      const res = await axios.get(`/user/story/filter`);
+      dispatch({
+        type: STORY_PUBLISH,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({ type: STORY_ERROR });
     }
-  }
-const publishStoryPublicLikes = async () =>{
-  
-  try {
-    const res = await axios.get(`/user/story/likes`)
-    dispatch({
-      type: STORY_PUBLISH_LIKES,
-      payload: res.data,
-    });
-  }catch (err) {
-      dispatch({ type: STORY_ERROR})
+  };
+  const publishStoryPublicLikes = async () => {
+    try {
+      const res = await axios.get(`/user/story/likes`);
+      dispatch({
+        type: STORY_PUBLISH_LIKES,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({ type: STORY_ERROR });
     }
-  }
+  };
 
+  //Show Story
 
-
-   //Show Story
-  
- /*  const showStory = async id => {
+  /*  const showStory = async id => {
         
   }; */
   //////////////////////////////////////////////////////////////////////
@@ -311,6 +304,20 @@ const publishStoryPublicLikes = async () =>{
     }
   };
 
+  //show single story public
+  const showSinglePublic = async (id) => {
+    try {
+      const res = await axios.get(`/user/story/showPublic/${id}`);
+
+      dispatch({
+        type: SHOW_STORY,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({ type: STORY_ERROR });
+    }
+  };
+
   return (
     <StoryContext.Provider
       value={{
@@ -333,6 +340,7 @@ const publishStoryPublicLikes = async () =>{
         // isLiked: state.isLiked
         addComment,
         deleteComment,
+        showSinglePublic,
       }}
     >
       {props.children}

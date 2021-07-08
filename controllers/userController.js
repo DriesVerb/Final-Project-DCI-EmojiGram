@@ -21,7 +21,6 @@ exports.userProfile = async (req, res) => {
   }
 };
 
-
 //Edit Profile
 exports.editProfile = async (req, res) => {
   // console.log(req.body);
@@ -31,7 +30,7 @@ exports.editProfile = async (req, res) => {
   if (username) profileFields.username = username;
   if (name) profileFields.name = name;
   if (email) profileFields.email = email;
-  if (password) profileFields.password = password
+  if (password) profileFields.password = password;
   if (location) profileFields.location = location;
   if (avatar) profileFields.avatar = avatar;
   try {
@@ -51,7 +50,7 @@ exports.editProfile = async (req, res) => {
       { $set: profileFields },
       { new: true }
     );
-   
+
     // update User Profile
     res.json(profile);
   } catch (err) {
@@ -61,26 +60,15 @@ exports.editProfile = async (req, res) => {
 };
 
 exports.myStories = async (req, res) => {
-  const user = req.user.id
+  const user = req.user.id;
   try {
-    const stories =  Story.find({user:user}, (err,data)=>{
-    res.json(data);
-    })
-    
+    const stories = Story.find({ user: user }, (err, data) => {
+      res.json(data);
+    });
   } catch (err) {
-    console.error(err.message)
-        res.status(500).send('Server Error')
+    console.error(err.message);
+    res.status(500).send("Server Error");
   }
-  
-
-};
-
-exports.followers = (req, res) => {
-  console.log(req.params.id);
-  User.findById(req.params.id, (err, data) => {
-    if (err) throw err.message;
-    res.json(data.followers);
-  });
 };
 
 //Delete Profile
@@ -100,6 +88,16 @@ exports.deleteProfile = async (req, res) => {
     res.status(500).send("Error");
   }
 };
-
-
-
+//Sort By Followers
+exports.followers = async (req, res) => {
+  try {
+    await User.find((err, follow) => {
+      res.json(follow);
+    })
+      .sort([["_id", -1]])
+      .select("followers");
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};

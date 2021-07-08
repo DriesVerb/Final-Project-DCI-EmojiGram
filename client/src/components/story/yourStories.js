@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import StoryContext from "../../context/story/storyContext";
 
-import PaginateComponent from "../../utils/PaginateComponent";
+import PaginateComponent from "../utils/PaginateComponent";
 
 function YourStories(props) {
   const storyContext = useContext(StoryContext);
@@ -10,7 +10,7 @@ function YourStories(props) {
   useEffect(() => {
     publishStory();
     console.log(stories);
-  }, []); //
+  }, []);
 
   return (
     <div>
