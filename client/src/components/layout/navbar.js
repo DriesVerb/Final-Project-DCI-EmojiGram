@@ -73,7 +73,7 @@ function navbar() {
 
   return (
     <Fragment>
-      <Navbar bg="light" expand="lg" className="navbar">
+      <Navbar bg="light" expand="lg" className="navbar app__navbar">
         <Navbar.Brand href="/" className="navbar__brand text-bold">
           Story-Moji
         </Navbar.Brand>
