@@ -24,7 +24,8 @@ import PublicLandingPage from "./components/pages/publicLandingPage";
 
 import UserItem from "./components/user/UserItem";
 import userForm from "./components/user/userForm";
-import ContactSupport from "./components/pages/Email";
+
+import ReadPublicStory from "./components/readPublicStory";
 
 // context
 import StoryState from "./context/story/storyState";
@@ -34,6 +35,7 @@ import ProfileState from "./context/profile/ProfileState";
 
 // import setAuthToken
 import setAuthToken from "./context/auth/setAuthToken";
+import readPublicStory from "./components/readPublicStory";
 // import showStory from "./components/story/showStory";
 
 if (localStorage.token) {
@@ -102,7 +104,12 @@ function App() {
 
                   <Route path="/profile" exact component={UserItem} />
                   <Route path="/userform" exact component={userForm} />
-                  <Route path="/contactus" exact component={ContactSupport} />
+
+                  <Route
+                    path="/readpublicstory/:id"
+                    exact
+                    component={ReadPublicStory}
+                  />
                 </Switch>
               </div>
 

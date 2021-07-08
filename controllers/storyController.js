@@ -19,10 +19,9 @@ exports.create = async (req, res) => {
 //publishe sroty
 
 exports.published = async (req, res) => {
-
   try {
     const publicStories = await Story.find()
-      
+
       .sort({
         createdAt: -1,
       })
@@ -47,7 +46,7 @@ exports.published = async (req, res) => {
 
 exports.show = async (req, res) => {
   try {
-    let story = await Story.findById(req.params.id).populate('user');
+    let story = await Story.findById(req.params.id).populate("user");
     res.json(story);
     // console.log(data)
   } catch (err) {
@@ -126,23 +125,78 @@ exports.alphabetical = async (req, res) => {
   try {
     await Story.find((err, story) => {
       res.json(story);
-    }).sort({ title: 1 }).limit(5);
+    })
+      .sort({ title: 1 })
+      .limit(5);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 };
+
+// Filter story with specific number
+// exports.selectNumber = (req, res, next) => {
+//   const requestCount = req.query.count;
+//   Story.find()
+//     .countDocuments()
+//     .then((count) => {
+//       if (requestCount > count) {
+//         const error = new Error("Invalid Request");
+//         throw error;
+//       }
+//       //return stories while limiting to specific number
+//       return Story.find().limit(Number(requestCount));
+//     })
+//     .then((stories) => {
+//       res.status(200).json({ stories: stories });
+//     })
+//     .catch((err) => {
+//       const status = error.statusCode || 500;
+//       res.status(status).json({ error: err });
+//     });
+// };
+
 //Sort By Time
 exports.sortTime = async (req, res) => {
   try {
     await Story.find((err, time) => {
       res.json(time);
-    }).sort({ createdAt: 1 });
+    }).sort({ createdAt: -1 });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 };
+
+//Sort By Likes
+// exports.sortLikes = async (req, res) => {
+//   try {
+//     await Story.find((err, like) => {
+//       res.json(like);
+//     })
+//       .sort([["_id", -1]])
+//       .select("likes _id");
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status(500).send("Server Error");
+//   }
+// };
+
+//Search Author
+// exports.searchAuthor = async (req, res) => {
+//   try {
+//     await Story.find((err, authors) => {
+//       res.json(authors);
+//     })(
+//       { $text: { $search: "abc" } },
+//       { score: { $meta: "textScore" } }.sort({ score: { $meta: "textScore" } })
+//     );
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status(500).send("Server Error");
+//   }
+// };
+
 exports.getGenre = async (req, res) => {
   await Story.find((err, stories) => {
     res.json(stories);
@@ -153,44 +207,46 @@ exports.getGenre = async (req, res) => {
 
 exports.sortBylikes = async (req, res) => {
   try {
-   const storyLikes = await Story.aggregate([
-      { "$project": {
-          "title": 1,
-          "emojis": 1,
-          "text": 1,
-          "author": 1,
-          "user": 1,
-          "genre": 1,
-          "likes": 1,
-          "length": { "$size": "$likes" }
-      }},
-      { "$sort": { "length": -1 } },
-      { "$limit": 10 }
-    ],
-/*   function(err,results) {
+    const storyLikes = await Story.aggregate(
+      [
+        {
+          $project: {
+            title: 1,
+            emojis: 1,
+            text: 1,
+            author: 1,
+            user: 1,
+            genre: 1,
+            likes: 1,
+            length: { $size: "$likes" },
+          },
+        },
+        { $sort: { length: -1 } },
+        { $limit: 10 },
+      ]
+      /*   function(err,results) {
     console.log(results)
       res.json(results)
-  } */);
-  await User.populate(storyLikes, {path: "user"}, (err,results)=>{
-    res.json(results)
-  })
+  } */
+    );
+    await User.populate(storyLikes, { path: "user" }, (err, results) => {
+      res.json(results);
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 };
 
-
-  /////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 exports.likeStory = async (req, res) => {
-
   try {
     const story = await Story.findById(req.params.id);
 
     // Check if the post has already been liked
-    //some is like filtere but return boolean 
+    //some is like filtere but return boolean
     if (story.likes.some((like) => like.user.toString() === req.user.id)) {
-      return res.status(400).json({ msg: 'Post already liked' });
+      return res.status(400).json({ msg: "Post already liked" });
     }
     // unshhift is as push method but will put it on the begining
     story.likes.unshift({ user: req.user.id });
@@ -200,52 +256,47 @@ exports.likeStory = async (req, res) => {
     return res.json(story.likes);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };
 
-  /////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 exports.unlikeStory = async (req, res) => {
-
   try {
     const story = await Story.findById(req.params.id);
 
     // Check if the post has not yet been liked
-    // some is like filtere but return boolean 
+    // some is like filtere but return boolean
     if (!story.likes.some((like) => like.user.toString() === req.user.id)) {
-      return res.status(400).json({ msg: 'Post has not yet been liked' });
-    }  
+      return res.status(400).json({ msg: "Post has not yet been liked" });
+    }
     // remove the like
     story.likes = story.likes.filter(
       ({ user }) => user.toString() !== req.user.id
     );
-
 
     await story.save();
 
     return res.json(story.likes);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };
 
-
-
-  /////////////////////////////////////////////////////////////////////////////////////////////
-exports.addComment= async (req, res) => {
-
+/////////////////////////////////////////////////////////////////////////////////////////////
+exports.addComment = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
-    const story = await Story.findById(req.params.id).populate('user');
+    const user = await User.findById(req.user.id).select("-password");
+    const story = await Story.findById(req.params.id).populate("user");
 
     const newComment = {
       text: req.body.text,
       name: user.name,
       avatar: user.avatar,
-      user: req.user.id
+      user: req.user.id,
     };
-     console.log (newComment)
+    console.log(newComment);
     story.comments.unshift(newComment);
 
     await story.save();
@@ -253,39 +304,37 @@ exports.addComment= async (req, res) => {
     res.json(story.comments);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
-}
-  ;
+};
 
- /////////////////////////////////////////////////////////////////////////////////////////////
-exports.removeComment = async (req, res) =>{
-  
-  
+/////////////////////////////////////////////////////////////////////////////////////////////
+exports.removeComment = async (req, res) => {
   try {
-  const story= await Story.findById(req.params.id);
+    const story = await Story.findById(req.params.id);
 
-  // Pull out comment
-  const comment = story.comments.find(
-    (comment) => comment.id === req.params.comment_id
-  );
-  // Make sure comment exists
-  if (!comment) {
-    return res.status(404).json({ msg: 'Comment does not exist' });
+    // Pull out comment
+    const comment = story.comments.find(
+      (comment) => comment.id === req.params.comment_id
+    );
+    // Make sure comment exists
+    if (!comment) {
+      return res.status(404).json({ msg: "Comment does not exist" });
+    }
+    // Check user
+    if (comment.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: "User not authorized" });
+    }
+
+    story.comments = story.comments.filter(
+      ({ id }) => id !== req.params.comment_id
+    );
+
+    await story.save();
+
+    return res.json(story.comments);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send("Server Error");
   }
-  // Check user
-  if (comment.user.toString() !== req.user.id) {
-    return res.status(401).json({ msg: 'User not authorized' });
-  }
-
-  story.comments = story.comments.filter(
-    ({ id }) => id !== req.params.comment_id
-  );
-
-  await story.save();
-
-  return res.json(story.comments);
-} catch (err) {
-  console.error(err.message);
-  return res.status(500).send('Server Error');
-}}
+};

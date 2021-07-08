@@ -4,13 +4,14 @@ import { useHistory } from "react-router-dom";
 
 const StoryCardBig = ({ index, story }) => {
   let history = useHistory();
-
-  const storyDetails = (id) => {
-    history.push(`/showstory/${id}`);
+  const storyDetailsPublic = (id) => {
+    console.log(id);
+    history.push(`/readpublicstory/${id}`);
   };
+
   return (
     <div key={index}>
-      <div className="story-card" onClick={() => storyDetails(story._id)}>
+      <div className="story-card" onClick={() => storyDetailsPublic(story._id)}>
         <figure className="story-card__genre" data={story.genre}>
           <h3>
             <Moment format="YYYY/MM/DD">{story.createdAt}</Moment>
