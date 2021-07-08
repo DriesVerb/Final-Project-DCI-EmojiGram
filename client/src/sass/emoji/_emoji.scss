@@ -1,6 +1,7 @@
 .emoji {
-  @include flex(column, center, center);
+  @include flex(column, space-between, center);
   height: 10rem;
+  width: 90%;
 
   &__row {
     display: flex;

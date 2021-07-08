@@ -1,0 +1,46 @@
+// grid
+.landing-page {
+  display: grid;
+  height: 80vh;
+  grid-template: auto 1fr auto / 1fr 3fr 2fr;
+
+  &__header {
+    padding: 2rem;
+    grid-column: 1 / 4;
+  }
+}
+
+.public-stories {
+  grid-column: 2 / 3;
+  &__cta {
+    height: 9rem;
+  }
+}
+
+.right-sidebar {
+  grid-column: 3 / 4;
+}
+
+.left-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / 2;
+  position: relative;
+
+  &__menu {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 20%;
+  }
+
+  &__footer {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+    top: 65%;
+    left: 0%;
+  }
+}
