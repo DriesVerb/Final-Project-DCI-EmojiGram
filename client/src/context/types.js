@@ -16,6 +16,7 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS ";
 
 //story Types
 export const STORY_PUBLISH = "STORY_PUBLISH";
+export const STORY_PUBLISH_LIKES = "STORY_PUBLISH_LIKES";
 
 ///////////
 export const ADD_STORY = "ADD_STORY ";
