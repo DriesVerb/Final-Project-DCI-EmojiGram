@@ -1,3 +1,4 @@
+// colors
 $main-d-blue: #023047;
 $main-blue: #219ebc;
 $main-l-blue: #8ecae6;
@@ -12,3 +13,89 @@ $main-l-grey: #a3a3a3;
 $main-d-grey: #566246;
 $main-black: #0a0a0a;
 $main-d-black: #030301;
+
+body {
+  background-color: $main-white;
+}
+
+// MARGINS:
+// MARGIN VALUES
+
+$margins: (
+  "xl": 2rem,
+  "l": 1rem,
+  "s": 0.5rem,
+);
+
+// z-index
+$z-front: 100;
+$z-middle: 50;
+$z-surface: 0;
+$z-background: -50;
+
+// border
+$main-border: 1px solid $main-d-black;
+
+// MARGIN BOTTOM
+
+.mb {
+  &-xl {
+    margin-bottom: map-get($margins, xl);
+  }
+
+  &-l {
+    margin-bottom: map-get($margins, l);
+  }
+
+  &-sm {
+    margin-bottom: map-get($margins, s);
+  }
+}
+
+// MARGIN TOP
+
+.mt {
+  &-xl {
+    margin-top: map-get($margins, xl);
+  }
+
+  &-l {
+    margin-top: map-get($margins, l);
+  }
+
+  &-sm {
+    margin-top: map-get($margins, s);
+  }
+}
+
+// MARGIN RIGHT
+
+.mr {
+  &-xl {
+    margin-right: map-get($margins, xl);
+  }
+
+  &-l {
+    margin-right: map-get($margins, l);
+  }
+
+  &-sm {
+    margin-right: map-get($margins, s);
+  }
+}
+
+// MARGIN LEFT
+
+.ml {
+  &-xl {
+    margin-left: map-get($margins, xl);
+  }
+
+  &-l {
+    margin-left: map-get($margins, l);
+  }
+
+  &-sm {
+    margin-left: map-get($margins, s);
+  }
+}
