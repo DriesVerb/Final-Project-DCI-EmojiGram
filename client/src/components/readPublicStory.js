@@ -22,8 +22,9 @@ const readPublicStory = () => {
                   singleStory.title.slice(1)}
             </h2>
             <br />
-            <p>{singleStory.text}</p>
-
+            <div
+              dangerouslySetInnerHTML={{ __html: singleStory.richText }}
+            ></div>
             <span className="like">
               {singleStory.likes && (
                 <span>&nbsp;{singleStory.likes.length}</span>
