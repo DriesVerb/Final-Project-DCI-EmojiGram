@@ -2,6 +2,7 @@ const User = require('../models/User');
 
 //Local Strategy
 const LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport');
 
 //Third Party Strategy
 const GithubStrategy = require('passport-github').Strategy;
@@ -99,29 +100,27 @@ module.exports = function (passport) {
 
 // Passport Instagram strategy
 
-// passport.use(
-//   new InstagramStrategy(
-//     {
-//       clientID: INSTAGRAM_CLIENT_ID,
-//       clientSecret: INSTAGRAM_CLIENT_SECRET,
-//       callbackURL: 'http://localhost:5000/auth/instagram/callback',
-//     },
-//     function (accessToken, refreshToken, profile, done) {
-//       User.findOne({ instagramId: profile.id }, function (err, user) {
-//         if (err) return done(err);
-//           if (user) {
-//             return done(null, user);
-//           } else {
-//             let newUser = new User({
-//               facebook_id: profile.id,
-//               username: profile.displayName,
-//             });
-//             newUser.save((err, doc) => {
-//               return done(null, doc);
-//             });
-//           }
-//         });
-//       })
-    
-//   )
+passport.use(new InstagramStrategy({
+    clientID: process.env.INSTAGRAM_CLIENT_ID,
+    clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/instagram/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+   User.findOne({ instagram_id: profile.id }, (err, user) => {
+          if (err) return done(err);
+          if (user) {
+            return done(null, user);
+          } else {
+            let newUser = new User({
+              instagram_id: profile.id,
+              username: profile.displayName,
+            });
+            newUser.save((err, doc) => {
+              return done(null, doc);
+            });
+          }
+        });
+    })
+
+)
 
