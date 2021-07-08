@@ -26,56 +26,62 @@ function navbar() {
 
   const userLinks = (
     <Fragment>
+      <Nav style={{ maxHeight: "100px" }} navbarScroll>
+        <li className="ml-2">
+          <a className="nav-link" href="#!">
+            Hello{" "}
+            {user &&
+              user.username.charAt(0).toUpperCase() + user.username.slice(1)}
+            <span className="sr-only">(current)</span>
+          </a>
+        </li>
+        <NavDropdown title="" id="navbarScrollingDropdown">
+          <NavDropdown.Item href="/profile">
+            <i className=" fas fa-cog" />
+            Settings & Privacy
+          </NavDropdown.Item>
+
+          <NavDropdown.Item href="">
+            <i className="fas fa-question-circle" /> Help & Support
+          </NavDropdown.Item>
+          <NavDropdown.Item onClick={onLogout} href="/login">
+            <i className="fas fa-sign-out-alt" /> Logout
+          </NavDropdown.Item>
+        </NavDropdown>
+        <NavLink to="/notification" className="ml-5">
+          <i className="fas fa-bell" /> Notification
+        </NavLink>
+        {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
+        <NavLink href="/UserInterface">
+          <i className=" fas fa-cog" />
+          user
+        </NavLink>
+        {/* //////////////////////////////////////////////////////////////////////////////////////////////////   */}
+        <NavLink to="/message">
+          <i className="fas fa-envelope" /> Messages
+        </NavLink>
+      </Nav>
+    </Fragment>
+  );
+
+  const guestLinks = (
+    <Fragment>
+      <Link to="/login">Login</Link>
+      <Link to="/signup">Signup</Link>
+    </Fragment>
+  );
+
+  return (
+    <Fragment>
       <Navbar bg="light" expand="lg" className="navbar">
         <Navbar.Brand href="/" className="navbar__brand text-bold">
-          EmojiGram
+          Story-Moji
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav style={{ maxHeight: "100px" }} navbarScroll>
-            <li className="ml-2">
-              <a className="nav-link" href="#!">
-                Hello{" "}
-                {user &&
-                  user.username.charAt(0).toUpperCase() +
-                    user.username.slice(1)}
-                <span className="sr-only">(current)</span>
-              </a>
-            </li>
-            <NavDropdown title="" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/profile">
-                <i className=" fas fa-cog" />
-                Settings & Privacy
-              </NavDropdown.Item>
-
-
-           
-
-
-
-
-
-              <NavDropdown.Item href="">
-
-                <i className="fas fa-question-circle" /> Help & Support
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={onLogout} href="/login">
-                <i className="fas fa-sign-out-alt" /> Logout
-              </NavDropdown.Item>
-            </NavDropdown>
-            <NavLink to="/notification" className="ml-5">
-              <i className="fas fa-bell" /> Notification
-            </NavLink>
-{/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
-            <NavLink href="/UserInterface">
-                <i className=" fas fa-cog" />
-                user
-              </NavLink>
- {/* //////////////////////////////////////////////////////////////////////////////////////////////////   */}
-            <NavLink to="/message">
-              <i className="fas fa-envelope" /> Messages
-            </NavLink>
-          </Nav>
+          <div className="navbar">
+            {isAuthenticated ? userLinks : guestLinks}
+          </div>
           <Form className="d-flex ml-5 ">
             <FormControl
               type="search"
@@ -88,33 +94,6 @@ function navbar() {
         </Navbar.Collapse>
       </Navbar>
     </Fragment>
-  );
-
-  const guestLinks = (
-    <Fragment>
-      <li className="nav-item">
-        <Link to="/">Home</Link>
-      </li>
-      <li className="nav-item">
-        <Link to="/genre">Genre</Link>
-      </li>
-      <li className="nav-item">
-        <Link to="/login">Login</Link>
-      </li>
-      <li className="nav-item">
-        <Link to="/signup">Sign Up</Link>
-      </li>
-    </Fragment>
-  );
-
-  return (
-    <div className="navbar">
-      <ul className="nav-menu">
-        <Link to="/"></Link>
-
-        {isAuthenticated ? userLinks : guestLinks}
-      </ul>
-    </div>
   );
 }
 

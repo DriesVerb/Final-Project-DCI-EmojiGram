@@ -1,5 +1,6 @@
 .spinner {
+  height: 5rem;
   font-size: 5rem;
   animation: spin 1s linear infinite;
-  z-index: $z-background;
+  z-index: $z-middle;
 }
