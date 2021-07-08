@@ -1,0 +1,12 @@
+.mostLikes__container {
+    border: 1px solid rgb(123, 117, 117);
+    margin: 20px;
+    padding: 20px 10px 20px 10px;
+    border-radius: 3px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.span-genre {
+    color: red;
+    font-weight: 700;
+    font-size: larger;
+} 

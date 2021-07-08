@@ -28,7 +28,6 @@ exports.published = async (req, res) => {
       })
       .populate("user")
       .limit(5);
-      
     res.json(publicStories);
   } catch (err) {
     console.error(err.message);
@@ -127,7 +126,7 @@ exports.alphabetical = async (req, res) => {
   try {
     await Story.find((err, story) => {
       res.json(story);
-    }).sort({ title: 1 });
+    }).sort({ title: 1 }).limit(5);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -145,7 +144,6 @@ exports.sortTime = async (req, res) => {
   }
 };
 exports.getGenre = async (req, res) => {
-  /* console.log(req.params.genre) */
   await Story.find((err, stories) => {
     res.json(stories);
   })
@@ -153,6 +151,34 @@ exports.getGenre = async (req, res) => {
     .equals(req.params.genre);
 };
 
+exports.sortBylikes = async (req, res) => {
+  try {
+   const storyLikes = await Story.aggregate([
+      { "$project": {
+          "title": 1,
+          "emojis": 1,
+          "text": 1,
+          "author": 1,
+          "user": 1,
+          "genre": 1,
+          "likes": 1,
+          "length": { "$size": "$likes" }
+      }},
+      { "$sort": { "length": -1 } },
+      { "$limit": 10 }
+    ],
+/*   function(err,results) {
+    console.log(results)
+      res.json(results)
+  } */);
+  await User.populate(storyLikes, {path: "user"}, (err,results)=>{
+    res.json(results)
+  })
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
 
 
   /////////////////////////////////////////////////////////////////////////////////////////////

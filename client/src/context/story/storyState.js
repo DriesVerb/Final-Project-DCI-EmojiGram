@@ -8,6 +8,7 @@ import StoryContext from "./storyContext";
 import storyReducer from "./storyReducer";
 import {
   STORY_PUBLISH,
+  STORY_PUBLISH_LIKES,
   ADD_STORY,
   DELETE_STORY,
   EDIT_STORY,
@@ -43,7 +44,7 @@ const StoryState = (props) => {
       },
     ],
     isLiked:false,
-  
+    topStories: [],
     singleStory: null,
     storyToEdit: null,
     msg: null,
@@ -121,12 +122,24 @@ const publishStoryPublicGenre = async genre =>{
       dispatch({ type: STORY_ERROR})
     }
   }
-const publishStoryPublicAlpha = async genre =>{
+const publishStoryPublicAlpha = async () =>{
   
   try {
     const res = await axios.get(`/user/story/filter`)
     dispatch({
       type: STORY_PUBLISH,
+      payload: res.data,
+    });
+  }catch (err) {
+      dispatch({ type: STORY_ERROR})
+    }
+  }
+const publishStoryPublicLikes = async () =>{
+  
+  try {
+    const res = await axios.get(`/user/story/likes`)
+    dispatch({
+      type: STORY_PUBLISH_LIKES,
       payload: res.data,
     });
   }catch (err) {
@@ -276,7 +289,7 @@ const publishStoryPublicAlpha = async genre =>{
     } catch (err) {
       dispatch({
         type: STORY_ERROR,
-        ppayload: err.response.msg,
+        payload: err.response.msg,
       });
     }
   };
@@ -314,8 +327,10 @@ const publishStoryPublicAlpha = async genre =>{
         showStory,
         publishStoryPublicGenre,
         publishStoryPublicAlpha,
+        publishStoryPublic,
+        publishStoryPublicLikes,
         singleStory: state.singleStory,
-
+        topStories: state.topStories,
         setEditedStory,
         clearEditedStory,
         storyToEdit: state.storyToEdit,

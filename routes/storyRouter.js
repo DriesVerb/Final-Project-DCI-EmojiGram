@@ -24,6 +24,7 @@ router.get("/filter", storyController.alphabetical);
 router.get("/time", storyController.sortTime);
 
 router.get("/genre/:genre", storyController.getGenre);
+router.get("/likes", storyController.sortBylikes)
 
 
 router.put("/like/:id", auth, storyController.likeStory);

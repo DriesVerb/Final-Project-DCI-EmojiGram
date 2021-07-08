@@ -1,7 +1,7 @@
 .PublicStories {
     display: grid;
-    height: 88vh;
-    
+    height: 80vh;
+    box-sizing: border-box;
     grid-template: auto 1fr auto / 1fr 3fr 2fr
   }
   .emojisTag {
@@ -21,19 +21,40 @@
   }
   
   .header-publicStories {
-    
     padding: 2rem;
     grid-column: 1 / 4;
   }
   
   .left-sidebar {
-  
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
     grid-column: 1 / 2;
+    position: relative;
+    padding: 0px !important 
   }
   
+  .left-sidbar__menu{
+
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 20%
+  }
+
+  .left-sidbar__footer{
+  
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+    top: 65%;
+    left: 0%;
+  }
   .main-publicStories {
     grid-column: 2 / 3;
     background-color: #f5f5f5;
+    
   }
   
   .right-sidebar {
@@ -45,6 +66,7 @@
   .right-sidebar,
   .main-publicStories{
     padding: 1rem;
+
   }
 
   .mainStories {
@@ -56,20 +78,15 @@
     box-shadow: 10px 10px 15px silver;
     padding: 10px 5px 0px 10px;
     background-color: rgb(250, 249, 247);
-    /* background-color: rgb(215, 208, 195); */
-   /*  background-color: rgb(171, 164, 164); */
-    /* transition: 300ms; */
+
   }
 
-/*   .mainStories:hover {
-    transform: scale(1.01);
-    transition: 300ms;
-  
-} */
+
   .infoContainer {
+    border-top: 3px solid grey;
     display: flex;
     justify-content: space-around;
-    padding: 15px 10px 0px 10px;
+    padding: 15px 10px 5px 10px;
 
   }
   .title_Author {
@@ -84,13 +101,13 @@
  .genre,
  .datePublicStory,
  .readMore {
-  /* border: 1px solid rgb(126, 122, 122); */
+
   border-radius: 15px;
-  /* box-shadow: 2px 2px 2px rgb(70, 67, 67); */
-  padding: 1px 10px;
+  padding: 3px 10px;
   font-size: 0.9em;
-  color: rgb(70, 66, 66);
+  border: 3px solid grey;
+  color: rgb(255, 249, 249);
   font-weight: 600;
-  background-color: rgb(159, 233, 137);
+  background-color: rgb(57, 56, 56);
  }
 
