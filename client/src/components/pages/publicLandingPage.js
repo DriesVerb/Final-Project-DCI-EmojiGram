@@ -22,6 +22,7 @@ const PublicLandingPage = () => {
 
   const [sort, setSort] = useState("Latest");
   useEffect(() => {
+    publishStoryPublicLikes()
     if (sort === "Latest") publishStoryPublic();
     else if (sort === "Alphabet") publishStoryPublicAlpha();
     else if (sort === "Most liked") publishStoryPublicLikes();
@@ -72,7 +73,7 @@ const PublicLandingPage = () => {
       </main>
       <div className="right-sidebar">
         Most liked:
-        <StoryCardSmall story={stories} />
+        <StoryCardSmall story={topStories} />
         {/* <MostLikes /> */}
       </div>
     </div>
