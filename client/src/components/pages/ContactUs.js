@@ -1,25 +1,15 @@
 import React from 'react';
 
 function Email() {
-  const Mailto = ({
-    email,
-    subject = '',
-    body = '',
-    message = '',
-    children,
-  }) => {
-    let mailContent = subject || body || message ? '?' : '';
+  const Mailto = ({ email, subject = '', body = '', children }) => {
+ 
+    let mailContent = subject || body ? '?' : '';
     if (subject)
       mailContent += `${subject ? '&' : ''}subject=${encodeURIComponent(
         subject
       )}`;
     if (body)
-      mailContent += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
-    if (message)
-      mailContent += `${message ? '&' : ''}message=${encodeURIComponent(
-        message
-      )}`;
-
+      mailContent += `${body ? '&' : ''}body=${encodeURIComponent(body)}`;
     return <a href={`mailto:${email}${mailContent}`}>{children}</a>;
   };
 
@@ -31,7 +21,10 @@ function Email() {
         to your email from where you will be able to write to us the issue(s)
         you are facing
       </h2>
-      <Mailto email='metalrocks71.79@gmail.com' subject=''>
+      <Mailto
+        email='testfinalprojectone@gmail.com'
+        subject='You are raising an issue'
+        body=''>
         <p>Contact the support team</p>
       </Mailto>
     </div>
