@@ -71,7 +71,7 @@ const PublicLandingPage = () => {
         })}
       </main>
       <div className="right-sidebar">
-        Most liked:
+        Lara's latest stories:
         <StoryCardSmall story={stories} />
         {/* <MostLikes /> */}
       </div>
