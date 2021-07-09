@@ -78,4 +78,4 @@ const PaginateComponent = ({ data, perPage }) => {
   );
 };
 
-export default PaginateComponent; 
+export default PaginateComponent;

@@ -37,7 +37,14 @@ const EmojiCTA = () => {
         </div>
       )}
       <div className="emoji__buttons">
-        <button onClick={getEmojis}>Generate new story</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            getEmojis();
+          }}
+        >
+          Generate new story
+        </button>
         <button onClick={writeThisStory}>Write this story</button>
       </div>
     </div>

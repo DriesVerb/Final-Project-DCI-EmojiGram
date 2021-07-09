@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { genreStore } from "../../store";
 
 // components
-import PaginateComponent from "../../utils/PaginateComponent";
+import PaginateComponent from "../utils/PaginateComponent";
 
 const GenreShow = ({ genre }) => {
   const stories = genreStore((state) => state.stories);
@@ -18,7 +18,7 @@ const GenreShow = ({ genre }) => {
     setPerPage(e.target.value);
   };
   return (
-    <Fragment>
+    <div className="grid-container__mid">
       {stories.length === 0 ? (
         <h2>There are no stories yet in the genre of {genre}!</h2>
       ) : (
@@ -32,7 +32,7 @@ const GenreShow = ({ genre }) => {
           <PaginateComponent data={stories} perPage={perPage} />
         </div>
       )}
-    </Fragment>
+    </div>
   );
 };
 

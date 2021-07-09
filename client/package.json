@@ -19,8 +19,13 @@
     "react-scripts": "^1.1.5",
     "uuid": "^3.4.0",
     "web-vitals": "^1.1.2",
+<<<<<<< HEAD
     "xstate": "^4.22.0",
     "zustand": "^3.5.2"
+=======
+    "xstate": "^4.20.1",
+    "zustand": "^3.5.5"
+>>>>>>> 7b8f03cbef9cfb145ce4ab4fbc2e031457532ac4
   },
   "scripts": {
     "start": "react-scripts start",

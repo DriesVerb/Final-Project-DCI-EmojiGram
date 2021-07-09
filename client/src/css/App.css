@@ -5,7 +5,7 @@ body {
 }
 
 .mb-xl {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .mb-l {
   margin-bottom: 1rem;
@@ -15,7 +15,7 @@ body {
 }
 
 .mt-xl {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 .mt-l {
   margin-top: 1rem;
@@ -25,7 +25,7 @@ body {
 }
 
 .mr-xl {
-  margin-right: 2rem;
+  margin-right: 3rem;
 }
 .mr-l {
   margin-right: 1rem;
@@ -35,7 +35,7 @@ body {
 }
 
 .ml-xl {
-  margin-left: 2rem;
+  margin-left: 3rem;
 }
 .ml-l {
   margin-left: 1rem;
@@ -245,12 +245,87 @@ a {
   text-decoration: none;
 }
 
+.app__container {
+  display: grid;
+  grid-template-rows: 15rem 60rem;
+  grid-template-columns: 5rem 1fr 5rem;
+}
+.app__navbar {
+  grid-row: 1/2;
+  grid-column: 1/4;
+}
+.app__main {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-rows: 15rem 1fr;
+  grid-template-columns: 1fr 3fr 1.5fr;
+}
+.grid-container__header {
+  grid-column: 1/4;
+  grid-row: 1/2;
+}
+.grid-container__mid {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+.grid-container__left {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.grid-container__right {
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+
 .navbar {
-  width: 100vw;
   font-size: 1rem;
 }
 .navbar__brand {
   font-size: 3rem;
+}
+
+.landing-page {
+  height: 80vh;
+}
+.landing-page__header {
+  padding: 2rem;
+}
+
+.public-stories {
+  grid-column: 2/3;
+}
+.public-stories__cta {
+  height: 9rem;
+}
+
+.right-sidebar {
+  grid-column: 3/4;
+}
+
+.left-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  grid-column: 1/2;
+  position: relative;
+}
+.left-sidebar__menu {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 20%;
+}
+.left-sidebar__footer {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+  top: 65%;
+  left: 0%;
 }
 
 .user-card__img {
@@ -320,9 +395,10 @@ a {
 }
 
 .spinner {
+  height: 5rem;
   font-size: 5rem;
   animation: spin 1s linear infinite;
-  z-index: -50;
+  z-index: 50;
 }
 
 .preview__paragraph {
@@ -346,7 +422,7 @@ a {
 
 .story-card {
   position: relative;
-  width: 50%;
+  width: 90%;
   margin: 5px;
   padding: 1.5rem;
   height: 25rem;
@@ -411,9 +487,10 @@ a {
 .emoji {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 10rem;
+  width: 90%;
 }
 .emoji__row {
   display: flex;
