@@ -51,12 +51,13 @@ const PaginateComponent = ({ data, perPage }) => {
                     <i className="fas fa-comment" /> &nbsp;
                     {/* {<story className="comments"></story>.length} */}
                   </span>
-                  <span className="story-card__emojis">
+                  {/* <span className="story-card__emojis">
                     <i className="far fa-smile-beam" /> : &nbsp;
                     {story.emojis.map((emoj) => (
                       <span key={emoj._id}>&nbsp;{emoj.character} </span>
+                      
                     ))}
-                  </span>
+                  </span> */}
                 </footer>
               </figure>
             </div>
