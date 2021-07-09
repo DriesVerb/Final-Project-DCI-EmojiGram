@@ -54,48 +54,55 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className="form-container">
-      <h4>
-        Account <span className="text-info">Register</span>
-      </h4>
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            name="username"
-            value={username}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email Address</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={email}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={onChange}
+    <div className="grid-container">
+      <div className="form-container grid-container__mid">
+        <h4>
+          Account <span className="text-info">Register</span>
+        </h4>
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              name="username"
+              value={username}
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              value={email}
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={onChange}
 
-            // minLength='6'
-          />
-        </div>
+              // minLength='6'
+            />
+          </div>
 
-        <Button className="ml-5" value="Register" type="submit" variant="info">
-          sign up
-        </Button>
-      </form>
+          <Button
+            className="ml-5"
+            value="Register"
+            type="submit"
+            variant="info"
+          >
+            sign up
+          </Button>
+        </form>
+      </div>
     </div>
   );
 };
