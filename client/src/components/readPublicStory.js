@@ -4,7 +4,7 @@ import StoryContext from "../context/story/storyContext";
 
 const readPublicStory = () => {
   const storyContext = useContext(StoryContext);
-  const { singleStory, showSinglePublic } = storyContext;
+  const { singleStory, showSinglePublic,stories } = storyContext;
   const { id } = useParams();
 
   useEffect(() => {
@@ -13,6 +13,26 @@ const readPublicStory = () => {
 
   return (
     <Fragment>
+
+
+{/* <div className="page">
+  <p dangerouslySetInnerHTML={{ __html: singleStory.richText }}>{stories.text}</p>
+  </div>
+ */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {singleStory && (
         <div className="showStory">
           <div className="storyContainer">
@@ -39,7 +59,7 @@ const readPublicStory = () => {
             </span>
             <span className="emojisClass">
               <i className="far fa-smile-beam" /> :{" "}
-              {singleStory.emojis && (
+              {singleStory.emojis && ( 
                 <span>
                   {" "}
                   &nbsp;

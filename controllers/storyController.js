@@ -46,9 +46,10 @@ exports.published = async (req, res) => {
 
 exports.show = async (req, res) => {
   try {
-    let story = await Story.findById(req.params.id).populate("user");
-    res.json(story);
-    // console.log(data)
+    let story = await Story.findById(req.params.id).populate("user")
+    
+    res.json(story)
+  
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -127,6 +128,18 @@ exports.alphabetical = async (req, res) => {
       res.json(story);
     })
       .sort({ title: 1 })
+      .limit(5);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
+exports.views = async (req, res) => {
+  try {
+    await Story.find((err, story) => {
+      res.json(story);
+    })
+      .sort({ views: -1 })
       .limit(5);
   } catch (err) {
     console.error(err.message);

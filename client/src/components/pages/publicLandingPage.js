@@ -16,6 +16,7 @@ const PublicLandingPage = () => {
     publishStoryPublicLikes,
     publishStoryPublicGenre,
     publishStoryPublicAlpha,
+    publishStoryPublicViews,
     topStories,
     stories,
   } = storyContext;
@@ -26,6 +27,7 @@ const PublicLandingPage = () => {
     if (sort === "Latest") publishStoryPublic();
     else if (sort === "Alphabet") publishStoryPublicAlpha();
     else if (sort === "Most liked") publishStoryPublicLikes();
+    else if (sort === "Most views") publishStoryPublicViews()
     else if (sort) publishStoryPublicGenre(sort);
   }, [sort]);
 

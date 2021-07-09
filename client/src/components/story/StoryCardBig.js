@@ -32,6 +32,9 @@ const StoryCardBig = ({ index, story }) => {
               {story.title}"&nbsp;
               <span className="author">by {story.user.username}</span>
             </p>
+            <p>
+              views: {story.views}
+            </p>
             <span className="story-card__emojis">
               <i className="far fa-smile-beam" /> : &nbsp;
               {story.emojis.map((emoj) => (
