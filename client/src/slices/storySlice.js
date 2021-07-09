@@ -10,7 +10,7 @@ const storySlice = (set) => ({
   subGenre: null,
   text: null,
   richText: null,
-  _id:null,
+  _id: null,
   // convert rich text to state and storing the values in our state
   getValues: (formData) => {
     const emojiArray = emojiStore.getState().emojis;
@@ -21,8 +21,8 @@ const storySlice = (set) => ({
       .replace(/[<>/{}]/g, "")
       .replace(/[&*[]]/g, "")
       .split("\n")
-      .join("<p/><p>");
-    set((state) => ({ richText }));
+      .join("<p/><p class='mt-xl'>");
+    set((state) => ({ richText: `<p>${richText}</p> ` }));
   },
   // get subGenre
   getSubGenre: (value) => {
@@ -43,11 +43,12 @@ const storySlice = (set) => ({
       headers: { "Content-Type": "application/json" },
     };
     const currentStore = storyStore.getState();
-    await axios.put( `/user/story/editStory/${currentStore._id}`,currentStore,
+    await axios.put(
+      `/user/story/editStory/${currentStore._id}`,
+      currentStore,
       config
     );
-
-   }
+  },
 });
 
 export default storySlice;

@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 const StoryCardBig = ({ index, story }) => {
   let history = useHistory();
   const storyDetailsPublic = (id) => {
-    console.log(id);
     history.push(`/readpublicstory/${id}`);
   };
 

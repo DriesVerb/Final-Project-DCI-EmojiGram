@@ -11,8 +11,8 @@ const GenreMainPage = () => {
   };
 
   return (
-    <div>
-      <div className="genre__row">
+    <div className="grid-container">
+      <div className="genre__row grid-container__header">
         <div onClick={changeGenre} className="genre__card">
           Fantasy
         </div>

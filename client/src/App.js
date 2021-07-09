@@ -54,11 +54,11 @@ function App() {
     <ProfileState>
       <StoryState>
         <AlertState>
-          <div className="app app__container">
+          <div className="app__container">
             <Router>
               <Navbar className="app__navbar" />
               <Alerts />
-              <div className="main-container">
+              <div className="app__main">
                 <Switch>
                   <Route path="/" exact component={PublicLandingPage} />
                   <PrivateRoute path="/landing" exact component={LandingPage} />

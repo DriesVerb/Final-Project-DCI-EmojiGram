@@ -34,8 +34,8 @@ const PublicLandingPage = () => {
   };
 
   return (
-    <div className="landing-page">
-      <header className="landing-page__header">
+    <div className="landing-page grid-container">
+      <header className="landing-page__header grid-container__header">
         <h1 className="text-center">Story-Moji</h1>
       </header>
       <div className="left-sidebar">
