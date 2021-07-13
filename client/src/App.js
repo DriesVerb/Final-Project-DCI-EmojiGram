@@ -35,7 +35,7 @@ import ProfileState from "./context/profile/ProfileState";
 
 // import setAuthToken
 import setAuthToken from "./context/auth/setAuthToken";
-import readPublicStory from "./components/readPublicStory";
+// import readPublicStory from "./components/readPublicStory";
 // import showStory from "./components/story/showStory";
 
 if (localStorage.token) {

@@ -2,6 +2,24 @@ import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
 
+//Material UI
+import {
+  Avatar,
+  Grid,
+  Paper,
+  TextField,
+  Button,
+  Typography,
+  Link,
+} from "@material-ui/core";
+import PersonIcon from "@material-ui/icons/Person";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import { Formik, Form, Field } from "formik";
+
 function Login(props) {
   const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
@@ -23,6 +41,7 @@ function Login(props) {
       setUser({
         email: "",
         password: "",
+        remember: false,
       });
     }
     // redirect to Home Page
@@ -50,60 +69,104 @@ function Login(props) {
       });
     }
   };
+
+  const paperStyle = {
+    padding: 20,
+    height: "70vh",
+    width: 420,
+    margin: "20px auto",
+  };
+  const avatarStyle = { backgroundColor: "#fb8500" };
   return (
-    <div className="grid-container">
-      <div className="grid-container__mid">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            submToServer();
-          }}
-        >
-          <h2>Login</h2>
-          <label htmlFor="email">Email</label>
-          <input
-            value={email}
-            type="text"
-            name="email"
-            placeholder="Your Email.."
-            onChange={getData}
-          />
-          <br />
-          <label htmlFor="password">Password</label>
-          <input
-            value={password}
-            type="password"
-            name="password"
-            placeholder="Your Password.."
-            onChange={getData}
-          />
-          <button type="submit" className="btn btn-success">
-            Login
-          </button>
-        </form>
-        {/* <button>Facebook</button>
-    <button>Instagram</button>
-    <button>Github</button> */}
-        <a
-          href="http://localhost:5000/login/passport/github"
-          className="fab-fa-github btn btn-dark font-weight-bold "
-        >
-          Github
-        </a>
-        <a
-          href="http://localhost:5000/login/passport/instagram"
-          className="btn btn-danger ml-4 font-weight-bold"
-        >
-          Instagram
-        </a>
-        <a
-          href="http://localhost:5000/login/passport/facebook"
-          className="btn btn-primary ml-4 font-weight-bold "
-        >
-          Facebook
-        </a>
-      </div>
-    </div>
+    <Grid>
+      <Paper elevation={10} style={paperStyle}>
+        <Grid align="center">
+          <Avatar style={avatarStyle} className="avatar mt-5">
+            <PersonIcon style={{ fontSize: 40 }} />
+          </Avatar>
+          <h3 className="login mt-4">Login</h3>
+        </Grid>
+        <Formik>
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              submToServer();
+            }}
+          >
+            <Field
+              as={TextField}
+              className="field mt-5"
+              label="Email"
+              name="email"
+              variant="outlined"
+              placeholder="Enter Email"
+              fullWidth
+              onChange={getData}
+            />
+            <Field
+              as={TextField}
+              className="field mt-5"
+              label="Password"
+              name="password"
+              variant="outlined"
+              placeholder="Enter Password"
+              type="password"
+              fullWidth
+              onChange={getData}
+            />
+            <Field
+              as={FormControlLabel}
+              className="field mt-4"
+              name="remember"
+              control={<Checkbox color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              className="btn mt-4"
+              type="submit"
+              variant="contained"
+              fullWidth
+            >
+              Login
+            </Button>
+          </Form>
+        </Formik>
+
+        <Typography className="typo mt-4">
+          <Link href="#">Forgot Password</Link>
+        </Typography>
+        <h4 className="signup mt-5">
+          Do not have an account?
+          <Link className="link ml-3 mb-4" href="/signup">
+            Sign Up
+          </Link>
+        </h4>
+        <Grid align="center">
+          <h4 className="login mb-4 mt-5"> Login With</h4>
+        </Grid>
+
+        <Grid align="center">
+          <a
+            href="http://localhost:5000/login/passport/github"
+            className=" btn btn-dark font-weight-bold"
+          >
+            <GitHubIcon className="github ml-1" />
+          </a>
+          <a
+            href="http://localhost:5000/login/passport/instagram"
+            className="btn btn-danger ml-4 font-weight-bold"
+          >
+            <InstagramIcon className="instagram ml-1" />
+          </a>
+          <a
+            href="http://localhost:5000/login/passport/facebook"
+            className="btn btn-primary ml-4 font-weight-bold"
+          >
+            <FacebookIcon className="facebook ml-1" />
+          </a>
+        </Grid>
+      </Paper>
+    </Grid>
   );
 }
 export default Login;
