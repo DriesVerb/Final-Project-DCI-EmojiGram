@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+
 const EmojiToolTip = ({ unicodeName }) => {
   const [emojiName, setEmojiName] = useState("");
 
@@ -26,9 +27,11 @@ const EmojiToolTip = ({ unicodeName }) => {
   }, []);
 
   return (
+
     <div className="emoji-tooltip">
       <p className="emoji-tooltip__name">{emojiName}</p>
     </div>
+
   );
 };
 

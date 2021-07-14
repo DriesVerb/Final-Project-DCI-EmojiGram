@@ -98,28 +98,28 @@ module.exports = function (passport) {
   );
 };
 
-// Passport Instagram strategy
+//Passport Instagram strategy
 
-// passport.use(new InstagramStrategy({
-//     clientID: process.env.INSTAGRAM_CLIENT_ID,
-//     clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
-//     callbackURL: "http://localhost:3000/auth/instagram/callback"
-//   },
-//   function(accessToken, refreshToken, profile, done) {
-//    User.findOne({ instagram_id: profile.id }, (err, user) => {
-//           if (err) return done(err);
-//           if (user) {
-//             return done(null, user);
-//           } else {
-//             let newUser = new User({
-//               instagram_id: profile.id,
-//               username: profile.displayName,
-//             });
-//             newUser.save((err, doc) => {
-//               return done(null, doc);
-//             });
-//           }
-//         });
-//     })
+passport.use(new InstagramStrategy({
+    clientID: process.env.INSTAGRAM_CLIENT_ID,
+    clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/instagram/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+   User.findOne({ instagram_id: profile.id }, (err, user) => {
+          if (err) return done(err);
+          if (user) {
+            return done(null, user);
+          } else {
+            let newUser = new User({
+              instagram_id: profile.id,
+              username: profile.displayName,
+            });
+            newUser.save((err, doc) => {
+              return done(null, doc);
+            });
+          }
+        });
+    })
 
-// )
+)
