@@ -1,14 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./publicLandingPage.css";
 import StoryContext from "../../context/story/storyContext";
-import { NavDropdown, Nav } from "react-bootstrap";
+import { NavDropdown } from "react-bootstrap";
 
 // Components
-// import MostLikes from "../mostLikes";
+import PaginateComponent from "../utils/PaginateComponent";
 import StoryCardSmall from "../story/StoryCardSmall";
-import StoryCardBig from "../story/StoryCardBig";
 import EmojiCTA from "../story/EmojiCTA";
-
 const PublicLandingPage = () => {
   const storyContext = useContext(StoryContext);
   const {
@@ -22,6 +19,7 @@ const PublicLandingPage = () => {
 
   const [sort, setSort] = useState("Latest");
   useEffect(() => {
+    publishStoryPublicLikes();
     if (sort === "Latest") publishStoryPublic();
     else if (sort === "Alphabet") publishStoryPublicAlpha();
     else if (sort === "Most liked") publishStoryPublicLikes();
@@ -33,14 +31,12 @@ const PublicLandingPage = () => {
   };
 
   return (
-    <div className="landing-page grid-container">
+    <div className="grid-container">
       <header className="landing-page__header grid-container__header">
-        <h1 className="text-center">Story-Moji</h1>
+        <h1 className="text-center">Emoji-Tales</h1>
       </header>
-      <div className="left-sidebar">
+      <div className="left-sidebar grid-container__left">
         <div className="left-sidebar__menu">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/genre">Genres</Nav.Link>
           <NavDropdown title="Sorted by" id="basic-nav-dropdown">
             <NavDropdown.Item onClick={onChange}>Latest</NavDropdown.Item>
             <NavDropdown.Item onClick={onChange}>Alphabet</NavDropdown.Item>
@@ -64,15 +60,25 @@ const PublicLandingPage = () => {
           <p>Twitter</p>
         </div>
       </div>
-      <main className="public-stories">
-        <EmojiCTA className="public-stories__cta" />
-        {(sort === "Most liked" ? topStories : stories).map((story) => {
-          return <StoryCardBig story={story} key={story._id} />;
-        })}
+      <main className="public-stories grid-container__mid">
+        <div className="public-stories__cta">
+          <EmojiCTA />
+        </div>
+        <div className="public-stories__cards">
+          {sort === "Most liked" ? (
+            <PaginateComponent data={topStories} perPage={20} />
+          ) : (
+            <PaginateComponent data={stories} perPage={20} />
+          )}
+        </div>
       </main>
-      <div className="right-sidebar">
-        Lara's latest stories:
-        <StoryCardSmall story={stories} />
+      <div className="right-sidebar grid-container__right">
+        <StoryCardSmall story={topStories} amount={3} title={"Most Likes:"} />
+        <StoryCardSmall
+          story={stories}
+          amount={2}
+          title={"Latest Published:"}
+        />
         {/* <MostLikes /> */}
       </div>
     </div>

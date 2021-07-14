@@ -1,0 +1,26 @@
+.story-editor {
+  &__writer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__emojis {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: 10rem;
+  }
+}
+
+.story-nav {
+  padding: 1rem;
+  @include flex(column, start, start);
+
+  &__form-box {
+    margin-bottom: 2rem;
+  }
+
+  &__label {
+    @include main-font(2rem, 400, $main-black);
+  }
+}

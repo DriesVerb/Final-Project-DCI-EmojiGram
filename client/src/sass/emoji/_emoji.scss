@@ -1,7 +1,8 @@
 .emoji {
-  @include flex(column, space-between, center);
-  height: 10rem;
-  width: 90%;
+  @include flex(column, space-around, center);
+  border-radius: 1rem;
+  background-color: $main-l-grey;
+  padding: 1.5rem;
 
   &__row {
     display: flex;
@@ -9,8 +10,21 @@
   }
 
   &__character {
-    font-size: 6rem;
+    font-family: Openemonji, Firefoxemoji, OpenSansEmoji, Symbola;
     position: relative;
+    padding: 0.5rem;
+
+    &--small {
+      font-size: 2rem;
+    }
+
+    &--medium {
+      font-size: 6rem;
+    }
+
+    &--large {
+      font-size: 8rem;
+    }
   }
 
   &__buttons {
@@ -20,17 +34,18 @@
 
 .emoji-tooltip {
   position: absolute;
-  @include flex(column, center, start);
+  @include flex(column, center, center);
   border: $main-border;
-  z-index: $z-middle;
+  z-index: $z-front;
   background-color: $main-yellow;
-  height: 10rem;
+  height: 13rem;
   width: 20rem;
-  padding: 1rem;
+  padding: 2rem;
   bottom: 75%;
   left: 100%;
 
   &__name {
-    @include main-font(1.2rem, 700, $main-d-black);
+    @include main-font(2rem, 500, $main-d-black);
+    padding: 1rem;
   }
 }
