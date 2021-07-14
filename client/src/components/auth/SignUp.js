@@ -9,11 +9,9 @@ import {
   Paper,
   TextField,
   Button,
-  Typography,
   Link,
 } from "@material-ui/core";
 import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { Formik, Form, Field } from "formik";
 
 const SignUp = (props) => {

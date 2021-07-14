@@ -1,0 +1,27 @@
+.story-card-small {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid $main-black;
+  margin-bottom: 2rem;
+  @include flex(column, center, center);
+  cursor: pointer;
+  &__title {
+    @include main-font(2rem, 700, $main-black);
+    margin-bottom: 2rem;
+  }
+
+  &__emojis {
+    @include flex(row, center, center);
+    margin-bottom: 2rem;
+  }
+
+  &__info {
+    width: 100%;
+    @include flex(row, start, start);
+
+    &--bold {
+      @include main-font(2rem, 500, $main-black);
+      margin-right: 1rem;
+    }
+  }
+}
