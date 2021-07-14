@@ -12,6 +12,8 @@ const UserItem = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  const { _id, name, username, email, age, location } = user;
+
   const onEdit = () => {
     setCurrent(user);
     props.history.push("/userform");
@@ -21,7 +23,7 @@ const UserItem = (props) => {
     deleteProfile(_id);
     clearCurrent();
   };
-  const { _id, name, username, email, age, location } = user;
+
   return (
     <Fragment>
       <ul>
