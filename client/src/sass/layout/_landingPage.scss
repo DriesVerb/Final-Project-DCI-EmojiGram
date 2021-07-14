@@ -1,43 +1,35 @@
 // grid
 .landing-page {
-  height: 80vh;
-
   &__header {
     padding: 2rem;
   }
 }
 
 .public-stories {
-  grid-column: 2 / 3;
+  height: 100%;
+  width: 100%;
+  @include flex(column, center, center);
   &__cta {
-    height: 9rem;
+    width: 100%;
+    height: 20rem;
+    padding: 5rem;
+    margin-bottom: 2rem;
   }
-}
-
-.right-sidebar {
-  grid-column: 3 / 4;
+  &__cards {
+    width: 100%;
+    height: 100%;
+    @include flex(column, center, center);
+  }
 }
 
 .left-sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  grid-column: 1 / 2;
-  position: relative;
+  @include flex(column, space-between, start);
+  height: 65vh;
 
   &__menu {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 20%;
   }
 
   &__footer {
-    width: 100%;
-    position: absolute;
     padding: 15px;
-    top: 65%;
-    left: 0%;
   }
 }

@@ -1,6 +1,23 @@
+.user-interface {
+  &__cards {
+    @include flex(row, space-around, center);
+  }
+}
+
 .user-card {
+  @include flex(column, center, center);
   &__img {
     height: 20rem;
     width: 20rem;
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    @include main-font(2rem, 500, $main-black);
+    margin-bottom: 2rem;
+  }
+
+  &__btn {
+    font-size: 2rem;
   }
 }

@@ -6,6 +6,26 @@
 // font-family: 'Lato', sans-serif;
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300;1,400&display=swap");
 
+// @font-face {
+//   font-family: Openemonji;
+//   src: local("Openemonji"), url(../../fonts/NotoColorEmoji.ttf) format("tff");
+// }
+
+// @font-face {
+//   font-family: Firefoxemoji;
+//   src: url(../fonts/TwitterColorEmoji-SVGinOT.ttf);
+// }
+
+// @font-face {
+//   font-family: OpenSansEmoji;
+//   src: url(../fonts/OpenSansEmoji.otf);
+// }
+
+// @font-face {
+//   font-family: Symbola;
+//   src: url(../fonts/Symbola-AjYx.ttf);
+// }
+
 // fonts
 @mixin main-font($font-size, $font-weight, $font-color) {
   font-family: "Roboto", sans-serif;

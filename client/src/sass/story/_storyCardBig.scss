@@ -1,78 +1,98 @@
-.story-card {
-  position: relative;
+.story-card-big {
   width: 90%;
-  margin: 5px;
-  padding: 1.5rem;
-  height: 25rem;
   border-radius: 1rem;
   box-shadow: 0 8px 6px -6px $main-black;
+  border: 1px solid $main-black;
   transition: 0.3s ease;
   cursor: pointer;
+  margin-bottom: 2rem;
+  background-color: $main-l-grey;
+
   &:hover {
     box-shadow: 0 1rem 7px -5px $main-black;
   }
-  &__footer {
-    padding: 1rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+
+  &__emojis {
+    @include flex(row, space-around, center);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background: white;
+    width: 100%;
+    padding: 3rem;
+    border-bottom: 1px solid $main-d-grey;
+
+    &--center {
+      @include flex(row, center, center);
+      width: 80%;
+    }
+
+    &--size {
+      font-size: 8rem;
+    }
   }
 
-  &__genre {
-    &::after {
-      content: attr(data);
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 6px 8px;
-      max-width: calc((100%) - 60px);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: $main-white;
-      background-color: $main-orange;
-      box-sizing: border-box;
-      border-radius: 0 10px 0 0;
+  &__info {
+    padding: 1rem;
+    width: 100%;
+    @include flex(column, space-between, start);
+  }
+
+  &__story {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    &--bold {
+      @include main-font(3.5rem, 500, $main-black);
     }
+    &--small {
+      @include main-font(1.5rem, 300, $main-black);
+    }
+  }
+
+  &__categories {
+    @include flex(row, start, center);
+  }
+
+  &__box {
+    border: 1px solid $main-black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $main-white;
   }
 
   &__text {
-    overflow: hidden;
+    padding: 3rem;
+    line-height: 1.5;
     width: 100%;
-    line-height: 1.4rem;
+    @include flex(row, start, start);
   }
 
-  &__emojis {
-    padding: 0px 1rem;
+  &__footer {
+    padding: 1rem;
+    @include flex(row, space-between, start);
+    width: 100%;
+    background-color: #fff;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
 
-  &__fade {
-    position: relative;
-    height: 5.6rem;
+  &__read-more {
+    cursor: pointer;
+    margin-right: 1rem;
 
-    &::after {
-      content: "";
-      text-align: right;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 70%;
-      height: 1.4rem;
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 1) 80%
-      );
+    &:hover {
+      color: $main-d-blue;
     }
+  }
+
+  &__social {
+    @include flex(row, center, center);
   }
 
   &__like,
   &__comments {
     padding: 0px 2rem;
-    color: grey;
-  }
-
-  & span i,
-  & h3 span {
-    color: grey;
   }
 }

@@ -75,7 +75,7 @@ function navbar() {
     <Fragment>
       <Navbar bg="light" expand="lg" className="navbar app__navbar">
         <Navbar.Brand href="/" className="navbar__brand text-bold">
-          Story-Moji
+          Emoji-Tales
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

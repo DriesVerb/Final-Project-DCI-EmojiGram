@@ -27,12 +27,11 @@ const EmojiToolTip = ({ unicodeName }) => {
   }, []);
 
   return (
-   
-      <div className='emoji-tooltip'>
-        <p className='mb-xl'>Emoji: </p>
-        <p className='emoji-tooltip__name'>{emojiName}</p>
-      </div>
-   
+
+    <div className="emoji-tooltip">
+      <p className="emoji-tooltip__name">{emojiName}</p>
+    </div>
+
   );
 };
 
