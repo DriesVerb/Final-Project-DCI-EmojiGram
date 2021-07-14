@@ -1,0 +1,25 @@
+/* This is a customer CSS file that handles all the fonts for the emojis. */
+
+@font-face {
+  font-family: Openemonji;
+  src: local("Openemonji"), url(./fonts/NotoColorEmoji.ttf);
+}
+
+@font-face {
+  font-family: Firefoxemoji;
+  src: url(./fonts/TwitterColorEmoji-SVGinOT.ttf);
+}
+
+@font-face {
+  font-family: OpenSansEmoji;
+  src: url(./fonts/OpenSansEmoji.otf);
+}
+
+@font-face {
+  font-family: Symbola;
+  src: url(./fonts/Symbola-AjYx.ttf);
+}
+
+.emoji__character {
+  font-family: Openemonji, Firefoxemoji, OpenSansEmoji, Symbola;
+}

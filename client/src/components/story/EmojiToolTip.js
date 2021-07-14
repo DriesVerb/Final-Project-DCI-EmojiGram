@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const EmojiToolTip = ({ unicodeName }) => {
-  const [emojiName, setEmojiName] = useState("");
-
   const changeName = (input) => {
     const splitName = input.split(" ");
     if (splitName[0].charAt(0) === "E") splitName.splice(0, 1);
@@ -18,16 +16,12 @@ const EmojiToolTip = ({ unicodeName }) => {
 
     const newName = newWordArray.join(" ");
 
-    setEmojiName(newName);
+    return newName;
   };
-
-  useEffect(() => {
-    changeName(unicodeName);
-  }, []);
 
   return (
     <div className="emoji-tooltip">
-      <p className="emoji-tooltip__name">{emojiName}</p>
+      <p className="emoji-tooltip__name">{changeName(unicodeName)}</p>
     </div>
   );
 };

@@ -10,7 +10,6 @@
   }
 
   &__character {
-    font-family: Openemonji, Firefoxemoji, OpenSansEmoji, Symbola;
     position: relative;
     padding: 0.5rem;
 
@@ -35,17 +34,33 @@
 .emoji-tooltip {
   position: absolute;
   @include flex(column, center, center);
-  border: $main-border;
+  // border: $main-border;
   z-index: $z-front;
   background-color: $main-yellow;
-  height: 13rem;
+  height: 5rem;
   width: 20rem;
   padding: 2rem;
-  bottom: 75%;
-  left: 100%;
+  top: 50%;
+  right: 0%;
+
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+
+  &::after {
+    position: absolute;
+    content: "";
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    right: -14%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $main-yellow;
+    clip-path: polygon(100% 52%, 0 0, 0 100%);
+  }
 
   &__name {
-    @include main-font(2rem, 500, $main-d-black);
+    @include main-font(1.2rem, 500, $main-black);
     padding: 1rem;
   }
 }
