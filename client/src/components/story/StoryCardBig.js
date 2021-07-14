@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 // components
-import EmojiChar from "./EmojiChar";
+import EmojiChar from './EmojiChar';
 
-const StoryCardBig = ({ story }) => {
+const StoryCardBig = ({ index ,story }) => {
   let history = useHistory();
 
   const storyDetailsPublic = (id) => {
@@ -19,7 +19,7 @@ const StoryCardBig = ({ story }) => {
   };
 
   const classGenre = (genre) => {
-    const replaceGenre = genre.split(" ").join("-");
+    const replaceGenre = genre.split(' ').join('-');
     return replaceGenre;
   };
 

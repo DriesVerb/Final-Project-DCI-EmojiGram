@@ -20,19 +20,11 @@
     "react-scripts": "^1.1.5",
     "uuid": "^3.4.0",
     "web-vitals": "^1.1.2",
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     "xstate": "^4.22.0",
     "zustand": "^3.5.2"
-=======
-    "xstate": "^4.20.1",
-    "zustand": "^3.5.5"
->>>>>>> 294d433b76d0ea1bb20ac667a72850aa7ebc5c00
-=======
 
-    "xstate": "^4.20.1",
-    "zustand": "^3.5.5"
->>>>>>> f8260cf776cee2be7ec6be530208a21b47589497
+
   },
   "scripts": {
     "start": "react-scripts start",
