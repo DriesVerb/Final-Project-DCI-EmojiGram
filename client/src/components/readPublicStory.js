@@ -2,9 +2,10 @@ import React, { useEffect, useContext, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import StoryContext from "../context/story/storyContext";
 
+
 const readPublicStory = () => {
   const storyContext = useContext(StoryContext);
-  const { singleStory, showSinglePublic,stories } = storyContext;
+  const { singleStory, showSinglePublic } = storyContext;
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,8 +22,14 @@ const readPublicStory = () => {
  */}
 
 
-
-
+{singleStory && (
+  <div className="page">
+    <p lassName="caps">{singleStory.title.charAt(0).toUpperCase() +
+                  singleStory.title.slice(1)}</p>
+    <div dangerouslySetInnerHTML={{ __html: singleStory.richText }}></div>
+  </div>
+)
+}
 
 
 

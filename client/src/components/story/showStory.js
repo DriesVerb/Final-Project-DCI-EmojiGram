@@ -37,7 +37,6 @@ function showStory(props) {
     //     setStory(res.data)
     // }).catch(err=>{
     //     console.log(err)
-    console.log(singleStory);
     // console.log(singleStory.comments)
 
     // })

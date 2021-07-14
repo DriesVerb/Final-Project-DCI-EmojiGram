@@ -1,29 +1,36 @@
 const Story = require("../models/Story");
-const User = require("../models/Story");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 module.exports = async function (req, res, next) {
+    const token = req.header("x-token")
+    let story = await Story.findById(req.params.id);
 
- try{
-   
-    let story = await Story.findById(req.params.id)
-    
-    console.log(req.body)
-   /*  console.log(req.user.id) */
-    console.log(story.user.toString())
-    if(story.user.toString()){
-        story.views++
-        story.save()
-    }else if(story.user.toString()){
-        story.views++
-        story.save()
-    }else{
-        next()
+    if(token){
+
+        const jwtSecret = process.env.JWT_SECRET;
+        const decoded = jwt.verify(token, jwtSecret);
+        
+        req.user = decoded.user
+        
+    try {
+        
+        if (story.user.toString() !== req.user.id) {
+            story.views++
+            story.save()
+            next()
+          }
+          else {
+           
+            next()
+          }
+
+    }catch (err) {
+        res.status(406).json();
+        }
+        }else {
+            story.views++
+            story.save()
+             next()
+        }
     }
- }catch (err) {
-    console.error(err.message);
-    res.status(507).send("keine ID");
-  }
-
-
-}
-
