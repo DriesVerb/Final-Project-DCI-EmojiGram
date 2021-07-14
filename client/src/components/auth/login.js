@@ -102,6 +102,7 @@ function Login(props) {
               placeholder="Enter Email"
               fullWidth
               onChange={getData}
+              required
             />
             <Field
               as={TextField}
@@ -113,6 +114,7 @@ function Login(props) {
               type="password"
               fullWidth
               onChange={getData}
+              required
             />
             <Field
               as={FormControlLabel}
@@ -133,7 +135,7 @@ function Login(props) {
         </Formik>
 
         <Typography className="typo mt-4">
-          <Link href="#">Forgot Password</Link>
+          <Link href="#">Forgot Password?</Link>
         </Typography>
         <h4 className="signup mt-5">
           Do not have an account?
@@ -142,7 +144,7 @@ function Login(props) {
           </Link>
         </h4>
         <Grid align="center">
-          <h4 className="login mb-4 mt-5"> Login With</h4>
+          <h4 className="login mb-4 mt-4"> Login With</h4>
         </Grid>
 
         <Grid align="center">

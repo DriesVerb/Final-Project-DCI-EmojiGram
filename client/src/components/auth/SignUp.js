@@ -92,6 +92,7 @@ const SignUp = (props) => {
               placeholder="Enter Username"
               fullWidth
               onChange={onChange}
+              required
             />
             <Field
               as={TextField}
@@ -103,6 +104,7 @@ const SignUp = (props) => {
               type="email"
               fullWidth
               onChange={onChange}
+              required
             />
             <Field
               as={TextField}
@@ -113,6 +115,7 @@ const SignUp = (props) => {
               type="password"
               fullWidth
               onChange={onChange}
+              required
             />
 
             <Button
