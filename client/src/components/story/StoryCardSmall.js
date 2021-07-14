@@ -19,7 +19,7 @@ const StoryCardSmall = ({ story }) => {
           >
             <p>
               <span className="span-genre">{sto.genre} /</span> {sto.title} by -
-              <span>{sto.user.username}</span>
+              {/* <span>{sto.user.username}</span> */}
             </p>
             <div>
               {sto.emojis.map((emoji) => {

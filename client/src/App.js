@@ -1,41 +1,42 @@
-import React, { useEffect, useContext } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useEffect, useContext } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Sass
-import "./css/App.css";
+import './css/App.css';
 
 // components
-import Alerts from "./components/layout/Alert";
-import Navbar from "./components/layout/navbar";
-import Login from "./components/auth/login";
-import SignUp from "./components/auth/SignUp";
-import LandingPage from "./components/pages/LandingPage";
-import PrivateRoute from "./components/privateRoute";
-import HomePublic from "./components/pages/HomePublic";
+import Alerts from './components/layout/Alert';
+import Navbar from './components/layout/navbar';
+import Login from './components/auth/login';
+import SignUp from './components/auth/SignUp';
+import LandingPage from './components/pages/LandingPage';
+import PrivateRoute from './components/privateRoute';
+import HomePublic from './components/pages/HomePublic';
 // import Footer from "./components/layout/Footer";
-import StoryEditor from "./components/story/StoryEditor";
-import UserInterface from "./components/pages/userInterface";
-import YourStories from "./components/story/yourStories";
-import PreviewStory from "./components/story/PreviewStory";
-import ShowStory from "./components/story/showStory";
-import GenreMainPage from "./components/genre/GenreMainPage";
-import PublicLandingPage from "./components/pages/publicLandingPage";
+import StoryEditor from './components/story/StoryEditor';
+import UserInterface from './components/pages/userInterface';
+import YourStories from './components/story/yourStories';
+import PreviewStory from './components/story/PreviewStory';
+import ShowStory from './components/story/showStory';
+import GenreMainPage from './components/genre/GenreMainPage';
+import PublicLandingPage from './components/pages/publicLandingPage';
 
-import UserItem from "./components/user/UserItem";
-import userForm from "./components/user/userForm";
+import UserItem from './components/user/UserItem';
+import userForm from './components/user/userForm';
+import UserProfile from './components/user/userProfile';
 
-import ReadPublicStory from "./components/readPublicStory";
+import ReadPublicStory from './components/readPublicStory';
 
 // context
-import StoryState from "./context/story/storyState";
-import AuthContext from "./context/auth/authContext";
-import AlertState from "./context/alert/alertState";
-import ProfileState from "./context/profile/ProfileState";
+import StoryState from './context/story/storyState';
+import AuthContext from './context/auth/authContext';
+import AlertState from './context/alert/alertState';
+import ProfileState from './context/profile/ProfileState';
 
 // import setAuthToken
-import setAuthToken from "./context/auth/setAuthToken";
-import readPublicStory from "./components/readPublicStory";
+import setAuthToken from './context/auth/setAuthToken';
+import readPublicStory from './components/readPublicStory';
 // import showStory from "./components/story/showStory";
 
 if (localStorage.token) {
@@ -68,7 +69,7 @@ function App() {
                     component={UserInterface}
                   />
                   <PrivateRoute
-                    path="/yourstories"
+                    path="/yourstories/:id"
                     exact
                     component={YourStories}
                   />
@@ -87,6 +88,13 @@ function App() {
                     exact
                     component={PublicLandingPage}
                   />
+                  
+                  
+                  <Route path="/profile" exact component={UserItem} />
+                  <Route path="/profile/:id" exact component={UserProfile } />
+
+
+
                   <PrivateRoute
                     path="/showstory/:id"
                     exact
@@ -100,9 +108,9 @@ function App() {
                     path="/UserInterface"
                     component={UserInterface}
                   />
-                  <Route path="/profile" component={UserItem} />
+                
 
-                  <Route path="/profile" exact component={UserItem} />
+                 
                   <Route path="/userform" exact component={userForm} />
 
                   <Route

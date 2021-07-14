@@ -44,3 +44,7 @@ export const SET_CURRENT = "SET_CURRENT";
 export const CLEAR_CURRENT = "CLEAR_CURRENT";
 export const EDIT_ERROR = "EDIT_ERROR";
 export const CLEAR_PROFILE = "CLEAR_PROFILE";
+export const GET_USERPROFILE = "GET_USERPROFILE ";
+export const FOLLOW_USER = "FOLLOW_USER ";
+export const FOLLOW_ERROR = "FOLLOW_ERROR ";
+export const UNFOLLOW_USER = "UNFOLLOW_USER ";

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-
+import AuthContext from "../../context/auth/authContext";
 // store
 import { storyStore } from "../../store";
 ///////////////////////////////////////////////////////////////////////////////
@@ -8,7 +8,10 @@ import StoryContext from "../../context/story/storyContext";
 //////////////////////////////////////////////////////////////////////////////
 
 const PreviewStory = (props) => {
-  const { emojis, title, genre, richText, sendToDb, updateStory } =
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
+  
+  const { emojis, title, genre, richText, sendToDb, updateStory} =
     storyStore.getState();
   ////////////////////////////////////////////////////////////////////////////////
   const storyContext = useContext(StoryContext);
@@ -24,10 +27,10 @@ const PreviewStory = (props) => {
     if (storyToEdit === null) {
       console.log(storyToEdit);
       sendToDb();
-      props.history.push("/yourstories");
+      props.history.push(`/yourstories/${user._id}`);
     } else {
       updateStory();
-      props.history.push("/yourstories");
+      props.history.push(`/yourstories/${user._id}`);
       console.log(storyToEdit);
     }
   };

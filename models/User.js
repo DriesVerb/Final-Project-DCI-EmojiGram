@@ -15,16 +15,22 @@ const userSchema = new Schema({
 
   
 
-  following: [
-    {
-      type: ObjectId,
-      ref: 'User',
-    },
+  following: [{
+     
+  user: {
+    type: Schema.Types.ObjectId,
+  
+    ref: "User",
+  },
+}
   ],
   followers: [
     {
-      type: ObjectId,
-      ref: 'User',
+       user: {
+    type: Schema.Types.ObjectId,
+  
+    ref: "User",
+  },
     },
   ],
 

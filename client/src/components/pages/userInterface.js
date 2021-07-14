@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useContext} from "react";
 import Images from "../../img/minions1.jpg";
-import { Link } from "react-router-dom";
-
+import { Link,  } from "react-router-dom";
+import AuthContext from "../../context/auth/authContext";
 // Navbar user interface
-function userInterface() {
+function userInterface(props) {
+
+  const authContext = useContext(AuthContext);
+
+  const { user} = authContext;
+
+  // let history = useHistory();
+
+  const toMyStories = (id) => {
+    
+    props.history.push(`/yourstories/${id}`);
+    console.log(id)
+  };
+
   return (
     <div>
 
@@ -53,11 +66,11 @@ function userInterface() {
               ></img>
               <p>YOUR STORIES</p>
 
-              <Link to="/yourstories" className="link">
-                <button className="btn btn-success">
+              <div className="link">
+                <button onClick={() => toMyStories(user._id)} className="btn btn-success">
                   Access to your stories
                 </button>
-              </Link>
+              </div>
             </div>
           </div>
         </div>

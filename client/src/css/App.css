@@ -422,8 +422,8 @@ a {
 
 .story-card {
   position: relative;
-  width: 90%;
-  margin: 5px;
+  width: 100%;
+  margin-top: 30px;
   padding: 1.5rem;
   height: 25rem;
   border-radius: 1rem;
