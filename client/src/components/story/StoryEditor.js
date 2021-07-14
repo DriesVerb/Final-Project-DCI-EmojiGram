@@ -147,12 +147,12 @@ const StoryEditor = () => {
             rows="45"
           ></textarea>
           {/* /////////////////////////////////// */}
-          <input
+          {/* <input
             type="text"
             name="_id"
             defaultValue={_id}
             onChange={(e) => onChange(e)}
-          />
+          /> */}
           {/* ////////////////////////////////////////////////// */}
         </div>
       </div>
