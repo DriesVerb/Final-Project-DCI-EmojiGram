@@ -3,19 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@xstate/react": "^1.5.1",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "moment": "^2.29.1",
     "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "react-moment": "^1.1.1",
+    "react-paginate": "^7.1.3",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^1.1.5",
+    "uuid": "^3.4.0",
+    "web-vitals": "^1.1.2",
+    "xstate": "^4.20.1",
+    "zustand": "^3.5.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sass": "sass src/sass:src/css --watch --no-source-map"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "proxy": "http://localhost:5000/",
+  "devDependencies": {
+    "sass": "^1.35.2"
   }
 }

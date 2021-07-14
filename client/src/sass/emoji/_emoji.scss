@@ -1,0 +1,51 @@
+.emoji {
+  @include flex(column, space-around, center);
+  border-radius: 1rem;
+  background-color: $main-l-grey;
+  padding: 1.5rem;
+
+  &__row {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__character {
+    font-family: Openemonji, Firefoxemoji, OpenSansEmoji, Symbola;
+    position: relative;
+    padding: 0.5rem;
+
+    &--small {
+      font-size: 2rem;
+    }
+
+    &--medium {
+      font-size: 6rem;
+    }
+
+    &--large {
+      font-size: 8rem;
+    }
+  }
+
+  &__buttons {
+    @include flex(row, space-between, center);
+  }
+}
+
+.emoji-tooltip {
+  position: absolute;
+  @include flex(column, center, center);
+  border: $main-border;
+  z-index: $z-front;
+  background-color: $main-yellow;
+  height: 13rem;
+  width: 20rem;
+  padding: 2rem;
+  bottom: 75%;
+  left: 100%;
+
+  &__name {
+    @include main-font(2rem, 500, $main-d-black);
+    padding: 1rem;
+  }
+}

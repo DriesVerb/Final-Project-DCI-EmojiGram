@@ -2,10 +2,12 @@
 
 package-lock.json
 client/package-lock.json
+.env
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
+config/emoji.json
 
 # testing
 /coverage

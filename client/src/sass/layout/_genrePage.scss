@@ -1,0 +1,25 @@
+.genre {
+  &__row {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__card {
+    height: 7rem;
+    cursor: pointer;
+    width: 10rem;
+    border-radius: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__story--card {
+    width: 50%;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid $main-black;
+    margin: 1rem;
+  }
+}
