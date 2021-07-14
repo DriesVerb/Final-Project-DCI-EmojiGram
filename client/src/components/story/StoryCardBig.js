@@ -3,11 +3,24 @@ import Moment from 'react-moment';
 import { useHistory } from 'react-router-dom';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
-const StoryCardBig = ({ index, story }) => {
+// components
+import EmojiChar from "./EmojiChar";
+
+const StoryCardBig = ({ story }) => {
   let history = useHistory();
 
   const storyDetailsPublic = (id) => {
     history.push(`/readpublicstory/${id}`);
+  };
+
+  const trimString = (text) => {
+    const trimmedString = text.substring(0, 300);
+    return trimmedString;
+  };
+
+  const classGenre = (genre) => {
+    const replaceGenre = genre.split(" ").join("-");
+    return replaceGenre;
   };
 
   return (
