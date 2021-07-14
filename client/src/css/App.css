@@ -710,7 +710,6 @@ a {
   justify-content: center;
 }
 .emoji__character {
-  font-family: Openemonji, Firefoxemoji, OpenSansEmoji, Symbola;
   position: relative;
   padding: 0.5rem;
 }
@@ -742,8 +741,8 @@ a {
   height: 13rem;
   width: 20rem;
   padding: 2rem;
-  bottom: 75%;
-  left: 100%;
+  bottom: 50%;
+  right: 90%;
 }
 .emoji-tooltip__name {
   font-family: "Roboto", sans-serif;
