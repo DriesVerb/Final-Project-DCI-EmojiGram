@@ -1,7 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Button } from "react-bootstrap";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
+
+//Material UI
+import {
+  Avatar,
+  Grid,
+  Paper,
+  TextField,
+  Button,
+  Link,
+} from "@material-ui/core";
+import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
+import { Formik, Form, Field } from "formik";
 
 const SignUp = (props) => {
   const authContext = useContext(AuthContext);
@@ -53,57 +64,84 @@ const SignUp = (props) => {
     }
   };
 
+  const paperStyle = {
+    padding: 20,
+    height: "70vh",
+    width: 420,
+    margin: "20px auto",
+  };
+  const avatarStyle = { backgroundColor: "#fb8500" };
+
   return (
-    <div className="grid-container">
-      <div className="form-container grid-container__mid">
-        <h4>
-          Account <span className="text-info">Register</span>
-        </h4>
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              type="text"
+    <Grid>
+      <Paper elevation={10} style={paperStyle}>
+        <Grid align="center">
+          <h3 className="login mt-5 text-warning">Welcome to Emoji-Tales</h3>
+          <h4 className="login mb-5 mt-3">Create an Account</h4>
+        </Grid>
+        <Formik>
+          <Form onSubmit={onSubmit}>
+            <Field
+              as={TextField}
+              className="field mb-5"
+              label="Username"
               name="username"
-              value={username}
+              variant="outlined"
+              placeholder="Enter Username"
+              fullWidth
               onChange={onChange}
+              required
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              type="email"
+            <Field
+              as={TextField}
+              className="field mb-5"
+              label="Email"
               name="email"
-              value={email}
+              variant="outlined"
+              placeholder="Enter Email"
+              type="email"
+              fullWidth
               onChange={onChange}
+              required
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
+            <Field
+              as={TextField}
+              label="Password"
               name="password"
-              value={password}
+              variant="outlined"
+              placeholder="Enter Password"
+              type="password"
+              fullWidth
               onChange={onChange}
-
-              // minLength='6'
+              required
             />
-          </div>
 
-          <Button
-            className="ml-5"
-            value="Register"
-            type="submit"
-            variant="info"
-          >
-            sign up
-          </Button>
-        </form>
-      </div>
-    </div>
+            <Button
+              className="btn mt-5"
+              type="submit"
+              variant="contained"
+              fullWidth
+            >
+              <Avatar style={avatarStyle} className="avatar mb-4s">
+                <HttpsOutlinedIcon />
+              </Avatar>
+              <span className="ml-3"> Sign Up</span>
+            </Button>
+          </Form>
+        </Formik>
+
+        <h4 className="signup mt-5">
+          Already have an account?
+          <Link className="link ml-3 mb-4" href="/login">
+            Log In
+          </Link>
+        </h4>
+        <h5 className="signup mt-5 font-italic">
+          By clicking SignUp you agree to our Terms and have read and
+          acknowledge our Privacy Statements.
+        </h5>
+      </Paper>
+    </Grid>
   );
 };
 
