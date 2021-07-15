@@ -2,48 +2,79 @@ import React from "react";
 import Moment from "react-moment";
 import { useHistory } from "react-router-dom";
 
-const StoryCardBig = ({ index, story }) => {
+// components
+import EmojiChar from "./EmojiChar";
+
+const StoryCardBig = ({ story }) => {
   let history = useHistory();
   const storyDetailsPublic = (id) => {
-    history.push(`/readpublicstory/${id}`);
+    history.push(`/showstory/${id}`);
+  };
+
+  const trimString = (text) => {
+    const trimmedString = text.substring(0, 300);
+    return trimmedString;
+  };
+
+  const classGenre = (genre) => {
+    const replaceGenre = genre.split(" ").join("-");
+    return replaceGenre;
   };
 
   return (
-    <div key={index}>
-      <div className="story-card" onClick={() => storyDetailsPublic(story._id)}>
-        <figure className="story-card__genre" data={story.genre}>
-          <h3>
-            <Moment format="YYYY/MM/DD">{story.createdAt}</Moment>
-            <span>Title: </span>
-            {story.title &&
-              story.title.charAt(0).toUpperCase() + story.title.slice(1)}
-          </h3>
-          <br />
-          <p className="story-card__text story-card__fade"> {story.text}</p>
-          <footer className="story-card__footer">
-            <span className="story-card__like">
-              <i className="fa fa-thumbs-up" /> &nbsp;{story.likes.length}
-            </span>
-            <span className="story-card__comments">
-              <i className="fas fa-comment" /> &nbsp;
-              {/* {<story className="comments"></story>.length} */}
-            </span>
-            <p className="title_Author">
-              {story.title}"&nbsp;
-              <span className="author">by {story.user.username}</span>
-            </p>
-            <p>
-              views: {story.views}
-            </p>
-            <span className="story-card__emojis">
-              <i className="far fa-smile-beam" /> : &nbsp;
-              {story.emojis.map((emoj) => (
-                <span key={emoj._id}>&nbsp;{emoj.character} </span>
-              ))}
-            </span>
-          </footer>
-        </figure>
+    <div
+      /* key={story._id} */
+      className="story-card-big"
+      onClick={() => storyDetailsPublic(story._id)}
+    >
+      <div className="story-card-big__emojis">
+        <div className="story-card-big__emojis--center">
+          {story.emojis.map((emoji, id) => (
+            <EmojiChar key={id} emoji={emoji} size="large" />
+          ))}
+        </div>
       </div>
+      <div className="story-card-big__info">
+        <div className="story-card-big__story">
+          <span className="story-card-big__story--bold">{story.title}</span>{" "}
+          <span className="story-card-big__story--small">
+            by {story.user.username}
+          </span>{" "}
+          <span className="story-card-big__story--small">
+            {" "}
+            - <Moment format="DD/MM/YYYY">{story.createdAt}</Moment>
+          </span>
+        </div>
+        <div className="story-card-big__categories">
+          <div
+            className={`story-card-big__box story-card-big__box--genre ${classGenre(
+              story.genre
+            )}`}
+          >
+            {story.genre}
+          </div>
+          <div className="story-card-big__box story-card-big__box--subgerne">
+            {story.subGenre}
+          </div>
+        </div>
+      </div>
+      <div className="story-card-big__text">{trimString(story.text)}...</div>
+      <footer className="story-card-big__footer">
+        <div className="story-card-big__social">
+          <span className="story-card-big__like">
+            <i className="fa fa-thumbs-up" /> {story.likes.length}
+          </span>
+          <span className="story-card-big__comments">
+            <i className="fas fa-comment" />
+          </span>
+        </div>
+        <div
+          className="story-card-big__read-more"
+          onClick={() => storyDetailsPublic(story._id)}
+        >
+          Read more
+        </div>
+      </footer>
     </div>
   );
 };

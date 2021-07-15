@@ -1,3 +1,9 @@
+.preview-story {
+  &__title {
+    @include flex(row, center, center);
+  }
+}
+
 .preview {
   &__paragraph {
     text-align: left;
