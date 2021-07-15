@@ -1,16 +1,28 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Moment from "react-moment";
 import { useHistory } from "react-router-dom";
-// import { Link } from "react-router-dom";
+ import { Link } from "react-router-dom";
+
+ 
+
 
 const StoryCardBig = ({ index, story }) => {
+
+
   let history = useHistory();
   const storyDetailsPublic = (id) => {
     history.push(`/readpublicstory/${id}`);
   };
+  useEffect(() => {
+ 
+    console.log(story);
+  }, []);
+
 
   const toProfile = (id) => {
     history.push(`/profile/${id}`);
+
+  
   };
 
   return (
@@ -48,7 +60,8 @@ const StoryCardBig = ({ index, story }) => {
               
 {/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}     
         <div className="title_Author">
-              {story.title}"&nbsp;
+            {story.title}"&nbsp;
+
          <div onClick={() => toProfile(story.user._id)}>    
         <span>Created by: </span> 
             

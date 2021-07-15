@@ -32,7 +32,7 @@ const readPublicStory = () => {
 
   //     console.log(liked);
   //   }
-  // };
+  // };created
   return (
     <Fragment>
       {singleStory && (

@@ -19,16 +19,18 @@ import {
 
 const ProfileState = (props) => {
   const initialState = {
-    user: [{
+    user:[],
+    users: [{
       username: "",
       name: "",
       email: "",
       password: "",
       location: "",
       age: "",
-      followers:[]
+      followers: [],
+      followeing: []
     },],
-    followeings: null,
+  
 
     isFollow:null,
     current: null,
@@ -164,7 +166,8 @@ const ProfileState = (props) => {
   return (
     <ProfileContext.Provider
       value={{
-        user: state.user,
+        user:state.user,
+        users: state.users,
         current: state.current,
         error: state.error,
         getProfile,

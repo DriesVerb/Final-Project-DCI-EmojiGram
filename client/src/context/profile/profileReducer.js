@@ -30,7 +30,7 @@ export default (state, action) => {
   
       return {
         ...state,
-        user: user
+        users: user
       }
         
       
@@ -88,7 +88,7 @@ export default (state, action) => {
         return {
           ...state,
           isFollow: true,
-          followeings: { ...state.following, ...action.payload.followers },
+          users: { ...state.users, ...action.payload},
           // loading: false
         };
     
@@ -97,7 +97,7 @@ export default (state, action) => {
           return {
             ...state,
             isFollow: false,
-            followeings: { ...state.following, ... action.payload.followeings },
+            users: { ...state.users.followers, ... action.payload },
             // loading: false
           };
     default:

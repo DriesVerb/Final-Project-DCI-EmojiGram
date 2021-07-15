@@ -5,7 +5,8 @@
   import { useParams } from "react-router-dom";
   import PaginateComponent from "../utils/PaginateComponent";
   
-  function YourStories(props) {
+function YourStories(props) {
+    
     const storyContext = useContext(StoryContext);
     const { publishStory, stories } = storyContext;
     const { id } = useParams()

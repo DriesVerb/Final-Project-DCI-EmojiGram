@@ -2,26 +2,48 @@ import React, { Fragment, useContext, useEffect,useState} from "react";
 import ProfileContext from "../../context/profile/profileContext";
 // import YourStories from '../story/yourStories'
 import { Link, useParams } from "react-router-dom";
-const UserProfile= (props) => {
+import AuthContext from "../../context/auth/authContext";
+
+
+const UserProfile = (props) => {
+  
+
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
   
     const profileContext = useContext(ProfileContext);
-    const { user,getUserProfile, followUsers, isFollow, unfollowUsers, followeings } = profileContext;
+    const { users,getUserProfile, followUsers, unfollowUsers, followeings } = profileContext;
   
   
+    console.log(users)
+  console.log(users.followers)
+  // console.log(user)
+  // console.log(user._id)
+
+
   
-        const { username, email, age, location, followers, following } = user;
-    
-        // const [follow, setFollow] = useState(null);
+  const { username, email, age, location, followers, following } = users;
+  
+
+
+  // const [follow, setFollow] = useState(users.followers ? !users.followers.some(follow => follow.user == user._id) : false);
+  const [follow, setFollow] = useState()
+  console.log(follow)  
+      
     const { id } = useParams()
     // console.log (id)
   useEffect(() => {
-      !user ? props.history.push("/") : getUserProfile(id);
+    !users ? props.history.push("/") : getUserProfile(id);
+    
   
-    
-    
+    console.log(users)
+    console.log(users.followers)
+   
     // eslint-disable-next-line
-  }, [follow, followers]);
+  }, [follow]);
 
+
+const fun = (input)=> {input==user._id}
 
 //   const onEdit = () => {
 //     setCurrent(user);
@@ -38,7 +60,8 @@ const UserProfile= (props) => {
     <Fragment>
     
     
-
+       { console.log(followers.some(follow => follow.user == user._id)) }
+      { console.log(followers) }
       
       <div className="col-md-7 mx-auto">
       
@@ -71,26 +94,33 @@ const UserProfile= (props) => {
                 
 
 {follow ? 
-                <button
-          type="submit"
-          className="btn btn-dark btn-lg "
-                  onClick={() => {
-                    followUsers(id)
-            // setFollow(false)
-           }} 
+                  <button
+                  type="submit"
+                  className="btn btn-info btn-lg "
+                          onClick={() => {
+                            unfollowUsers(id);
+                            setFollow(false)
+                            }}
+         
         >
-         Follow
+         Unfollow
                 </button>
                 :
                 <button
-          type="submit"
-          className="btn btn-info btn-lg "
-                  onClick={() => {
-                    unfollowUsers(id);
-                    // setFollow(true)
-           }} 
+       
+                    
+
+
+
+                    type="submit"
+                    className="btn btn-dark btn-lg "
+                            onClick={() => {
+                              followUsers(id)
+                      setFollow(true)
+                     }} 
+
         >
-         Unfollow
+         follow
         </button>}
             {/* <div className='d-flex flex-start m-0 p-0'>       
         <button
@@ -150,7 +180,7 @@ const UserProfile= (props) => {
             
                 </div>
             
-            {  !follow && (<div> <Link to={`/yourstories/${id}`} className="link"><button className="btn btn-secondary btn-lg btn-block ">Stories </button></Link></div>)}
+            {  follow && (<div> <Link to={`/yourstories/${id}`} className="link"><button className="btn btn-secondary btn-lg btn-block ">Stories </button></Link></div>)}
             </div>
            
             </div>  
