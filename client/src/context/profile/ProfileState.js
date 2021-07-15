@@ -14,25 +14,26 @@ import {
   GET_USERPROFILE,
   FOLLOW_USER,
   FOLLOW_ERROR,
-  UNFOLLOW_USER
+  UNFOLLOW_USER,
 } from "../types";
 
 const ProfileState = (props) => {
   const initialState = {
-    user:[],
-    users: [{
-      username: "",
-      name: "",
-      email: "",
-      password: "",
-      location: "",
-      age: "",
-      followers: [],
-      followeing: []
-    },],
-  
+    user: [],
+    users: [
+      {
+        username: "",
+        name: "",
+        email: "",
+        password: "",
+        location: "",
+        age: "",
+        followers: [],
+        followeing: [],
+      },
+    ],
 
-    isFollow:null,
+    isFollow: null,
     current: null,
     error: null,
   };
@@ -57,16 +58,16 @@ const ProfileState = (props) => {
     }
   };
 
- //get user profile
+  //get user profile
 
   const getUserProfile = async (id) => {
     try {
       const res = await axios.get(`/user/profile/${id}`);
+
       dispatch({
         type: GET_USERPROFILE,
         payload: res.data,
       });
- 
     } catch (error) {
       dispatch({
         type: EDIT_ERROR,
@@ -74,7 +75,6 @@ const ProfileState = (props) => {
       });
     }
   };
-
 
   //Edit Profile
   const editProfile = async (user) => {
@@ -100,13 +100,12 @@ const ProfileState = (props) => {
   //Set Current user
   const setCurrent = (user) => {
     dispatch({ type: SET_CURRENT, payload: user });
-    
   };
 
-    //Clear Current user
-    const clearCurrent = () => {
-      dispatch({ type: CLEAR_CURRENT });
-    };
+  //Clear Current user
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
 
   //Delete Current
   const deleteProfile = async (id) => {
@@ -124,14 +123,10 @@ const ProfileState = (props) => {
     }
   };
 
-
-
   //Clear Profile
   const clearProfile = () => {
     dispatch({ type: CLEAR_PROFILE });
   };
-
-
 
   const followUsers = async (id) => {
     try {
@@ -139,7 +134,7 @@ const ProfileState = (props) => {
 
       dispatch({
         type: FOLLOW_USER,
-        payload:res.data,
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
@@ -154,7 +149,7 @@ const ProfileState = (props) => {
 
       dispatch({
         type: UNFOLLOW_USER,
-        payload:res.data,
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
@@ -166,7 +161,7 @@ const ProfileState = (props) => {
   return (
     <ProfileContext.Provider
       value={{
-        user:state.user,
+        user: state.user,
         users: state.users,
         current: state.current,
         error: state.error,
@@ -181,7 +176,7 @@ const ProfileState = (props) => {
         followUsers,
         isFollow: state.isFollow,
         followeings: state.followeings,
-        unfollowUsers
+        unfollowUsers,
       }}
     >
       {props.children}
