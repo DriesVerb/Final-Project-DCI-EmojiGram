@@ -7,20 +7,16 @@ const userController = require("../controllers/userController");
 // own middleware
 const auth = require("../middleware/auth");
 
-
-
-
 // routes
 router.get("/normal", userController.test);
 router.get("/private", auth, userController.testPrivate);
 router.get("/profile/", auth, userController.userProfile);
-router.get("/profile/:id",auth,  userController.usersProfile);
 
+// public route to view profile
+router.get("/profile/:id", userController.usersProfile);
 
 router.put("/profile/:id/follow-user", auth, userController.followUser);
 router.put("/profile/:id/unfollow-user", auth, userController.unfollowUser);
-
-
 
 router.put("/edit/:id", auth, userController.editProfile);
 router.delete("/delete/:id", auth, userController.deleteProfile);
