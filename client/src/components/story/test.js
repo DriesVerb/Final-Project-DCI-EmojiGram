@@ -1,8 +1,6 @@
 import React, { useEffect, useContext, Fragment, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import StoryContext from "../../context/story/storyContext";
-
-import DOMPurify from "dompurify";
 
 import CommentForm from "./CommentForm";
 
@@ -22,8 +20,6 @@ const readPublicStory = () => {
 
   return (
     <Fragment>
-
-
       {singleStory && (
         <div className="showStory grid-container">
           <h1 className="text-center grid-container__header">
@@ -73,7 +69,7 @@ const readPublicStory = () => {
             </span>
             <span className="emojisClass">
               <i className="far fa-smile-beam" /> :{" "}
-              {singleStory.emojis && ( 
+              {singleStory.emojis && (
                 <span>
                   {" "}
                   &nbsp;

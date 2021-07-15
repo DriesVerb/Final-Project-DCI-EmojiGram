@@ -732,7 +732,6 @@ a {
   justify-content: center;
 }
 .emoji__character {
-  font-family: Openemonji, Firefoxemoji, OpenSansEmoji, Symbola;
   position: relative;
   padding: 0.5rem;
 }
@@ -758,19 +757,32 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #030301;
   z-index: 100;
   background-color: #ffb703;
-  height: 13rem;
+  height: 5rem;
   width: 20rem;
   padding: 2rem;
-  bottom: 75%;
-  left: 100%;
+  top: 50%;
+  right: 0%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+}
+.emoji-tooltip::after {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  right: -14%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffb703;
+  clip-path: polygon(100% 52%, 0 0, 0 100%);
 }
 .emoji-tooltip__name {
   font-family: "Roboto", sans-serif;
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  color: #030301;
+  color: #0a0a0a;
   padding: 1rem;
 }

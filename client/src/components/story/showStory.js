@@ -17,7 +17,7 @@ function ShowStory(props) {
     addLike,
     removeLike,
     deleteComment,
-    showStory,
+    showStory
     // addComment,
   } = storyContext;
   // const { _id} = stories;
@@ -38,31 +38,33 @@ function ShowStory(props) {
     //     setStory(res.data)
     // }).catch(err=>{
     //     console.log(err)
+    // console.log(singleStory);
     // console.log(singleStory.comments)
 
     // })
-  }, [liked]);
+  }, [ liked]);
 
   // console.log(singleStory)
 
   // const [like, setLike]=useState(props.liked)
-
+ 
   const onDelete = () => {
     deleteStory(singleStory._id);
-    props.history.push("/yourstories");
+    props.history.push(`/yourstories/${singleStory.user}`);
   };
   const onEdit = () => {
     setEditedStory(singleStory);
     console.log(storyToEdit);
     props.history.push("/writestory");
   };
-
+ 
   const onLike = (e) => {
     e.preventDefault();
     if (liked) {
       addLike(singleStory._id);
       setLiked(false);
       console.log(liked);
+     
     } else {
       removeLike(singleStory._id);
       setLiked(true);
@@ -71,7 +73,6 @@ function ShowStory(props) {
     }
   };
 
-  // onClick = {onDelete(story._id)}
 
   return (
     <Fragment>
@@ -125,7 +126,7 @@ function ShowStory(props) {
                             src={comment.avatar}
                             alt=""
                           />
-                          <h4>{comment.user}</h4>
+                          <h4>{singleStory.user.username}</h4>
                         </Link>
                       </div>
                       <div>

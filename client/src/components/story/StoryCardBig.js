@@ -1,6 +1,10 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Moment from "react-moment";
 import { useHistory } from "react-router-dom";
+ import { Link } from "react-router-dom";
+
+ 
+
 
 // components
 import EmojiChar from "./EmojiChar";
@@ -9,6 +13,17 @@ const StoryCardBig = ({ story }) => {
   let history = useHistory();
   const storyDetailsPublic = (id) => {
     history.push(`/showstory/${id}`);
+  };
+  useEffect(() => {
+ 
+    console.log(story);
+  }, []);
+
+
+  const toProfile = (id) => {
+    history.push(`/profile/${id}`);
+
+  
   };
 
   const trimString = (text) => {
@@ -74,6 +89,21 @@ const StoryCardBig = ({ story }) => {
         >
           Read more
         </div>
+        <div className="title_Author">
+            {story.title}"&nbsp;
+
+         <div onClick={() => toProfile(story.user._id)}>    
+        <span>Created by: </span> 
+            
+                        {/* <Link to={`/profile/`}> */}
+                          <img
+                            className="round-img"
+                            src={story.avatar}
+                            alt=""
+                          />
+                          <h4>{story.user.username}</h4>
+                        {/* </Link> */}
+                      </div>     </div>    
       </footer>
     </div>
   );

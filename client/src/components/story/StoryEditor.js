@@ -30,10 +30,12 @@ const StoryEditor = () => {
     emojis: [],
   });
 
-  const { title, genre, text, _id, emojis } = formData;
+  const { title, genre, text, emojis } = formData;
 
   useEffect(() => {
-    if (emojisGlobal.length === 0 && emojis.length === 0) getEmojis();
+    if (emojisGlobal.length === 0 && emojis.length === 0) {
+      getEmojis();
+    }
     ////////////////////////////////////////////////////////////////////////////////
     if (storyToEdit !== null) setFromData(storyToEdit);
     else
@@ -68,6 +70,7 @@ const StoryEditor = () => {
       }}
       className="grid-container"
     >
+      {console.log(formData)}
       <div className="grid-container__right">
         {storyToEdit ? (
           <button
@@ -121,16 +124,14 @@ const StoryEditor = () => {
           {emojis.length > 0 ? (
             <div className="emoji__row">
               {emojis.map((emoji, id) => {
-                console.log("test1",emojis.length)
                 return <EmojiChar key={id} emoji={emoji} size="large" />;
               })}
             </div>
           ) : (
             <div className="emoji__row">
               {emojisGlobal.length > 0 &&
-                emojisGlobal.map((emoji, id) => {
-                  console.log("test",emojisGlobal.length)
-                  return <EmojiChar key={id} emoji={emoji} size="large" />;
+                emojisGlobal.map((emoji) => {
+                  return <EmojiChar emoji={emoji} size="small" />;
                 })}
             </div>
           )}
@@ -148,14 +149,6 @@ const StoryEditor = () => {
             cols="90"
             rows="45"
           ></textarea>
-          {/* /////////////////////////////////// */}
-          {/* <input
-            type="text"
-            name="_id"
-            defaultValue={_id}
-            onChange={(e) => onChange(e)}
-          /> */}
-          {/* ////////////////////////////////////////////////// */}
         </div>
       </div>
     </form>

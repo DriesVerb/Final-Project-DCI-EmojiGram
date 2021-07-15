@@ -7,7 +7,7 @@ const passport = require("passport");
 //Third Party Strategy
 const GithubStrategy = require("passport-github").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
-const InstagramStrategy = require("passport-instagram").Strategy;
+// const InstagramStrategy = require("passport-instagram").Strategy;
 
 //Serialize and deserialize
 module.exports = function (passport) {
@@ -98,7 +98,7 @@ module.exports = function (passport) {
   );
 };
 
-// Passport Instagram strategy
+//Passport Instagram strategy
 
 // passport.use(new InstagramStrategy({
 //     clientID: process.env.INSTAGRAM_CLIENT_ID,

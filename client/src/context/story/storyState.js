@@ -42,7 +42,8 @@ const StoryState = (props) => {
         emojis: [],
       },
     ],
-    isLiked: false,
+    added:null,
+    // isLiked: false,
     topStories: [],
     singleStory: null,
     storyToEdit: null,
@@ -53,38 +54,39 @@ const StoryState = (props) => {
   /////////////////////////////////////////////////////////////////////////////////////////////
   //Create Story
 
-  const addStory = async (story) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+  // const addStory = async (story) => {
+  //   const config = {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   };
 
-    try {
-      const res = await axios.post("story/create", story, config);
+  //   try {
+  //     const res = await axios.post("story/create", story, config);
 
-      dispatch({
-        type: ADD_STORY,
-        payload: res.data,
-      });
-    } catch (err) {
-      dispatch({
-        type: STORY_ERROR,
-        payload: err.response,
-      });
-    }
-    console.log(state.stories);
-  };
+  //     dispatch({
+  //       type: ADD_STORY,
+  //       payload: res.data,
+  //     });
+  //   } catch (err) {
+  //     dispatch({
+  //       type: STORY_ERROR,
+  //       payload: err.response,
+  //     });
+  //   }
+  //   console.log(state.stories);
+  // };
   /////////////////////////////////////////////////////////////////////////////////////////////
   //Publish Story
 
-  const publishStory = async (story) => {
+  const publishStory = async (id) => {
+    console.log(id)
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
     try {
       //we have token in the localStorage so we can make the request because we pass the middleware
-      const res = await axios.get("/user/profile/mystories");
+      const res = await axios.get(`/user/profile/mystories/${id}`);
       dispatch({
         type: STORY_PUBLISH,
         payload: res.data,
@@ -245,11 +247,11 @@ const StoryState = (props) => {
 
   const addLike = async (id, color) => {
     try {
-      // const res = await axios.put(`/user/story/like/${id}`);
+      const res = await axios.put(`/user/story/like/${id}`);
 
       dispatch({
         type: UPDATE_LIKES,
-        payload: { id, likes: applicationCache.payload },
+        payload:res.data,
       });
     } catch (err) {
       dispatch({
@@ -333,7 +335,7 @@ const StoryState = (props) => {
     <StoryContext.Provider
       value={{
         stories: state.stories,
-        addStory,
+        // addStory,
         publishStory,
         deleteStory,
         showStory,
@@ -350,6 +352,7 @@ const StoryState = (props) => {
         addLike,
         removeLike,
         // isLiked: state.isLiked
+        added:state.added,
         addComment,
         deleteComment,
         showSinglePublic,

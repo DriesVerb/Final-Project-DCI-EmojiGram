@@ -4,6 +4,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthState from "./context/auth/authState";
 
+// import CSS for fonts
+import "./index.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <AuthState>
