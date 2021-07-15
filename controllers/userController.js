@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Story = require("../models/Story");
+// const Profile = require("../models/Profile");
 const bcrypt = require("bcrypt");
 // test
 exports.test = (req, res) => {
@@ -14,6 +15,10 @@ exports.testPrivate = (req, res) => {
 exports.userProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(400).json({ msg: 'There is no profile for this user' })
+      
+    }
     res.json(user);
   } catch (err) {
     console.error(err.message);
@@ -58,18 +63,39 @@ exports.editProfile = async (req, res) => {
     res.status(500).send("Error");
   }
 };
-
-exports.myStories = async (req, res) => {
-  const user = req.user.id;
+//////////////////////////////////////////////////////////////////////////////////////
+exports.myStories =  async (req, res) => {
   try {
-    const stories = Story.find({ user: user }, (err, data) => {
-      res.json(data);
-    });
+    const stories = await Story.find({ user:req.params.id });
+
+    if (!stories) {
+      return res.status(404).json({ msg: 'Stories not found' });
+    }
+
+    res.json(stories);
+  } catch (err) {
+    console.error(err.message);
+
+    res.status(500).send('Server Error');
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
+exports.usersProfile = async (req, res) => {
+  try {
+    const userProfile = await User.find({_id: req.params.id })
+
+  
+    res.json(userProfile);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 };
+
+/////////////////////////////////////////////////////////////////////////////////
 
 //Delete Profile
 exports.deleteProfile = async (req, res) => {
@@ -91,7 +117,7 @@ exports.deleteProfile = async (req, res) => {
 //Sort By Followers
 exports.followers = async (req, res) => {
   try {
-    await User.find((err, follow) => {
+    await Profile.find((err, follow) => {
       res.json(follow);
     })
       .sort([["_id", -1]])
@@ -101,3 +127,70 @@ exports.followers = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+
+
+
+
+exports.followUser = async (req, res) => {
+
+  try {
+    const following = await User.findById(req.params.id);
+
+    // Check if the post has already been liked
+    //some is like filtere but return boolean
+    if (following.followers.some((follower) => follower.user.toString() === req.user.id)) {
+      return res.status(400).json({ msg: "User already  followed" });
+    }
+    // unshhift is as push method but will put it on the begining
+    following.followers.unshift({ user: req.user.id });
+    console.log(following.followers)
+    await following.save();
+   
+  
+    const follower = await User.findById(req.user.id);
+    follower.following.unshift({ user: following });
+    console.log(follower.following)
+    await follower.save();
+    return res.json(following);
+  }
+   catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+  ;
+
+  exports.unfollowUser = async (req, res) => {
+
+    try {
+      const following = await User.findById(req.params.id);
+  
+ 
+      if (!following.followers.some((follower) => follower.user.toString() === req.user.id)) {
+        return res.status(400).json({ msg: "User has not yet been followed" });
+      }
+      // unshhift is as push method but will put it on the begining
+      following.followers = following.followers.filter(
+        ({ user }) => user.toString() !== req.user.id)
+      
+      console.log(following.followers)
+    
+      
+      await following.save();
+     
+  
+      const follower = await User.findById(req.user.id);
+      follower.following = follower.following.filter(
+        ({ user }) => user.toString() !== req.params.id)
+        console.log(follower.following)
+      await follower.save();
+      return res.json(following.followers);
+    }
+     catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+      }
+    }
+  ;
+

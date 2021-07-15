@@ -1,5 +1,5 @@
-const Story = require("../models/Story");
-const User = require("../models/User");
+const Story = require('../models/Story');
+const User = require('../models/User');
 
 //create sroty
 
@@ -7,10 +7,10 @@ exports.create = async (req, res) => {
   try {
     const newStory = new Story({ ...req.body, user: req.user.id });
     const story = await newStory.save();
-    res.json({ msg: "A new Story has been added :)" });
+    res.json({ msg: 'A new Story has been added :)' });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -21,16 +21,17 @@ exports.create = async (req, res) => {
 exports.published = async (req, res) => {
   try {
     const publicStories = await Story.find()
+      .populate('user')
 
       .sort({
         createdAt: -1,
       })
-      .populate("user")
+      .populate('user')
       .limit(5);
     res.json(publicStories);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -46,12 +47,12 @@ exports.published = async (req, res) => {
 
 exports.show = async (req, res) => {
   try {
-    let story = await Story.findById(req.params.id).populate("user");
+    let story = await Story.findById(req.params.id).populate('user');
     res.json(story);
     // console.log(data)
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 //////////////////////////////////////////////////////////////////////
@@ -69,11 +70,11 @@ exports.edit = async (req, res) => {
 
   try {
     let story = await Story.findById(req.params.id);
-    if (!story) return res.status(404).json({ msg: "Story not found" });
+    if (!story) return res.status(404).json({ msg: 'Story not found' });
 
     // Make sure user owns contact
     if (story.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "Not authorized" });
+      return res.status(401).json({ msg: 'Not authorized' });
     }
 
     story = await Story.findByIdAndUpdate(
@@ -85,7 +86,7 @@ exports.edit = async (req, res) => {
     res.json(story);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 //////////////////////////////////////////////////////////////////////
@@ -104,18 +105,18 @@ exports.deleteStory = async (req, res) => {
     // }
 
     let story = await Story.findById(req.params.id);
-    if (!story) return res.status(404).json({ msg: "Story not found" });
+    if (!story) return res.status(404).json({ msg: 'Story not found' });
 
     // Make sure user owns contact
     if (story.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "Not authorized" });
+      return res.status(401).json({ msg: 'Not authorized' });
     }
     await Story.findByIdAndRemove(req.params.id);
 
-    res.json({ msg: "Story removed" });
+    res.json({ msg: 'Story removed' });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -130,7 +131,7 @@ exports.alphabetical = async (req, res) => {
       .limit(5);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -164,7 +165,7 @@ exports.sortTime = async (req, res) => {
     }).sort({ createdAt: -1 });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -201,7 +202,7 @@ exports.getGenre = async (req, res) => {
   await Story.find((err, stories) => {
     res.json(stories);
   })
-    .where("genre")
+    .where('genre')
     .equals(req.params.genre);
 };
 
@@ -218,7 +219,7 @@ exports.sortBylikes = async (req, res) => {
             user: 1,
             genre: 1,
             likes: 1,
-            length: { $size: "$likes" },
+            length: { $size: '$likes' },
           },
         },
         { $sort: { length: -1 } },
@@ -229,12 +230,12 @@ exports.sortBylikes = async (req, res) => {
       res.json(results)
   } */
     );
-    await User.populate(storyLikes, { path: "user" }, (err, results) => {
+    await User.populate(storyLikes, { path: 'user' }, (err, results) => {
       res.json(results);
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -246,7 +247,7 @@ exports.likeStory = async (req, res) => {
     // Check if the post has already been liked
     //some is like filtere but return boolean
     if (story.likes.some((like) => like.user.toString() === req.user.id)) {
-      return res.status(400).json({ msg: "Post already liked" });
+      return res.status(400).json({ msg: 'Post already liked' });
     }
     // unshhift is as push method but will put it on the begining
     story.likes.unshift({ user: req.user.id });
@@ -256,7 +257,7 @@ exports.likeStory = async (req, res) => {
     return res.json(story.likes);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -268,27 +269,29 @@ exports.unlikeStory = async (req, res) => {
     // Check if the post has not yet been liked
     // some is like filtere but return boolean
     if (!story.likes.some((like) => like.user.toString() === req.user.id)) {
-      return res.status(400).json({ msg: "Post has not yet been liked" });
+      return res.status(400).json({ msg: 'Post has not yet been liked' });
     }
     // remove the like
     story.likes = story.likes.filter(
       ({ user }) => user.toString() !== req.user.id
+     
     );
-
+   
+   
     await story.save();
 
     return res.json(story.likes);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 exports.addComment = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("-password");
-    const story = await Story.findById(req.params.id).populate("user");
+    const user = await User.findById(req.user.id).select('-password');
+    const story = await Story.findById(req.params.id).populate('user');
 
     const newComment = {
       text: req.body.text,
@@ -304,7 +307,7 @@ exports.addComment = async (req, res) => {
     res.json(story.comments);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -319,11 +322,11 @@ exports.removeComment = async (req, res) => {
     );
     // Make sure comment exists
     if (!comment) {
-      return res.status(404).json({ msg: "Comment does not exist" });
+      return res.status(404).json({ msg: 'Comment does not exist' });
     }
     // Check user
     if (comment.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "User not authorized" });
+      return res.status(401).json({ msg: 'User not authorized' });
     }
 
     story.comments = story.comments.filter(
@@ -335,6 +338,6 @@ exports.removeComment = async (req, res) => {
     return res.json(story.comments);
   } catch (err) {
     console.error(err.message);
-    return res.status(500).send("Server Error");
+    return res.status(500).send('Server Error');
   }
 };

@@ -1,16 +1,36 @@
-import React, { useEffect, useContext, Fragment } from "react";
+import React, { useEffect, useContext, Fragment,useState } from "react";
 import { useParams } from "react-router-dom";
 import StoryContext from "../../context/story/storyContext";
 
 const readPublicStory = () => {
   const storyContext = useContext(StoryContext);
-  const { singleStory, showSinglePublic } = storyContext;
+  const { singleStory, showSinglePublic, addLike,
+    removeLike,
+    deleteComment, } = storyContext;
   const { id } = useParams();
+
+
+  const [liked, setLiked] = useState(true);
+
 
   useEffect(() => {
     showSinglePublic(id);
-  }, []);
+  }, [liked]);
 
+  // const onLike = (e) => {
+  //   e.preventDefault();
+  //   if (liked) {
+  //     addLike(singleStory._id);
+  //     setLiked(false);
+  //     console.log(liked);
+     
+  //   } else {
+  //     removeLike(singleStory._id);
+  //     setLiked(true);
+
+  //     console.log(liked);
+  //   }
+  // };created
   return (
     <Fragment>
       {singleStory && (
@@ -25,11 +45,20 @@ const readPublicStory = () => {
             <div
               dangerouslySetInnerHTML={{ __html: singleStory.richText }}
             ></div>
-            <span className="like">
+            
+            {liked? <span className="like">
+            <i className="fa fa-thumbs-up" onClick={(e)=>{ e.preventDefault(); addLike(singleStory._id);
+      setLiked(false); console.log (liked)}} />
               {singleStory.likes && (
                 <span>&nbsp;{singleStory.likes.length}</span>
               )}
-            </span>
+            </span>:<span className="like">
+            <i className="fa fa-thumbs-up" onClick={(e)=>{ e.preventDefault(); removeLike(singleStory._id);
+      setLiked(true);  console.log (liked)}} />
+              {singleStory.likes && (
+                <span>&nbsp;{singleStory.likes.length}</span>
+              )}
+            </span> }
 
             <span>
               <i className="fas fa-comment" />
@@ -49,6 +78,50 @@ const readPublicStory = () => {
                 </span>
               )}
             </span>
+            <CommentForm />
+            
+            <div>
+              {singleStory.comments && (
+                <div>
+                  {singleStory.comments.map((comment) => (
+                    <div className="post bg-white p-1 my-1">
+                      <div>
+                        <Link to={`/profile/`}>
+                          <img
+                            className="round-img"
+                            src={comment.avatar}
+                            alt=""
+                          />
+                          <h4>{singleStory.user.username}</h4>
+                        </Link>
+                      </div>
+                      <div>
+                        <p className="text-dark">{comment.text}</p>
+                        <p className="post-date">
+                          Posted on{" "}
+                          {new Intl.DateTimeFormat().format(
+                            new Date(comment.date)
+                          )}
+                        </p>
+                        {/* {!auth.loading && user === auth.user._id && ( */}
+                        <button
+                          onClick={() =>
+                            deleteComment(singleStory._id, comment._id)
+                          }
+                          type="button"
+                          className="btn btn-dark btn-sm"
+                        >
+                          <i className="fas fa-times" />
+                        </button>
+                        {/* // )} */}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+
           </div>
         </div>
       )}

@@ -11,18 +11,28 @@ import {
   DELETE_PROFILE,
   EDIT_ERROR,
   CLEAR_PROFILE,
+  GET_USERPROFILE,
+  FOLLOW_USER,
+  FOLLOW_ERROR,
+  UNFOLLOW_USER
 } from "../types";
 
 const ProfileState = (props) => {
   const initialState = {
-    user: {
+    user:[],
+    users: [{
       username: "",
       name: "",
       email: "",
       password: "",
       location: "",
       age: "",
-    },
+      followers: [],
+      followeing: []
+    },],
+  
+
+    isFollow:null,
     current: null,
     error: null,
   };
@@ -46,6 +56,25 @@ const ProfileState = (props) => {
       });
     }
   };
+
+ //get user profile
+
+  const getUserProfile = async (id) => {
+    try {
+      const res = await axios.get(`/user/profile/${id}`);
+      dispatch({
+        type: GET_USERPROFILE,
+        payload: res.data,
+      });
+ 
+    } catch (error) {
+      dispatch({
+        type: EDIT_ERROR,
+        payload: error.response.msg,
+      });
+    }
+  };
+
 
   //Edit Profile
   const editProfile = async (user) => {
@@ -102,10 +131,43 @@ const ProfileState = (props) => {
     dispatch({ type: CLEAR_PROFILE });
   };
 
+
+
+  const followUsers = async (id) => {
+    try {
+      const res = await axios.put(`/user/profile/${id}/follow-user`);
+
+      dispatch({
+        type: FOLLOW_USER,
+        payload:res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: FOLLOW_ERROR,
+      });
+    }
+  };
+
+  const unfollowUsers = async (id) => {
+    try {
+      const res = await axios.put(`/user/profile/${id}/unfollow-user`);
+
+      dispatch({
+        type: UNFOLLOW_USER,
+        payload:res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: FOLLOW_ERROR,
+      });
+    }
+  };
+
   return (
     <ProfileContext.Provider
       value={{
-        user: state.user,
+        user:state.user,
+        users: state.users,
         current: state.current,
         error: state.error,
         getProfile,
@@ -114,6 +176,12 @@ const ProfileState = (props) => {
         clearCurrent,
         deleteProfile,
         clearProfile,
+        getUserProfile,
+        storyUser: state.storyUser,
+        followUsers,
+        isFollow: state.isFollow,
+        followeings: state.followeings,
+        unfollowUsers
       }}
     >
       {props.children}

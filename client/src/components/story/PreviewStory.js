@@ -27,10 +27,10 @@ const PreviewStory = (props) => {
     if (storyToEdit === null) {
       console.log(storyToEdit);
       sendToDb();
-      props.history.push("/yourstories");
+      props.history.push(`/yourstories/${user._id}`);
     } else {
       updateStory();
-      props.history.push("/yourstories");
+      props.history.push(`/yourstories/${user._id}`);
       console.log(storyToEdit);
     }
   };
