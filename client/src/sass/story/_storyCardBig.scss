@@ -1,3 +1,4 @@
+
 .story-card-big {
   width: 90%;
   border-radius: 1rem;
@@ -6,7 +7,9 @@
   transition: 0.3s ease;
   cursor: pointer;
   margin-bottom: 2rem;
-  background-color: $main-l-grey;
+
+  background-color: $main-l-white;
+
 
   &:hover {
     box-shadow: 0 1rem 7px -5px $main-black;

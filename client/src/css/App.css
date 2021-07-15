@@ -378,6 +378,26 @@ a {
   padding: 15px;
 }
 
+.story-card-big {
+  height: 30rem;
+  width: 90%;
+  animation: circle-to-square 2s ease-in;
+}
+
+@keyframes circle-to-square {
+  from {
+    width: 8rem;
+    height: 14rem;
+    background: #ffde34;
+    border-radius: 50%;
+  }
+  to {
+    width: 600px;
+    height: 450px;
+    border-radius: 0;
+    background-color: #ff4033;
+  }
+}
 .user-interface__cards {
   display: flex;
   flex-direction: row;
@@ -553,7 +573,7 @@ a {
   transition: 0.3s ease;
   cursor: pointer;
   margin-bottom: 2rem;
-  background-color: #a3a3a3;
+  background-color: #f2f2f2;
 }
 .story-card-big:hover {
   box-shadow: 0 1rem 7px -5px #0a0a0a;
