@@ -8,40 +8,32 @@ import {
   CLEAR_PROFILE,
   GET_USERPROFILE,
   FOLLOW_USER,
-  UNFOLLOW_USER
+  UNFOLLOW_USER,
 } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
     //GET_PROFILE
     case GET_PROFILE:
-   
-   
       return {
         ...state,
         user: action.payload,
         loading: false,
       };
-    
+
     case GET_USERPROFILE:
-    
-      const [user
-     ] = action.payload;
-  
+      const [user] = action.payload;
+
       return {
         ...state,
-        users: user
-      }
-        
-      
-      
+        users: user,
+      };
 
     //EDIT_PROFILE
     case EDIT_PROFILE:
       return {
         ...state,
-        user: action.payload 
-        ,
+        user: action.payload,
       };
 
     //DELETE_CURRENT
@@ -82,24 +74,21 @@ export default (state, action) => {
         error: action.payload,
       };
 
-    
     case FOLLOW_USER:
-    
-        return {
-          ...state,
-          isFollow: true,
-          users: { ...state.users, ...action.payload},
-          // loading: false
-        };
-    
-    
-        case UNFOLLOW_USER:
-          return {
-            ...state,
-            isFollow: false,
-            users: { ...state.users.followers, ... action.payload },
-            // loading: false
-          };
+      return {
+        ...state,
+        isFollow: true,
+        users: { ...state.users, ...action.payload },
+        // loading: false
+      };
+
+    case UNFOLLOW_USER:
+      return {
+        ...state,
+        isFollow: false,
+        users: { ...state.users.followers, ...action.payload },
+        // loading: false
+      };
     default:
       return state;
   }

@@ -1,10 +1,7 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import Moment from "react-moment";
 import { useHistory } from "react-router-dom";
- import { Link } from "react-router-dom";
-
- 
-
+import { Link } from "react-router-dom";
 
 // components
 import EmojiChar from "./EmojiChar";
@@ -15,15 +12,11 @@ const StoryCardBig = ({ story }) => {
     history.push(`/readpublicstory/${id}`);
   };
   useEffect(() => {
- 
     console.log(story);
   }, []);
 
-
   const toProfile = (id) => {
     history.push(`/profile/${id}`);
-
-  
   };
 
   const trimString = (text) => {
@@ -37,11 +30,7 @@ const StoryCardBig = ({ story }) => {
   };
 
   return (
-    <div
-      key={story._id}
-      className="story-card-big"
-      onClick={() => storyDetailsPublic(story._id)}
-    >
+    <div key={story._id} className="story-card-big">
       <div className="story-card-big__emojis">
         <div className="story-card-big__emojis--center">
           {story.emojis.map((emoji) => (
@@ -90,20 +79,16 @@ const StoryCardBig = ({ story }) => {
           Read more
         </div>
         <div className="title_Author">
-            {story.title}"&nbsp;
+          {story.title}"&nbsp;
+          <div onClick={() => toProfile(story.user._id)}>
+            <span>Created by: </span>
 
-         <div onClick={() => toProfile(story.user._id)}>    
-        <span>Created by: </span> 
-            
-                        {/* <Link to={`/profile/`}> */}
-                          <img
-                            className="round-img"
-                            src={story.avatar}
-                            alt=""
-                          />
-                          <h4>{story.user.username}</h4>
-                        {/* </Link> */}
-                      </div>     </div>    
+            {/* <Link to={`/profile/`}> */}
+            <img className="round-img" src={story.avatar} alt="" />
+            <h4>{story.user.username}</h4>
+            {/* </Link> */}
+          </div>{" "}
+        </div>
       </footer>
     </div>
   );
