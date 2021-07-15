@@ -1,5 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import AuthContext from "../../context/auth/authContext";
+
+// components
+import EmojiChar from "./EmojiChar";
+
 // store
 import { storyStore } from "../../store";
 ///////////////////////////////////////////////////////////////////////////////
@@ -8,10 +11,7 @@ import StoryContext from "../../context/story/storyContext";
 //////////////////////////////////////////////////////////////////////////////
 
 const PreviewStory = (props) => {
-  const authContext = useContext(AuthContext);
-  const { user } = authContext;
-  
-  const { emojis, title, genre, richText, sendToDb, updateStory} =
+  const { emojis, title, genre, subGenre, richText, sendToDb, updateStory } =
     storyStore.getState();
   ////////////////////////////////////////////////////////////////////////////////
   const storyContext = useContext(StoryContext);
@@ -36,21 +36,28 @@ const PreviewStory = (props) => {
   };
 
   return (
-    <div>
-      {<button onClick={onClick}>Publish</button>}
-      <h1>{title}</h1>
-      <h3>{genre}</h3>
-      <div className="test">
-        {emojis.map((emoji, index) => (
-          <div className="emoji__character" key={index}>
-            {emoji.character}
-          </div>
-        ))}
+    <div className="grid-container">
+      <div className="grid-container__right">
+        {<button onClick={onClick}>Publish</button>}
       </div>
-      <p
-        className="preview__paragraph"
-        dangerouslySetInnerHTML={{ __html: richText }}
-      ></p>
+      <div className="grid-container__left">
+        <h3>{genre}</h3>
+        <h3>{subGenre}</h3>
+      </div>
+      <div className="grid-container__header preview-story__title">
+        <h1>{title}</h1>
+      </div>
+      <div className="grid-container__mid">
+        <div className="emoji__row">
+          {emojis.map((emoji) => (
+            <EmojiChar emoji={emoji} size="large" />
+          ))}
+        </div>
+        <p
+          className="preview__paragraph"
+          dangerouslySetInnerHTML={{ __html: richText }}
+        ></p>
+      </div>
     </div>
   );
 };

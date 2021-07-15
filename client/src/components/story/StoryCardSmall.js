@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import "../mostLikes.css";
 import { useHistory } from "react-router-dom";
+import EmojiChar from "./EmojiChar";
 
-const StoryCardSmall = ({ story }) => {
+const StoryCardSmall = ({ story, amount, title }) => {
   let history = useHistory();
   const storyDetailsPublic = (id) => {
     history.push(`/readpublicstory/${id}`);
@@ -10,21 +11,24 @@ const StoryCardSmall = ({ story }) => {
 
   return (
     <Fragment>
-      {story.map((sto, id) => {
+      <h3 className="story-card-small__title">{title}</h3>
+      {story.slice(0, amount).map((story, id) => {
         return (
           <div
-            className="mostLikes__container"
+            className="story-card-small"
             key={id}
-            onClick={() => storyDetailsPublic(sto._id)}
+            onClick={() => storyDetailsPublic(story._id)}
           >
-            <p>
-              <span className="span-genre">{sto.genre} /</span> {sto.title} by -
-              {/* <span>{sto.user.username}</span> */}
-            </p>
-            <div>
-              {sto.emojis.map((emoji) => {
-                return <span key={emoji._id}>{emoji.character}</span>;
+            <div className="story-card-small__emojis">
+              {story.emojis.map((emoji) => {
+                return <EmojiChar emoji={emoji} size="medium" />;
               })}
+            </div>
+            <div className="story-card-small__info">
+              <span className="story-card-small__info--bold">
+                {story.title}{" "}
+              </span>{" "}
+              <span> by - {story.user.username}</span>
             </div>
           </div>
         );

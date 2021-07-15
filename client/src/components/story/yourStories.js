@@ -16,9 +16,12 @@ function YourStories(props) {
       console.log(stories);
     }, []);
   
+  
     return (
-      <div>
-        <PaginateComponent data={stories} perPage={5} />
+      <div className="grid-container">
+        <div className="grid-container__mid">
+          <PaginateComponent data={stories} perPage={5} />
+        </div>
       </div>
     );
   }
@@ -27,6 +30,5 @@ function YourStories(props) {
   
 
 
-////////////////////////////////////////////////
 
 //       

@@ -23,20 +23,26 @@ const PaginateComponent = ({ data, perPage }) => {
 
   return (
     <Fragment>
-      {displayStories.map((story, index) => {
-        return <StoryCardBig story={story} index={index} />;
-      })}
-      <ReactPaginate
-        previousLabel={"Prev"}
-        nextLabel={"Next"}
-        pageCount={pageCount}
-        onPageChange={changePage}
-        containerClassName={"pagination__btn"}
-        previousLinkClassName={"previosBttm"}
-        nextLinkClassName={"nextBttn"}
-        disabledClassName={"paginationDisabled"}
-        activeClassName={"pagination__active"}
-      />
+      <div className="pagination">
+        <div className="pagination__cards">
+          {displayStories.map((story, index) => {
+            return <StoryCardBig story={story} index={index} />;
+          })}
+        </div>
+        <div className="pagination__buttons">
+          <ReactPaginate
+            previousLabel={"Prev"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"pagination__btn"}
+            previousLinkClassName={"previosBttm"}
+            nextLinkClassName={"nextBttn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"pagination__active"}
+          />
+        </div>
+      </div>
     </Fragment>
   );
 };

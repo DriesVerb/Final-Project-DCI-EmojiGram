@@ -13,6 +13,8 @@ const UserItem = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  const { _id, name, username, email, age, location } = user;
+
   const onEdit = () => {
     setCurrent(user);
     props.history.push('/userform');

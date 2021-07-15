@@ -1,4 +1,14 @@
 .pagination {
+  @include flex(column, center, center);
+
+  &__cards {
+    @include flex(column, center, center);
+    margin-top: 2rem;
+  }
+
+  &__buttons {
+    margin-top: 2rem;
+  }
   &__btn {
     width: 100%;
     height: 4rem;
@@ -10,7 +20,7 @@
       padding: 1rem;
       margin: 8px;
       border-radius: 5px;
-      border: 1px solid $main-l-blue;
+      border: 1px solid $main-d-blue;
       color: $main-l-blue;
       cursor: pointer;
 

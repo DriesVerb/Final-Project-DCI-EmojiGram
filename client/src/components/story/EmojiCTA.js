@@ -32,7 +32,7 @@ const EmojiCTA = () => {
         <div className="emoji__row mb-xl">
           {emojis.length > 0 &&
             emojis.map((emoji) => {
-              return <EmojiChar key={emoji._id} emoji={emoji} />;
+              return <EmojiChar emoji={emoji} size="medium" />;
             })}{" "}
         </div>
       )}
@@ -45,7 +45,11 @@ const EmojiCTA = () => {
         >
           Generate new story
         </button>
-        <button onClick={writeThisStory}>Write this story</button>
+        {loading ? (
+          <button>Write this story</button>
+        ) : (
+          <button onClick={writeThisStory}>Write this story</button>
+        )}
       </div>
     </div>
   );
