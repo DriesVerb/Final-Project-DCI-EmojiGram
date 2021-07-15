@@ -2,6 +2,8 @@ import React, { useEffect, useContext, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import StoryContext from "../../context/story/storyContext";
 
+import DOMPurify from "dompurify";
+
 const readPublicStory = () => {
   const storyContext = useContext(StoryContext);
   const { singleStory, showSinglePublic } = storyContext;
@@ -10,6 +12,11 @@ const readPublicStory = () => {
   useEffect(() => {
     showSinglePublic(id);
   }, []);
+
+  // package that makes sure that not malicious code gets in to the DOM
+  const sanitizeData = () => ({
+    __html: DOMPurify.sanitize(singleStory.richText),
+  });
 
   return (
     <Fragment>
@@ -22,9 +29,7 @@ const readPublicStory = () => {
           </h1>
           <div className="storyContainer grid-container__mid">
             <br />
-            <div
-              dangerouslySetInnerHTML={{ __html: singleStory.richText }}
-            ></div>
+            <div dangerouslySetInnerHTML={sanitizeData()}></div>
             <span className="like">
               {singleStory.likes && (
                 <span>&nbsp;{singleStory.likes.length}</span>

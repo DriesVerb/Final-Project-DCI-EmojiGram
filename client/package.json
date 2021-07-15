@@ -11,6 +11,7 @@
     "@xstate/react": "^1.5.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "dompurify": "^2.3.0",
     "formik": "^2.2.9",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -23,7 +24,6 @@
     "react-scripts": "^1.1.5",
     "uuid": "^3.4.0",
     "web-vitals": "^1.1.2",
-
     "xstate": "^4.20.1",
     "zustand": "^3.5.5"
   },

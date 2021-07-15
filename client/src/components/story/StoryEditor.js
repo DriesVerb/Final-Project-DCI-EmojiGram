@@ -45,7 +45,7 @@ const StoryEditor = () => {
         text: "",
         emojis: emojisGlobal,
       });
-  }, [StoryContext, storyToEdit, clearEditStory, emojisGlobal, emojis]);
+  }, [StoryContext, storyToEdit, clearEditStory, emojisGlobal]);
   ////////////////////////////////////////////////////////////////////////////////
 
   let history = useHistory();
@@ -131,7 +131,7 @@ const StoryEditor = () => {
             <div className="emoji__row">
               {emojisGlobal.length > 0 &&
                 emojisGlobal.map((emoji) => {
-                  return <EmojiChar emoji={emoji} size="large" />;
+                  return <EmojiChar emoji={emoji} size="small" />;
                 })}
             </div>
           )}
