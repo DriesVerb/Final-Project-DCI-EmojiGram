@@ -52,7 +52,7 @@ function navbar() {
           <i className="fas fa-bell text-info" /> Notification
         </NavLink>
         {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
-        <NavLink href="/UserInterface">
+        <NavLink to="/UserInterface">
           <i className=" fas fa-cog text-info ml-5" />
           User
         </NavLink>
