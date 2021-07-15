@@ -1,12 +1,16 @@
 const express = require(`express`);
 require("dotenv").config();
 const morgan = require;
+const multer = require ('multer')
 // const sgMail = require('@sendgrid/mail');
 const cors = require("cors");
 const User = require("./models/User");
 const jwt = require("jsonwebtoken");
 const app = express();
 app.use(cors());
+
+
+
 
 // Database + connect
 const connectDB = require("./config/db");
