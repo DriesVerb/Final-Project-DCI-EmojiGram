@@ -1,6 +1,8 @@
 import React, { useEffect, useContext, Fragment, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import StoryContext from "../../context/story/storyContext";
+
+import DOMPurify from "dompurify";
 
 import CommentForm from "./CommentForm";
 
