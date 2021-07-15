@@ -11,6 +11,8 @@ router.post("/create", auth, storyController.create);
 
 router.get("/publishedStory", storyController.published);
 
+
+
 router.get("/show/:id", auth, storyController.show);
 //
 router.get("/showPublic/:id", storyController.show);

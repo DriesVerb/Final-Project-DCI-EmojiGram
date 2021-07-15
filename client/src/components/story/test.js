@@ -1,99 +1,66 @@
-import React, { useEffect, useState, useContext, Fragment } from "react";
-// import axios from 'axios'
+import React, { useEffect, useContext, Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
-// import './showStory.css'
-import { Button } from "react-bootstrap";
 import StoryContext from "../../context/story/storyContext";
+
 import CommentForm from "./CommentForm";
-import { Link } from "react-router-dom";
 
-function showStory(props) {
+const readPublicStory = () => {
   const storyContext = useContext(StoryContext);
-  const {
-    singleStory,
-    deleteStory,
-    storyToEdit,
-    setEditedStory,
-    addLike,
-    removeLike,
-    deleteComment,
-    showStory
-    // addComment,
-  } = storyContext;
-  // const { _id} = stories;
-  // const [story,setStory] = useState({
-  //     title:"",
-  //     text:""
-  // })
-
-  // liked was used before it was defined set to false
-  const [liked, setLiked] = useState(false);
-
+  const { singleStory, showSinglePublic, addLike, removeLike, deleteComment } =
+    storyContext;
   const { id } = useParams();
-
+  const [liked, setLiked] = useState(true);
   useEffect(() => {
-    showStory(id);
-    // axios.get('/user/story/show/'+id)
-    // .then((res)=>{
-    //     setStory(res.data)
-    // }).catch(err=>{
-    //     console.log(err)
-    // console.log(singleStory);
-    // console.log(singleStory.comments)
+    showSinglePublic(id);
+  }, [liked]);
 
-    // })
-  }, [ liked]);
-
-  // console.log(singleStory)
-
-  // const [like, setLike]=useState(props.liked)
- 
-  const onDelete = () => {
-    deleteStory(singleStory._id);
-    props.history.push(`/yourstories/${singleStory.user}`);
-  };
-  const onEdit = () => {
-    setEditedStory(singleStory);
-    console.log(storyToEdit);
-    props.history.push("/writestory");
-  };
- 
-  const onLike = (e) => {
-    e.preventDefault();
-    if (liked) {
-      addLike(singleStory._id);
-      setLiked(false);
-      console.log(liked);
-     
-    } else {
-      removeLike(singleStory._id);
-      setLiked(true);
-
-      console.log(liked);
-    }
-  };
-
+  const sanitizeData = () => ({
+    __html: DOMPurify.sanitize(singleStory.richText),
+  });
 
   return (
     <Fragment>
       {singleStory && (
-        <div className="showStory">
-          <div className="storyContainer">
-            <h2 className="text-center">
-              {singleStory.title &&
-                singleStory.title.charAt(0).toUpperCase() +
-                  singleStory.title.slice(1)}
-            </h2>
+        <div className="showStory grid-container">
+          <h1 className="text-center grid-container__header">
+            {singleStory.title &&
+              singleStory.title.charAt(0).toUpperCase() +
+                singleStory.title.slice(1)}
+          </h1>
+          <div className="storyContainer grid-container__mid">
             <br />
-            <p>{singleStory.text}</p>
-
-            <span className="like">
-              <i className="fa fa-thumbs-up" onClick={onLike} />
-              {singleStory.likes && (
-                <span>&nbsp;{singleStory.likes.length}</span>
-              )}
-            </span>
-
+            <div dangerouslySetInnerHTML={sanitizeData()}></div>
+            {liked ? (
+              <span className="like">
+                <i
+                  className="fa fa-thumbs-up"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addLike(singleStory._id);
+                    setLiked(false);
+                    console.log(liked);
+                  }}
+                />
+                {singleStory.likes && (
+                  <span>&nbsp;{singleStory.likes.length}</span>
+                )}
+              </span>
+            ) : (
+              <span className="like">
+                <i
+                  className="fa fa-thumbs-up"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    removeLike(singleStory._id);
+                    setLiked(true);
+                    console.log(liked);
+                  }}
+                />
+                {singleStory.likes && (
+                  <span>&nbsp;{singleStory.likes.length}</span>
+                )}
+              </span>
+            )}
             <span>
               <i className="fas fa-comment" />
               {singleStory.comments && (
@@ -112,7 +79,6 @@ function showStory(props) {
                 </span>
               )}
             </span>
-
             <CommentForm />
             <div>
               {singleStory.comments && (
@@ -155,17 +121,9 @@ function showStory(props) {
               )}
             </div>
           </div>
-
-          <Button variant="info" className="pl-3 pr-4 ml-2" onClick={onEdit}>
-            Edit
-          </Button>
-          <Button variant="dark" className="ml-1" onClick={onDelete}>
-            Delete
-          </Button>
         </div>
       )}
     </Fragment>
   );
-}
-
-export default showStory;
+};
+export default readPublicStory;
