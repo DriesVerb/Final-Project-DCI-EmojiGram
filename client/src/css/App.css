@@ -652,7 +652,7 @@ a {
   justify-content: center;
   align-items: center;
 }
-.story-card-big__like, .story-card-big__comments {
+.story-card-big__like, .story-card-big__comments, .story-card-big__views {
   padding: 0px 2rem;
 }
 

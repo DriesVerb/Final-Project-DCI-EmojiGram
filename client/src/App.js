@@ -1,9 +1,9 @@
-import React, { useEffect, useContext } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Sass
-import './css/App.css';
+import "./css/App.css";
 
 // components
 import Alerts from "./components/layout/Alert";
@@ -21,17 +21,17 @@ import GenreMainPage from "./components/genre/GenreMainPage";
 import PublicLandingPage from "./components/pages/publicLandingPage";
 import SideNavBar from "./components/layout/SideNavBar";
 
-import UserItem from './components/user/UserItem';
-import userForm from './components/user/userForm';
-import UserProfile from './components/user/userProfile';
+import UserItem from "./components/user/UserItem";
+import userForm from "./components/user/userForm";
+import UserProfile from "./components/user/userProfile";
 
 import ReadPublicStory from "./components/story/readPublicStory";
 
 // context
-import StoryState from './context/story/storyState';
-import AuthContext from './context/auth/authContext';
-import AlertState from './context/alert/alertState';
-import ProfileState from './context/profile/ProfileState';
+import StoryState from "./context/story/storyState";
+import AuthContext from "./context/auth/authContext";
+import AlertState from "./context/alert/alertState";
+import ProfileState from "./context/profile/ProfileState";
 
 // import setAuthToken
 import setAuthToken from "./context/auth/setAuthToken";
@@ -67,7 +67,7 @@ function App() {
                     component={UserInterface}
                   />
                   <PrivateRoute
-                    path="/yourstories/:id"
+                    path="/yourstories/"
                     exact
                     component={YourStories}
                   />
@@ -86,12 +86,9 @@ function App() {
                     exact
                     component={PublicLandingPage}
                   />
-                  
-                  
+
                   <Route path="/profile" exact component={UserItem} />
-                  <Route path="/profile/:id" exact component={UserProfile } />
-
-
+                  <Route path="/profile/:id" exact component={UserProfile} />
 
                   <PrivateRoute
                     path="/showstory/:id"
@@ -106,9 +103,7 @@ function App() {
                     path="/UserInterface"
                     component={UserInterface}
                   />
-                
 
-                 
                   <Route path="/userform" exact component={userForm} />
 
                   <Route

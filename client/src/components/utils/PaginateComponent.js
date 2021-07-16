@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 // components
 import StoryCardBig from "../story/StoryCardBig";
 
-const PaginateComponent = ({ data, perPage }) => {
+const PaginateComponent = ({ data, perPage, show }) => {
   const [pageNumber, SetPageNumber] = useState(0);
   const storiesPerPage = perPage;
   const pagesVisited = pageNumber * storiesPerPage;
@@ -26,7 +26,7 @@ const PaginateComponent = ({ data, perPage }) => {
       <div className="pagination">
         <div className="pagination__cards">
           {displayStories.map((story, index) => {
-            return <StoryCardBig key={index} story={story} index={index} />;
+            return <StoryCardBig key={index} story={story} index={index} show={show}/>;
           })}
         </div>
         <div className="pagination__buttons">

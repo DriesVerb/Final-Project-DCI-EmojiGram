@@ -1,34 +1,31 @@
+////////////////////////////////////////////////
+import React, { useContext, useEffect } from "react";
+import StoryContext from "../../context/story/storyContext";
+import PaginateComponent from "../utils/PaginateComponent";
+import AuthContext from "../../context/auth/authContext";
 
-  ////////////////////////////////////////////////
-  import React, { useContext, useEffect } from "react";
-  import StoryContext from "../../context/story/storyContext";
-  import { useParams } from "react-router-dom";
-  import PaginateComponent from "../utils/PaginateComponent";
-  
-function YourStories(props) {
-    
-    const storyContext = useContext(StoryContext);
-    const { publishStory, stories } = storyContext;
-    const { id } = useParams()
-  
-    useEffect(() => {
-      publishStory(id);
-      console.log(stories);
-    }, []);
-  
-  
-    return (
-      <div className="grid-container">
-        <div className="grid-container__mid">
-          <PaginateComponent data={stories} perPage={5} />
-        </div>
+function YourStories() {
+  const storyContext = useContext(StoryContext);
+  const { publishStory, stories } = storyContext;
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
+
+
+  const component = "showstory"
+
+  useEffect(() => {
+    publishStory(user._id);
+  }, []);
+
+  return (
+    <div className="grid-container">
+      <div className="grid-container__mid">
+        <PaginateComponent data={stories} perPage={5} show={component}/>
       </div>
-    );
-  }
-  
-  export default YourStories;
-  
+    </div>
+  );
+}
 
+export default YourStories;
 
-
-//       
+//
