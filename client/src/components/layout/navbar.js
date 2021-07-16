@@ -68,12 +68,10 @@ function navbar() {
     <Fragment>
       <Navbar>
         <Nav className="me-auto">
-          <Nav.Link className="text-info" href="/login">
-            LogIn
-          </Nav.Link>
-          <Nav.Link className="text-info" href="/signup">
-            SignUp
-          </Nav.Link>
+          <i className=" fas fa-user text-info ml-5 mt-2" />
+          <Nav.Link href="/login">LogIn</Nav.Link>
+          <i className=" fas fa-sign-in-alt text-info ml-5 mt-2" />
+          <Nav.Link href="/signup">SignUp</Nav.Link>
         </Nav>
       </Navbar>
 
