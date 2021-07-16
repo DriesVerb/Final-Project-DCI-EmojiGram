@@ -7,7 +7,7 @@ import StoryContext from "../../context/story/storyContext";
 import CommentForm from "./CommentForm";
 import { Link } from "react-router-dom";
 
-function showStory(props) {
+function ShowStory(props) {
   const storyContext = useContext(StoryContext);
   const {
     singleStory,
@@ -168,4 +168,4 @@ function showStory(props) {
   );
 }
 
-export default showStory;
+export default ShowStory;
