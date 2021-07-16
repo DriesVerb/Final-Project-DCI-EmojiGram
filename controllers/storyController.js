@@ -134,6 +134,18 @@ exports.alphabetical = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
+exports.views = async (req, res) => {
+  try {
+    await Story.find((err, story) => {
+      res.json(story);
+    })
+      .sort({ views: -1 })
+      .limit(5);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
 
 //Sort By Time
 exports.sortTime = async (req, res) => {

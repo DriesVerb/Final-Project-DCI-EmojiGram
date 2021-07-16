@@ -13,22 +13,29 @@ const PublicLandingPage = () => {
     publishStoryPublicLikes,
     publishStoryPublicGenre,
     publishStoryPublicAlpha,
+    publishStoryPublicViews,
     topStories,
     stories,
   } = storyContext;
 
+  const component = "readpublicstory"
+
   const [sort, setSort] = useState("Latest");
+ const [test, tests] = useState(stories)
+
   useEffect(() => {
     publishStoryPublicLikes();
     if (sort === "Latest") publishStoryPublic();
     else if (sort === "Alphabet") publishStoryPublicAlpha();
     else if (sort === "Most liked") publishStoryPublicLikes();
+    else if (sort === "Most views") publishStoryPublicViews()
     else if (sort) publishStoryPublicGenre(sort);
   }, [sort]);
 
   const onChange = (e) => {
     setSort(e.target.innerText);
   };
+
 
   return (
     <div className="grid-container">
@@ -66,16 +73,16 @@ const PublicLandingPage = () => {
         </div>
         <div className="public-stories__cards">
           {sort === "Most liked" ? (
-            <PaginateComponent data={topStories} perPage={20} />
+            <PaginateComponent data={topStories} perPage={20} show={component}/>
           ) : (
-            <PaginateComponent data={stories} perPage={20} />
+            <PaginateComponent data={stories} perPage={20} show={component}/>
           )}
         </div>
       </main>
       <div className="right-sidebar grid-container__right">
         <StoryCardSmall story={topStories} amount={3} title={"Most Likes:"} />
         <StoryCardSmall
-          story={stories}
+          story={test}
           amount={2}
           title={"Latest Published:"}
         />

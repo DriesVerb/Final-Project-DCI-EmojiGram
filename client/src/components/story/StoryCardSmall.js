@@ -20,8 +20,8 @@ const StoryCardSmall = ({ story, amount, title }) => {
             onClick={() => storyDetailsPublic(story._id)}
           >
             <div className="story-card-small__emojis">
-              {story.emojis.map((emoji) => {
-                return <EmojiChar emoji={emoji} size="medium" />;
+              {story.emojis.map((emoji, id) => {
+                return <EmojiChar key={id} emoji={emoji} size="medium" />;
               })}
             </div>
             <div className="story-card-small__info">

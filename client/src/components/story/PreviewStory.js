@@ -49,8 +49,8 @@ const PreviewStory = (props) => {
       </div>
       <div className="grid-container__mid">
         <div className="emoji__row">
-          {emojis.map((emoji) => (
-            <EmojiChar emoji={emoji} size="large" />
+          {emojis.map((emoji, id) => (
+            <EmojiChar key={id} emoji={emoji} size="large" />
           ))}
         </div>
         <p

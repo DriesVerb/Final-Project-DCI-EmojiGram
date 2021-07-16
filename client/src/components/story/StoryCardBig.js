@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 // components
 import EmojiChar from "./EmojiChar";
 
-const StoryCardBig = ({ story }) => {
+const StoryCardBig = ({ story, show }) => {
   let history = useHistory();
   const storyDetailsPublic = (id) => {
-    history.push(`/readpublicstory/${id}`);
+    history.push(`/${show}/${id}`);
   };
   useEffect(() => {
     console.log(story);
@@ -33,8 +33,8 @@ const StoryCardBig = ({ story }) => {
     <div key={story._id} className="story-card-big">
       <div className="story-card-big__emojis">
         <div className="story-card-big__emojis--center">
-          {story.emojis.map((emoji) => (
-            <EmojiChar emoji={emoji} size="large" />
+          {story.emojis.map((emoji, id) => (
+            <EmojiChar key={id} emoji={emoji} size="large" />
           ))}
         </div>
       </div>
@@ -69,7 +69,10 @@ const StoryCardBig = ({ story }) => {
             <i className="fa fa-thumbs-up" /> {story.likes.length}
           </span>
           <span className="story-card-big__comments">
-            <i className="fas fa-comment" />
+            <i className="fas fa-comment" /> {story.comments && (story.comments.length)}
+          </span>
+          <span className="story-card-big__views">
+            <i className="far fa-eye" /> {story.views}
           </span>
         </div>
         <div

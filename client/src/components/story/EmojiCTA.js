@@ -31,8 +31,8 @@ const EmojiCTA = () => {
       ) : (
         <div className="emoji__row mb-xl">
           {emojis.length > 0 &&
-            emojis.map((emoji) => {
-              return <EmojiChar emoji={emoji} size="medium" />;
+            emojis.map((emoji, id) => {
+              return <EmojiChar key={id} emoji={emoji} size="medium" />;
             })}{" "}
         </div>
       )}
