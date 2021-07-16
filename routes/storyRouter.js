@@ -6,16 +6,15 @@ const User = require("../models/User");
 // /user/story/
 
 const auth = require("../middleware/auth");
+const viewMiddleware = require("../middleware/views");
 
 router.post("/create", auth, storyController.create);
 
 router.get("/publishedStory", storyController.published);
 
-
-
-router.get("/show/:id", auth, storyController.show);
+router.get("/show/:id", auth, viewMiddleware,storyController.show);
 //
-router.get("/showPublic/:id", storyController.show);
+router.get("/showPublic/:id", viewMiddleware, storyController.show);
 router.put("/editStory/:id", auth, storyController.edit);
 
 router.delete("/delete/:id", auth, storyController.deleteStory);
@@ -23,6 +22,7 @@ router.delete("/delete/:id", auth, storyController.deleteStory);
 router.get("/filter", storyController.alphabetical);
 // router.get("/select/?count={limit}", storyController.selectNumber);
 router.get("/genre/:genre", storyController.getGenre);
+router.get("/views", storyController.views);
 
 router.get("/time", storyController.sortTime);
 

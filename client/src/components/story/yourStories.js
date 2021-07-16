@@ -10,6 +10,9 @@ function YourStories() {
   const authContext = useContext(AuthContext);
   const { user } = authContext;
 
+
+  const component = "showstory"
+
   useEffect(() => {
     publishStory(user._id);
   }, []);
@@ -17,7 +20,7 @@ function YourStories() {
   return (
     <div className="grid-container">
       <div className="grid-container__mid">
-        <PaginateComponent data={stories} perPage={5} />
+        <PaginateComponent data={stories} perPage={5} show={component}/>
       </div>
     </div>
   );

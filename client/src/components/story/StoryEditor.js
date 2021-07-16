@@ -123,8 +123,8 @@ const StoryEditor = () => {
         <div className="story-editor__emojis">
           {emojis.length > 0 ? (
             <div className="emoji__row">
-              {emojis.map((emoji) => {
-                return <EmojiChar emoji={emoji} size="large" />;
+              {emojis.map((emoji, id) => {
+                return <EmojiChar key={id} emoji={emoji} size="large" />;
               })}
             </div>
           ) : (
