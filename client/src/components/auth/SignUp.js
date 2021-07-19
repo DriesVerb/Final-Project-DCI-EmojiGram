@@ -76,7 +76,7 @@ const SignUp = (props) => {
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
-          <h3 className="login mt-5 text-info">Welcome to Emoji-Tales</h3>
+          <h3 className="login mt-5 text-success">Welcome to Emoji-Tales</h3>
           <h4 className="login mb-5 mt-3">Create an Account</h4>
         </Grid>
         <Formik>
@@ -132,7 +132,7 @@ const SignUp = (props) => {
 
         <h4 className="signup mt-5">
           Already have an account?
-          <Link className="link ml-3 mb-4" href="/login">
+          <Link className="link ml-3 mb-4 text-success" href="/login">
             Log In
           </Link>
         </h4>
