@@ -76,7 +76,7 @@ const SignUp = (props) => {
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
-          <h3 className="login mt-5 text-warning">Welcome to Emoji-Tales</h3>
+          <h3 className="login mt-5 text-success">Welcome to Emoji-Tales</h3>
           <h4 className="login mb-5 mt-3">Create an Account</h4>
         </Grid>
         <Formik>
@@ -117,7 +117,7 @@ const SignUp = (props) => {
             />
 
             <Button
-              className="btn mt-5"
+              className="btn mt-5 bg-warning"
               type="submit"
               variant="contained"
               fullWidth
@@ -125,14 +125,14 @@ const SignUp = (props) => {
               <Avatar style={avatarStyle} className="avatar mb-4s">
                 <HttpsOutlinedIcon />
               </Avatar>
-              <span className="ml-3"> Sign Up</span>
+              <span className="ml-3 "> Sign Up</span>
             </Button>
           </Form>
         </Formik>
 
         <h4 className="signup mt-5">
           Already have an account?
-          <Link className="link ml-3 mb-4" href="/login">
+          <Link className="link ml-3 mb-4 text-success" href="/login">
             Log In
           </Link>
         </h4>
