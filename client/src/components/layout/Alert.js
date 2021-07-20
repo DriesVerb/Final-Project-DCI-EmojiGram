@@ -17,7 +17,7 @@ const Alerts = () => {
         className="app__navbar"
       >
         <Row>
-          <Col md={{ span: 8, offset: 3 }} className="fas fa-info-circle ">
+          <Col md={{ span: 8, offset: 3 }} className="fas fa-info-circle">
             <span>{""} </span>
             {alert.msg}{" "}
           </Col>

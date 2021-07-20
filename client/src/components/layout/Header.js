@@ -9,7 +9,7 @@ import Link from "@material-ui/core/Link";
 import AuthContext from "../../context/auth/authContext";
 import ProfileContext from "../../context/profile/profileContext";
 
-import { NavLink, Nav, NavDropdown } from "react-bootstrap";
+import { Nav, NavDropdown } from "react-bootstrap";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -64,18 +64,18 @@ function Header() {
             <i className="fas fa-sign-out-alt" /> Logout
           </NavDropdown.Item>
         </NavDropdown>
-        <NavLink to="/notification" className="ml-5">
+        <Nav.Link href="/notification" className="ml-5">
           <i className="fas fa-bell" /> Notification
-        </NavLink>
+        </Nav.Link>
         {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
-        <NavLink to="/UserInterface">
+        <Nav.Link href="/UserInterface">
           <i className=" fas fa-user ml-5" />
           User
-        </NavLink>
+        </Nav.Link>
         {/* //////////////////////////////////////////////////////////////////////////////////////////////////   */}
-        <NavLink to="/message">
+        <Nav.Link href="/message">
           <i className="fas fa-envelope ml-5" /> Messages
-        </NavLink>
+        </Nav.Link>
       </Nav>
     </Fragment>
   );
