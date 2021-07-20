@@ -1,11 +1,17 @@
 import React, { useEffect, useState, useContext, Fragment } from "react";
-// import axios from 'axios'
+
+// secure the rich text
+import DOMPurify from "dompurify";
+
 import { useParams } from "react-router-dom";
 // import './showStory.css'
 import { Button } from "react-bootstrap";
 import StoryContext from "../../context/story/storyContext";
 import CommentForm from "./CommentForm";
 import { Link } from "react-router-dom";
+
+// components
+import EmojiChar from "./EmojiChar";
 
 function ShowStory(props) {
   const storyContext = useContext(StoryContext);
@@ -17,37 +23,17 @@ function ShowStory(props) {
     addLike,
     removeLike,
     deleteComment,
-    showStory
-    // addComment,
+    showStory,
   } = storyContext;
-  // const { _id} = stories;
-  // const [story,setStory] = useState({
-  //     title:"",
-  //     text:""
-  // })
 
-  // liked was used before it was defined set to false
   const [liked, setLiked] = useState(false);
 
   const { id } = useParams();
 
   useEffect(() => {
     showStory(id);
-    // axios.get('/user/story/show/'+id)
-    // .then((res)=>{
-    //     setStory(res.data)
-    // }).catch(err=>{
-    //     console.log(err)
-    // console.log(singleStory);
-    // console.log(singleStory.comments)
+  }, [liked]);
 
-    // })
-  }, [ liked]);
-
-  // console.log(singleStory)
-
-  // const [like, setLike]=useState(props.liked)
- 
   const onDelete = () => {
     deleteStory(singleStory._id);
     props.history.push(`/yourstories/${singleStory.user}`);
@@ -57,14 +43,13 @@ function ShowStory(props) {
     console.log(storyToEdit);
     props.history.push("/writestory");
   };
- 
+
   const onLike = (e) => {
     e.preventDefault();
     if (liked) {
       addLike(singleStory._id);
       setLiked(false);
       console.log(liked);
-     
     } else {
       removeLike(singleStory._id);
       setLiked(true);
@@ -73,46 +58,95 @@ function ShowStory(props) {
     }
   };
 
+  const sanitizeData = () => ({
+    __html: DOMPurify.sanitize(singleStory.richText),
+  });
 
   return (
     <Fragment>
       {singleStory && (
-        <div className="showStory">
-          <div className="storyContainer">
+        <div className="grid-container">
+          <div className="grid-container__header">
             <h2 className="text-center">
               {singleStory.title &&
                 singleStory.title.charAt(0).toUpperCase() +
                   singleStory.title.slice(1)}
             </h2>
-            <br />
-            <p>{singleStory.text}</p>
+          </div>
 
-            <span className="like">
-              <i className="fa fa-thumbs-up" onClick={onLike} />
-              {singleStory.likes && (
-                <span>&nbsp;{singleStory.likes.length}</span>
+          <div className="grid-container__left pb-story__navbar">
+            <div className="pb-story__likes pb-story__icon">
+              {liked ? (
+                <div className="pb-story__icon">
+                  <div className="pb-story__size">
+                    <i
+                      className="fa fa-thumbs-up"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        addLike(singleStory._id);
+                        setLiked(false);
+                        console.log(liked);
+                      }}
+                    />
+                    {singleStory.likes && (
+                      <span className="pb-story__count">
+                        {singleStory.likes.length}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="pb-story__icon ">
+                  <span className="like pb-story__size">
+                    <i
+                      className="fa fa-thumbs-up"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        removeLike(singleStory._id);
+                        setLiked(true);
+                        console.log(liked);
+                      }}
+                    />
+                    {singleStory.likes && (
+                      <span className="pb-story__count">
+                        {singleStory.likes.length}
+                      </span>
+                    )}
+                  </span>
+                </div>
               )}
-            </span>
+            </div>
 
-            <span>
-              <i className="fas fa-comment" />
-              {singleStory.comments && (
-                <span> &nbsp;{singleStory.comments.length}</span>
-              )}{" "}
-            </span>
-            <span className="emojisClass">
-              <i className="far fa-smile-beam" /> :{" "}
-              {singleStory.emojis && (
-                <span>
-                  {" "}
-                  &nbsp;
-                  {singleStory.emojis.map((emoj, id) => (
-                    <span key={id}>&nbsp;{emoj.character} </span>
-                  ))}{" "}
+            <div className="pb-story__comments pb-story__icon">
+              <a href="#comment" className="pb-story__link">
+                <span className="pb-story__size">
+                  <i className="fas fa-comment" />
+                  {singleStory.comments && (
+                    <span className="pb-story__count pb-story__link">
+                      {singleStory.comments.length}
+                    </span>
+                  )}
                 </span>
-              )}
-            </span>
+              </a>
+            </div>
+          </div>
 
+          <div className="grid-container__right">
+            <Button variant="info" className="pl-3 pr-4 ml-2" onClick={onEdit}>
+              Edit
+            </Button>
+            <Button variant="dark" className="ml-1" onClick={onDelete}>
+              Delete
+            </Button>
+          </div>
+
+          <div className="grid-container__mid">
+            <div className="emoji__row pb-story__emojis">
+              {singleStory.emojis.map((emoji, id) => (
+                <EmojiChar emoji={emoji} size="x-large" />
+              ))}
+            </div>
+            <div dangerouslySetInnerHTML={sanitizeData()}></div>
             <CommentForm />
             <div>
               {singleStory.comments && (
@@ -156,12 +190,17 @@ function ShowStory(props) {
             </div>
           </div>
 
-          <Button variant="info" className="pl-3 pr-4 ml-2" onClick={onEdit}>
-            Edit
-          </Button>
-          <Button variant="dark" className="ml-1" onClick={onDelete}>
-            Delete
-          </Button>
+          {/* <span className="like">
+            <i className="fa fa-thumbs-up" onClick={onLike} />
+            {singleStory.likes && <span>&nbsp;{singleStory.likes.length}</span>}
+          </span>
+
+          <span>
+            <i className="fas fa-comment" />
+            {singleStory.comments && (
+              <span> &nbsp;{singleStory.comments.length}</span>
+            )}{" "}
+          </span> */}
         </div>
       )}
     </Fragment>

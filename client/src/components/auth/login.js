@@ -45,7 +45,7 @@ function Login(props) {
     // redirect to Home Page
     if (isAuthenticated) {
       //should pass the props in the function component
-      props.history.push("/userInterface");
+      props.history.push("/userinterface");
     }
     // eslint-disable-next-line
   }, [isAuthenticated, props.history, error, user]);
@@ -65,7 +65,7 @@ function Login(props) {
       });
     }
   };
-/*   const validationSchema = Yup.object().shape({
+  /*   const validationSchema = Yup.object().shape({
     email: Yup.string().email(""),
   }); */
   const paperStyle = {
@@ -85,10 +85,12 @@ function Login(props) {
           <h3 className="login mb-5">Log In</h3>
         </Grid>
         <Formik>
-          <Form onSubmit={(e) => {
-            e.preventDefault();
-            submToServer();
-          }}>
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              submToServer();
+            }}
+          >
             <Field
               as={TextField}
               className="field mb-5"
@@ -159,7 +161,6 @@ function Login(props) {
         </Grid>
       </Paper>
     </Grid>
-
   );
 }
 export default Login;
@@ -339,4 +340,3 @@ function Login(props) {
 }
 export default Login;
  */
-

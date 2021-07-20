@@ -20,7 +20,7 @@ const StoryCardBig = ({ story, show }) => {
   };
 
   const trimString = (text) => {
-    const trimmedString = text.substring(0, 300);
+    const trimmedString = text.substring(0, 150);
     return trimmedString;
   };
 
@@ -69,7 +69,8 @@ const StoryCardBig = ({ story, show }) => {
             <i className="fa fa-thumbs-up" /> {story.likes.length}
           </span>
           <span className="story-card-big__comments">
-            <i className="fas fa-comment" /> {story.comments && (story.comments.length)}
+            <i className="fas fa-comment" />{" "}
+            {story.comments && story.comments.length}
           </span>
           <span className="story-card-big__views">
             <i className="far fa-eye" /> {story.views}
