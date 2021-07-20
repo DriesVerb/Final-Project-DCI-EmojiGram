@@ -8,7 +8,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import AuthContext from "../../context/auth/authContext";
 import ProfileContext from "../../context/profile/profileContext";
 
@@ -49,16 +49,16 @@ function navbar() {
           </NavDropdown.Item>
         </NavDropdown>
         <NavLink to="/notification" className="ml-5">
-          <i className="fas fa-bell" /> Notification
+          <i className="fas fa-bell text-info" /> Notification
         </NavLink>
         {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
-        <NavLink href="/UserInterface">
-          <i className=" fas fa-cog" />
+        <NavLink to="/UserInterface">
+          <i className=" fas fa-cog text-info ml-5" />
           User
         </NavLink>
         {/* //////////////////////////////////////////////////////////////////////////////////////////////////   */}
         <NavLink to="/message">
-          <i className="fas fa-envelope" /> Messages
+          <i className="fas fa-envelope text-info ml-5" /> Messages
         </NavLink>
       </Nav>
     </Fragment>
@@ -66,8 +66,17 @@ function navbar() {
 
   const guestLinks = (
     <Fragment>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Signup</Link>
+      <Navbar>
+        <Nav className="me-auto">
+          <i className=" fas fa-user text-info ml-5 mt-2" />
+          <Nav.Link href="/login">LogIn</Nav.Link>
+          <i className=" fas fa-sign-in-alt text-info ml-5 mt-2" />
+          <Nav.Link href="/signup">SignUp</Nav.Link>
+        </Nav>
+      </Navbar>
+
+      {/* <Link to="/login">Login</Link>
+      <Link to="/signup">Signup</Link> */}
     </Fragment>
   );
 

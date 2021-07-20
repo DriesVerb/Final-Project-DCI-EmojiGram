@@ -20,6 +20,7 @@ import ShowStory from "./components/story/showStory";
 import GenreMainPage from "./components/genre/GenreMainPage";
 import PublicLandingPage from "./components/pages/publicLandingPage";
 import SideNavBar from "./components/layout/SideNavBar";
+import Header from "./components/layout/Header";
 
 import UserItem from "./components/user/UserItem";
 import userForm from "./components/user/userForm";
@@ -54,7 +55,8 @@ function App() {
         <AlertState>
           <div className="app__container">
             <Router>
-              <Navbar />
+              <Header />
+              {/* <Navbar /> */}
               <SideNavBar />
               <Alerts />
               <div className="app__main">

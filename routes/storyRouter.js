@@ -20,7 +20,7 @@ router.put("/editStory/:id", auth, storyController.edit);
 router.delete("/delete/:id", auth, storyController.deleteStory);
 
 router.get("/filter", storyController.alphabetical);
-// router.get("/select/?count={limit}", storyController.selectNumber);
+
 router.get("/genre/:genre", storyController.getGenre);
 router.get("/views", storyController.views);
 
