@@ -134,8 +134,15 @@ const UserItem = (props) => {
             <h5 class="mb-0">About</h5>
             <div class="p-4 rounded shadow-sm bg-light">
               <p class="font-italic mb-0">Web Developer</p>
-              <p class="font-italic mb-0">Lives in Berlin</p>
-              <p class="font-italic mb-0">Artist</p>
+              <p class="font-italic mb-0">
+                {location && (
+                  <p className="small mt-2">
+                    {" "}
+                    {location.charAt(0).toUpperCase() + location.slice(1)}
+                  </p>
+                )}
+              </p>
+              <p class="font-italic mb-0 mt-2">Artist</p>
               {age && <p class="font-italic mb-0"> {age}</p>}
             </div>{" "}
             <Link to="/yourstories" className="link">
