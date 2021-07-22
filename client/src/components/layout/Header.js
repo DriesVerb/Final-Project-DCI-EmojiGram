@@ -94,30 +94,33 @@ function Header() {
   );
 
   return (
-    <div className={classes.root}>
-      <AppBar
-        position="fixed"
-        style={{ background: "#ffb703", height: "8rem" }}
-      >
-        <Toolbar>
-          <Typography variant="h2" className={classes.title}>
-            <Link
-              className="appLogo "
-              href="/"
-              style={{
-                color: "inherit",
-                textDecoration: "none",
-                fontSize: "40px",
-              }}
-            >
-              Emoji-Tales
-            </Link>
-          </Typography>
-          <div className="navbar">
-            {isAuthenticated ? userLinks : guestLinks}
-          </div>
-        </Toolbar>
-      </AppBar>
+    <div className="app__navbar">
+      <div className={classes.root}>
+        <AppBar
+          position="fixed"
+          style={{ background: "#ffb703", height: "8rem" }}
+          className="app__navbar"
+        >
+          <Toolbar>
+            <Typography variant="h2" className={classes.title}>
+              <Link
+                className="appLogo "
+                href="/"
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                  fontSize: "40px",
+                }}
+              >
+                Emoji-Tales
+              </Link>
+            </Typography>
+            <div className="navbar">
+              {isAuthenticated ? userLinks : guestLinks}
+            </div>
+          </Toolbar>
+        </AppBar>
+      </div>
     </div>
   );
 }
