@@ -34,7 +34,6 @@ const UserProfile = (props) => {
       }
     }
   }, [user, users]);
-
   const compareValue = (input) => {
     input.forEach((el) => {
       if (user._id === el.user) {
@@ -42,7 +41,6 @@ const UserProfile = (props) => {
       }
     });
   };
-
   return (
     <Fragment>
       {/* {console.log(follow)} */}
@@ -78,7 +76,6 @@ const UserProfile = (props) => {
                   {/* {location.charAt(0).toUpperCase() + location.slice(1)} */}
                 </p>
                 {/* )} */}
-
                 {location && (
                   <p className='small mb-4'>
                     {' '}
@@ -87,7 +84,6 @@ const UserProfile = (props) => {
                   </p>
                 )}
                 <br />
-
                 {!isAuthenticated ? (
                   <button
                     type='submit'
@@ -122,7 +118,6 @@ const UserProfile = (props) => {
                     )}
                   </div>
                 )}
-
                 {/* <div className='d-flex flex-start m-0 p-0'>       
         <button
           type="submit"
@@ -150,10 +145,9 @@ const UserProfile = (props) => {
                         {followers.length}
                       </h5>
                     )}
-
-                    <small className='text-muted'>
-                      {' '}
-                      <i className='fas fa-book mr-1'></i>Stories
+                    <small className="text-muted">
+                      {" "}
+                      <i className="fas fa-book mr-1"></i>Stories
                     </small>
                   </li>
                   <li className='list-inline-item p-4'>
@@ -162,10 +156,9 @@ const UserProfile = (props) => {
                         {followers.length}
                       </h5>
                     )}
-
-                    <small className='text-muted'>
-                      {' '}
-                      <i className='fas fa-user mr-1'></i>Followers
+                    <small className="text-muted">
+                      {" "}
+                      <i className="fas fa-user mr-1"></i>Followers
                     </small>
                   </li>
                   <li className='list-inline-item'>
@@ -174,26 +167,23 @@ const UserProfile = (props) => {
                         {following.length}
                       </h5>
                     )}
-
-                    <small className='text-muted'>
-                      {' '}
-                      <i className='fas fa-user mr-1'></i>Following
+                    <small className="text-muted">
+                      {" "}
+                      <i className="fas fa-user mr-1"></i>Following
                     </small>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-
-          <div className='px-4 py-3'>
-            <h5 className='mb-0'>About</h5>
-            <div className='p-4 rounded shadow-sm bg-light'>
-              <p className='font-italic mb-0'>Web Developer</p>
-              <p className='font-italic mb-0'>Lives in Berlin</p>
-              <p className='font-italic mb-0'>Artist</p>
-              {age && <p className='font-italic mb-0'> {age}</p>}
+          <div className="px-4 py-3">
+            <h5 className="mb-0">About</h5>
+            <div className="p-4 rounded shadow-sm bg-light">
+              <p className="font-italic mb-0">Web Developer</p>
+              <p className="font-italic mb-0">Lives in Berlin</p>
+              <p className="font-italic mb-0">Artist</p>
+              {age && <p className="font-italic mb-0"> {age}</p>}
             </div>
-
             {follow && (
               <div>
                 {' '}

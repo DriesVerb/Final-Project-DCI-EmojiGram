@@ -4,9 +4,17 @@ import StoryContext from "../../context/story/storyContext";
 
 import DOMPurify from "dompurify";
 
+// components
 import CommentForm from "./CommentForm";
+import EmojiChar from "./EmojiChar";
+
+// context
+import AuthContext from "../../context/auth/authContext";
 
 const readPublicStory = () => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated } = authContext;
+
   const storyContext = useContext(StoryContext);
   const { singleStory, showSinglePublic, addLike, removeLike, deleteComment } =
     storyContext;
@@ -23,65 +31,90 @@ const readPublicStory = () => {
   return (
     <Fragment>
       {singleStory && (
-        <div className="showStory grid-container">
-          <h1 className="text-center grid-container__header">
+        <div className=" grid-container">
+          <h1 className="pb-story__title grid-container__header">
             {singleStory.title &&
               singleStory.title.charAt(0).toUpperCase() +
                 singleStory.title.slice(1)}
           </h1>
-          <div className="storyContainer grid-container__mid">
-            <br />
-            <div dangerouslySetInnerHTML={sanitizeData()}></div>
-            {liked ? (
-              <span className="like">
-                <i
-                  className="fa fa-thumbs-up"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    addLike(singleStory._id);
-                    setLiked(false);
-                    console.log(liked);
-                  }}
-                />
-                {singleStory.likes && (
-                  <span>&nbsp;{singleStory.likes.length}</span>
-                )}
-              </span>
-            ) : (
-              <span className="like">
-                <i
-                  className="fa fa-thumbs-up"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    removeLike(singleStory._id);
-                    setLiked(true);
-                    console.log(liked);
-                  }}
-                />
-                {singleStory.likes && (
-                  <span>&nbsp;{singleStory.likes.length}</span>
-                )}
-              </span>
-            )}
-            <span>
-              <i className="fas fa-comment" />
-              {singleStory.comments && (
-                <span> &nbsp;{singleStory.comments.length}</span>
-              )}{" "}
-            </span>
-            <span className="emojisClass">
-              <i className="far fa-smile-beam" /> :{" "}
-              {singleStory.emojis && (
-                <span>
-                  {" "}
-                  &nbsp;
-                  {singleStory.emojis.map((emoj, id) => (
-                    <span key={id}>&nbsp;{emoj.character} </span>
-                  ))}{" "}
-                </span>
+
+          {/* left grid */}
+          <div className="grid-container__left pb-story__navbar">
+            <div className="pb-story__likes pb-story__icon">
+              {liked ? (
+                <div className="pb-story__icon">
+                  <div className="pb-story__size">
+                    <i
+                      className="fa fa-thumbs-up"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        addLike(singleStory._id);
+                        setLiked(false);
+                        console.log(liked);
+                      }}
+                    />
+                    {singleStory.likes && (
+                      <span className="pb-story__count">
+                        {singleStory.likes.length}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="pb-story__icon ">
+                  <span className="like pb-story__size">
+                    <i
+                      className="fa fa-thumbs-up"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        removeLike(singleStory._id);
+                        setLiked(true);
+                      }}
+                    />
+                    {singleStory.likes && (
+                      <span className="pb-story__count">
+                        {singleStory.likes.length}
+                      </span>
+                    )}
+                  </span>
+                </div>
               )}
-            </span>
-            <CommentForm />
+            </div>
+
+            <div className="pb-story__comments pb-story__icon">
+              <a href="#comment" className="pb-story__link">
+                <span className="pb-story__size">
+                  <i className="fas fa-comment" />
+                  {singleStory.comments && (
+                    <span className="pb-story__count pb-story__link">
+                      {singleStory.comments.length}
+                    </span>
+                  )}
+                </span>
+              </a>
+            </div>
+          </div>
+
+          {/* mid grid */}
+          <div className="grid-container__mid">
+            <div className="emoji__row pb-story__emojis">
+              {singleStory.emojis.map((emoji, id) => (
+                <EmojiChar emoji={emoji} size="x-large" />
+              ))}
+            </div>
+
+            <div dangerouslySetInnerHTML={sanitizeData()}></div>
+
+            {isAuthenticated ? (
+              <CommentForm />
+            ) : (
+              <div className="pb-story__no-comment">
+                <p className="pb-story__no-comment--text">
+                  Log in to leave a comments
+                </p>
+              </div>
+            )}
+
             <div>
               {singleStory.comments && (
                 <div>
@@ -122,6 +155,7 @@ const readPublicStory = () => {
                 </div>
               )}
             </div>
+            <div id="comment"></div>
           </div>
         </div>
       )}

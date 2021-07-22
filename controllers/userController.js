@@ -14,7 +14,7 @@ exports.testPrivate = (req, res) => {
 //User Profile
 exports.userProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user.id).populate({ path:"following" , populate : { path : "user"}}).populate({ path:"followers" , populate : { path : "user"}}).populate({ path:"stories" , populate : { path : "story"}});
     if (!user) {
       return res.status(400).json({ msg: 'There is no profile for this user' }) 
     }
@@ -134,7 +134,7 @@ exports.followers = async (req, res) => {
 exports.followUser = async (req, res) => {
 
   try {
-    const following = await User.findById(req.params.id);
+    const following = await User.findById(req.params.id).populate({ path:"following" , populate : { path : "user"}}).populate({ path:"followers" , populate : { path : "user"}});
 
     // Check if the post has already been liked
     //some is like filtere but return boolean
@@ -147,11 +147,11 @@ exports.followUser = async (req, res) => {
     await following.save();
    
   
-    const follower = await User.findById(req.user.id);
+    const follower = await User.findById(req.user.id)
     follower.following.unshift({ user: following });
     console.log(follower.following)
     await follower.save();
-    return res.json(following);
+    return res.json(following );
   }
    catch (err) {
       console.error(err.message);

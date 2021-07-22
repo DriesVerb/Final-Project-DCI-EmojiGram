@@ -1,6 +1,24 @@
 import React, { useState, Fragment, useContext, useEffect } from "react";
 import ProfileContext from "../../context/profile/profileContext";
-import { Button, Col } from "react-bootstrap";
+import { makeStyles } from "@material-ui/core/styles";
+
+//Material UI
+import {
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  TextField,
+  Button,
+  InputLabel,
+  FormControl,
+  Select,
+  MenuItem,
+  FormHelperText,
+  Link,
+} from "@material-ui/core";
+import { Formik, Form, Field } from "formik";
+
 const userForm = (props) => {
   const profileContext = useContext(ProfileContext);
   const { current, clearAll, editProfile } = profileContext;
@@ -11,6 +29,7 @@ const userForm = (props) => {
   }, [profileContext, current]);
 
   const [user, setUser] = useState({
+<<<<<<< HEAD
     name: '',
     username: '',
     email: '',
@@ -18,9 +37,16 @@ const userForm = (props) => {
     age: '',
     location: '',
   
+=======
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    location: "",
+>>>>>>> d160c91498e1930cae0b82225d5c3fca2f5809b0
   });
 
-  const { name, username, email, age, location } = user;
+  const { name, username, email, location } = user;
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
@@ -28,152 +54,147 @@ const userForm = (props) => {
     e.preventDefault();
     editProfile(user);
     console.log(user);
-    props.history.push('/profile');
+    props.history.push("/profile");
   };
 
   const clear = () => {
     clearAll();
   };
 
+  const useStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 405,
+    },
+  }));
+  const classes = useStyles();
+
   return (
     <Fragment>
-      <div className="d-flex justify-content-center row-hl">
-        <div className="d-flex flex-column row-hl">
-          <p className="lead ">
-            <i className="fas fa-user mr-2 " />
-            Add some changes to your profile
-          </p>
-          <h3 className="text-info p-4 item-hl">Update Profile</h3>
-          <form className="form" onSubmit={onSubmit}>
-            <div className="form-group ">
-              <div className="form-group d-flex">
-                <Col>
-                  {" "}
-                  <label htmlFor="userName">User Name</label>{" "}
-                </Col>
-                <Col>
-                  {" "}
-                  <input
-                    type="text"
+      <Card style={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}>
+        <Typography gutterBottom variant="h4" align="center">
+          <i className="fas fa-user mr-2 " />
+          Add some changes to your profile
+        </Typography>
+        <Typography
+          className="mt-4 text-success"
+          gutterBottom
+          variant="h2"
+          align="center"
+        >
+          Update Profile
+        </Typography>
+        <CardContent>
+          <Formik>
+            <Form onSubmit={onSubmit}>
+              <Grid container spacing={1}>
+                <Grid xs={12} sm={6} item>
+                  {/* Username Input */}
+                  <Field
+                    as={TextField}
                     name="username"
-                    placeholder="User name..."
-                    defaultValue={username}
+                    value={username}
+                    label="Username"
+                    placeholder="Enter new Username"
+                    variant="outlined"
+                    fullWidth
                     onChange={onChange}
-                  />{" "}
-                </Col>
-              </div>
+                  />
+                </Grid>
 
-              <div className="form-group d-flex">
-                <Col>
-                  {" "}
-                  <label htmlFor="name">Name</label>
-                </Col>
-                <Col>
-                  {" "}
-                  <input
-                    type="text"
+                {/* Name Input */}
+                <Grid xs={12} sm={6} item>
+                  <Field
+                    as={TextField}
                     name="name"
-                    placeholder="Name..."
-                    defaultValue={name}
+                    value={name}
+                    className="field mb-5"
+                    label="Name"
+                    placeholder="Enter new Name"
+                    variant="outlined"
+                    fullWidth
                     onChange={onChange}
                   />
-                </Col>
-              </div>
+                </Grid>
 
-              <div className="form-group d-flex">
-                <Col>
-                  {" "}
-                  <label htmlFor="email">Email</label>
-                </Col>
-                <Col>
-                  {" "}
-                  <input
-                    type="text"
+                {/* Email Input */}
+                <Grid xs={12} item>
+                  <Field
+                    as={TextField}
                     name="email"
-                    placeholder="enter email..."
-                    defaultValue={email}
+                    value={email}
+                    className="field mb-5"
+                    type="email"
+                    label="Email"
+                    placeholder="Enter new Email"
+                    variant="outlined"
+                    fullWidth
                     onChange={onChange}
                   />
-                </Col>
-              </div>
+                </Grid>
+              </Grid>
+              <Typography align="center">
+                <a href="#!">Click to edit your Password</a>
+              </Typography>
 
-              {/* 
-          <div className="form-group d-flex">
-          <Col>  <label htmlFor="password">Password</label></Col> 
-          <Col> <input
-          type="text"
-          name="password"
-          placeholder={password}
-          defaultValue='*****'
-          onChange={onChange}
-        /></Col> 
-          </div> */}
-              <a className="nav-link text-info " href="#!">
-                Click to edit your Password
-              </a>
-
-              <div className="form-group d-flex">
-                <Col>
-                  {" "}
-                  <label htmlFor="age">Age</label>
-                </Col>
-                <Col>
-                  <input
-                    type="text"
-                    name="age"
-                    placeholder="age..."
-                    defaultValue={age}
+              {/* Location Selection */}
+              <Grid xs={12} item>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel>Location</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-filled-label"
+                    id="demo-simple-select-filled"
+                    value={location}
                     onChange={onChange}
-                  />
-                </Col>
-              </div>
-
-              <div className="form-group d-flex">
-                <Col>
-                  {" "}
-                  <label htmlFor="location">Location</label>
-                </Col>
-
-                <Col>
-                  {" "}
-                  <select
-                    id="location"
+                    label="Location"
                     name="location"
-                    defaultValue={location}
-                    onChange={(e) => onChange(e)}
                   >
-                    <option defaultValue="select on"> </option>
-                    <option defaultValue="Australia">Australia</option>
-                    <option defaultValue="Germany">Germany</option>
-                    <option defaultValue="Canada">Canada</option>
-                    <option defaultValue="USA">USA</option>
-                    <option defaultValue="Spain">Spain</option>
-                    <option defaultValue="France">France</option>
-                    <option defaultValue="UK">UK</option>
-                    <option defaultValue="Italy">Italy</option>
-                  </select>
-                </Col>
-              </div>
+                    <FormHelperText>Enter new location</FormHelperText>
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={"France"}>France</MenuItem>
+                    <MenuItem value={"Germany"}>Germany</MenuItem>
+                    <MenuItem value={"Italy"}>Italy</MenuItem>
+                    <MenuItem value={"Belgium"}>Belgium</MenuItem>
+                    <MenuItem value={"Spain"}>Spain</MenuItem>
+                    <MenuItem value={"United Kingdom"}>United Kingdom</MenuItem>
+                    <MenuItem value={"USA"}>USA</MenuItem>
+                    <MenuItem value={"China"}>China</MenuItem>
+                    <MenuItem value={"Australia"}>Australia</MenuItem>
+                    <MenuItem value={"Denmark"}>Denmark</MenuItem>
+                    <MenuItem value={"Nigeria"}>Nigeria</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid xs={12} item className="field mb-4">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  style={{ backgroundColor: "#44cf6c" }}
+                >
+                  Update
+                </Button>
+              </Grid>
 
-              <Button
-                variant="info"
-                className="btn btn-info btn-block"
-                type="submit"
-              >
-                Update
-              </Button>
-
-              {current && (
-                <div>
-                  <button className="btn btn-light btn-block" onClick={clear}>
-                    Clear
-                  </button>
-                </div>
-              )}
-            </div>
-          </form>
-        </div>
-      </div>
+              <Grid xs={12} item>
+                {current && (
+                  <div>
+                    <Link
+                      className="btn btn-light btn-block"
+                      onClick={clear}
+                      style={{ fontSize: "2rem" }}
+                    >
+                      Clear
+                    </Link>
+                  </div>
+                )}
+              </Grid>
+            </Form>
+          </Formik>
+        </CardContent>
+      </Card>
     </Fragment>
   );
 };

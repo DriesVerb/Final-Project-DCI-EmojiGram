@@ -4,11 +4,17 @@ import { useHistory } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 // components
+<<<<<<< HEAD
 import EmojiChar from './EmojiChar';
 const StoryCardBig = ({ story }) => {
+=======
+import EmojiChar from "./EmojiChar";
+
+const StoryCardBig = ({ story, show }) => {
+>>>>>>> d160c91498e1930cae0b82225d5c3fca2f5809b0
   let history = useHistory();
   const storyDetailsPublic = (id) => {
-    history.push(`/readpublicstory/${id}`);
+    history.push(`/${show}/${id}`);
   };
   useEffect(() => {
     console.log(story);
@@ -19,7 +25,7 @@ const StoryCardBig = ({ story }) => {
   };
 
   const trimString = (text) => {
-    const trimmedString = text.substring(0, 300);
+    const trimmedString = text.substring(0, 200);
     return trimmedString;
   };
   const classGenre = (genre) => {
@@ -27,6 +33,7 @@ const StoryCardBig = ({ story }) => {
     return replaceGenre;
   };
   return (
+<<<<<<< HEAD
     <div key={story._id} className='story-card-big'>
       <div className='story-card-big__emojis'>
         <div className='story-card-big__emojis--center'>
@@ -39,6 +46,27 @@ const StoryCardBig = ({ story }) => {
         <div className='story-card-big__story'>
           <span className='story-card-big__story--bold'>{story.title}</span>{' '}
           <span className='story-card-big__story--small'>
+=======
+    <div
+      key={story._id}
+      className="story-card-big"
+      // onClick={() => storyDetailsPublic(story._id)}
+    >
+      <div className="story-card-big__emojis">
+        <div className="story-card-big__emojis--center">
+          {story.emojis.map((emoji, id) => (
+            <EmojiChar key={id} emoji={emoji} size="large" />
+          ))}
+        </div>
+      </div>
+      <div className="story-card-big__info">
+        <div className="story-card-big__story">
+          <span className="story-card-big__story--bold">{story.title}</span>{" "}
+          <span
+            className="story-card-big__story--small"
+            onClick={() => toProfile(story.user._id)}
+          >
+>>>>>>> d160c91498e1930cae0b82225d5c3fca2f5809b0
             by {story.user.username}
           </span>{' '}
           <span className='story-card-big__story--small'>
@@ -57,6 +85,7 @@ const StoryCardBig = ({ story }) => {
             {story.subGenre}
           </div>
         </div>
+<<<<<<< HEAD
 
         <div className='story-card-big__text'>{trimString(story.text)}...</div>
         <footer className='story-card-big__footer'>
@@ -86,6 +115,41 @@ const StoryCardBig = ({ story }) => {
           </div>
         </footer>
       </div>
+=======
+      </div>
+      <div className="story-card-big__text">{trimString(story.text)}...</div>
+      <footer className="story-card-big__footer">
+        <div className="story-card-big__social">
+          <span className="story-card-big__like">
+            <i className="fa fa-thumbs-up" /> {story.likes.length}
+          </span>
+          <span className="story-card-big__comments">
+            <i className="fas fa-comment" />{" "}
+            {story.comments && story.comments.length}
+          </span>
+          <span className="story-card-big__views">
+            <i className="far fa-eye" /> {story.views}
+          </span>
+        </div>
+        <div
+          className="story-card-big__read-more"
+          onClick={() => storyDetailsPublic(story._id)}
+        >
+          Read more
+        </div>
+        {/* <div className="title_Author">
+          {story.title}"&nbsp;
+          <div onClick={() => toProfile(story.user._id)}>
+            <span>Created by: </span> */}
+
+        {/* <Link to={`/profile/`}> */}
+        {/* <img className="round-img" src={story.avatar} alt="" />
+            <h4>{story.user.username}</h4> */}
+        {/* </Link> */}
+        {/* </div>{" "} */}
+        {/* </div> */}
+      </footer>
+>>>>>>> d160c91498e1930cae0b82225d5c3fca2f5809b0
     </div>
   );
 };

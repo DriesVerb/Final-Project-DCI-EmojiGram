@@ -14,6 +14,8 @@ const GenreShow = ({ genre }) => {
 
   const [perPage, setPerPage] = useState(5);
 
+  const component = "readpublicstory";
+
   const onChange = (e) => {
     setPerPage(e.target.value);
   };
@@ -29,7 +31,11 @@ const GenreShow = ({ genre }) => {
             <option value="10">10</option>
             <option value="20">20</option>
           </select>
-          <PaginateComponent data={stories} perPage={perPage} />
+          <PaginateComponent
+            data={stories}
+            perPage={perPage}
+            show={component}
+          />
         </div>
       )}
     </div>

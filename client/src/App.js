@@ -20,10 +20,12 @@ import ShowStory from "./components/story/showStory";
 import GenreMainPage from "./components/genre/GenreMainPage";
 import PublicLandingPage from "./components/pages/publicLandingPage";
 import SideNavBar from "./components/layout/SideNavBar";
+import Header from "./components/layout/Header";
 
-import UserItem from "./components/user/UserItem";
-import userForm from "./components/user/userForm";
-import UserProfile from "./components/user/userProfile";
+import UserItem from './components/user/UserItem';
+import userForm from './components/user/userForm';
+import UserProfile from './components/user/userProfile';
+import FriendsWall from './components/user/friendsWall';
 
 import ReadPublicStory from "./components/story/readPublicStory";
 
@@ -55,7 +57,8 @@ function App() {
         <AlertState>
           <div className='app__container'>
             <Router>
-              <Navbar />
+              <Header />
+              {/* <Navbar /> */}
               <SideNavBar />
               <Alerts />
               <div className='app__main'>
@@ -88,10 +91,19 @@ function App() {
                     exact
                     component={PublicLandingPage}
                   />
+<<<<<<< HEAD
 
                   <Route path='/profile' exact component={UserItem} />
 
                   <Route path='/profile/:id' exact component={UserProfile} />
+=======
+                  
+                  
+                  <Route path="/profile" exact component={UserItem} />
+                  <Route path="/profile/:id" exact component={UserProfile } />
+
+                  <PrivateRoute path="/friendsWall" exact component={FriendsWall} />
+>>>>>>> d160c91498e1930cae0b82225d5c3fca2f5809b0
 
                   <PrivateRoute
                     path='/showstory/:id'
@@ -103,6 +115,9 @@ function App() {
                   <Route exact path='/signup' component={SignUp} />
 
                   <Route path='/userform' exact component={userForm} />
+
+
+              
 
                   <Route
                     path='/readpublicstory/:id'

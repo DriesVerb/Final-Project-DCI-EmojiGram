@@ -1,12 +1,12 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
-import ProfileContext from '../../context/profile/profileContext';
-import YourStories from '../story/yourStories';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useContext, useEffect } from "react";
+import ProfileContext from "../../context/profile/profileContext";
+import YourStories from "../story/yourStories";
+import { Link } from "react-router-dom";
 
-import axios from 'axios';
 
 
 const UserItem = (props) => {
+  
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
@@ -40,6 +40,7 @@ const UserItem = (props) => {
       });
     };
 
+    const { _id, username, email, age, location, followers, following } = user;
   useEffect(() => {
     !user ? props.history.push('/') : getProfile(_id);
 
@@ -56,7 +57,7 @@ const UserItem = (props) => {
     deleteProfile(_id);
     clearCurrent();
   };
-  const { _id, username, email, age, location, followers, following } = user;
+  
 
   return (
     <Fragment>
@@ -118,13 +119,11 @@ const UserItem = (props) => {
                 )}
                 {/*         
         {location && ( */}
-                <p className='small mb-4'>
-                  {' '}
-                  <i className='fas fa-map-marker-alt mr-2'></i> Berlin
-                  {/* {location.charAt(0).toUpperCase() + location.slice(1)} */}
-                </p>
+                {/* <p className="small mb-4"> */}{" "}
+                {/* <i className="fas fa-map-marker-alt mr-2"></i> Berlin */}
+                {/* {location.charAt(0).toUpperCase() + location.slice(1)} */}
+                {/* </p> */}
                 {/* )} */}
-
                 {location && (
                   <p className='small mb-4'>
                     {' '}

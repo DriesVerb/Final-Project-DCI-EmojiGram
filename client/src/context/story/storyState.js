@@ -131,6 +131,17 @@ const StoryState = (props) => {
       dispatch({ type: STORY_ERROR });
     }
   };
+  const publishStoryPublicViews = async () => {
+    try {
+      const res = await axios.get(`/user/story/views`);
+      dispatch({
+        type: STORY_PUBLISH,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({ type: STORY_ERROR });
+    }
+  };
   const publishStoryPublicLikes = async () => {
     try {
       const res = await axios.get(`/user/story/likes`);
@@ -227,7 +238,7 @@ const StoryState = (props) => {
     } catch (err) {
       dispatch({
         type: STORY_ERROR,
-        payload: err.response.msg,
+        payload: err.response.data.msg,
       });
     }
   };
@@ -332,6 +343,7 @@ const StoryState = (props) => {
         publishStoryPublicAlpha,
         publishStoryPublic,
         publishStoryPublicLikes,
+        publishStoryPublicViews,
         singleStory: state.singleStory,
         topStories: state.topStories,
         setEditedStory,
