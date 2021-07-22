@@ -22,13 +22,12 @@
 }
 
 .grid-container {
-  margin-top: 2rem;
   display: grid;
   grid-template-rows: 10rem 1fr;
   grid-template-columns: 1fr 3fr 1.5fr;
 
   &__header {
-    grid-column: 2 / 3;
+    grid-column: 1 / 4;
     grid-row: 1/2;
   }
 
@@ -39,7 +38,7 @@
 
   &__left {
     grid-column: 1 / 2;
-    grid-row: 1/2;
+    grid-row: 2/3;
   }
 
   &__right {

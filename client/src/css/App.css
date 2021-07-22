@@ -312,13 +312,12 @@ a {
 }
 
 .grid-container {
-  margin-top: 2rem;
   display: grid;
   grid-template-rows: 10rem 1fr;
   grid-template-columns: 1fr 3fr 1.5fr;
 }
 .grid-container__header {
-  grid-column: 2/3;
+  grid-column: 1/4;
   grid-row: 1/2;
 }
 .grid-container__mid {
@@ -327,7 +326,7 @@ a {
 }
 .grid-container__left {
   grid-column: 1/2;
-  grid-row: 1/2;
+  grid-row: 2/3;
 }
 .grid-container__right {
   grid-column: 3/4;
@@ -375,10 +374,8 @@ a {
   align-items: center;
 }
 .public-stories__cta {
-  width: 100%;
-  height: 20rem;
-  padding: 5rem;
-  margin-bottom: 2rem;
+  width: 90%;
+  margin-bottom: 1rem;
 }
 .public-stories__cards {
   width: 100%;
@@ -477,6 +474,8 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.pagination__cards:not(:first-child) {
   margin-top: 2rem;
 }
 .pagination__buttons {
@@ -553,13 +552,13 @@ a {
 }
 
 .story-card-big {
-  width: 90%;
+  width: 95%;
   border-radius: 1rem;
   box-shadow: 0 8px 6px -6px #0a0a0a;
   border: 1px solid #0a0a0a;
   transition: 0.3s ease;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-bottom: 1.3rem;
   background-color: #a3a3a3;
 }
 .story-card-big:hover {
@@ -574,7 +573,7 @@ a {
   border-top-right-radius: 1rem;
   background: white;
   width: 100%;
-  padding: 3rem;
+  padding: 1.5rem;
   border-bottom: 1px solid #50524d;
 }
 .story-card-big__emojis--center {
@@ -582,10 +581,10 @@ a {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 90%;
 }
 .story-card-big__emojis--size {
-  font-size: 8rem;
+  font-size: 6rem;
 }
 .story-card-big__info {
   padding: 1rem;
@@ -596,12 +595,11 @@ a {
   align-items: start;
 }
 .story-card-big__story {
-  margin-bottom: 1rem;
-  font-size: 3rem;
+  margin-bottom: 0.5rem;
 }
 .story-card-big__story--bold {
   font-family: "Roboto", sans-serif;
-  font-size: 3.5rem;
+  font-size: 2rem;
   font-weight: 500;
   color: #0a0a0a;
 }
@@ -627,15 +625,20 @@ a {
   color: #effafa;
 }
 .story-card-big__text {
-  padding: 3rem;
+  padding: 0 1rem;
   line-height: 1.5;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: start;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #0a0a0a;
 }
 .story-card-big__footer {
+  border-top: 1px solid #030301;
   padding: 1rem;
   display: flex;
   flex-direction: row;
@@ -648,6 +651,7 @@ a {
 }
 .story-card-big__read-more {
   cursor: pointer;
+  font-size: 1.5rem;
   margin-right: 1rem;
 }
 .story-card-big__read-more:hover {
@@ -660,6 +664,7 @@ a {
   align-items: center;
 }
 .story-card-big__like, .story-card-big__comments, .story-card-big__views {
+  font-size: 1.5rem;
   padding: 0px 2rem;
 }
 
@@ -690,7 +695,7 @@ a {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
 }
 .pb-story__title {
   display: flex;
@@ -706,7 +711,7 @@ a {
   text-decoration: none;
 }
 .pb-story__emojis {
-  height: 20rem;
+  margin-bottom: 2rem;
 }
 .pb-story__icon {
   margin-bottom: 2rem;
@@ -718,7 +723,7 @@ a {
   text-decoration: none;
 }
 .pb-story__size {
-  font-size: 5rem;
+  font-size: 2rem;
 }
 .pb-story__no-comment {
   height: 5rem;
@@ -737,9 +742,9 @@ a {
 
 .story-card-small {
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   border: 1px solid #0a0a0a;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -751,14 +756,14 @@ a {
   font-size: 2rem;
   font-weight: 700;
   color: #0a0a0a;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
 }
 .story-card-small__emojis {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
 }
 .story-card-small__info {
   width: 100%;
@@ -781,28 +786,30 @@ a {
   justify-content: space-around;
   align-items: center;
   border-radius: 1rem;
+  border: 1px solid #030301;
   background-color: #a3a3a3;
   padding: 1.5rem;
 }
 .emoji__row {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .emoji__character {
   position: relative;
   padding: 0.5rem;
 }
 .emoji__character--small {
-  font-size: 4rem;
+  font-size: 2.5rem;
 }
 .emoji__character--medium {
-  font-size: 6rem;
+  font-size: 4rem;
 }
 .emoji__character--large {
-  font-size: 8rem;
+  font-size: 6rem;
 }
 .emoji__character--x-large {
-  font-size: 12rem;
+  font-size: 8rem;
 }
 .emoji__buttons {
   display: flex;

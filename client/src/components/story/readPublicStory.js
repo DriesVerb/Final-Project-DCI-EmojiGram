@@ -69,7 +69,6 @@ const readPublicStory = () => {
                         e.preventDefault();
                         removeLike(singleStory._id);
                         setLiked(true);
-                        console.log(liked);
                       }}
                     />
                     {singleStory.likes && (

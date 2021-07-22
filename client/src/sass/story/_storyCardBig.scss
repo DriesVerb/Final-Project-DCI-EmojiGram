@@ -1,11 +1,11 @@
 .story-card-big {
-  width: 90%;
+  width: 95%;
   border-radius: 1rem;
   box-shadow: 0 8px 6px -6px $main-black;
   border: 1px solid $main-black;
   transition: 0.3s ease;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-bottom: 1.3rem;
   background-color: $main-l-grey;
 
   &:hover {
@@ -18,16 +18,16 @@
     border-top-right-radius: 1rem;
     background: white;
     width: 100%;
-    padding: 3rem;
+    padding: 1.5rem;
     border-bottom: 1px solid $main-d-grey;
 
     &--center {
       @include flex(row, center, center);
-      width: 80%;
+      width: 90%;
     }
 
     &--size {
-      font-size: 8rem;
+      font-size: 6rem;
     }
   }
 
@@ -38,10 +38,9 @@
   }
 
   &__story {
-    margin-bottom: 1rem;
-    font-size: 3rem;
+    margin-bottom: 0.5rem;
     &--bold {
-      @include main-font(3.5rem, 500, $main-black);
+      @include main-font(2rem, 500, $main-black);
     }
     &--small {
       @include main-font(1.5rem, 300, $main-black);
@@ -63,13 +62,15 @@
   }
 
   &__text {
-    padding: 3rem;
+    padding: 0 1rem;
     line-height: 1.5;
     width: 100%;
     @include flex(row, start, start);
+    @include main-font(1.5rem, 400, $main-black);
   }
 
   &__footer {
+    border-top: $main-border;
     padding: 1rem;
     @include flex(row, space-between, start);
     width: 100%;
@@ -80,6 +81,7 @@
 
   &__read-more {
     cursor: pointer;
+    font-size: 1.5rem;
     margin-right: 1rem;
 
     &:hover {
@@ -94,6 +96,7 @@
   &__like,
   &__comments,
   &__views {
+    font-size: 1.5rem;
     padding: 0px 2rem;
   }
 }
