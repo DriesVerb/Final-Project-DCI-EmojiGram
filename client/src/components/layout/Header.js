@@ -98,7 +98,7 @@ function Header() {
       <div className={classes.root}>
         <AppBar
           position="fixed"
-          style={{ background: "#ffb703", height: "8rem" }}
+          style={{ background: "#ffb703", height: "6rem" }}
           className="app__navbar"
         >
           <Toolbar>
