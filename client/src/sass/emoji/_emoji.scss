@@ -1,12 +1,14 @@
 .emoji {
   @include flex(column, space-around, center);
   border-radius: 1rem;
+  border: $main-border;
   background-color: $main-l-grey;
   padding: 1.5rem;
 
   &__row {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   &__character {
@@ -14,14 +16,18 @@
     padding: 0.5rem;
 
     &--small {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     &--medium {
-      font-size: 6rem;
+      font-size: 4rem;
     }
 
     &--large {
+      font-size: 6rem;
+    }
+
+    &--x-large {
       font-size: 8rem;
     }
   }

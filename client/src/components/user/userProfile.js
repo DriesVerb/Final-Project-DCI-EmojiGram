@@ -29,7 +29,6 @@ const UserProfile = (props) => {
       }
     }
   }, [user, users]);
-
   const compareValue = (input) => {
     input.forEach((el) => {
       if (user._id === el.user) {
@@ -37,7 +36,6 @@ const UserProfile = (props) => {
       }
     });
   };
-
   return (
     <Fragment>
       {/* {console.log(follow)} */}
@@ -54,7 +52,6 @@ const UserProfile = (props) => {
                   className="rounded mb-2 img-thumbnail"
                 />
               </div>
-
               <div className="media-body mb-5 text-dark  col">
                 {username && (
                   <h4>
@@ -78,7 +75,6 @@ const UserProfile = (props) => {
                   {/* {location.charAt(0).toUpperCase() + location.slice(1)} */}
                 </p>
                 {/* )} */}
-
                 {location && (
                   <p className="small mb-4">
                     {" "}
@@ -87,7 +83,6 @@ const UserProfile = (props) => {
                   </p>
                 )}
                 <br />
-
                 {!isAuthenticated ? (
                   <button
                     type="submit"
@@ -125,7 +120,6 @@ const UserProfile = (props) => {
                     )}
                   </div>
                 )}
-
                 {/* <div className='d-flex flex-start m-0 p-0'>       
         <button
           type="submit"
@@ -144,7 +138,6 @@ const UserProfile = (props) => {
         </button>
   </div>   */}
               </div>
-
               <div className="bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 ">
                 <ul className="list-inline mb-0 ">
                   <li className="list-inline-item p-3">
@@ -153,7 +146,6 @@ const UserProfile = (props) => {
                         {followers.length}
                       </h5>
                     )}
-
                     <small className="text-muted">
                       {" "}
                       <i className="fas fa-book mr-1"></i>Stories
@@ -165,7 +157,6 @@ const UserProfile = (props) => {
                         {followers.length}
                       </h5>
                     )}
-
                     <small className="text-muted">
                       {" "}
                       <i className="fas fa-user mr-1"></i>Followers
@@ -177,7 +168,6 @@ const UserProfile = (props) => {
                         {following.length}
                       </h5>
                     )}
-
                     <small className="text-muted">
                       {" "}
                       <i className="fas fa-user mr-1"></i>Following
@@ -187,7 +177,6 @@ const UserProfile = (props) => {
               </div>
             </div>
           </div>
-
           <div className="px-4 py-3">
             <h5 className="mb-0">About</h5>
             <div className="p-4 rounded shadow-sm bg-light">
@@ -196,7 +185,6 @@ const UserProfile = (props) => {
               <p className="font-italic mb-0">Artist</p>
               {age && <p className="font-italic mb-0"> {age}</p>}
             </div>
-
             {follow && (
               <div>
                 {" "}

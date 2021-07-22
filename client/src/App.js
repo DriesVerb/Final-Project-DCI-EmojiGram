@@ -22,9 +22,10 @@ import PublicLandingPage from "./components/pages/publicLandingPage";
 import SideNavBar from "./components/layout/SideNavBar";
 import Header from "./components/layout/Header";
 
-import UserItem from "./components/user/UserItem";
-import userForm from "./components/user/userForm";
-import UserProfile from "./components/user/userProfile";
+import UserItem from './components/user/UserItem';
+import userForm from './components/user/userForm';
+import UserProfile from './components/user/userProfile';
+import FriendsWall from './components/user/friendsWall';
 
 import ReadPublicStory from "./components/story/readPublicStory";
 
@@ -88,9 +89,12 @@ function App() {
                     exact
                     component={PublicLandingPage}
                   />
-
+                  
+                  
                   <Route path="/profile" exact component={UserItem} />
-                  <Route path="/profile/:id" exact component={UserProfile} />
+                  <Route path="/profile/:id" exact component={UserProfile } />
+
+                  <PrivateRoute path="/friendsWall" exact component={FriendsWall} />
 
                   <PrivateRoute
                     path="/showstory/:id"
@@ -107,6 +111,9 @@ function App() {
                   />
 
                   <Route path="/userform" exact component={userForm} />
+
+
+              
 
                   <Route
                     path="/readpublicstory/:id"

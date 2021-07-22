@@ -238,7 +238,7 @@ const StoryState = (props) => {
     } catch (err) {
       dispatch({
         type: STORY_ERROR,
-        payload: err.response.msg,
+        payload: err.response.data.msg,
       });
     }
   };

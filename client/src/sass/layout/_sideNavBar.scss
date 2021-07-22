@@ -1,0 +1,16 @@
+.side-navbar {
+  margin-top: 1rem;
+  background-color: $main-blue;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+
+  @include flex(row, space-around, center);
+  &__flex {
+    @include flex(row, center, center);
+  }
+
+  &__link {
+    color: $main-white;
+  }
+}

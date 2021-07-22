@@ -42,7 +42,7 @@ function Login(props) {
     // redirect to Home Page
     if (isAuthenticated) {
       //should pass the props in the function component
-      props.history.push("/userInterface");
+      props.history.push("/userinterface");
     }
     // eslint-disable-next-line
   }, [isAuthenticated, props.history, error, user]);
@@ -62,7 +62,6 @@ function Login(props) {
       });
     }
   };
-
   const paperStyle = {
     padding: 20,
     height: "70vh",
