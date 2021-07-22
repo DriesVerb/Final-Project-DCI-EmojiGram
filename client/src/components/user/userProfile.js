@@ -3,16 +3,21 @@ import ProfileContext from "../../context/profile/profileContext";
 // import YourStories from '../story/yourStories'
 import { Link, useParams } from "react-router-dom";
 import AuthContext from "../../context/auth/authContext";
+
 const UserProfile = (props) => {
   const authContext = useContext(AuthContext);
   const { user, isAuthenticated } = authContext;
+
   const profileContext = useContext(ProfileContext);
   const { users, getUserProfile, followUsers, unfollowUsers, followeings } =
     profileContext;
+
   const { username, email, age, location, followers, following } = users;
-  // const [follow, setFollow] = useState(users.followers ? !users.followers.some(follow => follow.user == user._id) : false);
+
   const [follow, setFollow] = useState(false);
+
   const { id } = useParams();
+
   useEffect(() => {
     if (!user || !users) {
       getUserProfile(id);
@@ -196,4 +201,5 @@ const UserProfile = (props) => {
     </Fragment>
   );
 };
+
 export default UserProfile;

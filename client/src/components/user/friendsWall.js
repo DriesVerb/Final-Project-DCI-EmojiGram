@@ -65,7 +65,7 @@ console.log(displayfollowing)
                 <div class="p-2 mt-2 bg-light d-flex justify-content-between rounded text-white stats">
                     <div class="d-flex flex-column"> <span class="articles">Followings</span> <span class="number1">{follow.user.following.length}</span> </div>
                     <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2">{follow.user.followers.length}</span> </div>
-                    <div class="d-flex flex-column"> <span class="rating">Srories</span> <span class="number3">8.9</span> </div>
+                    <div class="d-flex flex-column"> <span class="rating">Srories</span> <span class="number3"></span> </div>
                </div>
                 <div classNmae="m-5">
                 {" "}

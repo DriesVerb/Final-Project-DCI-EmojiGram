@@ -30,6 +30,10 @@ const storySchema = new Schema({
       },
     }
   ],
+  views: {
+    type: Number,
+    default: 0,
+  },
   rating: [
     {
       userId: Number,

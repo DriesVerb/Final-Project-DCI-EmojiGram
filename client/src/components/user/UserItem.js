@@ -59,13 +59,11 @@ const UserItem = (props) => {
                 )}
                 {/*         
         {location && ( */}
-                <p className="small mb-4">
-                  {" "}
-                  <i className="fas fa-map-marker-alt mr-2"></i> Berlin
-                  {/* {location.charAt(0).toUpperCase() + location.slice(1)} */}
-                </p>
+                {/* <p className="small mb-4"> */}{" "}
+                {/* <i className="fas fa-map-marker-alt mr-2"></i> Berlin */}
+                {/* {location.charAt(0).toUpperCase() + location.slice(1)} */}
+                {/* </p> */}
                 {/* )} */}
-
                 {location && (
                   <p className="small mb-4">
                     {" "}

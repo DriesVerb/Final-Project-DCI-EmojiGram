@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
-
 //Material UI
 import {
   Avatar,
@@ -12,9 +11,7 @@ import {
   Typography,
   Link,
 } from "@material-ui/core";
-import PersonIcon from "@material-ui/icons/Person";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import HttpsOutlinedIcon from "@material-ui/icons/HttpsOutlined";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
@@ -30,7 +27,6 @@ function Login(props) {
     password: "",
   });
   const { email, password } = user;
-
   useEffect(() => {
     if (
       error ===
@@ -41,7 +37,6 @@ function Login(props) {
       setUser({
         email: "",
         password: "",
-        remember: false,
       });
     }
     // redirect to Home Page
@@ -51,14 +46,12 @@ function Login(props) {
     }
     // eslint-disable-next-line
   }, [isAuthenticated, props.history, error, user]);
-
   const getData = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
     });
   };
-
   const submToServer = () => {
     if (email === "" || password === "") {
       setAlert("Please fill in all fields", "warning");
@@ -76,15 +69,15 @@ function Login(props) {
     width: 420,
     margin: "20px auto",
   };
-  const avatarStyle = { backgroundColor: "#fb8500" };
+  const avatarStyle = { backgroundColor: "#FB8500" };
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
-          <Avatar style={avatarStyle} className="avatar mt-5">
-            <PersonIcon style={{ fontSize: 40 }} />
+          <Avatar style={avatarStyle} className="avatar mb-4">
+            <HttpsOutlinedIcon />
           </Avatar>
-          <h3 className="login mt-4">Login</h3>
+          <h3 className="text-success mb-5">Login to Account</h3>
         </Grid>
         <Formik>
           <Form
@@ -95,7 +88,7 @@ function Login(props) {
           >
             <Field
               as={TextField}
-              className="field mt-5"
+              className="field mb-5"
               label="Email"
               name="email"
               variant="outlined"
@@ -106,7 +99,6 @@ function Login(props) {
             />
             <Field
               as={TextField}
-              className="field mt-5"
               label="Password"
               name="password"
               variant="outlined"
@@ -116,15 +108,10 @@ function Login(props) {
               onChange={getData}
               required
             />
-            <Field
-              as={FormControlLabel}
-              className="field mt-4"
-              name="remember"
-              control={<Checkbox color="primary" />}
-              label="Remember me"
-            />
+
             <Button
-              className="btn mt-4"
+              className="btn mt-5 bg-warning"
+              // className="btn mt-2"
               type="submit"
               variant="contained"
               fullWidth
@@ -133,20 +120,20 @@ function Login(props) {
             </Button>
           </Form>
         </Formik>
-
-        <Typography className="typo mt-4">
-          <Link href="#">Forgot Password?</Link>
+        <Typography className="typo mt-3">
+          <Link className="text-success" href="#">
+            Forgot Password?
+          </Link>
         </Typography>
         <h4 className="signup mt-5">
           Do not have an account?
-          <Link className="link ml-3 mb-4" href="/signup">
+          <Link className=" text-success ml-3 mb-4" href="/signup">
             Sign Up
           </Link>
         </h4>
         <Grid align="center">
-          <h4 className="login mb-4 mt-4"> Login With</h4>
+          <h4 className="login mb-4 mt-5"> Login With</h4>
         </Grid>
-
         <Grid align="center">
           <a
             href="http://localhost:5000/login/passport/github"

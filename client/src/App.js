@@ -1,9 +1,9 @@
-import React, { useEffect, useContext } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Sass
-import './css/App.css';
+import "./css/App.css";
 
 // components
 import Alerts from "./components/layout/Alert";
@@ -20,6 +20,7 @@ import ShowStory from "./components/story/showStory";
 import GenreMainPage from "./components/genre/GenreMainPage";
 import PublicLandingPage from "./components/pages/publicLandingPage";
 import SideNavBar from "./components/layout/SideNavBar";
+import Header from "./components/layout/Header";
 
 import UserItem from './components/user/UserItem';
 import userForm from './components/user/userForm';
@@ -29,10 +30,10 @@ import FriendsWall from './components/user/friendsWall';
 import ReadPublicStory from "./components/story/readPublicStory";
 
 // context
-import StoryState from './context/story/storyState';
-import AuthContext from './context/auth/authContext';
-import AlertState from './context/alert/alertState';
-import ProfileState from './context/profile/ProfileState';
+import StoryState from "./context/story/storyState";
+import AuthContext from "./context/auth/authContext";
+import AlertState from "./context/alert/alertState";
+import ProfileState from "./context/profile/ProfileState";
 
 // import setAuthToken
 import setAuthToken from "./context/auth/setAuthToken";
@@ -55,7 +56,8 @@ function App() {
         <AlertState>
           <div className="app__container">
             <Router>
-              <Navbar />
+              <Header />
+              {/* <Navbar /> */}
               <SideNavBar />
               <Alerts />
               <div className="app__main">
@@ -68,7 +70,7 @@ function App() {
                     component={UserInterface}
                   />
                   <PrivateRoute
-                    path="/yourstories/:id"
+                    path="/yourstories/"
                     exact
                     component={YourStories}
                   />
@@ -107,9 +109,7 @@ function App() {
                     path="/UserInterface"
                     component={UserInterface}
                   />
-                
 
-                 
                   <Route path="/userform" exact component={userForm} />
 
 
