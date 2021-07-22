@@ -3,7 +3,10 @@
 
   &__cards {
     @include flex(column, center, center);
-    margin-top: 2rem;
+
+    &:not(:first-child) {
+      margin-top: 2rem;
+    }
   }
 
   &__buttons {

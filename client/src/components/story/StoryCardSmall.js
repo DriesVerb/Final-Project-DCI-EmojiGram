@@ -21,7 +21,7 @@ const StoryCardSmall = ({ story, amount, title }) => {
           >
             <div className="story-card-small__emojis">
               {story.emojis.map((emoji, id) => {
-                return <EmojiChar key={id} emoji={emoji} size="medium" />;
+                return <EmojiChar key={id} emoji={emoji} size="small" />;
               })}
             </div>
             <div className="story-card-small__info">

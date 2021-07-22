@@ -20,7 +20,7 @@ const StoryCardBig = ({ story, show }) => {
   };
 
   const trimString = (text) => {
-    const trimmedString = text.substring(0, 300);
+    const trimmedString = text.substring(0, 200);
     return trimmedString;
   };
 
@@ -41,7 +41,10 @@ const StoryCardBig = ({ story, show }) => {
       <div className="story-card-big__info">
         <div className="story-card-big__story">
           <span className="story-card-big__story--bold">{story.title}</span>{" "}
-          <span className="story-card-big__story--small">
+          <span
+            className="story-card-big__story--small"
+            onClick={() => toProfile(story.user._id)}
+          >
             by {story.user.username}
           </span>{" "}
           <span className="story-card-big__story--small">
@@ -69,7 +72,8 @@ const StoryCardBig = ({ story, show }) => {
             <i className="fa fa-thumbs-up" /> {story.likes.length}
           </span>
           <span className="story-card-big__comments">
-            <i className="fas fa-comment" /> {story.comments && (story.comments.length)}
+            <i className="fas fa-comment" />{" "}
+            {story.comments && story.comments.length}
           </span>
           <span className="story-card-big__views">
             <i className="far fa-eye" /> {story.views}
@@ -81,17 +85,17 @@ const StoryCardBig = ({ story, show }) => {
         >
           Read more
         </div>
-        <div className="title_Author">
+        {/* <div className="title_Author">
           {story.title}"&nbsp;
           <div onClick={() => toProfile(story.user._id)}>
-            <span>Created by: </span>
+            <span>Created by: </span> */}
 
-            {/* <Link to={`/profile/`}> */}
-            <img className="round-img" src={story.avatar} alt="" />
-            <h4>{story.user.username}</h4>
-            {/* </Link> */}
-          </div>{" "}
-        </div>
+        {/* <Link to={`/profile/`}> */}
+        {/* <img className="round-img" src={story.avatar} alt="" />
+            <h4>{story.user.username}</h4> */}
+        {/* </Link> */}
+        {/* </div>{" "} */}
+        {/* </div> */}
       </footer>
     </div>
   );
