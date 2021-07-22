@@ -40,7 +40,7 @@ const StoryCardBig = ({ story }) => {
     <div
       key={story._id}
       className="story-card-big"
-      onClick={() => storyDetailsPublic(story._id)}
+      // onClick={() => storyDetailsPublic(story._id)}
     >
       <div className="story-card-big__emojis">
         <div className="story-card-big__emojis--center">
