@@ -18,7 +18,11 @@ import {
  
 export default (state, action) => {
   switch (action.type) {
+
+    
     case ADD_STORY:
+      console.log(action.payload)
+      
       console.log(action.payload)
       return {
         ...state,
@@ -37,10 +41,10 @@ export default (state, action) => {
        
     //////////////////////////////////////////////////////////////////////   
     case STORY_PUBLISH:
-    
       return {
         ...state,
         stories: action.payload,
+        added:true
             
       };
 

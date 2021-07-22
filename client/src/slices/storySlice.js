@@ -21,7 +21,7 @@ const storySlice = (set) => ({
       .replace(/[<>/{}]/g, "")
       .replace(/[&*[]]/g, "")
       .split("\n")
-      .join("<p/><p class='mt-xl'>");
+      .join("<p/> <p className='mt-xl'>");
     set((state) => ({ richText: `<p>${richText}</p> ` }));
   },
   // get subGenre

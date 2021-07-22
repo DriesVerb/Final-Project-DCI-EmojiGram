@@ -10,6 +10,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "express-validator": "^6.12.0",
+    "firebase": "^8.7.1",
     "formik": "^2.2.9",
     "googleapis": "^79.0.0",
     "http-proxy-middleware": "^2.0.1",

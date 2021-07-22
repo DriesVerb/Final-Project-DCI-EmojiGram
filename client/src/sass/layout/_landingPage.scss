@@ -34,24 +34,3 @@
   }
 }
 
-.story-card-big {
-  height: 30rem;
-  width: 90%;
-  animation: circle-to-square 2s ease-in;
-}
-
-@keyframes circle-to-square {
-  from {
-    width: 8rem;
-    height: 14rem;
-    background: $main-yellow-emoji;
-    border-radius: 50%;
-  }
-
-  to {
-    width: 600px;
-    height: 450px;
-    border-radius: 0;
-    background-color: $main-red-emoji;
-  }
-}

@@ -8,6 +8,7 @@ const EmojiChar = ({ emoji, size }) => {
 
   return (
     <div
+      key={emoji._id}
       className={`emoji__character--${size} emoji__character`}
       onMouseEnter={(e) => {
         e.preventDefault();

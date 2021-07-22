@@ -17,6 +17,7 @@ const userForm = (props) => {
     password: '',
     age: '',
     location: '',
+  
   });
 
   const { name, username, email, age, location } = user;

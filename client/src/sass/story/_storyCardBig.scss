@@ -1,3 +1,59 @@
+@keyframes circle-to-square {
+  from {
+    width: 200px;
+    height: 300px;
+    background: $main-yellow-emoji;
+    border: 1px $main-yellow-emoji;
+    border-radius: 0%;
+    transform: rotate(0deg);
+  }
+
+  to {
+    width: 200px;
+    height: 300px;
+    border-radius: 50%;
+    background: $main-yellow-emoji;
+    border: 1px $main-yellow-emoji;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circle-to-square {
+  from {
+    width: 200px;
+    height: 300px;
+    background: $main-red-emoji;
+    border-radius: 50%;
+    border: 1px $main-yellow-emoji;
+    transform: rotate(360deg);
+  }
+
+  to {
+    width: 200px;
+    height: 300px;
+    border-radius: 0%;
+    border: 1px $main-red-emoji;
+    background: $main-yellow-emoji;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes opacity-text {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes opacity-info {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 .story-card-big {
   width: 90%;
@@ -7,9 +63,11 @@
   transition: 0.3s ease;
   cursor: pointer;
   margin-bottom: 2rem;
-
   background-color: $main-l-white;
+  width: 100%;
+  animation: circle-to-square 1.2s;
 
+  animation-timing-function: linear;
 
   &:hover {
     box-shadow: 0 1rem 7px -5px $main-black;
@@ -23,7 +81,11 @@
     width: 100%;
     padding: 3rem;
     border-bottom: 1px solid $main-d-grey;
+    width: 100%;
+    animation: circle-to-square 1.2s;
 
+
+ 
     &--center {
       @include flex(row, center, center);
       width: 80%;
@@ -37,7 +99,9 @@
   &__info {
     padding: 1rem;
     width: 100%;
+
     @include flex(column, space-between, start);
+    animation: opacity-info 1.2s ease-in-out;
   }
 
   &__story {
@@ -70,6 +134,7 @@
     line-height: 1.5;
     width: 100%;
     @include flex(row, start, start);
+    animation: opacity-text 3s ease-in-out;
   }
 
   &__footer {

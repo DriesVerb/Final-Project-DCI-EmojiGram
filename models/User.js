@@ -12,19 +12,26 @@ const userSchema = new Schema({
   message: String,
 
   avatar: String,
-
+  profilePics: String,
   
+ 
 
   following: [
     {
-      type: ObjectId,
-      ref: 'User',
+      user: {
+        type: Schema.Types.ObjectId,
+
+        ref: 'User',
+      },
     },
   ],
   followers: [
     {
-      type: ObjectId,
-      ref: 'User',
+      user: {
+        type: Schema.Types.ObjectId,
+
+        ref: 'User',
+      },
     },
   ],
 
