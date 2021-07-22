@@ -2,11 +2,15 @@ import React, { Fragment, useContext, useEffect } from "react";
 import ProfileContext from "../../context/profile/profileContext";
 import YourStories from "../story/yourStories";
 import { Link } from "react-router-dom";
+
+
+
 const UserItem = (props) => {
+  
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
-
+    const { _id, username, email, age, location, followers, following } = user;
   useEffect(() => {
     !user ? props.history.push("/") : getProfile(_id);
 
@@ -22,7 +26,7 @@ const UserItem = (props) => {
     deleteProfile(_id);
     clearCurrent();
   };
-  const { _id, username, email, age, location, followers, following } = user;
+  
 
   return (
     <Fragment>

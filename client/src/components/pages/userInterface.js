@@ -34,7 +34,7 @@ function userInterface(props) {
             <img className="user-card__img" src={Images} alt="userImage"></img>
 
             <p className="user-card__title">READ FRIENDS STORIES</p>
-            <Link to="/friendStory" className="link">
+            <Link to="/friendsWall" className="link">
               <button className="btn btn-success user-card__btn">
                 Click to Access
               </button>
@@ -44,11 +44,11 @@ function userInterface(props) {
             <img className="user-card__img" src={Images} alt="userImage"></img>
 
             <p className="user-card__title">ACCESS YOUR STORIES</p>
-            <Link to="/yourstories" className="link">
+            <div onClick={() => toMyStories(user._id)}  className="link">
               <button className="btn btn-success user-card__btn">
                 Click to Access
               </button>
-            </Link>
+            </div>
           </div>
         </div>
       </div>

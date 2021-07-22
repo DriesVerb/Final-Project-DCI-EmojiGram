@@ -13,7 +13,15 @@ const userSchema = new Schema({
 
   avatar: String,
 
-  
+  stories: [{
+     
+    story: {
+      type: Schema.Types.ObjectId,
+    
+      ref: "Story",
+    },
+  }
+    ],
 
   following: [{
      
