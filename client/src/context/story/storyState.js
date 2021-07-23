@@ -95,6 +95,19 @@ const StoryState = (props) => {
       dispatch({ type: STORY_ERROR });
     }
   };
+  
+  const friends = async (id) => {
+    try {
+     
+      const res = await axios.get(`/user/profile/friends/${id}`);
+      dispatch({
+        type: STORY_PUBLISH,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({ type: STORY_ERROR });
+    }
+  };
   //////////////////////////////////////////////////////////////////////
 
   const publishStoryPublic = async (story) => {
@@ -336,6 +349,7 @@ const StoryState = (props) => {
       value={{
         stories: state.stories,
         // addStory,
+        friends,
         publishStory,
         deleteStory,
         showStory,

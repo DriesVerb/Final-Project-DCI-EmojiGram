@@ -8,6 +8,7 @@ import EmojiChar from "./EmojiChar";
 
 const StoryCardBig = ({ story, show }) => {
   let history = useHistory();
+  
   const storyDetailsPublic = (id) => {
     history.push(`/${show}/${id}`);
   };
