@@ -153,6 +153,19 @@ div {
     transform: rotate(360deg) scale(1);
   }
 }
+@keyframes climb {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-90px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-140px);
+    opacity: 0;
+  }
+}
 html,
 body,
 div,
@@ -310,6 +323,10 @@ a {
   grid-row: 3/4;
   grid-column: 2/4;
 }
+.app__alert {
+  grid-row: 3/4;
+  grid-column: 1/2;
+}
 
 .grid-container {
   display: grid;
@@ -359,6 +376,41 @@ a {
 }
 .side-navbar__link {
   color: #effafa;
+}
+
+.alert-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  height: 88vh;
+}
+
+.alert-popup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 5rem;
+  padding: 0.5rem;
+  animation: climb 6s;
+}
+.alert-popup__msg {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #effafa;
+  text-align: center;
+}
+.alert-popup__danger {
+  background-color: #db3a34;
+}
+.alert-popup__warning {
+  background-color: #fb8500;
+}
+.alert-popup__success {
+  background-color: #44cf6c;
 }
 
 .landing-page__header {
@@ -421,6 +473,7 @@ a {
   font-weight: 500;
   color: #0a0a0a;
   margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 .user-card__btn {
   font-size: 2rem;
@@ -510,6 +563,24 @@ a {
   font-size: 5rem;
   animation: spin 1s linear infinite;
   z-index: 50;
+}
+
+.icon {
+  cursor: pointer;
+}
+.icon__color--blue {
+  fill: #219ebc;
+}
+.icon__color--blue:hover {
+  fill: #ffb703;
+}
+.icon__size--small {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.icon__size--large {
+  height: 15rem;
+  width: 15rem;
 }
 
 .preview-story__title {
