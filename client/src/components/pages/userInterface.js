@@ -14,10 +14,18 @@ function userInterface(props) {
 
   // let history = useHistory();
 
+<<<<<<< HEAD
   const toMyStories = (id) => {
     props.history.push(`/yourstories/${id}`);
     console.log(id);
   };
+=======
+ /*  const toMyStories = (id) => {
+    
+    props.history.push(`/yourstories/${id}`);
+    console.log(id)
+  }; */
+>>>>>>> 22d8dcb71eea53e763c3aa91484c7d6ec11a580e
 
   return (
     <div className="grid-container">
@@ -56,11 +64,17 @@ function userInterface(props) {
           <div className="user-card" onClick={() => toMyStories(user._id)}>
             <Icon name="collections_bookmark" color="blue" size="large" />
             <p className="user-card__title">ACCESS YOUR STORIES</p>
+<<<<<<< HEAD
             <div onClick={() => toMyStories(user._id)} className="link">
+=======
+            <Link to="/yourstories" className="link">
+           {/*  <div   className="link"> */}
+>>>>>>> 22d8dcb71eea53e763c3aa91484c7d6ec11a580e
               <button className="btn btn-success user-card__btn">
                 Click to Access
               </button>
-            </div>
+           {/*  </div> */}
+           </Link>
           </div>
         </div>
       </div>
