@@ -12,7 +12,19 @@ const UserProfile = (props) => {
   const { users, getUserProfile, followUsers, unfollowUsers, followeings } =
     profileContext;
 
-  const { username, email, age, location, followers, following, stories } = users;
+
+  const {
+    username,
+    email,
+    age,
+    location,
+    followers,
+    following,
+    hobby,
+    occupation,
+    stories
+  } = users;
+
 
   const [follow, setFollow] = useState(false);
 
@@ -61,7 +73,6 @@ const UserProfile = (props) => {
                   <h4>
                     {" "}
                     {username.charAt(0).toUpperCase() + username.slice(1)}
-                    {email}
                   </h4>
                 )}
                 {email && (
@@ -71,14 +82,6 @@ const UserProfile = (props) => {
                     {email}
                   </p>
                 )}
-                {/*         
-        {location && ( */}
-                <p className="small mb-4">
-                  {" "}
-                  <i className="fas fa-map-marker-alt mr-2"></i> Berlin
-                  {/* {location.charAt(0).toUpperCase() + location.slice(1)} */}
-                </p>
-                {/* )} */}
                 {location && (
                   <p className="small mb-4">
                     {" "}
@@ -124,23 +127,6 @@ const UserProfile = (props) => {
                     )}
                   </div>
                 )}
-                {/* <div className='d-flex flex-start m-0 p-0'>       
-        <button
-          type="submit"
-          className="btn btn-dark btn-lg "
-          onClick={onEdit}
-        >
-          Edit
-        </button>
-        <button
-          type="submit"
-          value="Submit"
-          className="btn btn-info  ml-2 btn-lg"
-          onClick={onDelete}
-        >
-          Delete
-        </button>
-  </div>   */}
               </div>
               <div className="bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 ">
                 <ul className="list-inline mb-0 ">
@@ -184,10 +170,34 @@ const UserProfile = (props) => {
           <div className="px-4 py-3">
             <h5 className="mb-0">About</h5>
             <div className="p-4 rounded shadow-sm bg-light">
-              <p className="font-italic mb-0">Web Developer</p>
-              <p className="font-italic mb-0">Lives in Berlin</p>
-              <p className="font-italic mb-0">Artist</p>
-              {age && <p className="font-italic mb-0"> {age}</p>}
+              <div class="p-4 rounded shadow-sm bg-light">
+                {occupation && (
+                  <p className="small mt-2">
+                    <i class="fas fa-briefcase"></i>
+                    <span className="mr-2"></span>
+                    {occupation.charAt(0).toUpperCase() + occupation.slice(1)}
+                  </p>
+                )}
+
+                <p className="font-italic mb-1">
+                  {location && (
+                    <p className="small mt-2">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span className="mr-2"></span>{" "}
+                      {location.charAt(0).toUpperCase() + location.slice(1)}
+                    </p>
+                  )}
+                </p>
+                <p class="font-italic mb-0">
+                  {hobby && (
+                    <p className="small mt-2">
+                      <i class="fas fa-heading"></i>
+                      <span className="mr-2"></span>
+                      {hobby.charAt(0).toUpperCase() + hobby.slice(1)}
+                    </p>
+                  )}
+                </p>
+              </div>{" "}
             </div>
               <div>
                 {" "}
