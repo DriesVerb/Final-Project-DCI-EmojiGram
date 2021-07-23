@@ -36,7 +36,7 @@ export default (state, action) => {
       
       return {
         ...state,
-        singleStory: action.payload
+        singleStory: action.payload,
       };
        
     //////////////////////////////////////////////////////////////////////   
