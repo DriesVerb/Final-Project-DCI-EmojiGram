@@ -20,12 +20,14 @@ import ShowStory from "./components/story/showStory";
 import GenreMainPage from "./components/genre/GenreMainPage";
 import PublicLandingPage from "./components/pages/publicLandingPage";
 import SideNavBar from "./components/layout/SideNavBar";
-// import Header from "./components/layout/Header";
 
-import UserItem from "./components/user/UserItem";
-import userForm from "./components/user/userForm";
-import UserProfile from "./components/user/userProfile";
-import FriendsWall from "./components/user/friendsWall";
+import Header from "./components/layout/Header";
+import FriendStories from "./components/story/friendStories"
+import UserItem from './components/user/UserItem';
+import userForm from './components/user/userForm';
+import UserProfile from './components/user/userProfile';
+import FriendsWall from './components/user/friendsWall';
+
 
 import ReadPublicStory from "./components/story/readPublicStory";
 
@@ -71,9 +73,14 @@ function App() {
                     component={UserInterface}
                   />
                   <PrivateRoute
-                    path="/yourstories/"
+                    path="/yourstories"
                     exact
                     component={YourStories}
+                  />
+                  <Route
+                    path="/friendStories/:id"
+                    exact
+                    component={FriendStories}
                   />
                   <PrivateRoute
                     path="/writestory"
@@ -108,11 +115,7 @@ function App() {
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/genre" component={GenreMainPage} />
                   <Route exact path="/signup" component={SignUp} />
-                  <PrivateRoute
-                    exact
-                    path="/UserInterface"
-                    component={UserInterface}
-                  />
+               
 
                   <Route path="/userform" exact component={userForm} />
 
