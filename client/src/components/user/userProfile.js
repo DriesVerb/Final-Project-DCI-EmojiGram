@@ -9,14 +9,17 @@ const UserProfile = (props) => {
   const { user, isAuthenticated } = authContext;
 
   const profileContext = useContext(ProfileContext);
-  const { users, getUserProfile, followUsers, unfollowUsers, followeings } =
+  const { users, getUserProfile, followUsers, unfollowUsers} =
     profileContext;
 
-  const { username, email, age, location, followers, following } = users;
+  const { username, email, age, location, followers, following, stories } = users;
 
   const [follow, setFollow] = useState(false);
 
   const { id } = useParams();
+
+
+
 
   useEffect(() => {
     if (!user || !users) {
@@ -29,6 +32,7 @@ const UserProfile = (props) => {
       }
     }
   }, [user, users]);
+  
   const compareValue = (input) => {
     input.forEach((el) => {
       if (user._id === el.user) {
@@ -142,9 +146,9 @@ const UserProfile = (props) => {
               <div className="bg-light p-4 d-flex justify-content-end text-center mr-3 ">
                 <ul className="list-inline mb-0 ">
                   <li className="list-inline-item p-3">
-                    {followers && (
+                    {stories && (
                       <h5 className="font-weight-bold mb-0 d-block">
-                        {followers.length}
+                        {stories.length}
                       </h5>
                     )}
                     <small className="text-muted">
@@ -186,16 +190,14 @@ const UserProfile = (props) => {
               <p className="font-italic mb-0">Artist</p>
               {age && <p className="font-italic mb-0"> {age}</p>}
             </div>
-            {follow && (
               <div>
                 {" "}
-                <Link to={`/yourstories/${id}`} className="link">
+                <Link to={`/friendStories/${id}`} className="link">
                   <button className="btn btn-secondary btn-lg btn-block ">
                     Stories{" "}
                   </button>
                 </Link>
               </div>
-            )}
           </div>
         </div>
         </div>

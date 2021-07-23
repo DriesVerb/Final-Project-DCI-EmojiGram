@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, Fragment, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory  } from "react-router-dom";
 import StoryContext from "../../context/story/storyContext";
 
 import DOMPurify from "dompurify";
@@ -12,6 +12,8 @@ import EmojiChar from "./EmojiChar";
 import AuthContext from "../../context/auth/authContext";
 
 const readPublicStory = () => {
+
+  let history = useHistory();
   const authContext = useContext(AuthContext);
   const { isAuthenticated } = authContext;
 
@@ -27,9 +29,9 @@ const readPublicStory = () => {
   const sanitizeData = () => ({
     __html: DOMPurify.sanitize(singleStory.richText),
   });
-  // const toProfile = (id) => {
-  //   history.push(`/profile/${id}`);
-  // };
+  const toProfile = (id) => {
+    history.push(`/profile/${id}`);
+  };
 
   return (
     <Fragment>
@@ -86,20 +88,23 @@ const readPublicStory = () => {
               
           
              
-                <div className="bg-light p-4   row "> 
+                  <div className="bg-light p-1  row ">
+
+                    
+                    <span className="mt-4 text-sm pl-4"><small>Written By:</small></span>
                  
-                <h4 class="mt-0 mb-0 col-md-8 text-start">Mark Williams</h4>
+                <h4 class="ml-0  col-md-6 text-start mt-4 text-info" style={{cursor: "pointer"}} onClick={() => toProfile(singleStory.user._id)}><strong> {singleStory.user.username}</strong></h4>
                
-                {/* <h4
-            className="story-card-big__story--small"
-            onClick={() => toProfile(story.user._id)}
-          >
-            by {story.user.username}
-          </h4>   */}
+         
 
 
                <div >
-                  <p className="list-inline-item p-3">
+                      <p className="list-inline-item p-3">
+                      {singleStory.user.followers && (
+                      <h5 className="font-weight-bold mb-0 d-block text-center">
+                        {singleStory.user.followers.length}
+                      </h5>
+                    )}
                    
                       <h5 className="font-weight-bold mb-0 d-block">
                       
@@ -112,17 +117,23 @@ const readPublicStory = () => {
                   </p>
                   <p className="list-inline-item p-4">
                  
-                      <h5 className="font-weight-bold mb-0 d-block">
-                       
+                  {singleStory.user.followers && (
+                      <h5 className="font-weight-bold mb-0 d-block text-center">
+                        {singleStory.user.followers.length}
                       </h5>
+                    )}
                   
                     <small className="text-muted">
                       {" "}
-                      <i className="fas fa-user mr-1"></i>Followers
+                          <i className="fas fa-user mr-1"></i>Followers
                     </small>
                   </p>
                   <p className="list-inline-item">
-                 
+                  {singleStory.user.followers && (
+                      <h5 className="font-weight-bold mb-0 d-block text-center">
+                        {singleStory.user.following.length}
+                      </h5>
+                    )}
                       <h5 className="font-weight-bold mb-0 d-block">
                      
                       </h5>

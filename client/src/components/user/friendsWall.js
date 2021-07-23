@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import ProfileContext from "../../context/profile/profileContext";
-import YourStories from "../story/yourStories";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
@@ -10,10 +9,12 @@ const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
-    const { _id } = user;
+  
+    const { _id, username, email, age, location, followers, following, stories } = user;
  
  
   console.log(user.following)
+  console.log(user.stories)
   
   const [pageNumber, SetPageNumber] = useState(0);
   const friendsPerPage = 5;
@@ -69,7 +70,7 @@ console.log(displayfollowing)
                </div>
                 <div classNmae="m-5">
                 {" "}
-                <Link to={`/yourstories/${follow.user._id}`} className="link">
+                <Link to={`/friendStories/${follow.user._id}`} className="link">
                   <button className="btn btn-outline-secondary btn-lg btn-block ">
                     Stories{" "}
                   </button>

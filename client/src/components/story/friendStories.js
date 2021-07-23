@@ -1,28 +1,28 @@
 
-
   ////////////////////////////////////////////////
   import React, { useContext, useEffect, useState } from "react";
   import StoryContext from "../../context/story/storyContext";
   import { useParams } from "react-router-dom";
   import PaginateComponent from "../utils/PaginateComponent";
   import AuthContext from "../../context/auth/authContext";
-  
-  function YourStories(props) {
+    function FriendStories(props) {
     
     const storyContext = useContext(StoryContext);
-    const { publishStory, stories } = storyContext
+    const { friends, stories } = storyContext;
     const authContext = useContext(AuthContext);
     const { user } = authContext;
 
+    const { id } = useParams();
 
 
     
     useEffect(() => {
-      publishStory(user._id);
+        friends(id)
+
       console.log(stories);
     },[stories.length]);
   
-    const component = "showstory"
+    const component = "readpublicstory"
   
     return (
       <div className="grid-container">
@@ -33,6 +33,5 @@
     );
   }
   
-  export default YourStories;
+  export default FriendStories;
   
-
