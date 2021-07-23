@@ -31,7 +31,7 @@ const UserProfile = (props) => {
         getUserProfile(id);
       }
     }
-  }, [user]);
+  }, [user, users]);
   
   const compareValue = (input) => {
     input.forEach((el) => {
