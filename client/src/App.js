@@ -20,6 +20,7 @@ import ShowStory from './components/story/showStory';
 import GenreMainPage from './components/genre/GenreMainPage';
 import PublicLandingPage from './components/pages/publicLandingPage';
 import SideNavBar from './components/layout/SideNavBar';
+
 import Header from './components/layout/Header';
 import FriendStories from './components/story/friendStories';
 import UserItem from './components/user/UserItem';
@@ -56,8 +57,9 @@ function App() {
         <AlertState>
           <div className="app__container">
             <Router>
-              <Header />
-              {/* <Navbar /> */}
+              {/* <Header /> */}
+
+              <Navbar />
               <SideNavBar />
               <Alerts />
               <div className="app__main">
