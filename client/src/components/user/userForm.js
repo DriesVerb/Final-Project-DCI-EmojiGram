@@ -34,9 +34,11 @@ const userForm = (props) => {
     email: "",
     password: "",
     location: "",
+    occupation: "",
+    hobby: "",
   });
 
-  const { name, username, email, location } = user;
+  const { name, username, email, location, occupation, hobby } = user;
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
@@ -126,6 +128,36 @@ const userForm = (props) => {
               <Typography align="center">
                 <a href="#!">Click to edit your Password</a>
               </Typography>
+
+              {/* Occupation Input */}
+              <Grid xs={12} item>
+                <Field
+                  as={TextField}
+                  name="occupation"
+                  value={occupation}
+                  className="field mb-5"
+                  label="Occupation"
+                  placeholder="Enter new Occupation"
+                  variant="outlined"
+                  fullWidth
+                  onChange={onChange}
+                />
+              </Grid>
+
+              {/* Hobby Input */}
+              <Grid xs={12} item>
+                <Field
+                  as={TextField}
+                  name="hobby"
+                  value={hobby}
+                  className="field mb-5"
+                  label="hobby"
+                  placeholder="Enter hobby"
+                  variant="outlined"
+                  fullWidth
+                  onChange={onChange}
+                />
+              </Grid>
 
               {/* Location Selection */}
               <Grid xs={12} item>

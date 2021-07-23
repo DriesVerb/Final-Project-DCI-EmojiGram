@@ -3,7 +3,7 @@ import { Nav } from "react-bootstrap";
 
 const SideNavBar = () => {
   return (
-    <div className="app__navbar--main side-navbar__flex">
+    <div className="app__navbar--main side-navbar__flex mb-2">
       <div className="side-navbar">
         <Nav.Link className="side-navbar__link" href="/">
           Home

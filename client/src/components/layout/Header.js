@@ -1,22 +1,27 @@
 import React, { Fragment, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Link,
+  Grid,
+} from "@material-ui/core";
 
 import AuthContext from "../../context/auth/authContext";
 import ProfileContext from "../../context/profile/profileContext";
 
 import { Nav, NavDropdown } from "react-bootstrap";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+
+  // menuButton: {
+  //   marginRight: theme.spacing(2),
+  // },
   title: {
     flexGrow: 1,
   },
@@ -96,30 +101,39 @@ function Header() {
   return (
     <div className="app__navbar">
       <div className={classes.root}>
-        <AppBar
-          position="fixed"
-          style={{ background: "#ffb703", height: "6rem" }}
-          className="app__navbar"
-        >
-          <Toolbar>
-            <Typography variant="h2" className={classes.title}>
-              <Link
-                className="appLogo "
-                href="/"
-                style={{
-                  color: "inherit",
-                  textDecoration: "none",
-                  fontSize: "40px",
-                }}
-              >
-                Emoji-Tales
-              </Link>
-            </Typography>
-            <div className="navbar">
-              {isAuthenticated ? userLinks : guestLinks}
-            </div>
-          </Toolbar>
-        </AppBar>
+        <Grid container>
+          <Grid item xs={6}>
+            <AppBar
+              position="fixed"
+              // display="flex"
+              style={{
+                background: "#ffb703",
+                // height: "5rem",
+                // width: "65.5%",
+              }}
+              className="app__navbar "
+            >
+              <Toolbar>
+                <Typography variant="h2" className={classes.title}>
+                  <Link
+                    className="appLogo "
+                    href="/"
+                    style={{
+                      color: "inherit",
+                      textDecoration: "none",
+                      fontSize: "40px",
+                    }}
+                  >
+                    Emoji-Tales
+                  </Link>
+                </Typography>
+                <div className="navbar">
+                  {isAuthenticated ? userLinks : guestLinks}
+                </div>
+              </Toolbar>
+            </AppBar>
+          </Grid>
+        </Grid>
       </div>
     </div>
   );

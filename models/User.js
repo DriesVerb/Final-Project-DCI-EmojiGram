@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const { ObjectId } = mongoose.Schema;
 
@@ -9,36 +9,38 @@ const userSchema = new Schema({
   password: String,
   age: Number,
   location: String,
+  hobby: String,
+  occupation: String,
   message: String,
 
   avatar: String,
 
-  stories: [{
-     
-    story: {
-      type: Schema.Types.ObjectId,
-    
-      ref: "Story",
-    },
-  }
-    ],
+  stories: [
+    {
+      story: {
+        type: Schema.Types.ObjectId,
 
-  following: [{
-     
-  user: {
-    type: Schema.Types.ObjectId,
-  
-    ref: "User",
-  },
-}
+        ref: "Story",
+      },
+    },
+  ],
+
+  following: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+
+        ref: "User",
+      },
+    },
   ],
   followers: [
     {
-       user: {
-    type: Schema.Types.ObjectId,
-  
-    ref: "User",
-  },
+      user: {
+        type: Schema.Types.ObjectId,
+
+        ref: "User",
+      },
     },
   ],
 
@@ -61,5 +63,5 @@ const userSchema = new Schema({
   instagramActivity: [{}],
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;
