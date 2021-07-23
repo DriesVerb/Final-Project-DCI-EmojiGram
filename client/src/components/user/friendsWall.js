@@ -10,7 +10,7 @@ const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
-    const { _id, username, email, age, location, followers, following } = user;
+    const { _id } = user;
  
  
   console.log(user.following)

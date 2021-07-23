@@ -31,7 +31,7 @@ const CommentForm = () => {
     <div className="d-flex flex-column row-hl"> 
                           <textarea
                               name='text'
-                              cols='34'
+                              cols='86'
                               rows='2'
                               placeholder='Comment the story'
                               value={text}

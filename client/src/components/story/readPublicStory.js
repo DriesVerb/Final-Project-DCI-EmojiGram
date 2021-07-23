@@ -27,20 +27,130 @@ const readPublicStory = () => {
   const sanitizeData = () => ({
     __html: DOMPurify.sanitize(singleStory.richText),
   });
+  // const toProfile = (id) => {
+  //   history.push(`/profile/${id}`);
+  // };
 
   return (
     <Fragment>
-      {singleStory && (
-        <div className=" grid-container">
-          <h1 className="pb-story__title grid-container__header">
-            {singleStory.title &&
+      
+  
+      {/* {console.log(follow)} */}
+      {/* {user && console.log(user._id, followers)} */}
+      <div className="container p-0"
+        // style={{ width: '800px' }}
+      >
+      <div className=" mx-auto">
+        <div className="bg-white shadow rounded overflow-hidden">
+         
+            
+              <div className=" card-body">
+                  {singleStory && (       <div>
+                    
+
+                {/* Tittel */}
+              
+                  <h2 className="text-center " >
+                  {singleStory.title &&
               singleStory.title.charAt(0).toUpperCase() +
                 singleStory.title.slice(1)}
-          </h1>
+                    </h2>
+                <br/>
+                    {/* Emoji */}                    
+                    <div className="emoji__row pb-story__emojis">
+              {singleStory.emojis.map((emoji, id) => (
+                <EmojiChar emoji={emoji} size="x-large" /> ))}
+                    </div>
+                    
 
-          {/* left grid */}
-          <div className="grid-container__left pb-story__navbar">
-            <div className="pb-story__likes pb-story__icon">
+              
+
+               
+
+                    </div>
+                  )}
+                  
+               
+                 
+          
+              
+                <br />
+              
+                  
+                   
+              {singleStory && (
+                
+                
+                
+                <div>
+              
+          
+             
+                <div className="bg-light p-4   row "> 
+                 
+                <h4 class="mt-0 mb-0 col-md-8 text-start">Mark Williams</h4>
+               
+                {/* <h4
+            className="story-card-big__story--small"
+            onClick={() => toProfile(story.user._id)}
+          >
+            by {story.user.username}
+          </h4>   */}
+
+
+               <div >
+                  <p className="list-inline-item p-3">
+                   
+                      <h5 className="font-weight-bold mb-0 d-block">
+                      
+                      </h5>
+                 
+                    <small className="text-muted">
+                      {" "}
+                        <i className="fas fa-book mr-1"></i>Stories
+                    </small>
+                  </p>
+                  <p className="list-inline-item p-4">
+                 
+                      <h5 className="font-weight-bold mb-0 d-block">
+                       
+                      </h5>
+                  
+                    <small className="text-muted">
+                      {" "}
+                      <i className="fas fa-user mr-1"></i>Followers
+                    </small>
+                  </p>
+                  <p className="list-inline-item">
+                 
+                      <h5 className="font-weight-bold mb-0 d-block">
+                     
+                      </h5>
+                  
+                    <small className="text-muted">
+                      {" "}
+                      <i className="fas fa-user mr-1"></i>Following
+                    </small>
+                  </p>
+                  </div>
+                </div>
+              </div>
+
+                  
+                  )}
+          </div>
+            
+            <div className="px-4 py-3">
+              {singleStory && (
+                <div>
+            <div dangerouslySetInnerHTML={sanitizeData()}></div> 
+        
+     
+        
+{/* ///////////////////////////////////////////////////////////////////////////////////////// */}
+          {/* Liked*/}
+           <div className="pb-story d-flex  ">
+            <div className="pb-story__likes pb-story__icon pr-3">
               {liked ? (
                 <div className="pb-story__icon">
                   <div className="pb-story__size">
@@ -93,17 +203,10 @@ const readPublicStory = () => {
                 </span>
               </a>
             </div>
-          </div>
+          </div> 
 
           {/* mid grid */}
-          <div className="grid-container__mid">
-            <div className="emoji__row pb-story__emojis">
-              {singleStory.emojis.map((emoji, id) => (
-                <EmojiChar emoji={emoji} size="x-large" />
-              ))}
-            </div>
-
-            <div dangerouslySetInnerHTML={sanitizeData()}></div>
+       
 
             {isAuthenticated ? (
               <CommentForm />
@@ -154,12 +257,21 @@ const readPublicStory = () => {
                   ))}
                 </div>
               )}
-            </div>
-            <div id="comment"></div>
-          </div>
-        </div>
-      )}
+                  </div>
+                  </div>
+                 )}
+                 </div>
+                  
+               
+              </div>
+              </div>
+        
+        
+        {/* ///////////////////////////////////////////////////////////////////////////////////////// */}
+      </div>
+      
     </Fragment>
+    
   );
 };
 export default readPublicStory;

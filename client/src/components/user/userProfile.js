@@ -40,6 +40,7 @@ const UserProfile = (props) => {
     <Fragment>
       {/* {console.log(follow)} */}
       {/* {user && console.log(user._id, followers)} */}
+      <div class="row py-5 px-4">
       <div className="col-md-7 mx-auto">
         <div className="bg-white shadow rounded overflow-hidden">
           <div className="px-4 pt-5 pb-4 ">
@@ -138,7 +139,7 @@ const UserProfile = (props) => {
         </button>
   </div>   */}
               </div>
-              <div className="bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 ">
+              <div className="bg-light p-4 d-flex justify-content-end text-center mr-3 ">
                 <ul className="list-inline mb-0 ">
                   <li className="list-inline-item p-3">
                     {followers && (
@@ -197,7 +198,8 @@ const UserProfile = (props) => {
             )}
           </div>
         </div>
-      </div>
+        </div>
+        </div>
     </Fragment>
   );
 };
