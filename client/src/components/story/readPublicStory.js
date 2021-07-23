@@ -235,7 +235,7 @@ const readPublicStory = () => {
                   {singleStory.comments.map((comment) => (
                     <div className="post bg-white p-1 my-1">
                       <div>
-                        <Link to={`/profile/`}>
+                        <Link to={`/profile/${singleStory.user._id}`}>
                           <img
                             className="round-img"
                             src={comment.avatar}
