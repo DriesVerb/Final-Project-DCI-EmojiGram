@@ -9,6 +9,7 @@ public/img
 /.pnp
 .pnp.js
 config/emoji.json
+.prettierrc
 
 # testing
 /coverage
