@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { genreStore } from "../../store";
+import React, { useEffect, useState } from 'react';
+import { genreStore } from '../../store';
 
 // components
-import PaginateComponent from "../utils/PaginateComponent";
+import PaginateComponent from '../utils/PaginateComponent';
 
 const GenreShow = ({ genre }) => {
   const stories = genreStore((state) => state.stories);
@@ -14,7 +14,7 @@ const GenreShow = ({ genre }) => {
 
   const [perPage, setPerPage] = useState(5);
 
-  const component = "readpublicstory";
+  const component = 'readpublicstory';
 
   const onChange = (e) => {
     setPerPage(e.target.value);
@@ -25,12 +25,15 @@ const GenreShow = ({ genre }) => {
         <h2>There are no stories yet in the genre of {genre}!</h2>
       ) : (
         <div>
-          <label htmlFor="perPageInput">Stories per page</label>
-          <select name="perPage" value={perPage} onChange={onChange}>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-          </select>
+          <div className="genre-show__select">
+            <label htmlFor="perPageInput">Stories per page</label>
+            <select name="perPage" value={perPage} onChange={onChange}>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+
           <PaginateComponent
             data={stories}
             perPage={perPage}
