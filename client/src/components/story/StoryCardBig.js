@@ -52,7 +52,8 @@ const StoryCardBig = ({ story, show }) => {
             className="story-card-big__story--small"
             onClick={() => toProfile(story.user._id)}
           >
-            by {story.user.username}
+           {story.user.username && <span> by{" "}
+            {story.user.username}</span>} 
           </span>{" "}
           
           {/* ///////////////////////////////////////////////////////////////////////////// */}
