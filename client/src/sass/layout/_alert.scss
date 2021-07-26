@@ -1,0 +1,29 @@
+.alert-side {
+  @include flex(row, center, flex-end);
+  height: 88vh;
+}
+
+.alert-popup {
+  @include flex(row, center, center);
+  width: 90%;
+  height: 5rem;
+  padding: 0.5rem;
+  animation: climb 6s;
+
+  &__msg {
+    @include main-font(1.3rem, 500, $main-white);
+    text-align: center;
+  }
+
+  &__danger {
+    background-color: $main-red;
+  }
+
+  &__warning {
+    background-color: $main-orange;
+  }
+
+  &__success {
+    background-color: $main-green;
+  }
+}

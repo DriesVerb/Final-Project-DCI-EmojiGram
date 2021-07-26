@@ -1,0 +1,24 @@
+.icon {
+  cursor: pointer;
+  &__color {
+    &--blue {
+      fill: $main-blue;
+
+      &:hover {
+        fill: $main-yellow;
+      }
+    }
+  }
+
+  &__size {
+    &--small {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+
+    &--large {
+      height: 15rem;
+      width: 15rem;
+    }
+  }
+}

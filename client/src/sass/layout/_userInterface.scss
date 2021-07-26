@@ -15,6 +15,7 @@
   &__title {
     @include main-font(2rem, 500, $main-black);
     margin-bottom: 2rem;
+    margin-top: 1rem;
   }
 
   &__btn {

@@ -46,6 +46,8 @@ const StoryCardBig = ({ story, show }) => {
       <div className="story-card-big__info">
         <div className="story-card-big__story">
           <span className="story-card-big__story--bold">{story.title}</span>{" "}
+
+          {/* ///////////////////////////////////////////////////////////////////////////// */}
           <span
             className="story-card-big__story--small"
             onClick={() => toProfile(story.user._id)}
@@ -53,6 +55,8 @@ const StoryCardBig = ({ story, show }) => {
            {story.user.username && <span> by{" "}
             {story.user.username}</span>} 
           </span>{" "}
+          
+          {/* ///////////////////////////////////////////////////////////////////////////// */}
           <span className="story-card-big__story--small">
             {" "}
             - <Moment format="DD/MM/YYYY">{story.createdAt}</Moment>
