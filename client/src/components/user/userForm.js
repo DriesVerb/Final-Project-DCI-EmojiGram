@@ -29,21 +29,11 @@ const userForm = (props) => {
   }, [profileContext, current]);
 
   const [user, setUser] = useState({
-<<<<<<< HEAD
-    name: '',
-    username: '',
-    email: '',
-    password: '',
-    age: '',
-    location: '',
-  
-=======
     name: "",
     username: "",
     email: "",
     password: "",
     location: "",
->>>>>>> d160c91498e1930cae0b82225d5c3fca2f5809b0
   });
 
   const { name, username, email, location } = user;

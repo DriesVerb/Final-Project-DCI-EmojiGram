@@ -12,9 +12,7 @@ const userSchema = new Schema({
   message: String,
 
   avatar: String,
-  profilePics: String,
-  
- 
+
 
   following: [
     {

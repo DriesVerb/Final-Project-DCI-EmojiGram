@@ -34,13 +34,7 @@ function ShowStory(props) {
     showStory(id);
   }, [liked]);
 
-<<<<<<< HEAD
-  // const [like, setLike]=useState(props.liked)
- 
-  const onDelete = () => { 
-=======
   const onDelete = () => {
->>>>>>> d160c91498e1930cae0b82225d5c3fca2f5809b0
     deleteStory(singleStory._id);
     props.history.push(`/yourstories ${singleStory.user}`);
   };

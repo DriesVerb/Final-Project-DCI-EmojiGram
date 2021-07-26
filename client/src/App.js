@@ -91,19 +91,12 @@ function App() {
                     exact
                     component={PublicLandingPage}
                   />
-<<<<<<< HEAD
-
-                  <Route path='/profile' exact component={UserItem} />
-
-                  <Route path='/profile/:id' exact component={UserProfile} />
-=======
                   
                   
                   <Route path="/profile" exact component={UserItem} />
                   <Route path="/profile/:id" exact component={UserProfile } />
 
                   <PrivateRoute path="/friendsWall" exact component={FriendsWall} />
->>>>>>> d160c91498e1930cae0b82225d5c3fca2f5809b0
 
                   <PrivateRoute
                     path='/showstory/:id'

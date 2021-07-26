@@ -1,22 +1,4 @@
 
-<<<<<<< HEAD
-function YourStories() {
-  const storyContext = useContext(StoryContext);
-  const { publishStory, stories } = storyContext;
-  const authContext = useContext(AuthContext);
-  const { user } = authContext;
-  
-
-  useEffect(() => {
-    publishStory(user._id);
-    
-  }, []);
-
-  return (
-    <div className="grid-container">
-      <div className="grid-container__mid">
-        <PaginateComponent data={stories} perPage={5} />
-=======
 
   ////////////////////////////////////////////////
   import React, { useContext, useEffect } from "react";
@@ -42,7 +24,6 @@ function YourStories(props) {
         <div className="grid-container__mid">
           <PaginateComponent data={stories} perPage={5} />
         </div>
->>>>>>> d160c91498e1930cae0b82225d5c3fca2f5809b0
       </div>
     );
   }

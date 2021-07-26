@@ -1,5 +1,5 @@
+
 const router = require('express').Router();
-// const Picture = require('../models/User');
 const Picture = require('../models/Picture');
 const multer = require('multer');
 
@@ -9,8 +9,7 @@ const storage = multer.diskStorage({
     callback(null, 'public/image');
   },
   filename: function (req, file, callback) {
-    callback(null, Date.now() + '_' + file.fieldname);
-    
+    callback(null, Date.now() + '_' + file.filename);
   },
 });
 
@@ -22,14 +21,12 @@ const upload = multer({ storage });
 router.post('/profile', upload.single('profilePics'), (req, res) => {
   const newPicture = new Picture({
     profilePics: '/image/' + req.file.filename,
-
   });
   console.log(req.body);
-  newPicture.save((err, doc ) => {
+  newPicture.save((err, doc) => {
     // res.json('A new picture has been added to the profile')
     res.json(doc);
   });
 });
-
 
 module.exports = router;
