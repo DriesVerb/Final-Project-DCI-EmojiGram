@@ -77,7 +77,7 @@ const FriensdWall = (props) => {
                     </div>
                     <div class="d-flex flex-column">
                       {" "}
-                      <span class="rating">Srories</span>{" "}
+                      <span class="rating">Stories</span>{" "}
                       <span class="number3"></span>{" "}
                     </div>
                   </div>

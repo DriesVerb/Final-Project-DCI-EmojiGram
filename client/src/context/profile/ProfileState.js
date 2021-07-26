@@ -27,6 +27,8 @@ const ProfileState = (props) => {
         email: "",
         password: "",
         location: "",
+        hobby: "",
+        occupation: "",
         age: "",
         followers: [],
         followeing: [],
