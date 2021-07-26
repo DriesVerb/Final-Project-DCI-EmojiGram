@@ -10,4 +10,20 @@
   }
 }
 
+<<<<<<< HEAD
 
+=======
+@keyframes climb {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-90px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-140px);
+    opacity: 0;
+  }
+}
+>>>>>>> d21ced7252cb5a970365b2753357949cf3a836cc

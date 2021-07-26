@@ -1,9 +1,9 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
-import ProfileContext from '../../context/profile/profileContext';
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import ProfileContext from "../../context/profile/profileContext";
+import YourStories from "../story/yourStories";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-import YourStories from '../story/yourStories';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 const UserItem = (props) => {
   const profileContext = useContext(ProfileContext);
@@ -46,9 +46,10 @@ const UserItem = (props) => {
     email,
     age,
     location,
+    occupation,
+    hobby,
     followers,
     following,
-  
   } = user;
   useEffect(() => {
     !user ? props.history.push('/') : getProfile(_id);
@@ -107,31 +108,39 @@ const UserItem = (props) => {
             </div>
           </div>
 
-          <div className='media-body mb-5 text-dark  col'>
-            {username && (
-              <h4> {username.charAt(0).toUpperCase() + username.slice(1)}</h4>
-            )}
-            {email && (
-              <p className='small mb-4 mt-3'>
-                {' '}
-                <i className='fas fa-paper-plane mr-2'></i>
-                {email}
-              </p>
-            )}
+          <div class="px-4 py-3">
+            <h5 class="mb-0">About</h5>
+            <div class="p-4 rounded shadow-sm bg-light">
+              {occupation && (
+                <p className="small mt-2">
+                  <i class="fas fa-briefcase"></i>
+                  <span className="mr-2"></span>
+                  {occupation.charAt(0).toUpperCase() + occupation.slice(1)}
+                </p>
+              )}
 
-            {location && (
-              <p className='small mb-4'>
-                {' '}
-                <i className='fas fa-map-marker-alt mr-2'></i>
-                {location.charAt(0).toUpperCase() + location.slice(1)}
+              <p className="font-italic mb-1">
+                {location && (
+                  <p className="small mt-2">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span className="mr-2"></span>{" "}
+                    {location.charAt(0).toUpperCase() + location.slice(1)}
+                  </p>
+                )}
               </p>
-            )}
-            <div className='d-flex flex-start m-0 p-0'>
-              <button
-                type='submit'
-                className='btn btn-dark btn-lg '
-                onClick={onEdit}>
-                Edit
+              <p class="font-italic mb-0">
+                {hobby && (
+                  <p className="small mt-2">
+                    <i class="fas fa-heading"></i>
+                    <span className="mr-2"></span>
+                    {hobby.charAt(0).toUpperCase() + hobby.slice(1)}
+                  </p>
+                )}
+              </p>
+            </div>{" "}
+            <Link to="/yourstories" className="link">
+              <button className="btn btn-secondary btn-lg btn-block ">
+                Stories{" "}
               </button>
               <button
                 type='submit'
@@ -140,7 +149,7 @@ const UserItem = (props) => {
                 onClick={onDelete}>
                 Delete
               </button>
-            </div>
+            </Link>
           </div>
 
           <div className='bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 '>

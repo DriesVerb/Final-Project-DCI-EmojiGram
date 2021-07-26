@@ -14,9 +14,16 @@ exports.testPrivate = (req, res) => {
 //User Profile
 exports.userProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).populate({ path:"following" , populate : { path : "user"}}).populate({ path:"followers" , populate : { path : "user"}}).populate({ path:"stories" , populate : { path : "story"}});
+    const user = await User.findById(req.user.id)
+      .populate({ path: "following", populate: { path: "user" } })
+      .populate({ path: "followers", populate: { path: "user" } })
+      .populate({ path: "stories", populate: { path: "story" } });
     if (!user) {
+<<<<<<< HEAD
       return res.status(400).json({ msg: 'There is no profile for this user' }) 
+=======
+      return res.status(400).json({ msg: "There is no profile for this user" });
+>>>>>>> d21ced7252cb5a970365b2753357949cf3a836cc
     }
     res.json(user);
   } catch (err) {
@@ -28,7 +35,16 @@ exports.userProfile = async (req, res) => {
 //Edit Profile
 exports.editProfile = async (req, res) => {
   // console.log(req.body);
-  const { username, name, email, password, location, avatar } = req.body;
+  const {
+    username,
+    name,
+    email,
+    password,
+    location,
+    occupation,
+    hobby,
+    avatar,
+  } = req.body;
   //Build Profile Object by initializing an Object
   const profileFields = {};
   if (username) profileFields.username = username;
@@ -36,6 +52,8 @@ exports.editProfile = async (req, res) => {
   if (email) profileFields.email = email;
   if (password) profileFields.password = password;
   if (location) profileFields.location = location;
+  if (occupation) profileFields.occupation = occupation;
+  if (hobby) profileFields.hobby = hobby;
   if (avatar) profileFields.avatar = avatar;
   try {
     let profile = await User.findById(req.params.id);
@@ -63,30 +81,28 @@ exports.editProfile = async (req, res) => {
   }
 };
 //////////////////////////////////////////////////////////////////////////////////////
-exports.myStories =  async (req, res) => {
+exports.myStories = async (req, res) => {
   try {
-    const stories = await Story.find({ user:req.params.id });
+    const stories = await Story.find({ user: req.params.id });
 
     if (!stories) {
-      return res.status(404).json({ msg: 'Stories not found' });
+      return res.status(404).json({ msg: "Stories not found" });
     }
 
     res.json(stories);
   } catch (err) {
     console.error(err.message);
 
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
-}
+};
 
 /////////////////////////////////////////////////////////////////////////////////
 
-
 exports.usersProfile = async (req, res) => {
   try {
-    const userProfile = await User.find({_id: req.params.id })
+    const userProfile = await User.find({ _id: req.params.id });
 
-  
     res.json(userProfile);
   } catch (err) {
     console.error(err.message);
@@ -127,69 +143,66 @@ exports.followers = async (req, res) => {
   }
 };
 
-
-
-
-
 exports.followUser = async (req, res) => {
-
   try {
-    const following = await User.findById(req.params.id).populate({ path:"following" , populate : { path : "user"}}).populate({ path:"followers" , populate : { path : "user"}});
+    const following = await User.findById(req.params.id)
+      .populate({ path: "following", populate: { path: "user" } })
+      .populate({ path: "followers", populate: { path: "user" } });
 
     // Check if the post has already been liked
     //some is like filtere but return boolean
-    if (following.followers.some((follower) => follower.user.toString() === req.user.id)) {
+    if (
+      following.followers.some(
+        (follower) => follower.user.toString() === req.user.id
+      )
+    ) {
       return res.status(400).json({ msg: "User already  followed" });
     }
     // unshhift is as push method but will put it on the begining
     following.followers.unshift({ user: req.user.id });
-    console.log(following.followers)
+    console.log(following.followers);
     await following.save();
-   
-  
-    const follower = await User.findById(req.user.id)
+
+    const follower = await User.findById(req.user.id);
     follower.following.unshift({ user: following });
-    console.log(follower.following)
+    console.log(follower.following);
     await follower.save();
-    return res.json(following );
+    return res.json(following);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
   }
-   catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server Error");
+};
+
+exports.unfollowUser = async (req, res) => {
+  try {
+    const following = await User.findById(req.params.id);
+
+    if (
+      !following.followers.some(
+        (follower) => follower.user.toString() === req.user.id
+      )
+    ) {
+      return res.status(400).json({ msg: "User has not yet been followed" });
     }
+    // unshhift is as push method but will put it on the begining
+    following.followers = following.followers.filter(
+      ({ user }) => user.toString() !== req.user.id
+    );
+
+    console.log(following.followers);
+
+    await following.save();
+
+    const follower = await User.findById(req.user.id);
+    follower.following = follower.following.filter(
+      ({ user }) => user.toString() !== req.params.id
+    );
+    console.log(follower.following);
+    await follower.save();
+    return res.json(following.followers);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
   }
-  ;
-
-  exports.unfollowUser = async (req, res) => {
-
-    try {
-      const following = await User.findById(req.params.id);
-  
- 
-      if (!following.followers.some((follower) => follower.user.toString() === req.user.id)) {
-        return res.status(400).json({ msg: "User has not yet been followed" });
-      }
-      // unshhift is as push method but will put it on the begining
-      following.followers = following.followers.filter(
-        ({ user }) => user.toString() !== req.user.id)
-      
-      console.log(following.followers)
-    
-      
-      await following.save();
-     
-  
-      const follower = await User.findById(req.user.id);
-      follower.following = follower.following.filter(
-        ({ user }) => user.toString() !== req.params.id)
-        console.log(follower.following)
-      await follower.save();
-      return res.json(following.followers);
-    }
-     catch (err) {
-        console.error(err.message);
-        res.status(500).send("Server Error");
-      }
-    }
-  ;
-
+};

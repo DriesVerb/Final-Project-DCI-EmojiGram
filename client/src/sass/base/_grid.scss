@@ -19,6 +19,10 @@
     grid-row: 3/4;
     grid-column: 2/4;
   }
+  &__alert {
+    grid-row: 3/4;
+    grid-column: 1/2;
+  }
 }
 
 .grid-container {

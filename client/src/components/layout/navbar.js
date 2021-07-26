@@ -1,13 +1,5 @@
 import React, { Fragment, useContext } from "react";
-import {
-  Navbar,
-  NavLink,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 // import { Link } from "react-router-dom";
 import AuthContext from "../../context/auth/authContext";
 import ProfileContext from "../../context/profile/profileContext";
@@ -29,7 +21,7 @@ function navbar() {
       <div className="app__navbar">
         <Nav style={{ maxHeight: "100px" }} navbarScroll>
           <li className="ml-2">
-            <a className="nav-link" href="#!">
+            <a className="nav-link text-dark" href="#!">
               Hello{" "}
               {user &&
                 user.username.charAt(0).toUpperCase() + user.username.slice(1)}
@@ -38,29 +30,29 @@ function navbar() {
           </li>
           <NavDropdown title="" id="navbarScrollingDropdown">
             <NavDropdown.Item href="/profile">
-              <i className=" fas fa-cog" />
+              <i className=" fas fa-cog text-dark" />
               Settings & Privacy
             </NavDropdown.Item>
 
             <NavDropdown.Item href="">
-              <i className="fas fa-question-circle" /> Help & Support
+              <i className="fas fa-question-circle text-dark" /> Help & Support
             </NavDropdown.Item>
             <NavDropdown.Item onClick={onLogout} href="/login">
-              <i className="fas fa-sign-out-alt" /> Logout
+              <i className="fas fa-sign-out-alt text-dark" /> Logout
             </NavDropdown.Item>
           </NavDropdown>
-          <NavLink to="/notification" className="ml-5">
-            <i className="fas fa-bell text-info" /> Notification
-          </NavLink>
+          <Nav.Link href="/notification" className="ml-5 text-dark">
+            <i className="fas fa-bell" /> Notification
+          </Nav.Link>
           {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
-          <NavLink to="/UserInterface">
-            <i className=" fas fa-cog text-info ml-5" />
+          <Nav.Link href="/UserInterface" className="text-dark">
+            <i className=" fas fa-cog  ml-5" />
             User
-          </NavLink>
+          </Nav.Link>
           {/* //////////////////////////////////////////////////////////////////////////////////////////////////   */}
-          <NavLink to="/message">
-            <i className="fas fa-envelope text-info ml-5" /> Messages
-          </NavLink>
+          <Nav.Link href="/message" className="text-dark">
+            <i className="fas fa-envelope ml-5" /> Messages
+          </Nav.Link>
         </Nav>
       </div>
     </Fragment>
@@ -69,39 +61,32 @@ function navbar() {
   const guestLinks = (
     <Fragment>
       <Navbar>
-        <Nav className="me-auto">
-          <i className=" fas fa-user text-info ml-5 mt-2" />
-          <Nav.Link href="/login">LogIn</Nav.Link>
-          <i className=" fas fa-sign-in-alt text-info ml-5 mt-2" />
-          <Nav.Link href="/signup">SignUp</Nav.Link>
+        <Nav>
+          <i className=" fas fa-user ml-5 mt-2" />
+          <Nav.Link href="/login" className="text-dark ">
+            LogIn
+          </Nav.Link>
+          <i className=" fas fa-sign-in-alt ml-5 mt-2" />
+          <Nav.Link href="/signup" className="text-dark">
+            SignUp
+          </Nav.Link>
         </Nav>
       </Navbar>
-
-      {/* <Link to="/login">Login</Link>
-      <Link to="/signup">Signup</Link> */}
     </Fragment>
   );
 
   return (
     <Fragment>
-      <Navbar bg="light" expand="lg" className="navbar app__navbar">
+      <Navbar bg="warning" expand="lg" className="navbar app__navbar mt-1">
         <Navbar.Brand href="/" className="navbar__brand text-bold">
           Emoji-Tales
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <div className="navbar">
+          <div className="navbar justify-content-end">
             {isAuthenticated ? userLinks : guestLinks}
           </div>
-          <Form className="d-flex ml-5 ">
-            <FormControl
-              type="search"
-              placeholder="Search"
-              className="mr-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-info ">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Navbar>
     </Fragment>

@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // store
-import { storyStore } from "../../store";
-import { emojiStore } from "../../store";
+import { storyStore } from '../../store';
+import { emojiStore } from '../../store';
 ///////////////////////////////////////////////////////////////////////////////
-import StoryContext from "../../context/story/storyContext";
+import StoryContext from '../../context/story/storyContext';
 //////////////////////////////////////////////////////////////////////////////
 // components
-import StoryEditorSubGenre from "./StoryEditorSubGenre";
-import EmojiChar from "./EmojiChar";
+import StoryEditorSubGenre from './StoryEditorSubGenre';
+import EmojiChar from './EmojiChar';
 
 const StoryEditor = () => {
   ////////////////////////////////////////////////////////////////////////////////
@@ -23,10 +23,10 @@ const StoryEditor = () => {
 
   // state of current inputs
   const [formData, setFromData] = useState({
-    title: "",
-    genre: "default",
-    text: "",
-    _id: "",
+    title: '',
+    genre: 'default',
+    text: '',
+    _id: '',
     emojis: [],
   });
 
@@ -40,9 +40,9 @@ const StoryEditor = () => {
     if (storyToEdit !== null) setFromData(storyToEdit);
     else
       setFromData({
-        title: "",
-        genre: "default",
-        text: "",
+        title: '',
+        genre: 'default',
+        text: '',
         emojis: emojisGlobal,
       });
   }, [StoryContext, storyToEdit, clearEditStory, emojisGlobal]);
@@ -59,7 +59,7 @@ const StoryEditor = () => {
 
   const onSubmit = () => {
     getValues(formData);
-    history.push("/previewstory");
+    history.push('/previewstory');
   };
 
   return (
@@ -71,18 +71,7 @@ const StoryEditor = () => {
       className="grid-container"
     >
       {console.log(formData)}
-      <div className="grid-container__right">
-        {storyToEdit ? (
-          <button
-            style={{ backgroundColor: "#98DDCA", color: "black" }}
-            type="submit"
-          >
-            Preview edited story
-          </button>
-        ) : (
-          <button type="submit">Preview before publising</button>
-        )}
-      </div>
+      <div className="grid-container__left"></div>
       <div className="grid-container__left">
         <div className="story-nav">
           <div className="story-nav__form-box">
@@ -114,8 +103,18 @@ const StoryEditor = () => {
             </select>
           </div>
           <div className="story-nav__form-box">
-            {genre === "default" ? null : <StoryEditorSubGenre genre={genre} />}
+            {genre === 'default' ? null : <StoryEditorSubGenre genre={genre} />}
           </div>
+          {storyToEdit ? (
+            <button
+              style={{ backgroundColor: '#98DDCA', color: 'black' }}
+              type="submit"
+            >
+              Preview edited story
+            </button>
+          ) : (
+            <button type="submit">Preview to Share</button>
+          )}
         </div>
       </div>
       <div className="grid-container__mid story-editor__writer">

@@ -8,6 +8,7 @@ import EmojiChar from "./EmojiChar";
 
 const StoryCardBig = ({ story, show }) => {
   let history = useHistory();
+  
   const storyDetailsPublic = (id) => {
     history.push(`/${show}/${id}`);
   };
@@ -43,15 +44,19 @@ const StoryCardBig = ({ story, show }) => {
       <div className="story-card-big__info">
         <div className="story-card-big__story">
           <span className="story-card-big__story--bold">{story.title}</span>{" "}
+
+          {/* ///////////////////////////////////////////////////////////////////////////// */}
           <span
             className="story-card-big__story--small"
             onClick={() => toProfile(story.user._id)}
           >
             by {story.user.username}
-          </span>{' '}
-          <span className='story-card-big__story--small'>
-            {' '}
-            - <Moment format='DD/MM/YYYY'>{story.createdAt}</Moment>
+          </span>{" "}
+          
+          {/* ///////////////////////////////////////////////////////////////////////////// */}
+          <span className="story-card-big__story--small">
+            {" "}
+            - <Moment format="DD/MM/YYYY">{story.createdAt}</Moment>
           </span>
         </div>
         <div className='story-card-big__categories'>
