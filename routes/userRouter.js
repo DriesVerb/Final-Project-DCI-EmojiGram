@@ -21,6 +21,7 @@ router.put("/profile/:id/unfollow-user", auth, userController.unfollowUser);
 router.put("/edit/:id", auth, userController.editProfile);
 router.delete("/delete/:id", auth, userController.deleteProfile);
 router.get("/profile/mystories/:id", auth, userController.myStories);
+router.get("/profile/friends/:id", userController.myStories);
 
 router.get("/followers/:id", userController.followers);
 

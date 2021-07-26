@@ -11,11 +11,11 @@ function userInterface(props) {
 
   // let history = useHistory();
 
-  const toMyStories = (id) => {
+ /*  const toMyStories = (id) => {
     
     props.history.push(`/yourstories/${id}`);
     console.log(id)
-  };
+  }; */
 
   return (
     <div className="grid-container">
@@ -44,11 +44,13 @@ function userInterface(props) {
             <img className="user-card__img" src={Images} alt="userImage"></img>
 
             <p className="user-card__title">ACCESS YOUR STORIES</p>
-            <div onClick={() => toMyStories(user._id)}  className="link">
+            <Link to="/yourstories" className="link">
+           {/*  <div   className="link"> */}
               <button className="btn btn-success user-card__btn">
                 Click to Access
               </button>
-            </div>
+           {/*  </div> */}
+           </Link>
           </div>
         </div>
       </div>

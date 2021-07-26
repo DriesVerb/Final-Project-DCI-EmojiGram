@@ -13,6 +13,7 @@ router.post("/create", auth, storyController.create);
 router.get("/publishedStory", storyController.published);
 
 router.get("/show/:id", auth, viewMiddleware,storyController.show);
+/* router.get("/friendStories/:id", viewMiddleware,storyController.published); */
 //
 router.get("/showPublic/:id", viewMiddleware, storyController.show);
 router.put("/editStory/:id", auth, storyController.edit);

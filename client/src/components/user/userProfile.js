@@ -21,6 +21,7 @@ const UserProfile = (props) => {
     following,
     hobby,
     occupation,
+    stories,
   } = users;
 
   const [follow, setFollow] = useState(false);
@@ -38,6 +39,7 @@ const UserProfile = (props) => {
       }
     }
   }, [user, users]);
+
   const compareValue = (input) => {
     input.forEach((el) => {
       if (user._id === el.user) {
@@ -124,9 +126,9 @@ const UserProfile = (props) => {
               <div className="bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 ">
                 <ul className="list-inline mb-0 ">
                   <li className="list-inline-item p-3">
-                    {followers && (
+                    {stories && (
                       <h5 className="font-weight-bold mb-0 d-block">
-                        {followers.length}
+                        {stories.length}
                       </h5>
                     )}
                     <small className="text-muted">
@@ -192,16 +194,14 @@ const UserProfile = (props) => {
                 </p>
               </div>{" "}
             </div>
-            {follow && (
-              <div>
-                {" "}
-                <Link to={`/yourstories/${id}`} className="link">
-                  <button className="btn btn-secondary btn-lg btn-block ">
-                    Stories{" "}
-                  </button>
-                </Link>
-              </div>
-            )}
+            <div>
+              {" "}
+              <Link to={`/friendStories/${id}`} className="link">
+                <button className="btn btn-secondary btn-lg btn-block ">
+                  Stories{" "}
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
