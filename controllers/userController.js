@@ -19,11 +19,7 @@ exports.userProfile = async (req, res) => {
       .populate({ path: "followers", populate: { path: "user" } })
       .populate({ path: "stories", populate: { path: "story" } });
     if (!user) {
-<<<<<<< HEAD
-      return res.status(400).json({ msg: 'There is no profile for this user' }) 
-=======
       return res.status(400).json({ msg: "There is no profile for this user" });
->>>>>>> d21ced7252cb5a970365b2753357949cf3a836cc
     }
     res.json(user);
   } catch (err) {

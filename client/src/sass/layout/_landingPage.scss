@@ -1,9 +1,9 @@
 // grid
-.landing-page {
-  &__header {
-    padding: 2rem;
-  }
-}
+// .landing-page {
+//   &__header {
+//     padding: 2rem;
+//   }
+// }
 
 .public-stories {
   height: 100%;
@@ -22,10 +22,10 @@
 
 .left-sidebar {
   @include flex(column, space-between, start);
-  height: 65vh;
+  height: 30vh;
 
-  // &__menu {
-  // }
+
+
 
   &__footer {
     padding: 15px;

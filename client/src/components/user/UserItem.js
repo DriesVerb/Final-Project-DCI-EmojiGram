@@ -69,78 +69,80 @@ const UserItem = (props) => {
 
   return (
     <Fragment>
+                        
       <div className='col-md-7 mx-auto'>
         <div className='bg-white shadow rounded overflow-hidden'>
           <div className='px-4 pt-5 pb-4 '>
             <div className='row align-items-start'>
               <div className='profile mr-3 col-3 '>
-                <div className='profile-header'>
+
                   <h3 className='profile-header_upload'>
                     Upload Picture to your Profile
                   </h3>
-                  <form
-                  
-                    {...newPicture && (
+
+                  <input
+                    className='profile-header_input'
+                    type='file'
+                    name='profilePics'
+                    id='fileLoading'
+                    label='Upload a Picture'
+                    onChange={choosePic}
+                  />
+<div
+                    Classname='profile-upload-image mr-3 col-3'
+                    {...(newPicture && (
                       <img
                         className='img_profile'
                         style={{ width: 50, height: 50 }}
                         src={newPicture}
+                        alt='image profile'
                       />
-                    )}>
-                    
-                    <input
-                      className='profile-header_input'
-                      type='file'
-                      name='profilePics'
-                      id='fileLoading'
-                      label='Upload a Picture'
-                      onChange={choosePic}
-                    />
+                    ))}></div>
                     <button
                       className='btn btn-add'
                       type='submit'
                       onSubmit={add}>
                       Add to your profile
                     </button>
-                  </form>
+               
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="px-4 py-3">
-            <h5 class="mb-0">About</h5>
-            <div class="p-4 rounded shadow-sm bg-light">
+          <div class='px-4 py-3'>
+            <h5 class='mb-0'>About</h5>
+            <div class='p-4 rounded shadow-sm bg-light'>
               {occupation && (
-                <p className="small mt-2">
-                  <i class="fas fa-briefcase"></i>
-                  <span className="mr-2"></span>
+                <p className='small mt-2'>
+                  <i class='fas fa-briefcase'></i>
+                  <span className='mr-2'></span>
                   {occupation.charAt(0).toUpperCase() + occupation.slice(1)}
                 </p>
               )}
 
-              <p className="font-italic mb-1">
+              <p className='font-italic mb-1'>
                 {location && (
-                  <p className="small mt-2">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span className="mr-2"></span>{" "}
+                  <p className='small mt-2'>
+                    <i class='fas fa-map-marker-alt'></i>
+                    <span className='mr-2'></span>{' '}
                     {location.charAt(0).toUpperCase() + location.slice(1)}
                   </p>
                 )}
               </p>
-              <p class="font-italic mb-0">
+              <p class='font-italic mb-0'>
                 {hobby && (
-                  <p className="small mt-2">
-                    <i class="fas fa-heading"></i>
-                    <span className="mr-2"></span>
+                  <p className='small mt-2'>
+                    <i class='fas fa-heading'></i>
+                    <span className='mr-2'></span>
                     {hobby.charAt(0).toUpperCase() + hobby.slice(1)}
                   </p>
                 )}
               </p>
-            </div>{" "}
-            <Link to="/yourstories" className="link">
-              <button className="btn btn-secondary btn-lg btn-block ">
-                Stories{" "}
+            </div>{' '}
+            <Link to='/yourstories' className='link'>
+              <button className='btn btn-secondary btn-lg btn-block '>
+                Stories{' '}
               </button>
               <button
                 type='submit'
@@ -194,7 +196,7 @@ const UserItem = (props) => {
             </ul>
           </div>
         </div>
-      </div>
+    
 
       <div className='px-4 py-3'>
         <h5 className='mb-0'>About</h5>

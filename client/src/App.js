@@ -20,6 +20,7 @@ import ShowStory from './components/story/showStory';
 import GenreMainPage from './components/genre/GenreMainPage';
 import PublicLandingPage from './components/pages/publicLandingPage';
 import SideNavBar from './components/layout/SideNavBar';
+import NavbarSideLeft from './components/layout/NavbarSideLeft';
 
 import Header from './components/layout/Header';
 import FriendStories from './components/story/friendStories';
@@ -30,7 +31,6 @@ import FriendsWall from './components/user/friendsWall';
 
 import ReadPublicStory from './components/story/readPublicStory';
 
-
 // context
 import StoryState from './context/story/storyState';
 import AuthContext from './context/auth/authContext';
@@ -39,6 +39,7 @@ import ProfileState from './context/profile/ProfileState';
 
 // import setAuthToken
 import setAuthToken from './context/auth/setAuthToken';
+import SortByYourStories from './components/layout/SortByYourStories';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -60,10 +61,13 @@ function App() {
             <Router>
               {/* <Header /> */}
 
-              <Navbar />
-              <SideNavBar />
+              {/* <NavbarSideLeft /> */}
               <Alerts />
               <div className='app__main'>
+                <Navbar />
+                <sideNavBar>
+                  <SideNavBar />
+                </sideNavBar>
                 <Switch>
                   <Route path='/' exact component={PublicLandingPage} />
 
@@ -74,12 +78,13 @@ function App() {
                     component={UserInterface}
                   />
                   <PrivateRoute
-                    path="/yourstories"
+                    path='/yourstories'
                     exact
                     component={YourStories}
+                
                   />
                   <Route
-                    path="/friendStories/:id"
+                    path='/friendStories/:id'
                     exact
                     component={FriendStories}
                   />
@@ -99,11 +104,11 @@ function App() {
                     component={PublicLandingPage}
                   />
 
-                  <Route path="/profile" exact component={UserItem} />
-                  <Route path="/profile/:id" exact component={UserProfile} />
+                  <Route path='/profile' exact component={UserItem} />
+                  <Route path='/profile/:id' exact component={UserProfile} />
 
                   <PrivateRoute
-                    path="/friendsWall"
+                    path='/friendsWall'
                     exact
                     component={FriendsWall}
                   />
@@ -113,9 +118,9 @@ function App() {
                     exact
                     component={ShowStory}
                   />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/genre" component={GenreMainPage} />
-                  <Route exact path="/signup" component={SignUp} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/genre' component={GenreMainPage} />
+                  <Route exact path='/signup' component={SignUp} />
 
                   <Route path='/userform' exact component={userForm} />
 
