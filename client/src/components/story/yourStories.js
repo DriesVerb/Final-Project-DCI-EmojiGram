@@ -16,7 +16,7 @@ function YourStories(props) {
   return (
     <div className="grid-container">
       <div className="grid-container__mid">
-        <h2 className="text-center mb-4">My Story</h2>
+        <h2 className="text-center mb-4">My Stories</h2>
         <PaginateComponent data={stories} perPage={5} show={component} />
       </div>
     </div>

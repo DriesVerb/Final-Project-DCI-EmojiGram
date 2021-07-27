@@ -61,6 +61,7 @@ const SignUp = (props) => {
       setAlert("Please enter Email", "danger");
     } else {
       register({ username, email, password });
+      setAlert("Successfully Signed Up", "success");
     }
   };
 

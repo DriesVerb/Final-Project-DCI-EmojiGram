@@ -1,13 +1,19 @@
 ////////////////////////////////////////////////
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import StoryContext from "../../context/story/storyContext";
 import { useParams } from "react-router-dom";
 import PaginateComponent from "../utils/PaginateComponent";
 import AuthContext from "../../context/auth/authContext";
 
+import ProfileContext from "../../context/profile/profileContext";
+
 function FriendStories(props) {
   const storyContext = useContext(StoryContext);
   const { friends, stories } = storyContext;
+
+  const profileContext = useContext(ProfileContext);
+  const { users, getUserProfile } = profileContext;
+  const { username } = users;
 
   const authContext = useContext(AuthContext);
   const { user } = authContext;
@@ -16,7 +22,7 @@ function FriendStories(props) {
 
   useEffect(() => {
     friends(id);
-
+    getUserProfile(id);
     console.log(stories);
   }, [stories.length]);
 
@@ -25,7 +31,12 @@ function FriendStories(props) {
   return (
     <div className="grid-container">
       <div className="grid-container__mid">
-        <h2>{stories.user}</h2>
+        {username && (
+          <h2 className="text-center mb-3">
+            {username.charAt(0).toUpperCase() + username.slice(1)}'s Stories
+          </h2>
+        )}
+
         <PaginateComponent data={stories} perPage={5} show={component} />
       </div>
     </div>

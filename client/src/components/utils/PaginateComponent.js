@@ -1,4 +1,5 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
 // components
@@ -20,13 +21,22 @@ const PaginateComponent = ({ data, perPage, show }) => {
   useEffect(() => {
     SetPageNumber(0);
   }, [data]);
-
+  const { id } = useParams();
+  // console.log(id);
+  // console.log(displayStories);
   return (
     <Fragment>
       <div className="pagination">
         <div className="pagination__cards">
           {displayStories.map((story, index) => {
-            return <StoryCardBig key={index} story={story} index={index} show={show}/>;
+            return (
+              <StoryCardBig
+                key={index}
+                story={story}
+                index={index}
+                show={show}
+              />
+            );
           })}
         </div>
         <div className="pagination__buttons">
