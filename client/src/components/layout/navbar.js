@@ -1,8 +1,8 @@
-import React, { Fragment, useContext } from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import React, { Fragment, useContext } from 'react';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 // import { Link } from "react-router-dom";
-import AuthContext from "../../context/auth/authContext";
-import ProfileContext from "../../context/profile/profileContext";
+import AuthContext from '../../context/auth/authContext';
+import ProfileContext from '../../context/profile/profileContext';
 
 function navbar() {
   const authContext = useContext(AuthContext);
@@ -19,10 +19,10 @@ function navbar() {
   const userLinks = (
     <Fragment>
       <div className="app__navbar">
-        <Nav style={{ maxHeight: "100px" }} navbarScroll>
+        <Nav style={{ maxHeight: '100px' }} navbarScroll>
           <li className="ml-2">
             <a className="nav-link text-dark" href="#!">
-              Hello{" "}
+              Hello{' '}
               {user &&
                 user.username.charAt(0).toUpperCase() + user.username.slice(1)}
               <span className="sr-only">(current)</span>
@@ -62,12 +62,12 @@ function navbar() {
     <Fragment>
       <Navbar>
         <Nav>
-          <i className=" fas fa-user ml-5 mt-2" />
-          <Nav.Link href="/login" className="text-dark ">
+          <i className=' fas fa-user ml-5 mt-2 justify-content-end' />
+          <Nav.Link href='/login' className='text-dark '>
             LogIn
           </Nav.Link>
-          <i className=" fas fa-sign-in-alt ml-5 mt-2" />
-          <Nav.Link href="/signup" className="text-dark">
+          <i className=' fas fa-sign-in-alt ml-5 mt-2 justify-content-end' />
+          <Nav.Link href='/signup' className='text-dark '>
             SignUp
           </Nav.Link>
         </Nav>
