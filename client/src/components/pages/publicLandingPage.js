@@ -39,9 +39,8 @@ const PublicLandingPage = () => {
 
   return (
     <div className="grid-container">
-      <header className="landing-page__header grid-container__header">
-        <h1 className="text-center">Emoji-Tales</h1>
-      </header>
+      {/* <header className="landing-page__header grid-container__header">
+      </header> */}
       <div className="left-sidebar grid-container__left">
         <div className="left-sidebar__menu">
           <NavDropdown title="Sorted by" id="basic-nav-dropdown">
