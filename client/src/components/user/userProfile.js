@@ -34,14 +34,14 @@ const UserProfile = (props) => {
 
 
   useEffect(() => {
-    if (!user || !users) {
+    if (user || users) {
       getUserProfile(id);
     } else {
       if (followers) {
         compareValue(followers);
-      } else {
+      } /* else {
         getUserProfile(id);
-      }
+      } */
     }
   }, [user, users]);
   
@@ -153,7 +153,7 @@ const UserProfile = (props) => {
                   <li className="list-inline-item p-3">
                     {stories && (
                       <h5 className="font-weight-bold mb-0 d-block">
-                        {stories.length}
+                        {stories}
                       </h5>
                     )}
                     <small className="text-muted">
