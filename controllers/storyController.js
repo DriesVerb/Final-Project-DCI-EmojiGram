@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 exports.create = async (req, res) => {
   try {
-    const newStory = new Story({ ...req.body, user: req.user.id });
+    const newStory = new Story({ ...req.body, user: req.user.id })
     const story = await newStory.save();
     res.json({ msg: 'A new Story has been added :)' });
   } catch (err) {
@@ -127,6 +127,7 @@ exports.alphabetical = async (req, res) => {
     await Story.find((err, story) => {
       res.json(story);
     })
+      .populate('user')
       .sort({ title: 1 })
       .limit(5);
   } catch (err) {
@@ -139,6 +140,7 @@ exports.views = async (req, res) => {
     await Story.find((err, story) => {
       res.json(story);
     })
+      .populate('user')
       .sort({ views: -1 })
       .limit(5);
   } catch (err) {
@@ -163,6 +165,7 @@ exports.getGenre = async (req, res) => {
   await Story.find((err, stories) => {
     res.json(stories);
   })
+    .populate('user')
     .where('genre')
     .equals(req.params.genre);
 };
