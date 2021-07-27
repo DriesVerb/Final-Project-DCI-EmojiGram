@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Moment from 'react-moment';
 import { useHistory } from 'react-router-dom';
+// import { Link } from "react-router-dom";
 
 // components
 import EmojiChar from './EmojiChar';
@@ -23,12 +24,10 @@ const StoryCardBig = ({ story, show }) => {
     const trimmedString = text.substring(0, 200);
     return trimmedString;
   };
-
   const classGenre = (genre) => {
     const replaceGenre = genre.split(' ').join('-');
     return replaceGenre;
   };
-
   return (
     <div
       key={story._id}
@@ -106,5 +105,4 @@ const StoryCardBig = ({ story, show }) => {
     </div>
   );
 };
-
 export default StoryCardBig;

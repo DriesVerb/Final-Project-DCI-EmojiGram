@@ -1,17 +1,17 @@
 import React, { useState, Fragment } from 'react';
 import { NavDropdown, Nav } from 'react-bootstrap';
-import SideNavBar from './SideNavBar';
+// import SideNavBar from './SideNavBar';
 
-const NavbarSideLeft = () => {
+const SortByYourStories = () => {
   const onChange = (e) => {
     setSort(e.target.innerText);
   };
   const [sort, setSort] = useState('Latest');
   return (
     <Fragment>
-      <sideNavBar>
+      {/* <sideNavBar>
         <sideNavBar />
-      </sideNavBar>
+      </sideNavBar> */}
       <div className='left-sidebar'>
         <div className='left-sidebar__menu'>
           <NavDropdown title='Sorted by' id='basic-nav-dropdown'>
@@ -29,16 +29,16 @@ const NavbarSideLeft = () => {
             <NavDropdown.Item onClick={onChange}>SciFi</NavDropdown.Item>
           </NavDropdown>
         </div>
-        <div className='left-sidebar__footer'>
+        {/* <div className='left-sidebar__footer'>
           <p>Footer</p>
           <br />
           <p>Facebook</p>
           <br />
           <p>Twitter</p>
-        </div>{' '}
+        </div>{' '} */}
       </div>
     </Fragment>
   );
 };
 
-export default NavbarSideLeft;
+export default SortByYourStories;

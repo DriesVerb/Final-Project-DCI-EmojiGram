@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
+import NavbarSideLeft from '../layout/NavbarSideLeft'
 
 // components
 import StoryCardBig from "../story/StoryCardBig";
@@ -23,23 +24,31 @@ const PaginateComponent = ({ data, perPage, show }) => {
 
   return (
     <Fragment>
-      <div className="pagination">
-        <div className="pagination__cards">
+      <div className='pagination'>
+
+        <div className='pagination__cards'>
           {displayStories.map((story, index) => {
-            return <StoryCardBig key={index} story={story} index={index} show={show}/>;
+            return (
+              <StoryCardBig
+                key={index}
+                story={story}
+                index={index}
+                show={show}
+              />
+            );
           })}
         </div>
-        <div className="pagination__buttons">
+        <div className='pagination__buttons'>
           <ReactPaginate
-            previousLabel={"Prev"}
-            nextLabel={"Next"}
+            previousLabel={'Prev'}
+            nextLabel={'Next'}
             pageCount={pageCount}
             onPageChange={changePage}
-            containerClassName={"pagination__btn"}
-            previousLinkClassName={"previosBttm"}
-            nextLinkClassName={"nextBttn"}
-            disabledClassName={"paginationDisabled"}
-            activeClassName={"pagination__active"}
+            containerClassName={'pagination__btn'}
+            previousLinkClassName={'previosBttm'}
+            nextLinkClassName={'nextBttn'}
+            disabledClassName={'paginationDisabled'}
+            activeClassName={'pagination__active'}
           />
         </div>
       </div>

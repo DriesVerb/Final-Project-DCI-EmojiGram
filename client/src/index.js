@@ -1,9 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import AuthState from "./context/auth/authState";
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import AuthState from './context/auth/authState';
 // import CSS for fonts
 import "./index.css";
 
@@ -13,7 +12,7 @@ ReactDOM.render(
       <App />
     </AuthState>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
