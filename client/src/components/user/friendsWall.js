@@ -6,10 +6,11 @@ const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
-  const { _id, username, email, age, location, followers, following, stories } =
-    user;
-  console.log(user.following);
-  console.log(user.stories);
+  
+    const { _id, username, email, age, location, followers, following, stories } = user;
+ 
+  
+
   const [pageNumber, SetPageNumber] = useState(0);
   const friendsPerPage = 5;
   const pagesVisited = pageNumber * friendsPerPage;
@@ -31,6 +32,7 @@ const FriensdWall = (props) => {
     // console.log (user)
     // eslint-disable-next-line
   }, []);
+
   return (
     <div className="map">
       {displayfollowing &&
@@ -66,8 +68,8 @@ const FriensdWall = (props) => {
                     </div>
                     <div class="d-flex flex-column">
                       {' '}
-                      <span class="rating">Srories</span>{' '}
-                      <span class="number3"></span>{' '}
+                      <span class='rating'>Srories</span>{' '}
+                      <span class='number3'>{follow.user.stories}/span>{' '}
                     </div>
                   </div>
                   <div classNmae="m-5">
@@ -82,7 +84,7 @@ const FriensdWall = (props) => {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </div
             </div>
           </div>
         ))}

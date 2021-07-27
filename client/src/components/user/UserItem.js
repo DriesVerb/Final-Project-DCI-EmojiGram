@@ -45,6 +45,7 @@ const UserItem = (props) => {
     username,
     email,
     location,
+    stories,
     occupation,
     hobby,
     followers,
@@ -106,6 +107,7 @@ const UserItem = (props) => {
                
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -156,9 +158,9 @@ const UserItem = (props) => {
           <div className='bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 '>
             <ul className='list-inline mb-0 '>
               <li className='list-inline-item p-3'>
-                {followers && (
+                {stories && (
                   <h5 className='font-weight-bold mb-0 d-block'>
-                    {followers.length}
+                    {stories}
                   </h5>
                 )}
                 <small className='text-muted'>
@@ -183,7 +185,7 @@ const UserItem = (props) => {
               <li className='list-inline-item'>
                 {following && (
                   <h5 className='font-weight-bold mb-0 d-block'>
-                    {followers.length}
+                    {following.length}
                   </h5>
                 )}
 
