@@ -21,7 +21,6 @@ import GenreMainPage from './components/genre/GenreMainPage';
 import PublicLandingPage from './components/pages/publicLandingPage';
 import SideNavBar from './components/layout/SideNavBar';
 
-import Header from './components/layout/Header';
 import FriendStories from './components/story/friendStories';
 import UserItem from './components/user/UserItem';
 import userForm from './components/user/userForm';
@@ -57,8 +56,6 @@ function App() {
         <AlertState>
           <div className="app__container">
             <Router>
-              {/* <Header /> */}
-
               <Navbar />
               <SideNavBar />
               <Alerts />

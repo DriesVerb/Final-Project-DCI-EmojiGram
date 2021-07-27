@@ -5,9 +5,9 @@
   border-radius: 0.5rem;
   width: 100%;
 
-  @include flex(row, space-around, center);
+  @include flex(row, center, center);
   &__flex {
-    @include flex(row, center, center);
+    @include flex(row, start, center);
   }
 
   &__link {

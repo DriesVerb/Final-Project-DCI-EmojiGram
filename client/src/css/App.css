@@ -323,10 +323,6 @@ a {
   grid-row: 3/4;
   grid-column: 2/4;
 }
-.app__alert {
-  grid-row: 3/4;
-  grid-column: 1/2;
-}
 
 .grid-container {
   display: grid;
@@ -365,13 +361,13 @@ a {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 .side-navbar__flex {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 .side-navbar__link {

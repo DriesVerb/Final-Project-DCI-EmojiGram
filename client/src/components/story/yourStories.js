@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import StoryContext from '../../context/story/storyContext';
-import { useParams } from 'react-router-dom';
 import PaginateComponent from '../utils/PaginateComponent';
 import AuthContext from '../../context/auth/authContext';
 function YourStories(props) {
