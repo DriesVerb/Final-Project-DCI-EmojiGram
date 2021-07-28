@@ -62,12 +62,12 @@ function navbar() {
     <Fragment>
       <Navbar>
         <Nav>
-          <i className=' fas fa-user ml-5 mt-2 justify-content-end' />
-          <Nav.Link href='/login' className='text-dark '>
+          <i className=" fas fa-user ml-5 mt-2 justify-content-end" />
+          <Nav.Link href="/login" className="text-dark ">
             LogIn
           </Nav.Link>
-          <i className=' fas fa-sign-in-alt ml-5 mt-2 justify-content-end' />
-          <Nav.Link href='/signup' className='text-dark '>
+          <i className=" fas fa-sign-in-alt ml-5 mt-2 justify-content-end" />
+          <Nav.Link href="/signup" className="text-dark ">
             SignUp
           </Nav.Link>
         </Nav>
@@ -77,7 +77,7 @@ function navbar() {
 
   return (
     <Fragment>
-      <Navbar bg="warning" expand="lg" className="navbar app__navbar mt-1">
+      <Navbar bg="warning" expand="lg" className="navbar app-grid__navbar mt-1">
         <Navbar.Brand href="/" className="navbar__brand text-bold">
           Emoji-Tales
         </Navbar.Brand>

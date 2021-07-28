@@ -2,7 +2,6 @@
   margin-top: 1rem;
   background-color: $main-blue;
   padding: 1rem;
-  border-radius: 0.5rem;
   width: 150px;
 
   @include flex(column, space-around, start);
