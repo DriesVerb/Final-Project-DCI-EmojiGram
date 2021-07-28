@@ -10,7 +10,7 @@
   width: 100%;
   @include flex(column, center, center);
   &__cta {
-    width: 90%;
+    width: 100%;
     margin-bottom: 1rem;
   }
   &__cards {
@@ -24,9 +24,7 @@
   @include flex(column, space-between, start);
   height: 30vh;
 
-
   &__footer {
     padding: 15px;
   }
 }
-

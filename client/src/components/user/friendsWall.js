@@ -7,11 +7,8 @@ const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
-  
-    const { _id, username, email, age, location, followers, following, stories } = user;
- 
-  
-
+  const { _id, username, email, age, location, followers, following, stories } =
+    user;
   const [pageNumber, SetPageNumber] = useState(0);
   const friendsPerPage = 5;
   const pagesVisited = pageNumber * friendsPerPage;
@@ -33,7 +30,6 @@ const FriensdWall = (props) => {
     // console.log (user)
     // eslint-disable-next-line
   }, []);
-
   return (
     <Fragment>
       <div className='grid-container__friends'>
@@ -93,7 +89,6 @@ const FriensdWall = (props) => {
     </Fragment>
   );
 };
-
 export default FriensdWall;
 
 // const [pageNumber, SetPageNumber] = useState(0);

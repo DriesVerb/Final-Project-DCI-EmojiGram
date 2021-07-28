@@ -21,15 +21,19 @@ const readPublicStory = () => {
     storyContext;
   const { id } = useParams();
   const [liked, setLiked] = useState(true);
+
   useEffect(() => {
     if (!singleStory || !singleStory.likes) {
       showSinglePublic(id);
     } else {
       if (singleStory.likes.length < 0) {
         setLiked(false);
+        showSinglePublic(id);
+      } else {
+        setLiked(true);
       }
     }
-  }, [singleStory, setLiked]);
+  }, [singleStory, setLiked, id]);
 
   const sanitizeData = () => ({
     __html: DOMPurify.sanitize(singleStory.richText),
@@ -89,8 +93,6 @@ const readPublicStory = () => {
                           </p>
                         )}
 
-                        <h5 className="font-weight-bold mb-0 d-block"></h5>
-
                         <small className="text-muted">
                           {' '}
                           <i className="fas fa-book mr-1"></i>Stories
@@ -114,7 +116,6 @@ const readPublicStory = () => {
                             {singleStory.user.following.length}
                           </p>
                         )}
-                        <h5 className="font-weight-bold mb-0 d-block"></h5>
 
                         <small className="text-muted">
                           {' '}

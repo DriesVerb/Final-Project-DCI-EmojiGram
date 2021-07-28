@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import Moment from "react-moment";
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from 'react';
+import Moment from 'react-moment';
+import { useHistory } from 'react-router-dom';
 // import { Link } from "react-router-dom";
 
 // components
-import EmojiChar from "./EmojiChar";
+import EmojiChar from './EmojiChar';
 
 const StoryCardBig = ({ story, show }) => {
   let history = useHistory();
-  
+
   const storyDetailsPublic = (id) => {
     history.push(`/${show}/${id}`);
   };
@@ -37,38 +37,35 @@ const StoryCardBig = ({ story, show }) => {
       <div className="story-card-big__emojis">
         <div className="story-card-big__emojis--center">
           {story.emojis.map((emoji, id) => (
-            <EmojiChar key={id} emoji={emoji} size="large" />
+            <div key={id} className="story-card-big__emoji">
+              <EmojiChar emoji={emoji} size="large" />
+            </div>
           ))}
         </div>
       </div>
       <div className="story-card-big__info">
         <div className="story-card-big__story">
-          <span className="story-card-big__story--bold">{story.title}</span>{" "}
-
+          <span className="story-card-big__story--bold">{story.title}</span>{' '}
           {/* ///////////////////////////////////////////////////////////////////////////// */}
           <span
             className="story-card-big__story--small"
             onClick={() => toProfile(story.user._id)}
           >
-           {story.user.username && <span> by{" "}
-            {story.user.username}</span>} 
-          </span>{" "}
-          
+            {story.user.username && <span> by {story.user.username}</span>}
+          </span>{' '}
           {/* ///////////////////////////////////////////////////////////////////////////// */}
           <span className="story-card-big__story--small">
-            {" "}
+            {' '}
             - <Moment format="DD/MM/YYYY">{story.createdAt}</Moment>
           </span>
         </div>
-        <div className='story-card-big__categories'>
+        <div className="story-card-big__categories">
           <div
             className={`story-card-big__box story-card-big__box--genre ${classGenre(
               story.genre
-            )}`}>
+            )}`}
+          >
             {story.genre}
-          </div>
-          <div className='story-card-big__box story-card-big__box--subgerne'>
-            {story.subGenre}
           </div>
         </div>
       </div>
@@ -79,7 +76,7 @@ const StoryCardBig = ({ story, show }) => {
             <i className="fa fa-thumbs-up" /> {story.likes.length}
           </span>
           <span className="story-card-big__comments">
-            <i className="fas fa-comment" />{" "}
+            <i className="fas fa-comment" />{' '}
             {story.comments && story.comments.length}
           </span>
           <span className="story-card-big__views">
