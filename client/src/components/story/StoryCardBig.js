@@ -37,7 +37,9 @@ const StoryCardBig = ({ story, show }) => {
       <div className="story-card-big__emojis">
         <div className="story-card-big__emojis--center">
           {story.emojis.map((emoji, id) => (
-            <EmojiChar key={id} emoji={emoji} size="large" />
+            <div key={id} className="story-card-big__emoji">
+              <EmojiChar emoji={emoji} size="large" />
+            </div>
           ))}
         </div>
       </div>
@@ -64,9 +66,6 @@ const StoryCardBig = ({ story, show }) => {
             )}`}
           >
             {story.genre}
-          </div>
-          <div className="story-card-big__box story-card-big__box--subgerne">
-            {story.subGenre}
           </div>
         </div>
       </div>

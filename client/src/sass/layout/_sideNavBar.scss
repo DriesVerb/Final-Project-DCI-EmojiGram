@@ -5,17 +5,10 @@
   border-radius: 0.5rem;
   width: 150px;
 
-<<<<<<< HEAD
-  @include flex(row, center, center);
-  &__flex {
-    @include flex(row, start, center);
-=======
-
   @include flex(column, space-around, start);
   &__flex {
     @include flex(column, start, start);
     height: 45px;
->>>>>>> main
   }
 
   &__link {

@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
-import NavbarSideLeft from '../layout/NavbarSideLeft'
+import React, { Fragment, useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
 
 // components
-import StoryCardBig from "../story/StoryCardBig";
+import StoryCardBigRight from '../story/StoryCardBigRight';
+import StoryCardBigLeft from '../story/StoryCardBigLeft';
 
 const PaginateComponent = ({ data, perPage, show }) => {
   const [pageNumber, SetPageNumber] = useState(0);
@@ -24,21 +24,31 @@ const PaginateComponent = ({ data, perPage, show }) => {
 
   return (
     <Fragment>
-      <div className='pagination'>
-
-        <div className='pagination__cards'>
+      <div className="pagination">
+        <div className="pagination__cards">
           {displayStories.map((story, index) => {
-            return (
-              <StoryCardBig
-                key={index}
-                story={story}
-                index={index}
-                show={show}
-              />
-            );
+            if (index % 2 === 0) {
+              return (
+                <StoryCardBigRight
+                  key={index}
+                  story={story}
+                  index={index}
+                  show={show}
+                />
+              );
+            } else {
+              return (
+                <StoryCardBigLeft
+                  key={index}
+                  story={story}
+                  index={index}
+                  show={show}
+                />
+              );
+            }
           })}
         </div>
-        <div className='pagination__buttons'>
+        <div className="pagination__buttons">
           <ReactPaginate
             previousLabel={'Prev'}
             nextLabel={'Next'}
@@ -57,3 +67,13 @@ const PaginateComponent = ({ data, perPage, show }) => {
 };
 
 export default PaginateComponent;
+
+/* 
+<StoryCardBigRight
+                key={index}
+                story={story}
+                index={index}
+                show={show}
+              />
+
+*/

@@ -59,7 +59,6 @@
   width: 95%;
   border-radius: 1rem;
   box-shadow: 0 8px 6px -6px $main-black;
-  border: 1px solid $main-black;
   transition: 0.3s ease;
   cursor: pointer;
   margin-bottom: 2rem;
@@ -165,6 +164,16 @@
   &__views {
     font-size: 1.5rem;
     padding: 0px 2rem;
+  }
+}
+
+.emoji-card {
+  border: $main-border;
+  @include flex(column, center, center);
+
+  &__rows {
+    padding: 1rem;
+    @include flex(row, center, center);
   }
 }
 
