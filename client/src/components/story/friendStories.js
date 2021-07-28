@@ -32,7 +32,7 @@ function FriendStories(props) {
     <div className="grid-container">
       <div className="grid-container__mid">
         {username && (
-          <h2 className="text-center mb-3">
+          <h2 className="text-center mb-3 bg-info text-white">
             {username.charAt(0).toUpperCase() + username.slice(1)}'s Stories
           </h2>
         )}

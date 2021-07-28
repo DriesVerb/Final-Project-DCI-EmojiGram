@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Moment from "react-moment";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 // components
 import EmojiChar from "./EmojiChar";
@@ -24,12 +24,10 @@ const StoryCardBig = ({ story, show }) => {
     const trimmedString = text.substring(0, 200);
     return trimmedString;
   };
-
   const classGenre = (genre) => {
-    const replaceGenre = genre.split(" ").join("-");
+    const replaceGenre = genre.split(' ').join('-');
     return replaceGenre;
   };
-
   return (
     <div
       key={story._id}
@@ -59,15 +57,14 @@ const StoryCardBig = ({ story, show }) => {
             - <Moment format="DD/MM/YYYY">{story.createdAt}</Moment>
           </span>
         </div>
-        <div className="story-card-big__categories">
+        <div className='story-card-big__categories'>
           <div
             className={`story-card-big__box story-card-big__box--genre ${classGenre(
               story.genre
-            )}`}
-          >
+            )}`}>
             {story.genre}
           </div>
-          <div className="story-card-big__box story-card-big__box--subgerne">
+          <div className='story-card-big__box story-card-big__box--subgerne'>
             {story.subGenre}
           </div>
         </div>
@@ -107,5 +104,4 @@ const StoryCardBig = ({ story, show }) => {
     </div>
   );
 };
-
 export default StoryCardBig;

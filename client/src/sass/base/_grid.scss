@@ -1,8 +1,9 @@
 .app {
   &__container {
     display: grid;
-    grid-template-rows: 5rem 5rem 1fr;
+    // grid-template-rows: 5rem 5rem 1fr;
     grid-template-columns: 1fr 25rem 3fr 1fr;
+    margin-top: 0;
   }
 
   &__navbar {

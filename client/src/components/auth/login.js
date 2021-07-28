@@ -68,15 +68,15 @@ function Login(props) {
     width: 420,
     margin: "20px auto",
   };
-  const avatarStyle = { backgroundColor: "#FB8500" };
+
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
-          <Avatar style={avatarStyle} className="avatar mb-4">
+          <Avatar className="avatar mb-4">
             <HttpsOutlinedIcon />
           </Avatar>
-          <h3 className="text-success mb-5">Login to Account</h3>
+          <h3 className="text-info mb-5">Login to Account</h3>
         </Grid>
         <Formik>
           <Form
@@ -109,24 +109,24 @@ function Login(props) {
             />
 
             <Button
-              className="btn mt-5 bg-warning"
+              className="btn mt-5 bg-info "
               // className="btn mt-2"
               type="submit"
               variant="contained"
               fullWidth
             >
-              Login
+              <span className="text-white">Login</span>
             </Button>
           </Form>
         </Formik>
         <Typography className="typo mt-3">
-          <Link className="text-success" href="#">
+          <Link className="text-info" href="#">
             Forgot Password?
           </Link>
         </Typography>
         <h4 className="signup mt-5">
           Do not have an account?
-          <Link className=" text-success ml-3 mb-4" href="/signup">
+          <Link className=" text-info ml-3 mb-4" href="/signup">
             Sign Up
           </Link>
         </h4>

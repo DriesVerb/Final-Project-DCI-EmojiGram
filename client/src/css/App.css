@@ -308,8 +308,8 @@ a {
 
 .app__container {
   display: grid;
-  grid-template-rows: 5rem 5rem 1fr;
   grid-template-columns: 1fr 25rem 3fr 1fr;
+  margin-top: 0;
 }
 .app__navbar {
   grid-row: 1/2;
@@ -362,17 +362,18 @@ a {
   background-color: #219ebc;
   padding: 1rem;
   border-radius: 0.5rem;
-  width: 100%;
+  width: 150px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: start;
 }
 .side-navbar__flex {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  height: 45px;
 }
 .side-navbar__link {
   color: #effafa;
@@ -413,10 +414,6 @@ a {
   background-color: #44cf6c;
 }
 
-.landing-page__header {
-  padding: 2rem;
-}
-
 .public-stories {
   height: 100%;
   width: 100%;
@@ -443,7 +440,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
-  height: 65vh;
+  height: 30vh;
 }
 .left-sidebar__footer {
   padding: 15px;
@@ -633,8 +630,9 @@ a {
   border: 1px solid #0a0a0a;
   transition: 0.3s ease;
   cursor: pointer;
-  margin-bottom: 1.3rem;
-  background-color: #a3a3a3;
+  margin-bottom: 2rem;
+  background-color: #effafa;
+  width: 100%;
 }
 .story-card-big:hover {
   box-shadow: 0 1rem 7px -5px #0a0a0a;
@@ -707,10 +705,6 @@ a {
   flex-direction: row;
   justify-content: start;
   align-items: start;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #0a0a0a;
 }
 .story-card-big__footer {
   border-top: 1px solid #030301;
@@ -741,6 +735,18 @@ a {
 .story-card-big__like, .story-card-big__comments, .story-card-big__views {
   font-size: 1.5rem;
   padding: 0px 2rem;
+}
+
+.left-yourStories {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  height: 30vh;
+  margin-top: 30vh;
+}
+.left-yourStories__footer {
+  padding: 15px;
 }
 
 .page {

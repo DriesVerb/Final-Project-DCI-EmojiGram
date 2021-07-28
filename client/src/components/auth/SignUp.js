@@ -71,13 +71,13 @@ const SignUp = (props) => {
     width: 420,
     margin: "20px auto",
   };
-  const avatarStyle = { backgroundColor: "#fb8500" };
+  // const avatarStyle = { backgroundColor: "warning" };
 
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
-          <h3 className="login mt-5 text-success">Welcome to Emoji-Tales</h3>
+          <h3 className="login mt-5 text-info">Welcome to Emoji-Tales</h3>
           <h4 className="login mb-5 mt-3">Create an Account</h4>
         </Grid>
         <Formik>
@@ -118,22 +118,22 @@ const SignUp = (props) => {
             />
 
             <Button
-              className="btn mt-5 bg-warning"
+              className="btn mt-5 bg-info"
               type="submit"
               variant="contained"
               fullWidth
             >
-              <Avatar style={avatarStyle} className="avatar mb-4s">
+              <Avatar className="avatar mb-4s">
                 <HttpsOutlinedIcon />
               </Avatar>
-              <span className="ml-3 "> Sign Up</span>
+              <span className="ml-3 text-white "> Sign Up</span>
             </Button>
           </Form>
         </Formik>
 
         <h4 className="signup mt-5">
           Already have an account?
-          <Link className="link ml-3 mb-4 text-success" href="/login">
+          <Link className="link ml-3 mb-4 text-info" href="/login">
             Log In
           </Link>
         </h4>

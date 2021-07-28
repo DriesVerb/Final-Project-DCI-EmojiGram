@@ -69,7 +69,7 @@ const userForm = (props) => {
           Add some changes to your profile
         </Typography>
         <Typography
-          className="mt-4 text-success"
+          className="mt-4 text-info"
           gutterBottom
           variant="h2"
           align="center"
@@ -194,9 +194,9 @@ const userForm = (props) => {
                   type="submit"
                   variant="contained"
                   fullWidth
-                  style={{ backgroundColor: "#44cf6c" }}
+                  style={{ backgroundColor: "#219ebc" }}
                 >
-                  Update
+                  <span className="text-white">Update</span>
                 </Button>
               </Grid>
 

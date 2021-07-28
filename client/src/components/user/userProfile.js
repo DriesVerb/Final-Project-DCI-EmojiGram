@@ -28,14 +28,14 @@ const UserProfile = (props) => {
   const { id } = useParams();
 
   useEffect(() => {
-    if (!user || !users) {
+    if (user || users) {
       getUserProfile(id);
     } else {
       if (followers) {
         compareValue(followers);
-      } else {
+      } /* else {
         getUserProfile(id);
-      }
+      } */
     }
   }, [user, users]);
 

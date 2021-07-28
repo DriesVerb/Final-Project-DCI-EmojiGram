@@ -16,8 +16,7 @@ exports.userProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id)
       .populate({ path: "following", populate: { path: "user" } })
-      .populate({ path: "followers", populate: { path: "user" } })
-      .populate({ path: "stories", populate: { path: "story" } });
+      .populate({ path: "followers", populate: { path: "user" } });
 
     if (!user) {
       return res.status(400).json({ msg: "There is no profile for this user" });
@@ -84,9 +83,17 @@ exports.myStories = async (req, res) => {
     const stories = await Story.find({ user: req.params.id }).sort({
       createdAt: -1,
     });
+
+    const num = stories.length;
+
     if (!stories) {
       return res.status(404).json({ msg: "Stories not found" });
     }
+    const user = await User.findById(req.params.id);
+
+    user.stories = num;
+
+    user.save();
 
     res.json(stories);
   } catch (err) {

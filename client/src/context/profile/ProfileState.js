@@ -25,6 +25,7 @@ const ProfileState = (props) => {
         username: "",
         name: "",
         email: "",
+        stories:"",
         password: "",
         location: "",
         hobby: "",
