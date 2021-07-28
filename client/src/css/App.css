@@ -523,6 +523,10 @@ a {
   margin: 1rem;
 }
 
+.genre-show__select {
+  margin-bottom: 1rem;
+}
+
 .pagination {
   display: flex;
   flex-direction: column;

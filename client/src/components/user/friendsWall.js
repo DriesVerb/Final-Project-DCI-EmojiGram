@@ -5,10 +5,13 @@ import ReactPaginate from 'react-paginate';
 
 const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
-  const { user, getProfile } = profileContext;
-  const { _id } = user;
-  console.log(user.following);
-  console.log(user.stories);
+  const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
+    profileContext;
+  
+    const { _id, username, email, age, location, followers, following, stories } = user;
+ 
+  
+
   const [pageNumber, SetPageNumber] = useState(0);
   const friendsPerPage = 5;
   const pagesVisited = pageNumber * friendsPerPage;
@@ -30,6 +33,7 @@ const FriensdWall = (props) => {
     // console.log (user)
     // eslint-disable-next-line
   }, []);
+
   return (
     <Fragment>
       <div className='grid-container__friends'>

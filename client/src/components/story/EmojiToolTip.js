@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmojiToolTip = ({ unicodeName }) => {
+const EmojiToolTip = ({ unicodeName, passKey }) => {
   const changeName = (input) => {
     const splitName = input.split(' ');
     if (splitName[0].charAt(0) === 'E') splitName.splice(0, 1);
@@ -20,7 +20,7 @@ const EmojiToolTip = ({ unicodeName }) => {
   };
 
   return (
-    <div className="emoji-tooltip">
+    <div key={passKey} className="emoji-tooltip">
       <p className="emoji-tooltip__name">{changeName(unicodeName)}</p>
     </div>
   );

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // components
-import EmojiToolTip from "./EmojiToolTip";
+import EmojiToolTip from './EmojiToolTip';
 
 const EmojiChar = ({ emoji, size }) => {
   const [hover, setHover] = useState(false);
@@ -20,7 +20,9 @@ const EmojiChar = ({ emoji, size }) => {
       }}
     >
       {emoji.character}
-      {hover ? <EmojiToolTip unicodeName={emoji.unicodeName} /> : null}
+      {hover ? (
+        <EmojiToolTip unicodeName={emoji.unicodeName} passKey={emoji._id} />
+      ) : null}
     </div>
   );
 };

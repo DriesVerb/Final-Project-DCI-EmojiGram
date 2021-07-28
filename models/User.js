@@ -12,14 +12,11 @@ const userSchema = new Schema({
   occupation: String,
   message: String,
   avatar: String,
-  stories: [
-    {
-      story: {
-        type: Schema.Types.ObjectId,
-        ref: 'Story',
-      },
-    },
-  ],
+
+
+  stories: Number,
+
+
   following: [
     {
       user: {
