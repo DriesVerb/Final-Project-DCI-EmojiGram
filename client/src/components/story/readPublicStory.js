@@ -14,26 +14,14 @@ import AuthContext from '../../context/auth/authContext';
 const readPublicStory = () => {
   let history = useHistory();
   const authContext = useContext(AuthContext);
-  const { isAuthenticated } = authContext;
+  const { isAuthenticated, user } = authContext;
 
   const storyContext = useContext(StoryContext);
   const { singleStory, showSinglePublic, addLike, removeLike, deleteComment } =
     storyContext;
+
   const { id } = useParams();
   const [liked, setLiked] = useState(true);
-
-  useEffect(() => {
-    if (!singleStory || !singleStory.likes) {
-      showSinglePublic(id);
-    } else {
-      if (singleStory.likes.length < 0) {
-        setLiked(false);
-        showSinglePublic(id);
-      } else {
-        setLiked(true);
-      }
-    }
-  }, [singleStory, setLiked, id]);
 
   const sanitizeData = () => ({
     __html: DOMPurify.sanitize(singleStory.richText),
@@ -43,9 +31,21 @@ const readPublicStory = () => {
     history.push(`/profile/${id}`);
   };
 
+  const compareValue = (input) => {
+    input.forEach((el) => {
+      if (user._id === el.user) {
+        setLiked(true);
+      }
+    });
+  };
+
+  useEffect(() => {
+    showSinglePublic(id);
+  }, []);
+
   return (
     <Fragment>
-      <div className="container p-0">
+      <div className="grid-container">
         <div className=" mx-auto">
           <div className="bg-white shadow rounded overflow-hidden">
             <div className=" card-body">
@@ -133,69 +133,19 @@ const readPublicStory = () => {
                 <div>
                   <div dangerouslySetInnerHTML={sanitizeData()}></div>
 
-                  {/* ///////////////////////////////////////////////////////////////////////////////////////// */}
-                  {/* Liked*/}
                   <div className="pb-story d-flex  ">
                     <div className="pb-story__likes pb-story__icon pr-3">
-                      {liked ? (
-                        <div className="pb-story__icon">
-                          {isAuthenticated ? (
-                            <div className="pb-story__size">
-                              <i
-                                className="fa fa-thumbs-up"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  addLike(singleStory._id);
-                                  setLiked(false);
-                                }}
-                              />
-                              {singleStory.likes && (
-                                <span className="pb-story__count">
-                                  {singleStory.likes.length}
-                                </span>
-                              )}
-                            </div>
-                          ) : (
-                            <div className="pb-story__size">
-                              <i className="fa fa-thumbs-up" />
-                              {singleStory.likes && (
-                                <span className="pb-story__count">
-                                  {singleStory.likes.length}
-                                </span>
-                              )}
-                            </div>
+                      {/* likes */}
+                      {!isAuthenticated ? (
+                        <div className="pb-story__size">
+                          <i className="fa fa-thumbs-up" />
+                          {singleStory.likes && (
+                            <span className="pb-story__count">
+                              {singleStory.likes.length}
+                            </span>
                           )}
                         </div>
-                      ) : (
-                        <div className="pb-story__icon ">
-                          {isAuthenticated ? (
-                            <div className="like pb-story__size">
-                              <i
-                                className="fa fa-thumbs-up"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  removeLike(singleStory._id);
-                                  setLiked(true);
-                                }}
-                              />
-                              {singleStory.likes && (
-                                <span className="pb-story__count">
-                                  {singleStory.likes.length}
-                                </span>
-                              )}
-                            </div>
-                          ) : (
-                            <div className="like pb-story__size">
-                              <i className="fa fa-thumbs-up" />
-                              {singleStory.likes && (
-                                <span className="pb-story__count">
-                                  {singleStory.likes.length}
-                                </span>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      )}
+                      ) : null}
                     </div>
 
                     <div className="pb-story__comments pb-story__icon">
@@ -276,3 +226,67 @@ const readPublicStory = () => {
   );
 };
 export default readPublicStory;
+
+/* 
+
+{liked ? (
+                        <div className="pb-story__icon">
+                          {isAuthenticated ? (
+                            <div className="pb-story__size">
+                              <i
+                                className="fa fa-thumbs-up"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  addLike(singleStory._id);
+                                  setLiked(false);
+                                }}
+                              />
+                              {singleStory.likes && (
+                                <span className="pb-story__count">
+                                  {singleStory.likes.length}
+                                </span>
+                              )}
+                            </div>
+                          ) : (
+                            <div className="pb-story__size">
+                              <i className="fa fa-thumbs-up" />
+                              {singleStory.likes && (
+                                <span className="pb-story__count">
+                                  {singleStory.likes.length}
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="pb-story__icon ">
+                          {isAuthenticated ? (
+                            <div className="like pb-story__size">
+                              <i
+                                className="fa fa-thumbs-up"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  removeLike(singleStory._id);
+                                  setLiked(true);
+                                }}
+                              />
+                              {singleStory.likes && (
+                                <span className="pb-story__count">
+                                  {singleStory.likes.length}
+                                </span>
+                              )}
+                            </div>
+                          ) : (
+                            <div className="like pb-story__size">
+                              <i className="fa fa-thumbs-up" />
+                              {singleStory.likes && (
+                                <span className="pb-story__count">
+                                  {singleStory.likes.length}
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+*/

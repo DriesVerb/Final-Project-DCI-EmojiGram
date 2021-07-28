@@ -38,10 +38,11 @@ const PublicLandingPage = () => {
 
   return (
     <div className="grid-container">
-      {/* <header className="landing-page__header grid-container__header">
-      </header> */}
-      <div className="left-sidebar grid-container__left">
-        <div className="left-sidebar__menu">
+      <main className="public-stories grid-container__mid">
+        <div className="public-stories__cta">
+          <EmojiCTA />
+        </div>
+        <div className="public-stories__sort">
           <NavDropdown title="Sorted by" id="basic-nav-dropdown">
             <NavDropdown.Item onClick={onChange}>Latest</NavDropdown.Item>
             <NavDropdown.Item onClick={onChange}>Alphabet</NavDropdown.Item>
@@ -56,11 +57,6 @@ const PublicLandingPage = () => {
             <NavDropdown.Item onClick={onChange}>Western</NavDropdown.Item>
             <NavDropdown.Item onClick={onChange}>SciFi</NavDropdown.Item>
           </NavDropdown>
-        </div>
-      </div>
-      <main className="public-stories grid-container__mid">
-        <div className="public-stories__cta">
-          <EmojiCTA />
         </div>
         <div className="public-stories__cards">
           {sort === 'Most liked' ? (
