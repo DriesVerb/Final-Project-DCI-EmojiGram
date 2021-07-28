@@ -63,7 +63,10 @@ const userForm = (props) => {
 
   return (
     <Fragment>
-      <Card style={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}>
+      <Card
+        elevation={10}
+        style={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}
+      >
         <Typography gutterBottom variant="h4" align="center">
           <i className="fas fa-user mr-2 " />
           Add some changes to your profile

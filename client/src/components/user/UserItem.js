@@ -10,6 +10,7 @@ const UserItem = (props) => {
     _id,
     username,
     email,
+    age,
     location,
     occupation,
     hobby,
