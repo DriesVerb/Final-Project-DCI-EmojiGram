@@ -22,7 +22,9 @@ function YourStories(props) {
           <NavBarSideLeft />
         </sideNavBar>
         <div className="grid-container__mid">
-          <h2 className="text-center mb-4 bg-info text-white">My Stories</h2>
+          <h2 className="story text-center mb-4 bg-info text-white">
+            My Stories
+          </h2>
           <PaginateComponent data={stories} perPage={5} show={component} />
         </div>
       </div>
