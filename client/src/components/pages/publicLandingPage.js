@@ -4,7 +4,7 @@ import { NavDropdown } from "react-bootstrap";
 
 // Components
 import PaginateComponent from "../utils/PaginateComponent";
-import StoryCardSmall from "../story/StoryCardSmall";
+// import StoryCardSmall from "../story/StoryCardSmall";
 import EmojiCTA from "../story/EmojiCTA";
 const PublicLandingPage = () => {
   const storyContext = useContext(StoryContext);
@@ -58,13 +58,13 @@ const PublicLandingPage = () => {
             <NavDropdown.Item onClick={onChange}>SciFi</NavDropdown.Item>
           </NavDropdown>
         </div>
-        <div className="left-sidebar__footer">
+        {/* <div className="left-sidebar__footer">
           <p>Footer</p>
           <br />
           <p>Facebook</p>
           <br />
           <p>Twitter</p>
-        </div>
+        </div> */}
       </div>
       <main className="public-stories grid-container__mid">
         <div className="public-stories__cta">
@@ -78,7 +78,7 @@ const PublicLandingPage = () => {
           )}
         </div>
       </main>
-      <div className="right-sidebar grid-container__right">
+      {/* <div className="right-sidebar grid-container__right">
         <StoryCardSmall story={topStories} amount={3} title={"Most Likes:"} />
         <StoryCardSmall
           story={test}
@@ -86,7 +86,7 @@ const PublicLandingPage = () => {
           title={"Latest Published:"}
         />
         {/* <MostLikes /> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 };

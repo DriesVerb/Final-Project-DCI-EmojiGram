@@ -6,6 +6,8 @@ const cors = require('cors');
 const User = require('./models/User');
 const jwt = require('jsonwebtoken');
 const app = express();
+const path = require('path');
+
 
 
 app.use(express.static(__dirname+ '/public'))
@@ -99,6 +101,15 @@ app.get(
     res.redirect('http://localhost:3000/profile/' + req.user.id);
   }
 );
+
+
+
+
+
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

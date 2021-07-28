@@ -68,7 +68,7 @@ const StoryEditor = () => {
         e.preventDefault();
         onSubmit();
       }}
-      className="grid-container"
+      className="grid-container__form"
     >
       {console.log(formData)}
       <div className="grid-container__left"></div>

@@ -29,13 +29,13 @@ const NavbarSideLeft = () => {
             <NavDropdown.Item onClick={onChange}>SciFi</NavDropdown.Item>
           </NavDropdown>
         </div>
-        <div className='left-sidebar__footer'>
+        {/* <div className='left-sidebar__footer'>
           <p>Footer</p>
           <br />
           <p>Facebook</p>
           <br />
           <p>Twitter</p>
-        </div>{' '}
+        </div>{' '} */}
       </div>
     </Fragment>
   );

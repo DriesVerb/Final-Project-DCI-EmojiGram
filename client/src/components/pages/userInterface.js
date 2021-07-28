@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Images from '../../img/minions1.jpg';
+
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 
@@ -19,7 +19,7 @@ function userInterface(props) {
   };
 
   return (
-    <div className="grid-container">
+    <div className="grid-container__interface">
       <div className="grid-container__mid">
         <div className="user-interface__cards">
           <div

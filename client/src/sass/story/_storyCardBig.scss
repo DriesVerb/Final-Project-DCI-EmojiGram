@@ -171,7 +171,7 @@
 .left-yourStories {
   @include flex(column, space-between, start);
   height: 30vh;
-  margin-top: 30vh;
+  margin-top: 20vh;
 
   // &__Stories {
   //   @include flex(row, start, start);
