@@ -4,12 +4,9 @@ import { useParams } from 'react-router-dom';
 import PaginateComponent from '../utils/PaginateComponent';
 import AuthContext from '../../context/auth/authContext';
 import NavBarSideLeft from '../layout/NavbarSideLeft';
-
-
-
-
-
-
+import  SideNavBar   from '../layout/SideNavBar'              
+                 
+           
 function YourStories(props) {
   const storyContext = useContext(StoryContext);
   const { publishStory, stories } = storyContext;
@@ -23,6 +20,9 @@ function YourStories(props) {
   return (
     <Fragment>
       <div className='grid-container'>
+        <sideNavBar>
+          <SideNavBar />
+        </sideNavBar>
         <sideNavBar className='left-yourStories'>
           <NavBarSideLeft />
         </sideNavBar>

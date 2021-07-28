@@ -1,25 +1,49 @@
 .user-interface {
   &__cards {
-    @include flex(row, space-around, center);
+    @include flex(row, space-around, justify-content);
+    padding: 20px;
+    position: relative;
+    top: 0;
+    height: 500px;
+  }
+  &__icons {
+    margin-left: 3rem;
   }
 }
-
+.header-interface {
+  position: inline-block;
+}
 .user-card {
+  border-left: 0.2rem solid $main-l-grey;
   @include flex(column, center, center);
   &__img {
     height: 20rem;
     width: 20rem;
     margin-bottom: 2rem;
+    margin-left: 6rem;
   }
 
   &__title {
-    @include main-font(2rem, 500, $main-black);
+    @include main-font(2.5rem, 500, $main-black);
     margin-bottom: 2rem;
     margin-top: 1rem;
+    margin-left: 3rem;
   }
 
   &__btn {
     font-size: 2rem;
+    margin-left: 3rem;
+    border-radius: 10% 7% 10% 10% / 10% 6% 10% 10%;
+    height: 4rem;
+
+    background: linear-gradient(
+      90deg,
+      rgb(157, 157, 157) 0%,
+      rgb(203, 204, 206) 100%
+    );
+    border-style: none;
+    &:hover {
+      background: linear-gradient(90deg, ($main-yellow) 0%, ($main-blue) 100%);
+    }
   }
 }
-

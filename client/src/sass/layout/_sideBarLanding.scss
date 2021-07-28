@@ -1,4 +1,4 @@
-.side-navbar{
+.side-navbar__login{
   margin-top: 1rem;
   background-color: $main-blue;
   padding: 1rem;
@@ -8,10 +8,9 @@
   
 
 
-  @include flex(column, space-around, end);
+  @include flex(column, space-around, start);
   &__flex {
-    @include flex(column, start, end
-    );
+    @include flex(column, start, start);
     height: 45px;
     margin: 0;
   }

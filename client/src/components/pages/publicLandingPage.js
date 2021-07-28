@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import StoryContext from "../../context/story/storyContext";
 import { NavDropdown } from "react-bootstrap";
+import SideNavBar from '../layout/SideNavBar';
+
 
 // Components
 import PaginateComponent from "../utils/PaginateComponent";
@@ -38,12 +40,16 @@ const PublicLandingPage = () => {
 
 
   return (
-    <div className="grid-container">
+    <div className='grid-container'>
       {/* <header className="landing-page__header grid-container__header">
       </header> */}
-      <div className="left-sidebar grid-container__left">
-        <div className="left-sidebar__menu">
-          <NavDropdown title="Sorted by" id="basic-nav-dropdown">
+      <sideNavBar>
+        <SideNavBar />
+      </sideNavBar>
+
+      <div className='left-sidebar grid-container__left'>
+        <div className='left-sidebar__menu'>
+          <NavDropdown title='Sorted by' id='basic-nav-dropdown'>
             <NavDropdown.Item onClick={onChange}>Latest</NavDropdown.Item>
             <NavDropdown.Item onClick={onChange}>Alphabet</NavDropdown.Item>
             <NavDropdown.Item onClick={onChange}>Most liked</NavDropdown.Item>
@@ -66,15 +72,19 @@ const PublicLandingPage = () => {
           <p>Twitter</p>
         </div> */}
       </div>
-      <main className="public-stories grid-container__mid">
-        <div className="public-stories__cta">
+      <main className='public-stories grid-container__mid'>
+        <div className='public-stories__cta'>
           <EmojiCTA />
         </div>
-        <div className="public-stories__cards">
-          {sort === "Most liked" ? (
-            <PaginateComponent data={topStories} perPage={20} show={component}/>
+        <div className='public-stories__cards'>
+          {sort === 'Most liked' ? (
+            <PaginateComponent
+              data={topStories}
+              perPage={20}
+              show={component}
+            />
           ) : (
-            <PaginateComponent data={stories} perPage={20} show={component}/>
+            <PaginateComponent data={stories} perPage={20} show={component} />
           )}
         </div>
       </main>

@@ -1,8 +1,9 @@
 .app {
   &__container {
     display: grid;
+   
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr repeat(2, 0) repeat(3, 1fr) fit-content(80%);
+    grid-template-rows: 1fr repeat(1, 0) repeat(3, 1fr) fit-content(80%);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
   }
@@ -12,10 +13,10 @@
     grid-column: 2/4;
   }
 
-  // &__navbar--main  {
-  //   grid-row: 2/3;
-  //   grid-column: 2/4;
-  // }
+  &__navbar--main  {
+    grid-row: 2/3;
+    grid-column: 2/4;
+  }
 
   &__main {
     // grid-row: 3/4;
@@ -29,15 +30,16 @@
 
 .grid-container {
   display: grid;
+   grid-row-start: initial;
   grid-template-columns: 1fr 4fr fit-content(80%);
-  grid-template-rows: 3fr repeat(4, 0);
+  // grid-template-rows: 3fr repeat(0, 1fr);
+  grid-template-rows: 1fr repeat(1, 0) repeat(3, 0fr) fit-content(100%);
   grid-column-gap: 10px;
   grid-row-gap: 0px;
+  padding: 0px;
+  
 
-  // &__header {
-  //   grid-column: 1 / 4;
-  //   grid-row: 1/2;
-  // }
+
 
   // &__mid {
   //   // grid-column: 2 / 3;
@@ -62,6 +64,9 @@
   grid-column-gap: 10px;
   grid-row-gap: 0px;
   margin-bottom: 300px;
+  &__.header-interface {
+  position: inline-block;
+}
 }
 
 .grid-container__form {

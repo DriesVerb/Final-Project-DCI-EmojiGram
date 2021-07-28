@@ -19,8 +19,9 @@ import PreviewStory from './components/story/PreviewStory';
 import ShowStory from './components/story/showStory';
 import GenreMainPage from './components/genre/GenreMainPage';
 import PublicLandingPage from './components/pages/publicLandingPage';
+import SideBarLanding from './components/layout/SideBarLanding';
 import SideNavBar from './components/layout/SideNavBar';
-import NavbarSideLeft from './components/layout/NavbarSideLeft';
+// import NavbarSideLeft from './components/layout/NavbarSideLeft';
 
 import Header from './components/layout/Header';
 import FriendStories from './components/story/friendStories';
@@ -39,7 +40,7 @@ import ProfileState from './context/profile/ProfileState';
 
 // import setAuthToken
 import setAuthToken from './context/auth/setAuthToken';
-import SortByYourStories from './components/layout/SortByYourStories';
+
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -59,19 +60,14 @@ function App() {
         <AlertState>
           <div className='app__container'>
             <Router>
-              {/* <Header /> */}
-
-              {/* <NavbarSideLeft /> */}
               <Alerts />
               <div className='app__main'>
                 <Navbar />
-                <sideNavBar>
-                  <SideNavBar />
-                </sideNavBar>
+
                 <Switch>
                   <Route path='/' exact component={PublicLandingPage} />
 
-                  <PrivateRoute path='/landing' exact component={LandingPage} />
+                  {/* <PrivateRoute path='/landing' exact component={LandingPage} /> */}
                   <PrivateRoute
                     path='/UserInterface'
                     exact
@@ -81,7 +77,6 @@ function App() {
                     path='/yourstories'
                     exact
                     component={YourStories}
-                
                   />
                   <Route
                     path='/friendStories/:id'
