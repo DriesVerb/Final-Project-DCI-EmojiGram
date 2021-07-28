@@ -1,24 +1,12 @@
 import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
-import AuthContext from '../../context/auth/authContext';
-import SideNavBar from '../layout/SideNavBar'
 
 // components
 import Icon from '../utils/Icon';
 
 // Navbar user interface
 function userInterface(props) {
-  const authContext = useContext(AuthContext);
-
-  const { user } = authContext;
-
-  // let history = useHistory();
-
-  const toMyStories = (id) => {
-    props.history.push(`/yourstories/${id}`);
-  };
-
   return (
     <div className='grid-container'>
       <h3 className='header-interface'>Read Different Think Different</h3>

@@ -2,13 +2,16 @@
   margin-top: 1rem;
   background-color: $main-blue;
   padding: 1rem;
-  border-radius: 0.5rem;
   width: 150px;
   height: 300px;
   
 
+<<<<<<< HEAD
 
   @include flex(column, space-around, end);
+=======
+  @include flex(column, space-around, start);
+>>>>>>> ec28ddaf05f36d17a5f0c71fb1ff18437cf76929
   &__flex {
     @include flex(column, start, end
     );

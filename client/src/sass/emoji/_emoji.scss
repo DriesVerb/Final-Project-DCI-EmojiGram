@@ -1,7 +1,5 @@
 .emoji {
   @include flex(column, space-around, center);
-  border-radius: 1rem;
-  border: $main-border;
   background-color: $main-l-grey;
   padding: 1.5rem;
 
@@ -10,7 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     
+=======
+    height: 100%;
+>>>>>>> ec28ddaf05f36d17a5f0c71fb1ff18437cf76929
   }
 
   &__character {
@@ -22,7 +24,7 @@
     }
 
     &--medium {
-      font-size: 4rem;
+      font-size: 4.2rem;
     }
 
     &--large {
@@ -35,7 +37,16 @@
   }
 
   &__buttons {
+    width: 35%;
     @include flex(row, space-between, center);
+  }
+
+  &__btn {
+    cursor: pointer;
+    @include main-font(1.2rem, 500, $main-black);
+    border: $main-border;
+    padding: 0.5rem;
+    background-color: $main-white;
   }
 }
 
@@ -56,7 +67,7 @@
 
   &::after {
     position: absolute;
-    content: "";
+    content: '';
     display: inline-block;
     height: 20px;
     width: 20px;

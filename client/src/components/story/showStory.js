@@ -1,32 +1,24 @@
-import React, { useEffect, useContext, Fragment } from "react";
+import React, { useEffect, useContext, Fragment } from 'react';
 
 // secure the rich text
-import DOMPurify from "dompurify";
+import DOMPurify from 'dompurify';
 
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 // import './showStory.css'
-import { Button } from "react-bootstrap";
-import StoryContext from "../../context/story/storyContext";
-
+import { Button } from 'react-bootstrap';
+import StoryContext from '../../context/story/storyContext';
 
 // components
-import EmojiChar from "./EmojiChar";
+import EmojiChar from './EmojiChar';
 
 function ShowStory(props) {
   const storyContext = useContext(StoryContext);
-  const {
-    singleStory,
-    deleteStory,
-    setEditedStory,
-    showStory,
-  } = storyContext;
-
+  const { singleStory, deleteStory, setEditedStory, showStory } = storyContext;
 
   const { id } = useParams();
 
   useEffect(() => {
     showStory(id);
-    singleStory
   }, []);
 
   const onDelete = () => {
@@ -37,10 +29,10 @@ function ShowStory(props) {
   };
   const onEdit = () => {
     setEditedStory(singleStory);
-    props.history.push("/writestory");
+    props.history.push('/writestory');
   };
 
-  console.log(singleStory)
+  console.log(singleStory);
 
   const sanitizeData = () => ({
     __html: DOMPurify.sanitize(singleStory.richText),
@@ -59,7 +51,6 @@ function ShowStory(props) {
           </div>
 
           <div className="grid-container__left pb-story__navbar">
-          
             <div className="pb-story__comments pb-story__icon">
               <a href="#comment" className="pb-story__link">
                 <span className="pb-story__size">
@@ -90,10 +81,7 @@ function ShowStory(props) {
               ))}
             </div>
             <div dangerouslySetInnerHTML={sanitizeData()}></div>
-     
-       
           </div>
-
         </div>
       )}
     </Fragment>

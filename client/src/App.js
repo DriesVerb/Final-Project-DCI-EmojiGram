@@ -23,7 +23,6 @@ import SideBarLanding from './components/layout/SideBarLanding';
 import SideNavBar from './components/layout/SideNavBar';
 // import NavbarSideLeft from './components/layout/NavbarSideLeft';
 
-import Header from './components/layout/Header';
 import FriendStories from './components/story/friendStories';
 import UserItem from './components/user/UserItem';
 import userForm from './components/user/userForm';
@@ -58,69 +57,69 @@ function App() {
     <ProfileState>
       <StoryState>
         <AlertState>
-          <div className='app__container'>
+          <div className="app-grid">
             <Router>
               <Alerts />
-              <div className='app__main'>
-                <Navbar />
-
+              <Navbar />
+              <SideNavBar />
+              <div className="app-grid__main">
                 <Switch>
-                  <Route path='/' exact component={PublicLandingPage} />
+                  <Route path="/" exact component={PublicLandingPage} />
 
-                  {/* <PrivateRoute path='/landing' exact component={LandingPage} /> */}
+                  <PrivateRoute path="/landing" exact component={LandingPage} />
                   <PrivateRoute
-                    path='/UserInterface'
+                    path="/UserInterface"
                     exact
                     component={UserInterface}
                   />
                   <PrivateRoute
-                    path='/yourstories'
+                    path="/yourstories"
                     exact
                     component={YourStories}
                   />
                   <Route
-                    path='/friendStories/:id'
+                    path="/friendStories/:id"
                     exact
                     component={FriendStories}
                   />
                   <PrivateRoute
-                    path='/writestory'
+                    path="/writestory"
                     exact
                     component={StoryEditor}
                   />
                   <PrivateRoute
-                    path='/previewstory'
+                    path="/previewstory"
                     exact
                     component={PreviewStory}
                   />
                   <Route
-                    path='/publicstories'
+                    path="/publicstories"
                     exact
                     component={PublicLandingPage}
                   />
 
-                  <Route path='/profile' exact component={UserItem} />
-                  <Route path='/profile/:id' exact component={UserProfile} />
+                  <Route path="/profile" exact component={UserItem} />
+                  <Route path="/profile/:id" exact component={UserProfile} />
 
                   <PrivateRoute
-                    path='/friendsWall'
+                    path="/friendsWall"
                     exact
                     component={FriendsWall}
                   />
 
                   <PrivateRoute
-                    path='/showstory/:id'
+                    path="/showstory/:id"
                     exact
                     component={ShowStory}
                   />
-                  <Route exact path='/login' component={Login} />
-                  <Route exact path='/genre' component={GenreMainPage} />
-                  <Route exact path='/signup' component={SignUp} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/genre" component={GenreMainPage} />
+                  <Route exact path="/signup" component={SignUp} />
 
-                  <Route path='/userform' exact component={userForm} />
+                  <Route path="/userform" exact component={userForm} />
 
                   <Route
-                    path='/readpublicstory/:id'
+                    path="/readpublicstory/:id"
                     exact
                     component={ReadPublicStory}
                   />
