@@ -56,14 +56,12 @@ function App() {
     <ProfileState>
       <StoryState>
         <AlertState>
-          <div className="app__container">
+          <div className="app-grid">
             <Router>
               <Alerts />
-              <div className="app__main">
-                <Navbar />
-                <sideNavBar>
-                  <SideNavBar />
-                </sideNavBar>
+              <Navbar />
+              <SideNavBar />
+              <div className="app-grid__main">
                 <Switch>
                   <Route path="/" exact component={PublicLandingPage} />
 

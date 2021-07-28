@@ -1,12 +1,12 @@
-import React from "react";
-import { Nav } from "react-bootstrap";
+import React from 'react';
+import { Nav } from 'react-bootstrap';
 
 const SideNavBar = () => {
   return (
-    <div className="app__navbar--main">
+    <div className="app-grid__navbar--side">
       <div className="side-navbar">
         <Nav.Link className="side-navbar__link" href="/">
-          Home
+          Home Page
         </Nav.Link>
         <Nav.Link className="side-navbar__link" href="/genre">
           Genres

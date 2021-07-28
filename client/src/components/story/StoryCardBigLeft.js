@@ -13,9 +13,7 @@ const StoryCardBigLeft = ({ story, show }) => {
   const storyDetailsPublic = (id) => {
     history.push(`/${show}/${id}`);
   };
-  useEffect(() => {
-    console.log(story);
-  }, []);
+  useEffect(() => {}, []);
 
   const toProfile = (id) => {
     history.push(`/profile/${id}`);

@@ -77,7 +77,7 @@ function navbar() {
 
   return (
     <Fragment>
-      <Navbar bg="warning" expand="lg" className="navbar app__navbar mt-1">
+      <Navbar bg="warning" expand="lg" className="navbar app-grid__navbar mt-1">
         <Navbar.Brand href="/" className="navbar__brand text-bold">
           Emoji-Tales
         </Navbar.Brand>

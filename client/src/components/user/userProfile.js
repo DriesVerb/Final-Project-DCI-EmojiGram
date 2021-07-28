@@ -12,7 +12,6 @@ const UserProfile = (props) => {
   const {
     username,
     email,
-    age,
     location,
     followers,
     following,
