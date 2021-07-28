@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 // components
 import EmojiChar from './EmojiChar';
+import Icon from '../utils/Icon';
 
 const StoryCardBigRight = ({ story, show }) => {
   let history = useHistory();
@@ -12,9 +13,7 @@ const StoryCardBigRight = ({ story, show }) => {
   const storyDetailsPublic = (id) => {
     history.push(`/${show}/${id}`);
   };
-  useEffect(() => {
-    console.log(story);
-  }, []);
+  useEffect(() => {}, []);
 
   const toProfile = (id) => {
     history.push(`/profile/${id}`);
@@ -76,15 +75,29 @@ const StoryCardBigRight = ({ story, show }) => {
             {story.genre}
           </div>
         </header>
-        <h2 className="story-main__title">Title</h2>
+        <h2 className="story-main__title">{story.title}</h2>
         <p className="story-main__text">{trimString(story.text)}...</p>
-        <footer className="story-main__footer">footer</footer>
+        <footer className="story-main__footer">
+          <div className="story-main__empty"></div>
+          <div className="story-main__symbols">
+            <div className="story-main__icon">
+              <Icon name="thumb-up1" color="grey" size="x-small" />
+              <span className="story-main__counter">{story.likes.length}</span>
+            </div>
+            <div className="story-main__icon">
+              <Icon name="bubbles" color="grey" size="x-small" />
+              <span className="story-main__counter">
+                {story.comments && story.comments.length}
+              </span>
+            </div>
+            <div className="story-main__icon">
+              <Icon name="view-show" color="grey" size="x-small" />
+              <span className="story-main__counter">{story.views}</span>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   );
 };
 export default StoryCardBigRight;
-
-/* <div key={id} className="story-card-big__emoji">
-              <EmojiChar emoji={emoji} size="large" />
-            </div> */

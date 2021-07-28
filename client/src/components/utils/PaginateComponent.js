@@ -29,7 +29,7 @@ const PaginateComponent = ({ data, perPage, show }) => {
           {displayStories.map((story, index) => {
             if (index % 2 === 0) {
               return (
-                <StoryCardBigRight
+                <StoryCardBigLeft
                   key={index}
                   story={story}
                   index={index}
@@ -38,7 +38,7 @@ const PaginateComponent = ({ data, perPage, show }) => {
               );
             } else {
               return (
-                <StoryCardBigLeft
+                <StoryCardBigRight
                   key={index}
                   story={story}
                   index={index}

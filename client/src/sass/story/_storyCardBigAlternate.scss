@@ -1,17 +1,13 @@
 .story-card {
   cursor: pointer;
   z-index: 50;
-  height: 20rem;
+  height: 23rem;
   @include flex(row, center, center);
-
-  &:not(:last-child) {
-    margin-bottom: 1rem;
-  }
+  margin-bottom: 2rem;
 }
 .emoji-card {
   height: 100%;
-  border: $main-border;
-  background-color: $main-blue;
+  background-color: $main-l-grey;
   @include flex(column, center, center);
 
   &__rows {
@@ -22,7 +18,7 @@
 
 .story-main {
   height: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
   @include flex(column, space-between, start);
 
   &__header {
@@ -33,10 +29,6 @@
   &__author-info {
     z-index: 1000;
     @include flex(row, center, center);
-
-    &:hover {
-      background-color: green;
-    }
   }
 
   &__author {
@@ -48,7 +40,7 @@
     border-radius: 50%;
     height: 3.5rem;
     width: 3.5rem;
-    background-color: orangered;
+    background-color: $main-l-grey;
   }
   &__genre {
     padding: 0.5rem;
@@ -56,7 +48,28 @@
   }
 
   &__title {
+    width: 100%;
     @include flex(row, center, center);
     @include main-font(2.5rem, 500, $main-black);
+  }
+
+  &__text {
+    line-height: 1;
+    @include main-font(2rem, 400, $main-black);
+  }
+
+  &__footer {
+    width: 100%;
+    @include flex(row, space-between, center);
+  }
+
+  &__symbols {
+    width: 15rem;
+    @include flex(row, space-around, center);
+  }
+
+  &__counter {
+    margin: 0 0.2rem;
+    @include main-font(1rem, 400, $main-black);
   }
 }

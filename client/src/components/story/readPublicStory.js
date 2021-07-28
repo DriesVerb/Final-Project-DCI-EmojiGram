@@ -28,8 +28,10 @@ const readPublicStory = () => {
     } else {
       if (singleStory.likes.length < 0) {
         setLiked(false);
+        showSinglePublic(id);
+      } else {
+        setLiked(true);
       }
-      showSinglePublic(id);
     }
   }, [singleStory, setLiked, id]);
 

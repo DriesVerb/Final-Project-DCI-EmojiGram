@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // components
-import Spinner from "../../components/layout/Spinner";
-import EmojiChar from "./EmojiChar";
+import Spinner from '../../components/layout/Spinner';
+import EmojiChar from './EmojiChar';
 
 // store
-import { emojiStore } from "../../store";
+import { emojiStore } from '../../store';
 
 const EmojiCTA = () => {
   const { getEmojis } = emojiStore.getState();
@@ -21,7 +21,7 @@ const EmojiCTA = () => {
 
   const writeThisStory = (e) => {
     e.preventDefault();
-    history.push("/writestory");
+    history.push('/writestory');
   };
 
   return (
@@ -32,23 +32,26 @@ const EmojiCTA = () => {
         <div className="emoji__row mb-xl">
           {emojis.length > 0 &&
             emojis.map((emoji, id) => {
-              return <EmojiChar key={id} emoji={emoji} size="medium" />;
-            })}{" "}
+              return <EmojiChar key={id} emoji={emoji} size="large" />;
+            })}{' '}
         </div>
       )}
       <div className="emoji__buttons">
-        <button
+        <div
+          className="emoji__btn"
           onClick={(e) => {
             e.preventDefault();
             getEmojis();
           }}
         >
           Generate new story
-        </button>
+        </div>
         {loading ? (
-          <button>Write this story</button>
+          <div className="emoji__btn">Write this story</div>
         ) : (
-          <button onClick={writeThisStory}>Write this story</button>
+          <div className="emoji__btn" onClick={writeThisStory}>
+            Write this story
+          </div>
         )}
       </div>
     </div>

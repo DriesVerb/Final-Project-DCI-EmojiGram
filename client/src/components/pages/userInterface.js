@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
 
 // components
@@ -7,7 +8,7 @@ import Icon from '../utils/Icon';
 // Navbar user interface
 function userInterface(props) {
   return (
-    <div className="grid-container">
+    <div className="grid-container__interface">
       <div className="grid-container__mid">
         <div className="user-interface__cards">
           <div
