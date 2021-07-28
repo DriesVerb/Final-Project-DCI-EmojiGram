@@ -8,9 +8,30 @@
         fill: $main-yellow;
       }
     }
+
+    &--black {
+      fill: $main-black;
+
+      &:hover {
+        fill: $main-l-grey;
+      }
+    }
+
+    &--grey {
+      fill: $main-l-grey;
+
+      &:hover {
+        fill: $main-vl-grey;
+      }
+    }
   }
 
   &__size {
+    &--x-small {
+      height: 2rem;
+      width: 2rem;
+    }
+
     &--small {
       height: 2.5rem;
       width: 2.5rem;

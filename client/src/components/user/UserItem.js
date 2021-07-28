@@ -10,7 +10,6 @@ const UserItem = (props) => {
     _id,
     username,
     email,
-    age,
     location,
     occupation,
     hobby,
@@ -31,7 +30,7 @@ const UserItem = (props) => {
   };
   return (
     <Fragment>
-      <div className="col-md-7 mx-auto">
+      <div className="col-md-7 mx-auto grid-container__item ">
         <div className="bg-white shadow rounded overflow-hidden">
           <div className="px-4 pt-5 pb-4 ">
             <div className="row align-items-start">

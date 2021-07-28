@@ -320,10 +320,6 @@ a {
 .app__main {
   grid-column: 2/4;
 }
-.app__alert {
-  grid-row: 3/4;
-  grid-column: 1/2;
-}
 
 .grid-container {
   display: grid;
@@ -340,6 +336,22 @@ a {
   grid-column-gap: 10px;
   grid-row-gap: 0px;
   margin-bottom: 300px;
+}
+.grid-container__interfaces__user-card1 {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+.grid-container__interfaces__user-card2 {
+  grid-row: 3/4;
+  grid-column: 1/2;
+  display: inline-block;
+  border-left: 1px solid #ccc;
+  margin: 0 10px;
+  height: 250px;
+}
+.grid-container__interfaces__user-card3 {
+  grid-row: 4/5;
+  grid-column: 1/2;
 }
 
 .grid-container__form {
@@ -433,7 +445,7 @@ a {
   align-items: center;
 }
 .public-stories__cta {
-  width: 90%;
+  width: 100%;
   margin-bottom: 1rem;
 }
 .public-stories__cards {
@@ -468,7 +480,11 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-left: 2px solid #ccc;
+  margin: 0px 10px;
+  height: 400px;
 }
+
 .user-card__img {
   height: 20rem;
   width: 20rem;
@@ -570,8 +586,8 @@ a {
 }
 
 .spinner {
-  height: 5rem;
-  font-size: 5rem;
+  height: 100%;
+  font-size: 10rem;
   animation: spin 1s linear infinite;
   z-index: 50;
 }
@@ -584,6 +600,22 @@ a {
 }
 .icon__color--blue:hover {
   fill: #ffb703;
+}
+.icon__color--black {
+  fill: #0a0a0a;
+}
+.icon__color--black:hover {
+  fill: #a3a3a3;
+}
+.icon__color--grey {
+  fill: #a3a3a3;
+}
+.icon__color--grey:hover {
+  fill: #e7f0ed;
+}
+.icon__size--x-small {
+  height: 2rem;
+  width: 2rem;
 }
 .icon__size--small {
   height: 2.5rem;
@@ -605,6 +637,10 @@ a {
   text-align: left;
 }
 
+.story {
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 5px #888888;
+}
 .story-editor__writer {
   display: flex;
   flex-direction: column;
@@ -637,7 +673,6 @@ a {
   width: 95%;
   border-radius: 1rem;
   box-shadow: 0 8px 6px -6px #0a0a0a;
-  border: 1px solid #0a0a0a;
   transition: 0.3s ease;
   cursor: pointer;
   margin-bottom: 2rem;
@@ -742,7 +777,9 @@ a {
   justify-content: center;
   align-items: center;
 }
-.story-card-big__like, .story-card-big__comments, .story-card-big__views {
+.story-card-big__like,
+.story-card-big__comments,
+.story-card-big__views {
   font-size: 1.5rem;
   padding: 0px 2rem;
 }
@@ -759,10 +796,126 @@ a {
   padding: 15px;
 }
 
+.story-card {
+  cursor: pointer;
+  z-index: 50;
+  height: 23rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.emoji-card {
+  height: 100%;
+  background-color: #a3a3a3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.emoji-card__rows {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.story-main {
+  height: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+.story-main__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.story-main__author-info {
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.story-main__author {
+  margin: 0 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #0a0a0a;
+}
+.story-main__avatar {
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+  background-color: #a3a3a3;
+}
+.story-main__genre {
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #effafa;
+}
+.story-main__title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #0a0a0a;
+}
+.story-main__text {
+  line-height: 1;
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #0a0a0a;
+}
+.story-main__footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.story-main__symbols {
+  width: 15rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.story-main__counter {
+  margin: 0 0.2rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #0a0a0a;
+}
+
 .page {
   background-color: #f8f5de;
-  background-image: linear-gradient(to right, rgba(255, 210, 0, 0.4), rgba(200, 160, 0, 0.1) 11%, rgba(0, 0, 0, 0) 35%, rgba(200, 160, 0, 0.1) 65%);
-  box-shadow: inset 0 0 75px rgba(255, 210, 0, 0.3), inset 0 0 20px rgba(255, 210, 0, 0.4), inset 0 0 30px rgba(220, 120, 0, 0.8);
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 210, 0, 0.4),
+    rgba(200, 160, 0, 0.1) 11%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(200, 160, 0, 0.1) 65%
+  );
+  box-shadow: inset 0 0 75px rgba(255, 210, 0, 0.3),
+    inset 0 0 20px rgba(255, 210, 0, 0.4), inset 0 0 30px rgba(220, 120, 0, 0.8);
   color: rgba(0, 0, 0, 0.5);
   font-family: "AustralisProSwash-Italic";
   width: calc(8.5in - 15em);
@@ -876,8 +1029,6 @@ a {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border-radius: 1rem;
-  border: 1px solid #030301;
   background-color: #a3a3a3;
   padding: 1.5rem;
 }
@@ -885,6 +1036,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 .emoji__character {
   position: relative;
@@ -894,7 +1046,7 @@ a {
   font-size: 2.5rem;
 }
 .emoji__character--medium {
-  font-size: 4rem;
+  font-size: 4.2rem;
 }
 .emoji__character--large {
   font-size: 6rem;
@@ -903,10 +1055,21 @@ a {
   font-size: 8rem;
 }
 .emoji__buttons {
+  width: 35%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+.emoji__btn {
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #0a0a0a;
+  border: 1px solid #030301;
+  padding: 0.5rem;
+  background-color: #effafa;
 }
 
 .emoji-tooltip {

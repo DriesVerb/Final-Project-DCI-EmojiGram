@@ -6,6 +6,7 @@ import PaginateComponent from "../utils/PaginateComponent";
 import AuthContext from "../../context/auth/authContext";
 
 import ProfileContext from "../../context/profile/profileContext";
+import NavBarSideLeft from "../layout/NavbarSideLeft";
 
 function FriendStories(props) {
   const storyContext = useContext(StoryContext);
@@ -37,7 +38,12 @@ function FriendStories(props) {
           </h2>
         )}
 
-        <PaginateComponent data={stories} perPage={5} show={component} />
+        <sideNavBar className="left-yourStories">
+          <NavBarSideLeft />
+        </sideNavBar>
+        <div className="grid-container__mid">
+          <PaginateComponent data={stories} perPage={5} show={component} />
+        </div>
       </div>
     </div>
   );

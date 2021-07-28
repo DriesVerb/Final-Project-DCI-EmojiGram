@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import StoryContext from "../../context/story/storyContext";
-import { NavDropdown } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from 'react';
+import StoryContext from '../../context/story/storyContext';
+import { NavDropdown } from 'react-bootstrap';
 
 // Components
-import PaginateComponent from "../utils/PaginateComponent";
+import PaginateComponent from '../utils/PaginateComponent';
 // import StoryCardSmall from "../story/StoryCardSmall";
-import EmojiCTA from "../story/EmojiCTA";
+import EmojiCTA from '../story/EmojiCTA';
 const PublicLandingPage = () => {
   const storyContext = useContext(StoryContext);
   const {
@@ -18,24 +18,23 @@ const PublicLandingPage = () => {
     stories,
   } = storyContext;
 
-  const component = "readpublicstory"
+  const component = 'readpublicstory';
 
-  const [sort, setSort] = useState("Latest");
- const [test, tests] = useState(stories)
+  const [sort, setSort] = useState('Latest');
+  const [test, tests] = useState(stories);
 
   useEffect(() => {
     publishStoryPublicLikes();
-    if (sort === "Latest") publishStoryPublic();
-    else if (sort === "Alphabet") publishStoryPublicAlpha();
-    else if (sort === "Most liked") publishStoryPublicLikes();
-    else if (sort === "Most views") publishStoryPublicViews()
+    if (sort === 'Latest') publishStoryPublic();
+    else if (sort === 'Alphabet') publishStoryPublicAlpha();
+    else if (sort === 'Most liked') publishStoryPublicLikes();
+    else if (sort === 'Most views') publishStoryPublicViews();
     else if (sort) publishStoryPublicGenre(sort);
   }, [sort]);
 
   const onChange = (e) => {
     setSort(e.target.innerText);
   };
-
 
   return (
     <div className="grid-container">
@@ -58,23 +57,20 @@ const PublicLandingPage = () => {
             <NavDropdown.Item onClick={onChange}>SciFi</NavDropdown.Item>
           </NavDropdown>
         </div>
-        {/* <div className="left-sidebar__footer">
-          <p>Footer</p>
-          <br />
-          <p>Facebook</p>
-          <br />
-          <p>Twitter</p>
-        </div> */}
       </div>
       <main className="public-stories grid-container__mid">
         <div className="public-stories__cta">
           <EmojiCTA />
         </div>
         <div className="public-stories__cards">
-          {sort === "Most liked" ? (
-            <PaginateComponent data={topStories} perPage={20} show={component}/>
+          {sort === 'Most liked' ? (
+            <PaginateComponent
+              data={topStories}
+              perPage={20}
+              show={component}
+            />
           ) : (
-            <PaginateComponent data={stories} perPage={20} show={component}/>
+            <PaginateComponent data={stories} perPage={20} show={component} />
           )}
         </div>
       </main>

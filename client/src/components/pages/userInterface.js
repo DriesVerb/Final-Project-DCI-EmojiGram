@@ -1,23 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 
-import { Link } from 'react-router-dom';
-import AuthContext from '../../context/auth/authContext';
+import { Link } from "react-router-dom";
 
 // components
-import Icon from '../utils/Icon';
+import Icon from "../utils/Icon";
 
 // Navbar user interface
 function userInterface(props) {
-  const authContext = useContext(AuthContext);
-
-  const { user } = authContext;
-
-  // let history = useHistory();
-
-  const toMyStories = (id) => {
-    props.history.push(`/yourstories/${id}`);
-  };
-
   return (
     <div className="grid-container__interface">
       <div className="grid-container__mid">
@@ -52,7 +41,7 @@ function userInterface(props) {
               </button>
             </Link>
           </div>
-          <div className="user-card">
+          <div className="user-card text">
             <Icon name="collections_bookmark" color="blue" size="large" />
             <p className="user-card__title">ACCESS YOUR STORIES</p>
             <Link to="/yourstories" className="link">

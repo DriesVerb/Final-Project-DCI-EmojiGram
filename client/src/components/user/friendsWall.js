@@ -41,7 +41,6 @@ const FriensdWall = (props) => {
     // console.log (user)
     // eslint-disable-next-line
   }, []);
-
   return (
     <Fragment>
       <div className="grid-container__friends">
@@ -101,7 +100,6 @@ const FriensdWall = (props) => {
     </Fragment>
   );
 };
-
 export default FriensdWall;
 
 // const [pageNumber, SetPageNumber] = useState(0);

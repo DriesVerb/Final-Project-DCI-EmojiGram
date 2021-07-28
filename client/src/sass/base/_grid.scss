@@ -21,10 +21,6 @@
     // grid-row: 3/4;
     grid-column: 2/4;
   }
-  &__alert {
-    grid-row: 3/4;
-    grid-column: 1/2;
-  }
 }
 
 .grid-container {
@@ -62,6 +58,11 @@
   grid-column-gap: 10px;
   grid-row-gap: 0px;
   margin-bottom: 300px;
+
+  &__user-card {
+    grid-row: 2/4;
+    grid-column: 1/2;
+  }
 }
 
 .grid-container__form {

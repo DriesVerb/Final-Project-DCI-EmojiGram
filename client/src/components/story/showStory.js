@@ -26,7 +26,6 @@ function ShowStory(props) {
     deleteStory(singleStory._id);
 
     props.history.push(`/yourstories`);
-
   };
   const onEdit = () => {
     setEditedStory(singleStory);

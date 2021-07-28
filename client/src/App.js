@@ -58,9 +58,6 @@ function App() {
         <AlertState>
           <div className="app__container">
             <Router>
-              {/* <Header /> */}
-
-              {/* <NavbarSideLeft /> */}
               <Alerts />
               <div className="app__main">
                 <Navbar />

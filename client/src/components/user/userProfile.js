@@ -7,10 +7,8 @@ import AuthContext from "../../context/auth/authContext";
 const UserProfile = (props) => {
   const authContext = useContext(AuthContext);
   const { user, isAuthenticated } = authContext;
-
   const profileContext = useContext(ProfileContext);
   const { users, getUserProfile, followUsers, unfollowUsers } = profileContext;
-
   const {
     username,
     email,
@@ -22,11 +20,8 @@ const UserProfile = (props) => {
     occupation,
     stories,
   } = users;
-
   const [follow, setFollow] = useState(false);
-
   const { id } = useParams();
-
   useEffect(() => {
     if (user || users) {
       getUserProfile(id);
@@ -38,7 +33,6 @@ const UserProfile = (props) => {
       } */
     }
   }, [user, users]);
-
   const compareValue = (input) => {
     input.forEach((el) => {
       if (user._id === el.user) {
@@ -85,7 +79,6 @@ const UserProfile = (props) => {
                     </p>
                   )}
                   <br />
-
                   {!isAuthenticated && (
                     <button
                       type="submit"
@@ -97,7 +90,6 @@ const UserProfile = (props) => {
                       log in to follow
                     </button>
                   )}
-
                   {!isAuthenticated || user._id == id ? (
                     <span></span>
                   ) : (
@@ -178,7 +170,6 @@ const UserProfile = (props) => {
                       {occupation.charAt(0).toUpperCase() + occupation.slice(1)}
                     </p>
                   )}
-
                   <p className="font-italic mb-1">
                     {location && (
                       <p className="small mt-2">
@@ -214,5 +205,4 @@ const UserProfile = (props) => {
     </Fragment>
   );
 };
-
 export default UserProfile;
