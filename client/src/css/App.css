@@ -551,7 +551,6 @@ a {
   justify-content: space-between;
   align-items: justify-content;
   padding: 40px;
-  position: relative;
   top: 0;
   height: 100vh;
   background: #ffffff;
@@ -565,7 +564,6 @@ a {
 }
 
 .user-card {
-  width: 30rem;
   border-right: 0.2rem solid #a3a3a3;
   display: flex;
   flex-direction: column;
@@ -1071,6 +1069,8 @@ a {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #a3a3a3;
+  padding: 5px;
 }
 .story-main__symbols {
   width: 15rem;
@@ -1253,6 +1253,7 @@ a {
   align-items: center;
   background-color: #ffffff;
   padding: 1.5rem;
+  border-bottom: 1px solid #a3a3a3;
 }
 .emoji__row {
   display: flex;
@@ -1289,7 +1290,7 @@ a {
   font-size: 1.2rem;
   font-weight: 500;
   color: #0a0a0a;
-  border: 1px solid #030301;
+  border: 1px solid #a3a3a3;
   padding: 0.5rem;
   background-color: #ffffff;
 }
