@@ -54,7 +54,7 @@ function navbar() {
           {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
           <Nav.Link href="/UserInterface" className="text-dark">
             <i className=" fas fa-cog  ml-5" />
-            User
+           Dashboard
           </Nav.Link>
           {/* //////////////////////////////////////////////////////////////////////////////////////////////////   */}
           <Nav.Link href="/message" className="text-dark">

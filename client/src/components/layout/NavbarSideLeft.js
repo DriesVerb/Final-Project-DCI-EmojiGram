@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from 'react';
 import { NavDropdown, Nav } from 'react-bootstrap';
-import SideNavBar from './SideNavBar';
 
 const NavbarSideLeft = () => {
   const onChange = (e) => {
@@ -9,9 +8,6 @@ const NavbarSideLeft = () => {
   const [sort, setSort] = useState('Latest');
   return (
     <Fragment>
-      <sideNavBar>
-        <sideNavBar />
-      </sideNavBar>
       <div className='left-sidebar'>
         <div className='left-sidebar__menu'>
           <NavDropdown title='Sorted by' id='basic-nav-dropdown'>
