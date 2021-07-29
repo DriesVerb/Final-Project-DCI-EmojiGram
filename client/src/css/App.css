@@ -933,7 +933,7 @@ a {
 
 .emoji-card {
   height: 100%;
-  background-color: #a3a3a3;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -981,7 +981,7 @@ a {
   border-radius: 50%;
   height: 3.5rem;
   width: 3.5rem;
-  background-color: #a3a3a3;
+  background-color: #ffffff;
 }
 .story-main__genre {
   padding: 0.5rem;
@@ -1149,7 +1149,7 @@ a {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #a3a3a3;
+  background-color: #ffffff;
   padding: 1.5rem;
 }
 .emoji__row {
