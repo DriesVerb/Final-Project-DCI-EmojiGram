@@ -233,7 +233,7 @@ export default readPublicStory;
                         <div className="pb-story__icon">
                           {isAuthenticated ? (
                             <div className="pb-story__size">
-                              <i
+                              <ipu
                                 className="fa fa-thumbs-up"
                                 onClick={(e) => {
                                   e.preventDefault();
