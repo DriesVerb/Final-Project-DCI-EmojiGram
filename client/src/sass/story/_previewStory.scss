@@ -1,6 +1,34 @@
 .preview-story {
+  width: 100%;
+  @include flex(column, center, center);
+
+  &__button {
+    width: 100%;
+    @include flex(row, flex-end, center);
+  }
+
+  &__genre {
+    width: 100%;
+    @include flex(row, start, center);
+  }
+
   &__title {
+    width: 100%;
     @include flex(row, center, center);
+    margin-bottom: 2rem;
+  }
+
+  &__emojis {
+    width: 100%;
+    @include flex(row, center, center);
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    padding: 1rem;
+    width: 100%;
+    background-color: $main-white;
+    @include flex(row, flex-start, center);
   }
 }
 

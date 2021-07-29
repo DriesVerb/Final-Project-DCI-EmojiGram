@@ -1,8 +1,9 @@
 .story-editor {
-  &__writer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  @include flex(column, center, center);
+  width: 100%;
+  &__prompt {
+    @include flex(column, center, center);
+    width: 100%;
   }
 
   &__emojis {
@@ -12,9 +13,18 @@
   }
 }
 
+.story-options {
+  width: 100%;
+
+  &__items {
+    @include flex(row, space-between, center);
+    margin-bottom: 1rem;
+  }
+}
 .story-nav {
+  width: 100%;
   padding: 1rem;
-  @include flex(column, start, start);
+  @include flex(column, center, center);
 
   &__form-box {
     margin-bottom: 2rem;
@@ -23,4 +33,15 @@
   &__label {
     @include main-font(2rem, 400, $main-black);
   }
+}
+
+.story-textarea {
+  width: 100%;
+  height: 60vh;
+}
+
+.story-button {
+  margin-top: 1rem;
+  width: 100%;
+  @include flex(row, flex-end, center);
 }
