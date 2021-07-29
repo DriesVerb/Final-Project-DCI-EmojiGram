@@ -66,7 +66,7 @@ const userForm = (props) => {
       <Card
         elevation={10}
         style={{
-          maxWidth: 450,
+          maxWidth: 410,
           margin: "0 auto",
           padding: "20px 5px",
           marginTop: "50px",
