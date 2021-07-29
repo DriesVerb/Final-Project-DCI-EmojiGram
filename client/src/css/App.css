@@ -339,7 +339,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding: 0.3rem 0 0 0.2rem;
+  padding: 1rem;
 }
 .grid-container__headerUser {
   display: flex;
@@ -399,14 +399,17 @@ a {
   flex-direction: row;
   justify-content: start;
   align-items: end;
-  height: 45px;
-  margin: 0;
 }
 .side-navbar__link {
+  color: #0a0a0a;
+  margin: 1rem 0;
+}
+.side-navbar__link:hover, .side-navbar__link:active {
+  text-decoration: none;
   color: #a3a3a3;
-  top: 0rem;
-  padding: 20px;
-  justify-content: center;
+}
+.side-navbar__link:last-child {
+  margin-bottom: 4rem;
 }
 
 .top-nav {
@@ -423,6 +426,7 @@ a {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  margin-right: 2rem;
 }
 .guest-nav__item {
   margin-left: 2rem;
@@ -470,6 +474,7 @@ a {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  margin-right: 2rem;
 }
 .user-nav__item {
   margin-left: 2rem;
