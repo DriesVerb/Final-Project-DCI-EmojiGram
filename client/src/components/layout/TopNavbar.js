@@ -22,7 +22,7 @@ const TopNavbar = () => {
       <div className="user-nav__user">
         <div className="user-nav__message">Hello</div>
         {user && (
-          <div className="user-nav__loaded">
+          <Link to="/profile" className="user-nav__loaded">
             <div className="user-nav__name">
               {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
             </div>
@@ -30,9 +30,11 @@ const TopNavbar = () => {
             {user.avatar ? (
               <img className="user-nav__avatar" src={user.avatar} alt="" />
             ) : (
-              <Icon name="user" color="grey" size="small" />
+              <div className="user-nav__icon">
+                <Icon name="user" color="grey" size="small" />
+              </div>
             )}
-          </div>
+          </Link>
         )}
       </div>
       <div className="user-nav__options">

@@ -26,16 +26,20 @@
   }
 
   &__loaded {
-    @include flex(row, center, center);
+    @include flex(row, space-around, center);
     margin-left: 1rem;
   }
 
   &__avatar {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
     margin-left: 1rem;
   }
 
-  &__name {
-    margin: 0 1rem;
+  &__icon {
+    @include flex(row, center, center);
+    margin-left: 1rem;
   }
 
   &__options {
