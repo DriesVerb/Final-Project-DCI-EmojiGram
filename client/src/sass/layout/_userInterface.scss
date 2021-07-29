@@ -2,7 +2,6 @@
   &__cards {
     @include flex(row, space-between, justify-content);
     padding: 40px;
-    position: relative;
     top: 0;
     height: 100vh;
     background: $main-white;
