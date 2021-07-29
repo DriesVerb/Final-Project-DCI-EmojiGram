@@ -102,6 +102,7 @@ function App() {
                   />
 
                   <Route path="/profile" exact component={UserItem} />
+
                   <Route path="/profile/:id" exact component={UserProfile} />
 
                   <PrivateRoute
