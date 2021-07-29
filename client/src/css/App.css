@@ -387,7 +387,7 @@ a {
 
 .side-navbar {
   background-color: #ffffff;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

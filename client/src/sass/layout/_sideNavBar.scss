@@ -1,6 +1,6 @@
 .side-navbar {
   background-color: $main-white;
-  height: 100%;
+  height: 100vh;
   @include flex(column, flex-start, center);
 
   &__flex {
