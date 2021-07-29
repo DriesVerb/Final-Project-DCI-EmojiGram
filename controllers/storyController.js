@@ -256,10 +256,10 @@ exports.addComment = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     const story = await Story.findById(req.params.id).populate('user');
-
+console.log (user)
     const newComment = {
       text: req.body.text,
-      name: user.name,
+      username: user.username,
       avatar: user.avatar,
       user: req.user.id,
     };

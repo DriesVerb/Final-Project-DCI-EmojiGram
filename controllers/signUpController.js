@@ -2,6 +2,8 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const gravatar = require('gravatar');
+const normalize = require('normalize-url');
 
 exports.signUp = (req, res) => {
   res.json({ msg: "welcome to sing up" });
@@ -17,13 +19,21 @@ exports.signUpPost = async (req, res) => {
       res.status(400).json({ msg: "User already exists" });
     }
 
-  
-
-else {
+    else {
+      
+      const avatar = normalize(
+        gravatar.url(email,  {
+          s: '200',
+          r: 'pg',
+          d: 'mm'
+        }),
+        { forceHttps: true }
+      );
     //create new user
     user = new User({
       username,
       email,
+      avatar,
       password,
     });
 

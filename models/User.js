@@ -13,7 +13,9 @@ const userSchema = new Schema({
   occupation: String,
   message: String,
 
-  avatar: String,
+  avatar: {
+    type: String
+  },
 
   stories: [
     {
@@ -51,6 +53,7 @@ const userSchema = new Schema({
       createdBy: String,
     },
   ],
+
   socialMedia: {},
   createdAt: {
     type: Date,

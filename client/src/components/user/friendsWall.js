@@ -7,7 +7,7 @@ import ReactPaginate from "react-paginate";
 const FriensdWall = (props) => {
   
   const profileContext = useContext(ProfileContext);
-  const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
+  const { user,  getProfile } =
     profileContext;
   
     const { _id, username, email, age, location, followers, following, stories } = user;
@@ -60,7 +60,7 @@ console.log(displayfollowing)
        <div class="container mt-6 d-flex justify-content-center">
     <div class="card p-3 w-75 m-3">
         <div class="d-flex align-items-center">
-            <div class="image"> <img src="https://drscdn.500px.org/photo/57492070/m%3D900/v2?sig=65645eaa19f51ea414f5d6aa9cff7697ddb8bb65776d4b3be9e8c60624214cb7" class="rounded" width="155"/> </div>
+            <div class="image"> <img src={follow.user.avatar} class="rounded" width="155"/> </div>
             <div class="ml-3 w-100">
                <h4 class="mb-0 mt-0">{follow.user.username}</h4> <span>{follow.user.location} Berlin</span>
                 <div class="p-2 mt-2 bg-light d-flex justify-content-between rounded text-white stats">

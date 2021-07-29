@@ -92,7 +92,11 @@ const readPublicStory = () => {
 
                     
                     <span className="mt-4 text-sm pl-4"><small>Written By:</small></span>
-                 
+                    <img
+                            className="round-img"
+                            src={singleStory.user.avatar}
+                            alt=""
+                          />
                 <h4 class="ml-0  col-md-6 text-start mt-4 text-info" style={{cursor: "pointer"}} onClick={() => toProfile(singleStory.user._id)}><strong> {singleStory.user.username}</strong></h4>
                
          
@@ -241,7 +245,7 @@ const readPublicStory = () => {
                             src={comment.avatar}
                             alt=""
                           />
-                          <h4>{singleStory.user.username}</h4>
+                          <h4>{comment.username}</h4>
                         </Link>
                       </div>
                       <div>

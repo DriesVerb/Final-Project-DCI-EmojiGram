@@ -11,6 +11,7 @@ const UserItem = (props) => {
     _id,
     username,
     email,
+    avatar,
     age,
     location,
     occupation,
@@ -42,7 +43,7 @@ const UserItem = (props) => {
             <div className="row align-items-start">
               <div className="profile mr-3 col-3 ">
                 <img
-                  src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+                  src={avatar}
                   alt="..."
                   width="160"
                   class="rounded mb-2 img-thumbnail"
