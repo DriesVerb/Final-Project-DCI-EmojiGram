@@ -745,14 +745,15 @@ body {
   z-index: 50;
 }
 
-.icon {
-  cursor: pointer;
-}
-.icon * > {
+.icon > * {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.icon {
+  cursor: pointer;
 }
 .icon__color--blue {
   fill: #219ebc;

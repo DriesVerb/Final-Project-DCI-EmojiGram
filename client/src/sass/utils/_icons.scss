@@ -1,9 +1,9 @@
+.icon > * {
+  @include flex(row, center, center);
+}
+
 .icon {
   cursor: pointer;
-
-  * > {
-    @include flex(row, center, center);
-  }
 
   &__color {
     &--blue {

@@ -36,8 +36,12 @@ const TopNavbar = () => {
         )}
       </div>
       <div className="user-nav__options">
-        <div className="user-nav__item">Dashboard</div>
-        <div className="user-nav__item">Profile</div>
+        <Link to="/userInterface" className="user-nav__item">
+          Dashboard
+        </Link>
+        <Link to="/profile" className="user-nav__item">
+          Profile
+        </Link>
         <div className="user-nav__item" onClick={onLogout}>
           Log Out
         </div>
