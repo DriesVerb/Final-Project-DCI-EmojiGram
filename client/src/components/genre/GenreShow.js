@@ -20,7 +20,7 @@ const GenreShow = ({ genre }) => {
     setPerPage(e.target.value);
   };
   return (
-    <div>
+    <div className="genre-show">
       {stories.length === 0 ? (
         <h2 className="genre-show__empty">
           There are no stories yet in the genre of {genre}!
