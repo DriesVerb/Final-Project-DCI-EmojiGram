@@ -1,7 +1,7 @@
 .story-card {
   cursor: pointer;
   z-index: 50;
-  height: 20rem;
+  height: 23rem;
   @include flex(row, center, center);
   margin-bottom: 2rem;
 }
