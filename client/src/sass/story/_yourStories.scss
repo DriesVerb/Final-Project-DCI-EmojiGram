@@ -1,0 +1,29 @@
+.your-stories {
+  height: 100%;
+  width: 100%;
+  @include flex(column, center, center);
+
+  &__sort {
+    width: 100%;
+    @include flex(row, flex-end, center);
+    margin-bottom: 0.5rem;
+  }
+
+  &__stories {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  &__cards {
+    width: 100%;
+    height: 100%;
+    @include flex(column, center, center);
+  }
+  &__text {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .left-sidebar {
+    @include flex(column, space-between, start);
+    height: 30vh;
+  }
+}

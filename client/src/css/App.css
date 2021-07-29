@@ -344,22 +344,6 @@ a {
   grid-row-gap: 0px;
   margin-bottom: 300px;
 }
-.grid-container__interfaces__user-card1 {
-  grid-row: 2/3;
-  grid-column: 1/2;
-}
-.grid-container__interfaces__user-card2 {
-  grid-row: 3/4;
-  grid-column: 1/2;
-  display: inline-block;
-  border-left: 1px solid #ccc;
-  margin: 0 10px;
-  height: 250px;
-}
-.grid-container__interfaces__user-card3 {
-  grid-row: 4/5;
-  grid-column: 1/2;
-}
 
 .grid-container__form {
   display: grid;
@@ -494,11 +478,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-left: 2px solid #ccc;
-  margin: 0px 10px;
-  height: 400px;
 }
-
 .user-card__img {
   height: 20rem;
   width: 20rem;
@@ -651,10 +631,6 @@ a {
   text-align: left;
 }
 
-.story {
-  border-radius: 0.5rem;
-  box-shadow: 5px 5px 5px #888888;
-}
 .story-editor__writer {
   display: flex;
   flex-direction: column;
@@ -1120,4 +1096,38 @@ a {
   font-weight: 500;
   color: #0a0a0a;
   padding: 1rem;
+}
+
+.your-stories {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.your-stories__stories {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2rem;
+  align-items: start;
+  background-color: #a3a3a3;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.your-stories__text {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  margin-top: 2px;
+  margin-bottom: 50px;
+}
+.your-stories__cards {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
