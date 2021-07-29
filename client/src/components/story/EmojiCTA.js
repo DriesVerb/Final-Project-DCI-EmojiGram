@@ -38,7 +38,7 @@ const EmojiCTA = () => {
       )}
       <div className="emoji__buttons">
         <div
-          className="emoji__btn"
+          className="emoji__btn "
           onClick={(e) => {
             e.preventDefault();
             getEmojis();
