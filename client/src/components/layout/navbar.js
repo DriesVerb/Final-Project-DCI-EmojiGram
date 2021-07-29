@@ -24,19 +24,19 @@ function navbar() {
             <a className="nav-link text-dark" href="#!">
               <p> Hello </p>
               {user && (
-                <div>
-                  <img
-                    width="50px"
-                    height="60px"
+                <div >
+                 
+                  <p>
+                    {user.username.charAt(0).toUpperCase() +
+                      user.username.slice(1)}
+                  </p> {/*{" "} <img
+                    width="30px"
+                    height="30px"
                     //  style =" width:30px  height:10px "
                     className="round-img"
                     src={user.avatar}
                     alt=""
-                  />
-                  <p>
-                    {user.username.charAt(0).toUpperCase() +
-                      user.username.slice(1)}
-                  </p>{" "}
+                  /> */}
                 </div>
               )}
               <span className="sr-only">(current)</span>

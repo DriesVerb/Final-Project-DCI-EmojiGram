@@ -78,7 +78,7 @@ const UserItem = (props) => {
                   />
                 ))}
               ></div>
-              <input
+              {/* <input
                 className="profile-header_input"
                 type="file"
                 name="profilePics"
@@ -88,7 +88,7 @@ const UserItem = (props) => {
               />
               <button className="btn btn-add" type="submit" onSubmit={add}>
                 Add to your profile
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
