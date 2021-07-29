@@ -30,6 +30,8 @@ import FriendsWall from './components/user/friendsWall';
 
 import ReadPublicStory from './components/story/readPublicStory';
 
+import Logo from './components/layout/Logo';
+
 // context
 import StoryState from './context/story/storyState';
 import AuthContext from './context/auth/authContext';
@@ -58,6 +60,7 @@ function App() {
           <div className="app-grid">
             <Router>
               <Alerts />
+              <Logo />
               <TopNavbar />
 
               <SideNavBar />
