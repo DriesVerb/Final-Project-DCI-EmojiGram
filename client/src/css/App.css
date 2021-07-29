@@ -409,7 +409,8 @@ a {
   color: #0a0a0a;
   margin: 1rem 0;
 }
-.side-navbar__link:hover, .side-navbar__link:active {
+.side-navbar__link:hover,
+.side-navbar__link:active {
   text-decoration: none;
   color: #a3a3a3;
 }
@@ -1238,7 +1239,4 @@ a {
   font-weight: 500;
   color: #0a0a0a;
   padding: 1rem;
-}
-.rounded-circle {
-  top: -30px;
 }

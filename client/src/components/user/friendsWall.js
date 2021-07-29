@@ -45,7 +45,7 @@ const FriensdWall = (props) => {
       <div className="grid-container__friends">
         {displayfollowing &&
           displayfollowing.map((follow) => (
-            <div className="container mt-6 d-flex justify-content-center">
+            <div className="container__friends  d-flex justify-content-center">
               <div
                 className="card p-3 w-300 mt-3"
                 style={{ width: "400px", height: "450px" }}
@@ -58,9 +58,10 @@ const FriensdWall = (props) => {
                     />{" "} */}
                   <img
                     src={Pic}
-                    className="rounded-circle d-flex align-item-center"
+                    className="container__img rounded-circle d-flex align-item-center"
                     alt="profile pic"
                     width="200"
+                    style={{ top: "60px" }}
                   />
 
                   <div className="ml-3 w-100">
