@@ -552,8 +552,9 @@ a {
   align-items: justify-content;
   padding: 40px;
   top: 0;
-  height: 100vh;
   background: #ffffff;
+  height: 100vh;
+  width: 50vw;
 }
 .user-interface__icons {
   margin-left: 3rem;
@@ -568,7 +569,10 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: justify-content;
+  height: 500px;
+  padding: 40px;
+  margin-top: 160px;
 }
 .user-card__title {
   font-family: "Roboto", sans-serif;

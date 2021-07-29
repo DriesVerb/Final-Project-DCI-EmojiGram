@@ -3,6 +3,7 @@
 
   grid-template-columns: 40rem 15rem 1fr 40rem;
   grid-template-rows: 5rem 10rem 1fr;
+  
 
   &__logo {
     grid-row: 1/2;
@@ -33,6 +34,7 @@
 .grid-container {
   @include flex(column, center, start);
   padding: 1rem 0 1rem 1rem;
+ 
 
   &__headerUser {
     display: flex;
