@@ -60,13 +60,18 @@ const readPublicStory = () => {
                 <div>
                   <div className="bg-light p-1  row ">
                     <span className="mt-4 text-sm pl-4">
-                      <small>Written By:</small>
+                      <small>By:</small>
                     </span>
+                    <img
+                    className="user-nav__avatar mt-3 "
+                    src={singleStory.user.avatar}
+                    alt=""
+                  />
                     <h4
-                      className="ml-0  col-md-6 text-start mt-4 text-info"
+                      className=" col-md-6 text-start mt-4 text-info"
                       style={{ cursor: 'pointer' }}
                       onClick={() => toProfile(singleStory.user._id)}
-                    >
+                    >  
                       <strong> {singleStory.user.username}</strong>
                     </h4>
                     <div>
@@ -153,16 +158,16 @@ const readPublicStory = () => {
                     {singleStory.comments && (
                       <div>
                         {singleStory.comments.map((comment) => (
-                          <div className="post bg-white p-1 my-1">
-                            <div>
-                              <Link to={`/profile/${singleStory.user._id}`}>
+                          <div className="comment-style p-1 my-1">
+                            <div >
+                              <Link to={`/profile/${singleStory.user._id}`} className="comment-user">
                                 <img
-                                  className="round-img"
+                                  className="user-nav__avatar "
                                   src={comment.avatar}
                                   alt=""
                                 />
                                 <h4>{comment.username}</h4>
-                              </Link>
+                             </Link>
                             </div>
                             <div>
                               <p className="text-dark">{comment.text}</p>
