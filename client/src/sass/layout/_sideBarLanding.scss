@@ -1,0 +1,23 @@
+.side-navbar{
+  margin-top: 1rem;
+  // background-color: $main-blue;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 150px;
+  height: 300px;
+  color: $main-l-grey;
+  
+
+
+  @include flex(column, space-around, start);
+  &__flex {
+    @include flex(column, start, start);
+    height: 45px;
+    margin: 0;
+  }
+
+  &__link {
+    color: $main-white;
+  }
+
+}

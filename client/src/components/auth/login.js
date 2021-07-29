@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
+import SideNavBar from "../layout/SideNavBar";
+
 //Material UI
 import {
   Avatar,

@@ -38,7 +38,6 @@ import ProfileState from "./context/profile/ProfileState";
 
 // import setAuthToken
 import setAuthToken from "./context/auth/setAuthToken";
-import SortByYourStories from "./components/layout/SortByYourStories";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -60,7 +59,9 @@ function App() {
             <Router>
               <Alerts />
               <Navbar />
+
               <SideNavBar />
+
               <div className="app-grid__main">
                 <Switch>
                   <Route path="/" exact component={PublicLandingPage} />
