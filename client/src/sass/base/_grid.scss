@@ -5,8 +5,6 @@
   grid-template-rows: 5rem 10rem 1fr;
   background-color: $main-l-grey;
 
-  
-
   &__logo {
     grid-row: 1/2;
     grid-column: 2/3;
@@ -19,16 +17,13 @@
 
   &__navbar--side {
     grid-row: 2/4;
-    grid-column: 2/4;
-    margin-top: 0.1rem;
-
-
+    grid-column: 2/3;
   }
 
   &__main {
     grid-row: 2/4;
     grid-column: 3/4;
-      background-color: $main-l-grey;
+    background-color: $main-l-grey;
   }
 
   &__alert {
@@ -39,8 +34,7 @@
 
 .grid-container {
   @include flex(column, center, start);
-  padding: 0.3rem 0 0 0.2rem;
-
+  padding: 1rem;
 
   &__headerUser {
     display: flex;
@@ -50,18 +44,6 @@
     margin-left: 250px;
     margin-top: 30px;
   }
-  // &__mid {
-  //   // grid-column: 2 / 3;
-  //   grid-row: 2/4;
-  // }
-  // &__left{
-  //   grid-column: 1 / 2;
-  //   grid-row: 2/3;
-  // }
-  // &__right {
-  //   // grid-column: 3 / 4;
-  //   grid-row: 2/3;
-  // }
 }
 
 .grid-container__interfaces {
