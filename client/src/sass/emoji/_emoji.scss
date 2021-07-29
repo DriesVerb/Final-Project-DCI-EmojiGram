@@ -1,8 +1,7 @@
 .emoji {
   @include flex(column, space-around, center);
-  background-color: $main-l-grey;
+  background-color: $main-white;
   padding: 1.5rem;
-
 
   &__row {
     display: flex;
