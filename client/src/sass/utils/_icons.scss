@@ -1,5 +1,10 @@
 .icon {
   cursor: pointer;
+
+  * > {
+    @include flex(row, center, center);
+  }
+
   &__color {
     &--blue {
       fill: $main-blue;
