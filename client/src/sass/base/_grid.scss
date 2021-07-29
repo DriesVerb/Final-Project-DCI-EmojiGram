@@ -3,6 +3,9 @@
 
   grid-template-columns: 40rem 15rem 1fr 40rem;
   grid-template-rows: 5rem 10rem 1fr;
+  background-color: $main-l-grey;
+
+  
 
   &__logo {
     grid-row: 1/2;
@@ -17,13 +20,15 @@
   &__navbar--side {
     grid-row: 2/4;
     grid-column: 2/4;
-    margin-top: 20px;
-    height: 886px;
+    margin-top: 0.1rem;
+
+
   }
 
   &__main {
     grid-row: 2/4;
     grid-column: 3/4;
+      background-color: $main-l-grey;
   }
 
   &__alert {
@@ -34,7 +39,8 @@
 
 .grid-container {
   @include flex(column, center, start);
-  padding: 1rem 0 0 1rem;
+  padding: 0.3rem 0 0 0.2rem;
+
 
   &__headerUser {
     display: flex;

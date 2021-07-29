@@ -1,36 +1,27 @@
-body {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
 .user-interface {
   &__cards {
     @include flex(row, space-between, justify-content);
-    padding: 20px;
+    padding: 40px;
     position: relative;
     top: 0;
-    height: 886px;
-    margin-top: 70px;
+    height: 100vh;
+    background: $main-white;
+    // width: 30rem;
   }
   &__icons {
-    margin-left: 3rem;
-  }
-  &__iconsOne {
     margin-left: 3rem;
   }
 }
 
 .user-card:nth-last-child(1) {
   border-right: 0;
-} 
-
+}
 
 .user-card {
-  width: 40rem;
+  width: 30rem;
   border-right: 0.2rem solid $main-l-grey;
-  border-spacing: 3rem;
-  height: 600px;
+
+  @include flex(column, center, center);
 
   &__title {
     @include main-font(2rem, 500, $main-black);
@@ -42,48 +33,16 @@ body {
     justify-content: center;
   }
 
-  &__btn {
+  &__btnUser {
     font-size: 2rem;
-
-    border-radius: 10% 7% 10% 10% / 10% 6% 10% 10%;
+    box-shadow: 5px 10px;
     height: 4rem;
     display: flex;
     justify-content: center;
     border-style: none;
-    background: linear-gradient(90deg, ($main-blue) 0%, ($main-yellow) 100%);
+    color: $main-white;
+    background: $main-l-grey;
 
-    &:hover {
-      background: linear-gradient(100deg, ($main-yellow) 0%, ($main-blue) 90%);
-    }
-  }
-}
-
-.user-card {
-  border-left: 0.2rem transparent $main-l-grey;
-  border-spacing: 3rem;
-  height: 600px;
-  @include flex(column, center, center);
-
-  &__titleOne {
-    @include main-font(2rem, 500, $main-black);
-    margin-bottom: 2rem;
-    margin-top: 1rem;
-    margin-right: 3rem;
-    margin-left: 3rem;
-    display: flex;
-    justify-content: center;
-  }
-
-  &__btnOne {
-    font-size: 2rem;
-
-    border-radius: 10% 7% 10% 10% / 10% 6% 10% 10%;
-    height: 4rem;
-    border-style: none;
-    background: linear-gradient(90deg, ($main-blue) 0%, ($main-yellow) 100%);
-
-    &:hover {
-      background: linear-gradient(90deg, ($main-yellow) 0%, ($main-blue) 100%);
-    }
+    width: fit-content;
   }
 }

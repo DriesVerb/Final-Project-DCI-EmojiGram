@@ -310,6 +310,7 @@ a {
   display: grid;
   grid-template-columns: 40rem 15rem 1fr 40rem;
   grid-template-rows: 5rem 10rem 1fr;
+  background-color: #a3a3a3;
 }
 .app-grid__logo {
   grid-row: 1/2;
@@ -322,12 +323,12 @@ a {
 .app-grid__navbar--side {
   grid-row: 2/4;
   grid-column: 2/4;
-  margin-top: 20px;
-  height: 886px;
+  margin-top: 0.1rem;
 }
 .app-grid__main {
   grid-row: 2/4;
   grid-column: 3/4;
+  background-color: #a3a3a3;
 }
 .app-grid__alert {
   grid-row: 3/4;
@@ -339,7 +340,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding: 1rem 0 0 1rem;
+  padding: 0.3rem 0 0 0.2rem;
 }
 .grid-container__headerUser {
   display: flex;
@@ -388,7 +389,6 @@ a {
 }
 
 .app-grid__navbar--side {
-  max-height: 950px;
   background-color: #ffffff;
   top: 10rem;
   width: 150px;
@@ -414,6 +414,7 @@ a {
   color: #a3a3a3;
   top: 0rem;
   padding: 20px;
+  justify-content: center;
 }
 
 .top-nav {
@@ -560,27 +561,18 @@ a {
   padding: 15px;
 }
 
-body {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
 .user-interface__cards {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: justify-content;
-  padding: 20px;
+  padding: 40px;
   position: relative;
   top: 0;
-  height: 886px;
-  margin-top: 70px;
+  height: 100vh;
+  background: #ffffff;
 }
 .user-interface__icons {
-  margin-left: 3rem;
-}
-.user-interface__iconsOne {
   margin-left: 3rem;
 }
 
@@ -589,10 +581,12 @@ body {
 }
 
 .user-card {
-  width: 40rem;
+  width: 30rem;
   border-right: 0.2rem solid #a3a3a3;
-  border-spacing: 3rem;
-  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .user-card__title {
   font-family: "Roboto", sans-serif;
@@ -606,67 +600,18 @@ body {
   display: flex;
   justify-content: center;
 }
-.user-card__btn {
+.user-card__btnUser {
   font-size: 2rem;
-  border-radius: 10% 7% 10% 10%/10% 6% 10% 10%;
+  box-shadow: 5px 10px;
   height: 4rem;
   display: flex;
   justify-content: center;
   border-style: none;
-  background: linear-gradient(90deg, #219ebc 0%, #ffb703 100%);
-}
-.user-card__btn:hover {
-  background: linear-gradient(100deg, #ffb703 0%, #219ebc 90%);
-}
-
-.user-card {
-  border-left: 0.2rem transparent #a3a3a3;
-  border-spacing: 3rem;
-  height: 600px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.user-card__titleOne {
-  font-family: "Roboto", sans-serif;
-  font-size: 2rem;
-  font-weight: 500;
-  color: #0a0a0a;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  margin-right: 3rem;
-  margin-left: 3rem;
-  display: flex;
-  justify-content: center;
-}
-.user-card__btnOne {
-  font-size: 2rem;
-  border-radius: 10% 7% 10% 10%/10% 6% 10% 10%;
-  height: 4rem;
-  border-style: none;
-  background: linear-gradient(90deg, #219ebc 0%, #ffb703 100%);
-}
-.user-card__btnOne:hover {
-  background: linear-gradient(90deg, #ffb703 0%, #219ebc 100%);
+  color: #ffffff;
+  background: #a3a3a3;
+  width: fit-content;
 }
 
-.footer__container {
-  float: left;
-  width: 33.33%;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-@media screen and (max-width: 600px) {
-  .container {
-    width: 100%;
-  }
-}
 .genre__row {
   width: 100%;
   display: flex;
@@ -723,6 +668,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
 }
 .pagination__cards {
   display: flex;
