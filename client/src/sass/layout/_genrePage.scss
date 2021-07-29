@@ -25,6 +25,9 @@
 }
 
 .genre-show {
+  width: 100%;
+  @include flex(column, center, center);
+
   &__select {
     margin-bottom: 1rem;
     width: 100%;
@@ -32,7 +35,6 @@
   }
 
   &__empty {
-    background-color: orangered;
-    @include flex(row, start, center);
+    @include flex(row, center, center);
   }
 }

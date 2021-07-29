@@ -1,14 +1,6 @@
 .pagination {
   @include flex(column, center, center);
 
-  &__cards {
-    @include flex(column, center, center);
-
-    &:not(:first-child) {
-      margin-top: 2rem;
-    }
-  }
-
   &__buttons {
     margin-top: 2rem;
   }

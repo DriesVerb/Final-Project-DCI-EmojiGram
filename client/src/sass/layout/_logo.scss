@@ -1,0 +1,12 @@
+.logo {
+  background-color: $main-white;
+  @include flex(row, center, center);
+
+  &__link {
+    &:hover,
+    &:active {
+      text-decoration: none;
+      color: $main-black;
+    }
+  }
+}
