@@ -22,7 +22,19 @@ function YourStories(props) {
           <NavBarSideLeft />
         </sideNavBar> */}
         <div className="grid-container__mid your-stories__stories mt-1">
-          <h3 className="your-stories__story mb-3 mt-3">My Stories</h3>
+
+         <h3 className="your-stories__story mb-3 mt-3 text-center">
+            My Stories
+          </h3>
+          <div className="your-stories__text mt-5mb-5">
+            <p className="ml-2 mr-3">
+              A story is the telling of an event, either true or fictional, in
+              such a way that the listener experiences or learns something just
+              by the fact that he heard the story.
+            </p>
+          </div>
+
+        
         </div>
         <div className="your-stories__cards mt-3">
           <PaginateComponent data={stories} perPage={5} show={component} />
