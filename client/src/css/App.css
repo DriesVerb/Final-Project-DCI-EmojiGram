@@ -49,15 +49,15 @@ body {
 }
 
 .Thriller {
-  background-color: #052c65;
+  background-color: #041733;
 }
 
 .Fantasy {
-  background-color: #6f42c1;
+  background-color: #6610f2;
 }
 
 .Mystery {
-  background-color: #20c997;
+  background-color: #198754;
 }
 
 .Romance {
@@ -69,29 +69,9 @@ body {
 }
 
 .Western {
-  background-color: #fd7e14;
+  background-color: #ffc107;
 }
 
-/* 
-Alternate History",
-      "Children's Story",
-      "Comedy",
-      "Contemporary",
-      "Dark Fantasy",
-      "Fairy Tale",
-      "Fantasy of Manners",
-      "Heroic",
-      "High Fantasy",
-      "Historical",
-      "Low Fantasy",
-      "Magical Realism",
-      "Mythic",
-      "Superhero",
-      "Sword and Sorcery",
-      "Urban",
-      "Young Adult",
-
-*/
 h1 {
   font-family: "Roboto", sans-serif;
   font-size: 6rem;
@@ -759,10 +739,50 @@ a {
   width: 15rem;
 }
 
+.preview-story {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preview-story__button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.preview-story__genre {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
 .preview-story__title {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.preview-story__emojis {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.preview-story__text {
+  padding: 1rem;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -770,10 +790,19 @@ a {
   text-align: left;
 }
 
-.story-editor__writer {
+.story-editor {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.story-editor__prompt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .story-editor__emojis {
   margin-top: 1rem;
@@ -781,12 +810,24 @@ a {
   height: 10rem;
 }
 
+.story-options {
+  width: 100%;
+}
+.story-options__items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .story-nav {
+  width: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: center;
+  align-items: center;
 }
 .story-nav__form-box {
   margin-bottom: 2rem;
@@ -796,6 +837,20 @@ a {
   font-size: 2rem;
   font-weight: 400;
   color: #0a0a0a;
+}
+
+.story-textarea {
+  width: 100%;
+  height: 60vh;
+}
+
+.story-button {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .story-card-big {
