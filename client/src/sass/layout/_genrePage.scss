@@ -1,7 +1,7 @@
 .genre {
   &__row {
-    display: flex;
-    justify-content: space-around;
+    width: 100%;
+    @include flex(row, center, center);
   }
 
   &__card {
@@ -27,5 +27,12 @@
 .genre-show {
   &__select {
     margin-bottom: 1rem;
+    width: 100%;
+    @include flex(row, flex-end, center);
+  }
+
+  &__empty {
+    background-color: orangered;
+    @include flex(row, start, center);
   }
 }

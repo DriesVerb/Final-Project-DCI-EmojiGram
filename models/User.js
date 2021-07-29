@@ -11,7 +11,10 @@ const userSchema = new Schema({
   hobby: String,
   occupation: String,
   message: String,
-  avatar: String,
+
+  avatar: {
+    type: String
+  },
 
 
   stories: Number,
@@ -40,6 +43,7 @@ const userSchema = new Schema({
       createdBy: String,
     },
   ],
+
   socialMedia: {},
   createdAt: {
     type: Date,

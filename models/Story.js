@@ -56,7 +56,10 @@ const storySchema = new Schema({
           type: String,
           required: true
         },
-        name: {
+         name: {
+          type: String
+        },
+        username: {
           type: String
         },
         avatar: {

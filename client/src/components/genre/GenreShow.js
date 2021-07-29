@@ -20,9 +20,11 @@ const GenreShow = ({ genre }) => {
     setPerPage(e.target.value);
   };
   return (
-    <div className="grid-container__mid">
+    <div>
       {stories.length === 0 ? (
-        <h2>There are no stories yet in the genre of {genre}!</h2>
+        <h2 className="genre-show__empty">
+          There are no stories yet in the genre of {genre}!
+        </h2>
       ) : (
         <div>
           <div className="genre-show__select">
