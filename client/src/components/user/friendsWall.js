@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import ProfileContext from '../../context/profile/profileContext';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
+import SideNavBar from '../layout/SideNavBar'
 
 const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
@@ -32,6 +33,9 @@ const FriensdWall = (props) => {
   }, []);
   return (
     <Fragment>
+                      <sideNavBar>
+                  <SideNavBar />
+                </sideNavBar>
       <div className='grid-container__friends'>
         {displayfollowing &&
           displayfollowing.map((follow) => (

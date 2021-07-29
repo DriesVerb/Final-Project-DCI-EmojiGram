@@ -3,7 +3,6 @@ import StoryContext from '../../context/story/storyContext';
 import PaginateComponent from '../utils/PaginateComponent';
 import AuthContext from '../../context/auth/authContext';
 import NavBarSideLeft from '../layout/NavbarSideLeft';
-
 function YourStories(props) {
   const storyContext = useContext(StoryContext);
   const { publishStory, stories } = storyContext;

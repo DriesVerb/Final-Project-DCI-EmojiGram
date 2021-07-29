@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
-import AuthContext from "../../context/auth/authContext";
+import AuthContext from "../../context/auth/authContext"; 
+import SideNavBar  from '../layout/SideNavBar'
+
 //Material UI
 import {
   Avatar,
@@ -71,86 +73,82 @@ function Login(props) {
   const avatarStyle = { backgroundColor: "#FB8500" };
   return (
     <Grid>
+
       <Paper elevation={10} style={paperStyle}>
-        <Grid align="center">
-          <Avatar style={avatarStyle} className="avatar mb-4">
+        <Grid align='center'>
+          <Avatar style={avatarStyle} className='avatar mb-4'>
             <HttpsOutlinedIcon />
           </Avatar>
-          <h3 className="text-success mb-5">Login to Account</h3>
+          <h3 className='text-success mb-5'>Login to Account</h3>
         </Grid>
         <Formik>
           <Form
             onSubmit={(e) => {
               e.preventDefault();
               submToServer();
-            }}
-          >
+            }}>
             <Field
               as={TextField}
-              className="field mb-5"
-              label="Email"
-              name="email"
-              variant="outlined"
-              placeholder="Enter Email"
+              className='field mb-5'
+              label='Email'
+              name='email'
+              variant='outlined'
+              placeholder='Enter Email'
               fullWidth
               onChange={getData}
               required
             />
             <Field
               as={TextField}
-              label="Password"
-              name="password"
-              variant="outlined"
-              placeholder="Enter Password"
-              type="password"
+              label='Password'
+              name='password'
+              variant='outlined'
+              placeholder='Enter Password'
+              type='password'
               fullWidth
               onChange={getData}
               required
             />
 
             <Button
-              className="btn mt-5 bg-warning"
+              className='btn mt-5 bg-warning'
               // className="btn mt-2"
-              type="submit"
-              variant="contained"
-              fullWidth
-            >
+              type='submit'
+              variant='contained'
+              fullWidth>
               Login
             </Button>
           </Form>
         </Formik>
-        <Typography className="typo mt-3">
-          <Link className="text-success" href="#">
+        <Typography className='typo mt-3'>
+          <Link className='text-success' href='#'>
             Forgot Password?
           </Link>
         </Typography>
-        <h4 className="signup mt-5">
+        <h4 className='signup mt-5'>
           Do not have an account?
-          <Link className=" text-success ml-3 mb-4" href="/signup">
+          <Link className=' text-success ml-3 mb-4' href='/signup'>
             Sign Up
           </Link>
         </h4>
-        <Grid align="center">
-          <h4 className="login mb-4 mt-5"> Login With</h4>
+        <Grid align='center'>
+          <h4 className='login mb-4 mt-5'> Login With</h4>
         </Grid>
-        <Grid align="center">
+        <Grid align='center'>
           <a
-            href="http://localhost:5000/login/passport/github"
-            className=" btn btn-dark font-weight-bold"
-          >
-            <GitHubIcon className="github ml-1" />
+            href='http://localhost:5000/login/passport/github'
+            className=' btn btn-dark font-weight-bold'>
+            <GitHubIcon className='github ml-1' />
           </a>
           <a
-            href="http://localhost:5000/login/passport/instagram"
-            className="btn btn-danger ml-4 font-weight-bold"
-          >
-            <InstagramIcon className="instagram ml-1" />
+            href='http://localhost:5000/login/passport/instagram'
+            className='btn btn-danger ml-4 font-weight-bold'>
+            <InstagramIcon className='instagram ml-1' />
           </a>
           <a
-            href="http://localhost:5000/login/passport/facebook"
-            className="btn btn-primary ml-4 font-weight-bold"
-          >
-            <FacebookIcon className="facebook ml-1" />
+            href='http://localhost:5000/login/passport/facebook'
+            className='btn btn-primary ml-4 font-weight-bold'>
+            <FacebookIcon className='facebook ml-1' />
           </a>
         </Grid>
       </Paper>
