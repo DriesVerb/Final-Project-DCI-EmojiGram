@@ -173,6 +173,9 @@ const readPublicStory = () => {
                                 )}
                               </p>
                               {/* {!auth.loading && user === auth.user._id && ( */}
+
+
+                              
                               <button
                                 onClick={() =>
                                   deleteComment(singleStory._id, comment._id)
