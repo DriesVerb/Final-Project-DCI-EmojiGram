@@ -65,6 +65,8 @@
   &__footer {
     width: 100%;
     @include flex(row, space-between, center);
+    border-bottom: 1px solid $main-l-grey;
+    padding: 5px;
   }
 
   &__symbols {

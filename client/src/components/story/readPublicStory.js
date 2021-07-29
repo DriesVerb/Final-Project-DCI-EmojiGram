@@ -5,6 +5,8 @@ import DOMPurify from 'dompurify';
 // components
 import CommentForm from './CommentForm';
 import EmojiChar from './EmojiChar';
+import Icon from '../utils/Icon';
+
 // context
 import AuthContext from '../../context/auth/authContext';
 const readPublicStory = () => {
@@ -35,88 +37,66 @@ const readPublicStory = () => {
   return (
     <Fragment>
       <div className="grid-container">
+        <div className="pb-story">
+          {singleStory && (
+            <div className="pb-story__top">
+              <div className="pb-story__title">
+                <h2 className="text-center ">
+                  {singleStory.title &&
+                    singleStory.title.charAt(0).toUpperCase() +
+                      singleStory.title.slice(1)}
+                </h2>
+              </div>
+              {/* Emoji */}
+              <div className="emoji__row pb-story__emojis">
+                {singleStory.emojis.map((emoji, id) => (
+                  <EmojiChar emoji={emoji} size="x-large" />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {singleStory && (
+            <div className="pb-story__info">
+              <div
+                onClick={() => toProfile(singleStory.user._id)}
+                className="pb-story__writer"
+              >
+                Written By {singleStory.user.username}
+              </div>
+              <div className="pb-story__symbols">
+                {singleStory.user.followers && (
+                  <div className="pb-story__symbol">
+                    <p className="">{singleStory.user.followers.length}</p>
+                    <Icon name="users" color="black" size="small" />
+                  </div>
+                )}
+
+                <div className="pb-story__symbol">
+                  <p className="">{singleStory.user.following.length}</p>
+                  <Icon name="heart" color="black" size="small" />
+                </div>
+
+                <div className="pb-story__symbol">
+                  <p className="">{singleStory.user.following.length}</p>
+                  <Icon name="books" color="black" size="small" />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {singleStory && (
+            <div className="pb-story__text">
+              <div dangerouslySetInnerHTML={sanitizeData()}></div>
+            </div>
+          )}
+        </div>
+
         <div className=" mx-auto">
           <div className="bg-white shadow rounded overflow-hidden">
-            <div className=" card-body">
-              {singleStory && (
-                <div>
-                  {/* Tittel */}
-                  <h2 className="text-center ">
-                    {singleStory.title &&
-                      singleStory.title.charAt(0).toUpperCase() +
-                        singleStory.title.slice(1)}
-                  </h2>
-                  <br />
-                  {/* Emoji */}
-                  <div className="emoji__row pb-story__emojis">
-                    {singleStory.emojis.map((emoji, id) => (
-                      <EmojiChar emoji={emoji} size="x-large" />
-                    ))}
-                  </div>
-                </div>
-              )}
-              <br />
-              {singleStory && (
-                <div>
-                  <div className="bg-light p-1  row ">
-                    <span className="mt-4 text-sm pl-4">
-                      <small>By:</small>
-                    </span>
-                    <img
-                    className="user-nav__avatar mt-3 "
-                    src={singleStory.user.avatar}
-                    alt=""
-                  />
-                    <h4
-                      className=" col-md-6 text-start mt-4 text-info"
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => toProfile(singleStory.user._id)}
-                    >  
-                      <strong> {singleStory.user.username}</strong>
-                    </h4>
-                    <div>
-                      <div className="list-inline-item p-3">
-                        {singleStory.user.followers && (
-                          <p className="font-weight-bold mb-0 d-block text-center">
-                            {singleStory.user.followers.length}
-                          </p>
-                        )}
-                        <small className="text-muted">
-                          {' '}
-                          <i className="fas fa-book mr-1"></i>Stories
-                        </small>
-                      </div>
-                      <div className="list-inline-item p-4">
-                        {singleStory.user.followers && (
-                          <p className="font-weight-bold mb-0 d-block text-center">
-                            {singleStory.user.followers.length}
-                          </p>
-                        )}
-                        <small className="text-muted">
-                          {' '}
-                          <i className="fas fa-user mr-1"></i>Followers
-                        </small>
-                      </div>
-                      <div className="list-inline-item">
-                        {singleStory.user.followers && (
-                          <p className="font-weight-bold mb-0 d-block text-center">
-                            {singleStory.user.following.length}
-                          </p>
-                        )}
-                        <small className="text-muted">
-                          {' '}
-                          <i className="fas fa-user mr-1"></i>Following
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
             <div className="px-4 py-3">
               {singleStory && (
                 <div>
-                  <div dangerouslySetInnerHTML={sanitizeData()}></div>
                   <div className="pb-story d-flex  ">
                     <div className="pb-story__likes pb-story__icon pr-3">
                       {/* likes */}
@@ -179,8 +159,6 @@ const readPublicStory = () => {
                               </p>
                               {/* {!auth.loading && user === auth.user._id && ( */}
 
-
-                              
                               <button
                                 onClick={() =>
                                   deleteComment(singleStory._id, comment._id)

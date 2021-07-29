@@ -2,6 +2,7 @@
   @include flex(column, space-around, center);
   background-color: $main-white;
   padding: 1.5rem;
+  border-bottom: 1px solid  $main-l-grey;
 
   &__row {
     display: flex;
@@ -39,9 +40,10 @@
   &__btn {
     cursor: pointer;
     @include main-font(1.2rem, 500, $main-black);
-    border: $main-border;
+    border: 1px solid $main-l-grey;
     padding: 0.5rem;
     background-color: $main-white;
+   
   }
 }
 
