@@ -1,22 +1,22 @@
 import React from 'react';
-import { Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const SideNavBar = () => {
   return (
     <div className="app-grid__navbar--side">
       <div className="side-navbar">
-        <Nav.Link className="side-navbar__link" href="/">
-          Home Page
-        </Nav.Link>
-        <Nav.Link className="side-navbar__link" href="/genre">
+        <Link to="/" className="side-navbar__link" href="/">
+          Home
+        </Link>
+        <Link to="/genre" className="side-navbar__link" href="/genre">
           Genres
-        </Nav.Link>
-        <Nav.Link className="side-navbar__link" href="/about">
+        </Link>
+        <Link className="side-navbar__link" href="/genre">
           About
-        </Nav.Link>
-        <Nav.Link className="side-navbar__link" href="/contact">
+        </Link>
+        <Link className="side-navbar__link" href="/genre">
           Contact
-        </Nav.Link>
+        </Link>
       </div>
     </div>
   );

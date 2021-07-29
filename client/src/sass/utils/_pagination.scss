@@ -1,14 +1,5 @@
 .pagination {
   @include flex(column, center, center);
-  background-color: $main-white;
-
-  &__cards {
-    @include flex(column, center, center);
-
-    &:not(:first-child) {
-      margin-top: 2rem;
-    }
-  }
 
   &__buttons {
     margin-top: 2rem;
