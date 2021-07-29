@@ -12,6 +12,8 @@ const UserProfile = (props) => {
   const {
     username,
     email,
+  
+    avatar,
     location,
     followers,
     following,
@@ -49,12 +51,12 @@ const UserProfile = (props) => {
             <div className="px-4 pt-5 pb-4 ">
               <div className="row align-items-start">
                 <div className="profile mr-3 col-3 ">
-                  <img
-                    src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-                    alt="..."
-                    width="160"
-                    className="rounded mb-2 img-thumbnail"
-                  />
+                   <img
+                  src={avatar}
+                  alt="..."
+                  width="160"
+                  className="rounded mb-2 img-thumbnail"
+                />
                 </div>
                 <div className="media-body mb-5 text-dark  col">
                   {username && (

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // components
-import GenreShow from "./GenreShow";
+import GenreShow from './GenreShow';
 
 const GenreMainPage = () => {
-  const [currentGenre, setCurrentGenre] = useState("Fantasy");
+  const [currentGenre, setCurrentGenre] = useState('Fantasy');
 
   const changeGenre = (e) => {
     setCurrentGenre(e.target.innerText);
@@ -12,7 +12,7 @@ const GenreMainPage = () => {
 
   return (
     <div className="grid-container">
-      <div className="genre__row grid-container__header">
+      <div className="genre__row">
         <div onClick={changeGenre} className="genre__card">
           Fantasy
         </div>
