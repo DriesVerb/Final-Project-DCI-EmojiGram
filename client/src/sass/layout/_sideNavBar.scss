@@ -2,12 +2,12 @@
   margin-top: 1rem;
   background-color: $main-blue;
   padding: 1rem;
-  border-radius: 0.5rem;
-  width: 100%;
+  width: 150px;
 
-  @include flex(row, space-around, center);
+  @include flex(column, space-around, start);
   &__flex {
-    @include flex(row, center, center);
+    @include flex(column, start, start);
+    height: 45px;
   }
 
   &__link {

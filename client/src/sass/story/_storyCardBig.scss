@@ -1,12 +1,72 @@
+// @keyframes circle-to-square {
+//   from {
+//     width: 200px;
+//     height: 300px;
+//     background: $main-yellow-emoji;
+//     border: 1px $main-yellow-emoji;
+//     border-radius: 0%;
+//     transform: rotate(0deg);
+//   }
+
+//   to {
+//     width: 200px;
+//     height: 300px;
+//     border-radius: 50%;
+//     background: $main-yellow-emoji;
+//     border: 1px $main-yellow-emoji;
+//     transform: rotate(360deg);
+//   }
+// }
+
+// @keyframes circle-to-square {
+//   from {
+//     width: 200px;
+//     height: 300px;
+//     background: $main-red-emoji;
+//     border-radius: 50%;
+//     border: 1px $main-yellow-emoji;
+//     transform: rotate(360deg);
+//   }
+
+//   to {
+//     width: 200px;
+//     height: 300px;
+//     border-radius: 0%;
+//     border: 1px $main-red-emoji;
+//     background: $main-yellow-emoji;
+//     transform: rotate(0deg);
+//   }
+// }
+
+// @keyframes opacity-text {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 0;
+//   }
+// }
+// @keyframes opacity-info {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 0;
+//   }
+// }
+
 .story-card-big {
   width: 95%;
   border-radius: 1rem;
   box-shadow: 0 8px 6px -6px $main-black;
-  border: 1px solid $main-black;
   transition: 0.3s ease;
   cursor: pointer;
-  margin-bottom: 1.3rem;
-  background-color: $main-l-grey;
+  margin-bottom: 2rem;
+  background-color: $main-white;
+  width: 100%;
+  // animation: circle-to-square 1.2s;
+
+  // animation-timing-function: linear;
 
   &:hover {
     box-shadow: 0 1rem 7px -5px $main-black;
@@ -17,9 +77,12 @@
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     background: white;
+
     width: 100%;
     padding: 1.5rem;
     border-bottom: 1px solid $main-d-grey;
+
+    // animation: circle-to-square 1.2s;
 
     &--center {
       @include flex(row, center, center);
@@ -34,7 +97,9 @@
   &__info {
     padding: 1rem;
     width: 100%;
+
     @include flex(column, space-between, start);
+    // animation: opacity-info 1.2s ease-in-out;
   }
 
   &__story {
@@ -66,7 +131,7 @@
     line-height: 1.5;
     width: 100%;
     @include flex(row, start, start);
-    @include main-font(1.5rem, 400, $main-black);
+    // animation: opacity-text 3s ease-in-out;
   }
 
   &__footer {
@@ -77,6 +142,7 @@
     background-color: #fff;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    // animation: opacity-info 1.2s ease-in-out;
   }
 
   &__read-more {
@@ -98,5 +164,22 @@
   &__views {
     font-size: 1.5rem;
     padding: 0px 2rem;
+  }
+}
+
+.left-yourStories {
+  @include flex(column, space-between, start);
+  height: 30vh;
+  margin-top: 20vh;
+
+  // &__Stories {
+  //   @include flex(row, start, start);
+  //   height: 30vh;
+  //   grid-row: 3/4;
+  //   grid-column: 2/4;
+  // }
+
+  &__footer {
+    padding: 15px;
   }
 }

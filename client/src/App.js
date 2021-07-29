@@ -20,8 +20,8 @@ import ShowStory from './components/story/showStory';
 import GenreMainPage from './components/genre/GenreMainPage';
 import PublicLandingPage from './components/pages/publicLandingPage';
 import SideNavBar from './components/layout/SideNavBar';
+import NavbarSideLeft from './components/layout/NavbarSideLeft';
 
-import Header from './components/layout/Header';
 import FriendStories from './components/story/friendStories';
 import UserItem from './components/user/UserItem';
 import userForm from './components/user/userForm';
@@ -38,6 +38,7 @@ import ProfileState from './context/profile/ProfileState';
 
 // import setAuthToken
 import setAuthToken from './context/auth/setAuthToken';
+import SortByYourStories from './components/layout/SortByYourStories';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -55,16 +56,15 @@ function App() {
     <ProfileState>
       <StoryState>
         <AlertState>
-          <div className="app__container">
+          <div className="app-grid">
             <Router>
-              {/* <Header /> */}
-
+              <Alerts />
               <Navbar />
               <SideNavBar />
-              <Alerts />
-              <div className="app__main">
+              <div className="app-grid__main">
                 <Switch>
                   <Route path="/" exact component={PublicLandingPage} />
+
                   <PrivateRoute path="/landing" exact component={LandingPage} />
                   <PrivateRoute
                     path="/UserInterface"

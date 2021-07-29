@@ -1,15 +1,14 @@
-import React, { useReducer } from "react";
-import axios from "axios";
+import React, { useReducer } from 'react';
+import axios from 'axios';
 //to generate ids
 // import {v4 as uuidv4} from 'uuid';
 // import context
-import setAuthToken from "../auth/setAuthToken";
-import StoryContext from "./storyContext";
-import storyReducer from "./storyReducer";
+import setAuthToken from '../auth/setAuthToken';
+import StoryContext from './storyContext';
+import storyReducer from './storyReducer';
 import {
   STORY_PUBLISH,
   STORY_PUBLISH_LIKES,
-  ADD_STORY,
   DELETE_STORY,
   // EDIT_STORY,
   //  SET_STORY ,
@@ -23,26 +22,26 @@ import {
   UPDATE_LIKES,
   ADD_COMMENT,
   REMOVE_COMMENT,
-} from "../types";
+} from '../types';
 
 const StoryState = (props) => {
   const initialState = {
     stories: [
       {
-        user: "",
-        title: "",
-        text: "",
-        genre: "",
-        subGenre: "",
+        user: '',
+        title: '',
+        text: '',
+        genre: '',
+        subGenre: '',
         likes: [],
 
-        favorite: "",
-        _id: "",
+        favorite: '',
+        _id: '',
         comments: null,
         emojis: [],
       },
     ],
-    added:null,
+    added: null,
     // isLiked: false,
     topStories: [],
     singleStory: null,
@@ -80,7 +79,7 @@ const StoryState = (props) => {
   //Publish Story
 
   const publishStory = async (id) => {
-    console.log(id)
+    console.log(id);
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
@@ -95,10 +94,9 @@ const StoryState = (props) => {
       dispatch({ type: STORY_ERROR });
     }
   };
-  
+
   const friends = async (id) => {
     try {
-     
       const res = await axios.get(`/user/profile/friends/${id}`);
       dispatch({
         type: STORY_PUBLISH,
@@ -112,7 +110,7 @@ const StoryState = (props) => {
 
   const publishStoryPublic = async (story) => {
     try {
-      const res = await axios.get("/user/story/publishedStory");
+      const res = await axios.get('/user/story/publishedStory');
       dispatch({
         type: STORY_PUBLISH,
         payload: res.data,
@@ -264,7 +262,7 @@ const StoryState = (props) => {
 
       dispatch({
         type: UPDATE_LIKES,
-        payload:res.data,
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
@@ -366,7 +364,7 @@ const StoryState = (props) => {
         addLike,
         removeLike,
         // isLiked: state.isLiked
-        added:state.added,
+        added: state.added,
         addComment,
         deleteComment,
         showSinglePublic,

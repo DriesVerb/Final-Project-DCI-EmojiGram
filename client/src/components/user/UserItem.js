@@ -1,180 +1,224 @@
-import React, { Fragment, useContext, useEffect } from "react";
-import ProfileContext from "../../context/profile/profileContext";
-import YourStories from "../story/yourStories";
-import { Link } from "react-router-dom";
 
+import React, { Fragment, useContext, useEffect, useState } from 'react';
+import ProfileContext from '../../context/profile/profileContext';
+import YourStories from '../story/yourStories';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 const UserItem = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
+  const [picture, setPicture] = useState();
+  const [newPicture, setNewPicture] = useState();
+  //   const [successMsg, setSuccessMsg] = useState();
+  // this function will update picture data
+  const choosePic = (event) => {
+    setPicture(event.target.files[0]);
+  };
+  // add picture data to backend
+  const add = (event) => {
+    event.preventDefault();
+    // console.log(picture);
+    // collect all data from  the form
+    const formData = new FormData(); // create instance of a object for html form
+    formData.append('profilePics', picture); // add picture to formData object
+    // configuaration for file type input
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+    axios.post('/profile/profile', formData, config).then((response) => {
+      //   const successMsg = response.data;
+      //   setSuccessMsg(response.data);
+      console.log(response.data.profilePics);
+      setNewPicture(response.data.profilePics);
+    });
+  };
   const {
     _id,
+    avatar,
     username,
     email,
-    avatar,
-    age,
     location,
+    stories,
     occupation,
     hobby,
     followers,
     following,
   } = user;
   useEffect(() => {
-    !user ? props.history.push("/") : getProfile(_id);
-
+    !user ? props.history.push('/') : getProfile(_id);
     // eslint-disable-next-line
   }, []);
-
   const onEdit = () => {
     setCurrent(user);
-    props.history.push("/userform");
+    props.history.push('/userform');
   };
-
   const onDelete = () => {
     deleteProfile(_id);
     clearCurrent();
   };
-
   return (
-    <Fragment>
-      <div className="col-md-7 mx-auto">
-        <div className="bg-white shadow rounded overflow-hidden">
-          <div className="px-4 pt-5 pb-4 ">
-            <div className="row align-items-start">
-              <div className="profile mr-3 col-3 ">
-                <img
+    <div className="col-md-7 mx-auto">
+      <div className="bg-white shadow rounded overflow-hidden">
+        <div className="px-4 pt-5 pb-4 ">
+          <div className="row align-items-start">
+            <div className="profile mr-3 col-3 ">
+              {/* <h3 className='profile-header_upload'>
+                  Upload Picture to your Profile
+                </h3> */}
+              <div
+                Classname="profile-upload-image mr-3 col-3"
+                {...(avatar && (
+                   <img
                   src={avatar}
                   alt="..."
                   width="160"
                   class="rounded mb-2 img-thumbnail"
                 />
-              </div>
-
-              <div className="media-body mb-5 text-dark  col">
-                {username && (
-                  <h4>
-                    {" "}
-                    {username.charAt(0).toUpperCase() + username.slice(1)}
-                  </h4>
-                )}
-                {email && (
-                  <p className="small mb-4 mt-3">
-                    {" "}
-                    <i className="fas fa-paper-plane mr-2"></i>
-                    {email}
-                  </p>
-                )}
-
-                {location && (
-                  <p className="small mb-4">
-                    {" "}
-                    <i className="fas fa-map-marker-alt mr-2"></i>
-                    {location.charAt(0).toUpperCase() + location.slice(1)}
-                  </p>
-                )}
-                <div className="d-flex flex-start m-0 p-0">
-                  <button
-                    type="submit"
-                    className="btn btn-dark btn-lg "
-                    onClick={onEdit}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    type="submit"
-                    value="Submit"
-                    className="btn btn-info  ml-2 btn-lg"
-                    onClick={onDelete}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-
-              <div class="bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 ">
-                <ul class="list-inline mb-0 ">
-                  <li class="list-inline-item p-3">
-                    {followers && (
-                      <h5 class="font-weight-bold mb-0 d-block">
-                        {followers.length}
-                      </h5>
-                    )}
-                    <small class="text-muted">
-                      {" "}
-                      <i class="fas fa-book mr-1"></i>Stories
-                    </small>
-                  </li>
-
-                  <li class="list-inline-item p-4">
-                    {followers && (
-                      <h5 class="font-weight-bold mb-0 d-block">
-                        {followers.length}
-                      </h5>
-                    )}
-
-                    <small class="text-muted">
-                      {" "}
-                      <i class="fas fa-user mr-1"></i>Followers
-                    </small>
-                  </li>
-
-                  <li class="list-inline-item">
-                    {following && (
-                      <h5 class="font-weight-bold mb-0 d-block">
-                        {followers.length}
-                      </h5>
-                    )}
-
-                    <small class="text-muted">
-                      {" "}
-                      <i class="fas fa-user mr-1"></i>Following
-                    </small>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="px-4 py-3">
-            <h5 class="mb-0">About</h5>
-            <div class="p-4 rounded shadow-sm bg-light">
-              {occupation && (
-                <p className="small mt-2">
-                  <i class="fas fa-briefcase"></i>
-                  <span className="mr-2"></span>
-                  {occupation.charAt(0).toUpperCase() + occupation.slice(1)}
-                </p>
-              )}
-
-              <p className="font-italic mb-1">
-                {location && (
-                  <p className="small mt-2">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span className="mr-2"></span>{" "}
-                    {location.charAt(0).toUpperCase() + location.slice(1)}
-                  </p>
-                )}
-              </p>
-              <p class="font-italic mb-0">
-                {hobby && (
-                  <p className="small mt-2">
-                    <i class="fas fa-heading"></i>
-                    <span className="mr-2"></span>
-                    {hobby.charAt(0).toUpperCase() + hobby.slice(1)}
-                  </p>
-                )}
-              </p>
-            </div>{" "}
-            <Link to="/yourstories" className="link">
-              <button className="btn btn-secondary btn-lg btn-block ">
-                Stories{" "}
+                ))}
+              ></div>
+              <input
+                className="profile-header_input"
+                type="file"
+                name="profilePics"
+                id="fileLoading"
+                label="Upload a Picture"
+                onChange={choosePic}
+              />
+              <button className="btn btn-add" type="submit" onSubmit={add}>
+                Add to your profile
               </button>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
-    </Fragment>
+      <div class="px-4 py-3">
+        <h5 class="mb-0">About</h5>
+        <div class="p-4 rounded shadow-sm bg-light">
+          {occupation && (
+            <p className="small mt-2">
+              <i class="fas fa-briefcase"></i>
+              <span className="mr-2"></span>
+              {occupation.charAt(0).toUpperCase() + occupation.slice(1)}
+            </p>
+          )}
+          <p className="font-italic mb-1">
+            {location && (
+              <p className="small mt-2">
+                <i class="fas fa-map-marker-alt"></i>
+                <span className="mr-2"></span>{' '}
+                {location.charAt(0).toUpperCase() + location.slice(1)}
+              </p>
+            )}
+          </p>
+          <p class="font-italic mb-0">
+            {hobby && (
+              <p className="small mt-2">
+                <i class="fas fa-heading"></i>
+                <span className="mr-2"></span>
+                {hobby.charAt(0).toUpperCase() + hobby.slice(1)}
+              </p>
+            )}
+          </p>
+        </div>{' '}
+        <Link to="/yourstories" className="link">
+          <button className="btn btn-secondary btn-lg btn-block ">
+            Stories{' '}
+          </button>
+          <button
+            type="submit"
+            value="Submit"
+            className="btn btn-info  ml-2 btn-lg"
+            onClick={onDelete}
+          >
+            Delete
+          </button>
+        </Link>
+      </div>
+      <div className="bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 ">
+        <ul className="list-inline mb-0 ">
+          <li className="list-inline-item p-3">
+            {followers && (
+              <h5 className="font-weight-bold mb-0 d-block">
+                {followers.length}
+              </h5>
+            )}
+            <small className="text-muted">
+              {' '}
+              <i className="fas fa-book mr-1"></i>Stories
+            </small>
+          </li>
+          <li className="list-inline-item p-4">
+            {followers && (
+              <h5 className="font-weight-bold mb-0 d-block">
+                {followers.length}
+              </h5>
+            )}
+            <small className="text-muted">
+              {' '}
+              <i className="fas fa-user mr-1"></i>Followers
+            </small>
+          </li>
+          <li className="list-inline-item">
+            {following && (
+              <h5 className="font-weight-bold mb-0 d-block">
+                {followers.length}
+              </h5>
+            )}
+            <div className="bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 ">
+              <ul className="list-inline mb-0 ">
+                <li className="list-inline-item p-3">
+                  {stories && (
+                    <h5 className="font-weight-bold mb-0 d-block">{stories}</h5>
+                  )}
+                  <small className="text-muted">
+                    {' '}
+                    <i className="fas fa-book mr-1"></i>Stories
+                  </small>
+                </li>
+                <li className="list-inline-item p-4">
+                  {followers && (
+                    <h5 className="font-weight-bold mb-0 d-block">
+                      {followers.length}
+                    </h5>
+                  )}
+                  <small className="text-muted">
+                    {' '}
+                    <i className="fas fa-user mr-1"></i>Followers
+                  </small>
+                </li>
+                <li className="list-inline-item">
+                  {following && (
+                    <h5 className="font-weight-bold mb-0 d-block">
+                      {following.length}
+                    </h5>
+                  )}
+                  <small className="text-muted">
+                    {' '}
+                    <i className="fas fa-user mr-1"></i>Following
+                  </small>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <div className="px-4 py-3">
+          <h5 className="mb-0">About</h5>
+          <div className="p-4 rounded shadow-sm bg-light">
+            <p className="font-italic mb-0">Web Developer</p>
+            <p className="font-italic mb-0">Lives in Berlin</p>
+            <p className="font-italic mb-0">Artist</p>
+          </div>{' '}
+          <Link to="/yourstories" className="link">
+            <button className="btn btn-secondary btn-lg btn-block ">
+              Stories{' '}
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 };
-
 export default UserItem;

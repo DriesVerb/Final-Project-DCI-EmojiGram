@@ -1,16 +1,23 @@
 // grid
-.landing-page {
-  &__header {
-    padding: 2rem;
-  }
-}
+// .landing-page {
+//   &__header {
+//     padding: 2rem;
+//   }
+// }
 
 .public-stories {
   height: 100%;
   width: 100%;
   @include flex(column, center, center);
+
+  &__sort {
+    width: 100%;
+    @include flex(row, flex-end, center);
+    margin-bottom: 0.5rem;
+  }
+
   &__cta {
-    width: 90%;
+    width: 100%;
     margin-bottom: 1rem;
   }
   &__cards {
@@ -22,10 +29,7 @@
 
 .left-sidebar {
   @include flex(column, space-between, start);
-  height: 65vh;
-
-  &__menu {
-  }
+  height: 30vh;
 
   &__footer {
     padding: 15px;

@@ -1,25 +1,14 @@
 import React, { useContext } from 'react';
-import Images from '../../img/minions1.jpg';
+
 import { Link } from 'react-router-dom';
-import AuthContext from '../../context/auth/authContext';
 
 // components
 import Icon from '../utils/Icon';
 
 // Navbar user interface
 function userInterface(props) {
-  const authContext = useContext(AuthContext);
-
-  const { user } = authContext;
-
-  // let history = useHistory();
-
-  const toMyStories = (id) => {
-    props.history.push(`/yourstories/${id}`);
-  };
-
   return (
-    <div className="grid-container">
+    <div className="grid-container__interface">
       <div className="grid-container__mid">
         <div className="user-interface__cards">
           <div

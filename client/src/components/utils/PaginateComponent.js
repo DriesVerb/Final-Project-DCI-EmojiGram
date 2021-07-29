@@ -1,8 +1,9 @@
-import React, { Fragment, useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
+import React, { Fragment, useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
 
 // components
-import StoryCardBig from "../story/StoryCardBig";
+import StoryCardBigRight from '../story/StoryCardBigRight';
+import StoryCardBigLeft from '../story/StoryCardBigLeft';
 
 const PaginateComponent = ({ data, perPage, show }) => {
   const [pageNumber, SetPageNumber] = useState(0);
@@ -26,20 +27,38 @@ const PaginateComponent = ({ data, perPage, show }) => {
       <div className="pagination">
         <div className="pagination__cards">
           {displayStories.map((story, index) => {
-            return <StoryCardBig key={index} story={story} index={index} show={show}/>;
+            if (index % 2 === 0) {
+              return (
+                <StoryCardBigLeft
+                  key={index}
+                  story={story}
+                  index={index}
+                  show={show}
+                />
+              );
+            } else {
+              return (
+                <StoryCardBigRight
+                  key={index}
+                  story={story}
+                  index={index}
+                  show={show}
+                />
+              );
+            }
           })}
         </div>
         <div className="pagination__buttons">
           <ReactPaginate
-            previousLabel={"Prev"}
-            nextLabel={"Next"}
+            previousLabel={'Prev'}
+            nextLabel={'Next'}
             pageCount={pageCount}
             onPageChange={changePage}
-            containerClassName={"pagination__btn"}
-            previousLinkClassName={"previosBttm"}
-            nextLinkClassName={"nextBttn"}
-            disabledClassName={"paginationDisabled"}
-            activeClassName={"pagination__active"}
+            containerClassName={'pagination__btn'}
+            previousLinkClassName={'previosBttm'}
+            nextLinkClassName={'nextBttn'}
+            disabledClassName={'paginationDisabled'}
+            activeClassName={'pagination__active'}
           />
         </div>
       </div>
@@ -48,3 +67,13 @@ const PaginateComponent = ({ data, perPage, show }) => {
 };
 
 export default PaginateComponent;
+
+/* 
+<StoryCardBigRight
+                key={index}
+                story={story}
+                index={index}
+                show={show}
+              />
+
+*/
