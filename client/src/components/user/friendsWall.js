@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import ProfileContext from "../../context/profile/profileContext";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import Pic from "./Pic.jpg";
 
 const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
@@ -44,39 +45,51 @@ const FriensdWall = (props) => {
       <div className="grid-container__friends">
         {displayfollowing &&
           displayfollowing.map((follow) => (
-            <div className="container mt-6 d-flex justify-content-center">
-              <div className="card p-3 w-75 m-3">
-                <div className="d-flex align-items-center">
-                  <div className="image-follower">
-                    {" "}
-                    <img
+            <div className="container__friends  d-flex justify-content-center">
+              <div
+                className="card p-3 w-300 mt-3"
+                style={{ width: "400px", height: "450px" }}
+              >
+                <div className="d-flex flex-column align-items-center">
+                  {/* <img
                       src={follow.user.avatar}
                       class="rounded"
                       width="155"
-                    />{" "}
-                  </div>
+                    />{" "} */}
+                  <img
+                    src={Pic}
+                    className="container__img rounded-circle d-flex align-item-center"
+                    alt="profile pic"
+                    width="200"
+                    style={{ top: "60px" }}
+                  />
+
                   <div className="ml-3 w-100">
-                    <h4 className="mb-0 mt-0">{follow.user.username}</h4>{" "}
-                    <span>{follow.user.location} </span>
+                    <h4 className="mb-0 mt-5 py-2 text-center">
+                      {follow.user.username}
+                    </h4>{" "}
+                    <div className="text-center">
+                      <span>{follow.user.location} </span>
+                    </div>
                     <div className="p-2 mt-2 bg-light d-flex justify-content-between rounded text-white stats">
                       <div className="d-flex flex-column">
                         {" "}
                         <span className="articles">Followings</span>{" "}
-                        <span className="number1">
+                        <span className="number1 text-center">
                           {follow.user.following.length}
                         </span>{" "}
                       </div>
                       <div className="d-flex flex-column">
                         {" "}
                         <span className="followers">Followers</span>{" "}
-                        <span className="number2">
+                        <span className="number2 text-center">
                           {follow.user.followers.length}
                         </span>{" "}
                       </div>
                       <div className="d-flex flex-column">
                         {" "}
                         <span className="rating">Stories</span>{" "}
-                        <span className="number3"></span>{" "}
+                        <span className="number3 text-center"></span>{" "}
                       </div>
                     </div>
                     <div ClassName="m-5">
@@ -85,9 +98,11 @@ const FriensdWall = (props) => {
                         to={`/friendStories/${follow.user._id}`}
                         classNameName="link"
                       >
-                        <button classNameName="btn btn-outline-secondary btn-lg btn-block ">
-                          Stories{" "}
-                        </button>
+                        <div className="text-info text-center mt-5 ">
+                          <button className="btn btn-info btn-lg ">
+                            Stories{" "}
+                          </button>
+                        </div>
                       </Link>
                     </div>
                   </div>
