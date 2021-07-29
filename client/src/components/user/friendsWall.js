@@ -2,12 +2,11 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import ProfileContext from '../../context/profile/profileContext';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
-import SideNavBar from '../layout/SideNavBar'
+import SideNavBar from '../layout/SideNavBar';
 
 const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
-  const { user,  getProfile } =
-    profileContext;
+  const { user, getProfile } = profileContext;
   const { _id, username, email, age, location, followers, following, stories } =
     user;
   const [pageNumber, SetPageNumber] = useState(0);
@@ -33,9 +32,6 @@ const FriensdWall = (props) => {
   }, []);
   return (
     <Fragment>
-                      <sideNavBar>
-                  <SideNavBar />
-                </sideNavBar>
       <div className='grid-container__friends'>
         {displayfollowing &&
           displayfollowing.map((follow) => (
@@ -44,7 +40,11 @@ const FriensdWall = (props) => {
                 <div className='d-flex align-items-center'>
                   <div className='image-follower'>
                     {' '}
-                    <img src={follow.user.avatar} class="rounded" width="155"/>{' '}
+                    <img
+                      src={follow.user.avatar}
+                      class='rounded'
+                      width='155'
+                    />{' '}
                   </div>
                   <div className='ml-3 w-100'>
                     <h4 className='mb-0 mt-0'>{follow.user.username}</h4>{' '}
@@ -86,7 +86,6 @@ const FriensdWall = (props) => {
             </div>
           ))}
       </div>
-
     </Fragment>
   );
 };

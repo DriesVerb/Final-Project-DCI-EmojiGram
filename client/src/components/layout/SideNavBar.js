@@ -11,10 +11,10 @@ const SideNavBar = () => {
         <Nav.Link className="side-navbar__link" href="/genre">
           Genres
         </Nav.Link>
-        <Nav.Link className="side-navbar__link" href="/genre">
+        <Nav.Link className="side-navbar__link" href="/about">
           About
         </Nav.Link>
-        <Nav.Link className="side-navbar__link" href="/genre">
+        <Nav.Link className="side-navbar__link" href="/contact">
           Contact
         </Nav.Link>
       </div>

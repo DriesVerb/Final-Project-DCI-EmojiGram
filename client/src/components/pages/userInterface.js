@@ -10,10 +10,7 @@ function userInterface(props) {
   return (
     <div className='grid-container'>
       <div className='grid-container__mid'>
-        <div className='grid-container'>
-
-
-        </div>
+        <div className='grid-container'></div>
         <div className='user-interface__cards'>
           <div
             className='user-card'
@@ -21,15 +18,18 @@ function userInterface(props) {
               props.history.push(`/writestory`);
             }}>
             <Icon
-              className='user-card__iconsOne'
+              className='user-card__icons'
               name='quill'
               color='blue'
-              size='x-large'
+              size='large'
             />
-            <p className='user-card__titleOne'>CREATE YOUR STORY</p>
+            <p className='user-card__title'>CREATE YOUR STORY</p>
 
-            <Link to='/writestory' className='link'>
-              <button className='btn btn-success user-card__btnOne'>
+            <Link
+              to='/writestory'
+              className='user-card__linkuser'
+              style={{ textDecoration: 'none' }}>
+              <button className='btn user-card__btnUser'>
                 Click to Create
               </button>
             </Link>
@@ -43,11 +43,14 @@ function userInterface(props) {
               className='user-card__icons'
               name='users'
               color='blue'
-              // size='large'
+              size='large'
             />
             <p className='user-card__title'>READ FRIENDS STORIES</p>
-            <Link to='/friendsWall' className='link'>
-              <button className='btn btn-success user-card__btn'>
+            <Link
+              to='/friendsWall'
+              className='user-card__linkuser'
+              style={{ textDecoration: 'none' }}>
+              <button className='btn user-card__btnUser'>
                 Click to Access
               </button>
             </Link>
@@ -60,8 +63,11 @@ function userInterface(props) {
               size='large'
             />
             <p className='user-card__title'>ACCESS YOUR STORIES</p>
-            <Link to='/yourstories' className='link'>
-              <button className='btn btn-success user-card__btn'>
+            <Link
+              to='/yourstories'
+              className='user-card__linkuser'
+              style={{ textDecoration: 'none' }}>
+              <button className='btn user-card__btnUser'>
                 Click to Access
               </button>
             </Link>

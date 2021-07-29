@@ -1,5 +1,6 @@
 .pagination {
   @include flex(column, center, center);
+  background-color: $main-white;
 
   &__cards {
     @include flex(column, center, center);
