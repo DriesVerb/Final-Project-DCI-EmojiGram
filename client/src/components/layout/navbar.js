@@ -1,7 +1,8 @@
-import React, { Fragment, useContext } from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import AuthContext from '../../context/auth/authContext';
-import ProfileContext from '../../context/profile/profileContext';
+import React, { Fragment, useContext } from "react";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+// import { Link } from "react-router-dom";
+import AuthContext from "../../context/auth/authContext";
+import ProfileContext from "../../context/profile/profileContext";
 
 function navbar() {
   const authContext = useContext(AuthContext);
@@ -17,25 +18,25 @@ function navbar() {
 
   const userLinks = (
     <Fragment>
-      <div>
-        <Nav style={{ maxHeight: '100px' }} navbarScroll>
+      <div className="app__navbar">
+        <Nav style={{ maxHeight: "100px" }} navbarScroll>
           <li className="ml-2">
             <a className="nav-link text-dark" href="#!">
               <p> Hello </p>
               {user && (
                 <div>
-                  {/* <img
+                  <img
                     width="50px"
                     height="60px"
                     //  style =" width:30px  height:10px "
                     className="round-img"
-                    // src={user.avatar}
+                    src={user.avatar}
                     alt=""
-                  /> */}
+                  />
                   <p>
                     {user.username.charAt(0).toUpperCase() +
                       user.username.slice(1)}
-                  </p>{' '}
+                  </p>{" "}
                 </div>
               )}
               <span className="sr-only">(current)</span>

@@ -1,11 +1,12 @@
-import React, { useEffect, useContext } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Sass
-import './css/App.css';
+import "./css/App.css";
 
 // components
+<<<<<<< HEAD
 import Alerts from './components/layout/Alert';
 import TopNavbar from './components/layout/TopNavbar';
 import Login from './components/auth/login';
@@ -29,15 +30,44 @@ import UserProfile from './components/user/userProfile';
 import FriendsWall from './components/user/friendsWall';
 
 import ReadPublicStory from './components/story/readPublicStory';
+=======
+import Alerts from "./components/layout/Alert";
+import Navbar from "./components/layout/navbar";
+import Login from "./components/auth/login";
+import SignUp from "./components/auth/SignUp";
+import LandingPage from "./components/pages/LandingPage";
+import PrivateRoute from "./components/privateRoute";
+import StoryEditor from "./components/story/StoryEditor";
+import UserInterface from "./components/pages/userInterface";
+import YourStories from "./components/story/yourStories";
+import PreviewStory from "./components/story/PreviewStory";
+import ShowStory from "./components/story/showStory";
+import GenreMainPage from "./components/genre/GenreMainPage";
+import PublicLandingPage from "./components/pages/publicLandingPage";
+import SideNavBar from "./components/layout/SideNavBar";
+import NavbarSideLeft from "./components/layout/NavbarSideLeft";
+
+import FriendStories from "./components/story/friendStories";
+import UserItem from "./components/user/UserItem";
+import userForm from "./components/user/userForm";
+import UserProfile from "./components/user/userProfile";
+import FriendsWall from "./components/user/friendsWall";
+
+import ReadPublicStory from "./components/story/readPublicStory";
+>>>>>>> fdae87500007b77d8915ce1b24683954a74f9f28
 
 // context
-import StoryState from './context/story/storyState';
-import AuthContext from './context/auth/authContext';
-import AlertState from './context/alert/alertState';
-import ProfileState from './context/profile/ProfileState';
+import StoryState from "./context/story/storyState";
+import AuthContext from "./context/auth/authContext";
+import AlertState from "./context/alert/alertState";
+import ProfileState from "./context/profile/ProfileState";
 
 // import setAuthToken
+<<<<<<< HEAD
 import setAuthToken from './context/auth/setAuthToken';
+=======
+import setAuthToken from "./context/auth/setAuthToken";
+>>>>>>> fdae87500007b77d8915ce1b24683954a74f9f28
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
