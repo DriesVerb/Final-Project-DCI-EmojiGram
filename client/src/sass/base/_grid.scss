@@ -15,7 +15,7 @@
   }
 
   &__navbar--side {
-    grid-row: 2/4;
+    grid-row: 2/-1;
     grid-column: 2/3;
   }
 
@@ -32,7 +32,7 @@
 
 .grid-container {
   @include flex(column, center, start);
-  padding: 1rem;
+  padding: 1rem 0 1rem 1rem;
 
   &__headerUser {
     display: flex;
