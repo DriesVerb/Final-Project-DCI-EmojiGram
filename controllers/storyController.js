@@ -294,10 +294,10 @@ exports.removeComment = async (req, res) => {
       return res.status(401).json({ msg: 'User not authorized' });
     }
    
-else if (comment.user.toString() == req.story.user  ){
+ 
     story.comments = story.comments.filter(
       ({ id }) => id !== req.params.comment_id
-    )};
+    );
 
     await story.save();
 
