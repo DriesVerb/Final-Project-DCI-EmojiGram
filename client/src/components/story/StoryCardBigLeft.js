@@ -20,7 +20,7 @@ const StoryCardBigLeft = ({ story, show }) => {
   };
 
   const trimString = (text) => {
-    const trimmedString = text.substring(0, 200);
+    const trimmedString = text.substring(0, 350);
     return trimmedString;
   };
   const classGenre = (genre) => {
@@ -60,17 +60,17 @@ const StoryCardBigLeft = ({ story, show }) => {
         <footer className="story-main__footer">
           <div className="story-main__symbols">
             <div className="story-main__icon">
-              <Icon name="thumb-up1" color="grey" size="x-small" />
+              <Icon name="thumb-up1" color="grey" size="small" />
               <span className="story-main__counter">{story.likes.length}</span>
             </div>
             <div className="story-main__icon">
-              <Icon name="bubbles" color="grey" size="x-small" />
+              <Icon name="bubbles" color="grey" size="small" />
               <span className="story-main__counter">
                 {story.comments && story.comments.length}
               </span>
             </div>
             <div className="story-main__icon">
-              <Icon name="view-show" color="grey" size="x-small" />
+              <Icon name="view-show" color="grey" size="small" />
               <span className="story-main__counter">{story.views}</span>
             </div>
           </div>

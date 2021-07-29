@@ -70,15 +70,6 @@ const PublicLandingPage = () => {
           )}
         </div>
       </main>
-      {/* <div className="right-sidebar grid-container__right">
-        <StoryCardSmall story={topStories} amount={3} title={"Most Likes:"} />
-        <StoryCardSmall
-          story={test}
-          amount={2}
-          title={"Latest Published:"}
-        />
-        {/* <MostLikes /> */}
-      {/* </div> */}
     </div>
   );
 };
