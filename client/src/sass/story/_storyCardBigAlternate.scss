@@ -8,7 +8,7 @@
 }
 .emoji-card {
   height: 100%;
-  background-color: $main-l-grey;
+  background-color: $main-white;
   @include flex(column, center, center);
 
   &__rows {
@@ -42,7 +42,7 @@
     border-radius: 50%;
     height: 3.5rem;
     width: 3.5rem;
-    background-color: $main-l-grey;
+    background-color: $main-white;
   }
   &__genre {
     padding: 0.5rem;
