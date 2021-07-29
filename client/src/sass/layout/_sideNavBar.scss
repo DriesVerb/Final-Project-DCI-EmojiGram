@@ -1,27 +1,23 @@
-.app-grid__navbar--side {
- max-height: 950px;
-  background-color: $main-white;
-  top: 10rem;
-  width: 150px;
-  border: 5px solid $main-l-grey;
-  // border-right: 1px solid $main-l-grey;
-  // border-top: 1px solid $main-l-grey;
-  // border-bottom: 1px solid $main-l-grey;
-  padding-top: 100px;
-}
-
 .side-navbar {
-  @include flex(column, center, start);
+  background-color: $main-white;
+  @include flex(column, center, center);
 
   &__flex {
     @include flex(row, start, end);
-    height: 45px;
-    margin: 0;
   }
 
   &__link {
-    color: $main-l-grey;
-    top: 0rem;
-    padding: 20px;
+    color: $main-black;
+    margin: 1rem 0;
+
+    &:hover,
+    &:active {
+      text-decoration: none;
+      color: $main-l-grey;
+    }
+
+    &:last-child {
+      margin-bottom: 4rem;
+    }
   }
 }

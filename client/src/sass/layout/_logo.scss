@@ -1,4 +1,5 @@
 .logo {
+  background-color: $main-white;
   @include flex(row, center, center);
 
   &__link {

@@ -1,10 +1,12 @@
 .top-nav {
+  background-color: $main-white;
   @include flex(row, center, center);
 }
 
 .guest-nav {
   width: 100%;
   @include flex(row, flex-end, center);
+  margin-right: 2rem;
 
   &__item {
     margin-left: 2rem;
@@ -44,6 +46,7 @@
 
   &__options {
     @include flex(row, space-around, center);
+    margin-right: 2rem;
   }
 
   &__item {
