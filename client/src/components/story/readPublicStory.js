@@ -1,36 +1,27 @@
 import React, { useEffect, useContext, Fragment, useState } from 'react';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import StoryContext from '../../context/story/storyContext';
-
 import DOMPurify from 'dompurify';
-
 // components
 import CommentForm from './CommentForm';
 import EmojiChar from './EmojiChar';
-
 // context
 import AuthContext from '../../context/auth/authContext';
-
 const readPublicStory = () => {
   let history = useHistory();
   const authContext = useContext(AuthContext);
   const { isAuthenticated, user } = authContext;
-
   const storyContext = useContext(StoryContext);
   const { singleStory, showSinglePublic, addLike, removeLike, deleteComment } =
     storyContext;
-
   const { id } = useParams();
   const [liked, setLiked] = useState(true);
-
   const sanitizeData = () => ({
     __html: DOMPurify.sanitize(singleStory.richText),
   });
-
   const toProfile = (id) => {
     history.push(`/profile/${id}`);
   };
-
   const compareValue = (input) => {
     input.forEach((el) => {
       if (user._id === el.user) {
@@ -38,11 +29,9 @@ const readPublicStory = () => {
       }
     });
   };
-
   useEffect(() => {
     showSinglePublic(id);
   }, []);
-
   return (
     <Fragment>
       <div className="grid-container">
@@ -52,7 +41,6 @@ const readPublicStory = () => {
               {singleStory && (
                 <div>
                   {/* Tittel */}
-
                   <h2 className="text-center ">
                     {singleStory.title &&
                       singleStory.title.charAt(0).toUpperCase() +
@@ -67,16 +55,13 @@ const readPublicStory = () => {
                   </div>
                 </div>
               )}
-
               <br />
-
               {singleStory && (
                 <div>
                   <div className="bg-light p-1  row ">
                     <span className="mt-4 text-sm pl-4">
                       <small>Written By:</small>
                     </span>
-
                     <h4
                       className="ml-0  col-md-6 text-start mt-4 text-info"
                       style={{ cursor: 'pointer' }}
@@ -84,7 +69,6 @@ const readPublicStory = () => {
                     >
                       <strong> {singleStory.user.username}</strong>
                     </h4>
-
                     <div>
                       <div className="list-inline-item p-3">
                         {singleStory.user.followers && (
@@ -92,7 +76,6 @@ const readPublicStory = () => {
                             {singleStory.user.followers.length}
                           </p>
                         )}
-
                         <small className="text-muted">
                           {' '}
                           <i className="fas fa-book mr-1"></i>Stories
@@ -104,7 +87,6 @@ const readPublicStory = () => {
                             {singleStory.user.followers.length}
                           </p>
                         )}
-
                         <small className="text-muted">
                           {' '}
                           <i className="fas fa-user mr-1"></i>Followers
@@ -116,7 +98,6 @@ const readPublicStory = () => {
                             {singleStory.user.following.length}
                           </p>
                         )}
-
                         <small className="text-muted">
                           {' '}
                           <i className="fas fa-user mr-1"></i>Following
@@ -127,12 +108,10 @@ const readPublicStory = () => {
                 </div>
               )}
             </div>
-
             <div className="px-4 py-3">
               {singleStory && (
                 <div>
                   <div dangerouslySetInnerHTML={sanitizeData()}></div>
-
                   <div className="pb-story d-flex  ">
                     <div className="pb-story__likes pb-story__icon pr-3">
                       {/* likes */}
@@ -147,7 +126,6 @@ const readPublicStory = () => {
                         </div>
                       ) : null}
                     </div>
-
                     <div className="pb-story__comments pb-story__icon">
                       <a href="#comment" className="pb-story__link">
                         <span className="pb-story__size">
@@ -161,9 +139,7 @@ const readPublicStory = () => {
                       </a>
                     </div>
                   </div>
-
                   {/* mid grid */}
-
                   {isAuthenticated ? (
                     <CommentForm />
                   ) : (
@@ -173,7 +149,6 @@ const readPublicStory = () => {
                       </p>
                     </div>
                   )}
-
                   <div>
                     {singleStory.comments && (
                       <div>
@@ -186,7 +161,7 @@ const readPublicStory = () => {
                                   src={comment.avatar}
                                   alt=""
                                 />
-                                <h4>{singleStory.user.username}</h4>
+                                <h4>{comment.username}</h4>
                               </Link>
                             </div>
                             <div>
@@ -219,7 +194,6 @@ const readPublicStory = () => {
             </div>
           </div>
         </div>
-
         {/* ///////////////////////////////////////////////////////////////////////////////////////// */}
       </div>
     </Fragment>
