@@ -1,7 +1,7 @@
 .story-card {
   cursor: pointer;
   z-index: 50;
-  height: 23rem;
+  height: 20rem;
   @include flex(row, center, center);
   margin-bottom: 2rem;
 }
@@ -49,6 +49,7 @@
 
   &__title {
     width: 100%;
+    margin-bottom: 0.5rem;
     @include flex(row, center, center);
     @include main-font(2.5rem, 500, $main-black);
   }
@@ -56,6 +57,7 @@
   &__text {
     line-height: 1;
     @include main-font(2rem, 400, $main-black);
+    margin-bottom: 0.5rem;
   }
 
   &__footer {

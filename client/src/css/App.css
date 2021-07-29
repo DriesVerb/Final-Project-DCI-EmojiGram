@@ -308,7 +308,7 @@ a {
 
 .app-grid {
   display: grid;
-  grid-template-columns: 35rem 15rem 1fr 35rem;
+  grid-template-columns: 40rem 15rem 1fr 40rem;
   grid-template-rows: 5rem 10rem 1fr;
 }
 .app-grid__navbar {
@@ -513,8 +513,11 @@ a {
   }
 }
 .genre__row {
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .genre__card {
   height: 7rem;
@@ -535,6 +538,18 @@ a {
 
 .genre-show__select {
   margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.genre-show__empty {
+  background-color: orangered;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
 }
 
 .pagination {
@@ -787,7 +802,7 @@ a {
 .story-card {
   cursor: pointer;
   z-index: 50;
-  height: 23rem;
+  height: 20rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -855,6 +870,7 @@ a {
 }
 .story-main__title {
   width: 100%;
+  margin-bottom: 0.5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -870,6 +886,7 @@ a {
   font-size: 2rem;
   font-weight: 400;
   color: #0a0a0a;
+  margin-bottom: 0.5rem;
 }
 .story-main__footer {
   width: 100%;

@@ -23,12 +23,7 @@ function FriendStories(props) {
 
   return (
     <div className="grid-container">
-      <sideNavBar className="left-yourStories">
-        <NavBarSideLeft />
-      </sideNavBar>
-      <div className="grid-container__mid">
-        <PaginateComponent data={stories} perPage={5} show={component} />
-      </div>
+      <PaginateComponent data={stories} perPage={5} show={component} />
     </div>
   );
 }
