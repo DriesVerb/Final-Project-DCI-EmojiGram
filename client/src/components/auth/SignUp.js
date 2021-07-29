@@ -85,7 +85,7 @@ const SignUp = (props) => {
               as={TextField}
               className="field mb-5"
               label="Username"
-              name="username"
+              name=""
               variant="outlined"
               placeholder="Enter Username"
               fullWidth
@@ -94,7 +94,7 @@ const SignUp = (props) => {
             />
             <Field
               as={TextField}
-              className="field mb-5"
+              className="field mb-3"
               label="Email"
               name="email"
               variant="outlined"
@@ -104,8 +104,14 @@ const SignUp = (props) => {
               onChange={onChange}
               required
             />
+               <h5 className="signup  font-italic">
+            This site uses Gravatar so if you want a profile image, use a
+            Gravatar email
+            </h5>
+            
             <Field
               as={TextField}
+              className="field mt-5"
               label="Password"
               name="password"
               variant="outlined"
