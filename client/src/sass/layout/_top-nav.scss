@@ -1,4 +1,5 @@
 .top-nav {
+  background-color: $main-white;
   @include flex(row, center, center);
 }
 

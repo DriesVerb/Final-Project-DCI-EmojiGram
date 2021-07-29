@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300;1,400&display=swap");
 body {
-  background-color: #ffffff;
+  background-color: #e7f0ed;
 }
 
 .mb-xl {
@@ -321,9 +321,7 @@ a {
 }
 .app-grid__navbar--side {
   grid-row: 2/4;
-  grid-column: 2/4;
-  margin-top: 20px;
-  height: 886px;
+  grid-column: 2/3;
 }
 .app-grid__main {
   grid-row: 2/4;
@@ -387,20 +385,12 @@ a {
   font-size: 3rem;
 }
 
-.app-grid__navbar--side {
-  max-height: 950px;
-  background-color: #ffffff;
-  top: 10rem;
-  width: 150px;
-  border: 5px solid #a3a3a3;
-  padding-top: 100px;
-}
-
 .side-navbar {
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center;
 }
 .side-navbar__flex {
   display: flex;
@@ -417,6 +407,7 @@ a {
 }
 
 .top-nav {
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -708,6 +699,7 @@ body {
 }
 
 .logo {
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: center;
