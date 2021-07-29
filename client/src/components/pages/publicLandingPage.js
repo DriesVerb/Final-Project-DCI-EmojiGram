@@ -43,7 +43,7 @@ const PublicLandingPage = () => {
           <EmojiCTA />
         </div>
         <div className="public-stories__sort">
-          <NavDropdown title="Sorted by" id="basic-nav-dropdown">
+          <NavDropdown title="Sorted by" id="basic-nav-dropdown" className={"mb-5"}>
             <NavDropdown.Item onClick={onChange}>Latest</NavDropdown.Item>
             <NavDropdown.Item onClick={onChange}>Alphabet</NavDropdown.Item>
             <NavDropdown.Item onClick={onChange}>Most liked</NavDropdown.Item>
