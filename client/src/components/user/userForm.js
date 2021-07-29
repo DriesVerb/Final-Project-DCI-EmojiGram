@@ -63,13 +63,21 @@ const userForm = (props) => {
 
   return (
     <Fragment>
-      <Card style={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}>
+      <Card
+        elevation={10}
+        style={{
+          maxWidth: 410,
+          margin: "0 auto",
+          padding: "20px 5px",
+          marginTop: "50px",
+        }}
+      >
         <Typography gutterBottom variant="h4" align="center">
           <i className="fas fa-user mr-2 " />
           Add some changes to your profile
         </Typography>
         <Typography
-          className="mt-4 text-success"
+          className="mt-4 text-info"
           gutterBottom
           variant="h2"
           align="center"
@@ -194,9 +202,9 @@ const userForm = (props) => {
                   type="submit"
                   variant="contained"
                   fullWidth
-                  style={{ backgroundColor: "#44cf6c" }}
+                  style={{ backgroundColor: "#219ebc" }}
                 >
-                  Update
+                  <span className="text-white">Update</span>
                 </Button>
               </Grid>
 

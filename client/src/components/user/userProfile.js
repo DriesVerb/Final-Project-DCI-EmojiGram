@@ -1,8 +1,9 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
-import ProfileContext from '../../context/profile/profileContext';
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import ProfileContext from "../../context/profile/profileContext";
 // import YourStories from '../story/yourStories'
-import { Link, useParams } from 'react-router-dom';
-import AuthContext from '../../context/auth/authContext';
+import { Link, useParams } from "react-router-dom";
+import AuthContext from "../../context/auth/authContext";
+
 const UserProfile = (props) => {
   const authContext = useContext(AuthContext);
   const { user, isAuthenticated } = authContext;
@@ -44,7 +45,7 @@ const UserProfile = (props) => {
     <Fragment>
       {/* {console.log(follow)} */}
       {/* {user && console.log(user._id, followers)} */}
-      <div className="row py-5 px-4">
+      <div class="row py-5 px-4">
         <div className="col-md-7 mx-auto">
           <div className="bg-white shadow rounded overflow-hidden">
             <div className="px-4 pt-5 pb-4 ">
@@ -60,20 +61,20 @@ const UserProfile = (props) => {
                 <div className="media-body mb-5 text-dark  col">
                   {username && (
                     <h4>
-                      {' '}
+                      {" "}
                       {username.charAt(0).toUpperCase() + username.slice(1)}
                     </h4>
                   )}
                   {email && (
                     <p className="small mb-4 mt-3">
-                      {' '}
+                      {" "}
                       <i className="fas fa-paper-plane mr-2"></i>
                       {email}
                     </p>
                   )}
                   {location && (
                     <p className="small mb-4">
-                      {' '}
+                      {" "}
                       <i className="fas fa-map-marker-alt mr-2"></i>
                       {location.charAt(0).toUpperCase() + location.slice(1)}
                     </p>
@@ -84,7 +85,7 @@ const UserProfile = (props) => {
                       type="submit"
                       className="btn btn-dark btn-lg "
                       onClick={() => {
-                        props.history.push('/login');
+                        props.history.push("/login");
                       }}
                     >
                       log in to follow
@@ -125,11 +126,11 @@ const UserProfile = (props) => {
                     <li className="list-inline-item p-3">
                       {stories && (
                         <h5 className="font-weight-bold mb-0 d-block">
-                          {stories}
+                          {stories.length}
                         </h5>
                       )}
                       <small className="text-muted">
-                        {' '}
+                        {" "}
                         <i className="fas fa-book mr-1"></i>Stories
                       </small>
                     </li>
@@ -140,7 +141,7 @@ const UserProfile = (props) => {
                         </h5>
                       )}
                       <small className="text-muted">
-                        {' '}
+                        {" "}
                         <i className="fas fa-user mr-1"></i>Followers
                       </small>
                     </li>
@@ -151,7 +152,7 @@ const UserProfile = (props) => {
                         </h5>
                       )}
                       <small className="text-muted">
-                        {' '}
+                        {" "}
                         <i className="fas fa-user mr-1"></i>Following
                       </small>
                     </li>
@@ -174,7 +175,7 @@ const UserProfile = (props) => {
                     {location && (
                       <p className="small mt-2">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span className="mr-2"></span>{' '}
+                        <span className="mr-2"></span>{" "}
                         {location.charAt(0).toUpperCase() + location.slice(1)}
                       </p>
                     )}
@@ -188,13 +189,13 @@ const UserProfile = (props) => {
                       </p>
                     )}
                   </p>
-                </div>{' '}
+                </div>{" "}
               </div>
               <div>
-                {' '}
+                {" "}
                 <Link to={`/friendStories/${id}`} className="link">
                   <button className="btn btn-secondary btn-lg btn-block ">
-                    Stories{' '}
+                    Stories{" "}
                   </button>
                 </Link>
               </div>
