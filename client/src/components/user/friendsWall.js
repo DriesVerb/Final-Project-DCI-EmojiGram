@@ -46,19 +46,32 @@ const FriensdWall = (props) => {
         {displayfollowing &&
           displayfollowing.map((follow) => (
             <div className="container mt-6 d-flex justify-content-center">
-              <div className="card p-3 w-75 m-3">
-                <div className="d-flex align-items-center">
-                  <div className="image-follower">
+              <div
+                className="card p-3 w-300 mt-3"
+                style={{ width: "400px", height: "300px" }}
+              >
+                <div className="d-flex flex-column align-items-center">
+                  <div className="col clo-md-3 p-5">
                     {" "}
-                    <img
+                    {/* <img
                       src={follow.user.avatar}
                       class="rounded"
                       width="155"
-                    />{" "}
+                    />{" "} */}
+                    <img
+                      src="./user/test1.jpg"
+                      className="rounded-circle"
+                      alt="..."
+                      width="200"
+                    />
                   </div>
                   <div className="ml-3 w-100">
-                    <h4 className="mb-0 mt-0">{follow.user.username}</h4>{" "}
-                    <span>{follow.user.location} </span>
+                    <h4 className="mb-0 mt-0 py-2 text-center">
+                      {follow.user.username}
+                    </h4>{" "}
+                    <div className="text-center">
+                      <span>{follow.user.location} </span>
+                    </div>
                     <div className="p-2 mt-2 bg-light d-flex justify-content-between rounded text-white stats">
                       <div className="d-flex flex-column">
                         {" "}
@@ -86,9 +99,11 @@ const FriensdWall = (props) => {
                         to={`/friendStories/${follow.user._id}`}
                         classNameName="link"
                       >
-                        <button classNameName="btn btn-outline-secondary btn-lg btn-block ">
-                          Stories{" "}
-                        </button>
+                        <div className="text-info d-flex text-center mt-5  ">
+                          <button className="btn btn-info btn-lg ">
+                            Stories{" "}
+                          </button>
+                        </div>
                       </Link>
                     </div>
                   </div>
