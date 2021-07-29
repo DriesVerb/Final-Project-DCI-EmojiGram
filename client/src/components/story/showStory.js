@@ -1,15 +1,15 @@
-import React, { useEffect, useContext, Fragment } from 'react';
+import React, { useEffect, useContext, Fragment } from "react";
 
 // secure the rich text
-import DOMPurify from 'dompurify';
+import DOMPurify from "dompurify";
 
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 // import './showStory.css'
-import { Button } from 'react-bootstrap';
-import StoryContext from '../../context/story/storyContext';
+import { Button } from "react-bootstrap";
+import StoryContext from "../../context/story/storyContext";
 
 // components
-import EmojiChar from './EmojiChar';
+import EmojiChar from "./EmojiChar";
 
 function ShowStory(props) {
   const storyContext = useContext(StoryContext);
@@ -19,17 +19,17 @@ function ShowStory(props) {
 
   useEffect(() => {
     showStory(id);
+    singleStory;
   }, []);
 
   const onDelete = () => {
     deleteStory(singleStory._id);
 
     props.history.push(`/yourstories`);
-
   };
   const onEdit = () => {
     setEditedStory(singleStory);
-    props.history.push('/writestory');
+    props.history.push("/writestory");
   };
 
   console.log(singleStory);

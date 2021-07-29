@@ -1,8 +1,8 @@
-import React, { Fragment, useContext } from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import React, { Fragment, useContext } from "react";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 // import { Link } from "react-router-dom";
-import AuthContext from '../../context/auth/authContext';
-import ProfileContext from '../../context/profile/profileContext';
+import AuthContext from "../../context/auth/authContext";
+import ProfileContext from "../../context/profile/profileContext";
 
 function navbar() {
   const authContext = useContext(AuthContext);
@@ -19,19 +19,26 @@ function navbar() {
   const userLinks = (
     <Fragment>
       <div className="app__navbar">
-        <Nav style={{ maxHeight: '100px' }} navbarScroll>
+        <Nav style={{ maxHeight: "100px" }} navbarScroll>
           <li className="ml-2">
             <a className="nav-link text-dark" href="#!">
-             <p> Hello{" "}</p>
-              {user && <div>
-                <img
-                  width="50px" height="60px"
-                            //  style =" width:30px  height:10px "
-                            className="round-img"
-                            src={user.avatar}
-                            alt=""
-                          />
-              <p>{ user.username.charAt(0).toUpperCase() + user.username.slice(1)}</p> </div>}
+              <p> Hello </p>
+              {user && (
+                <div >
+                 
+                  <p>
+                    {user.username.charAt(0).toUpperCase() +
+                      user.username.slice(1)}
+                  </p> {/*{" "} <img
+                    width="30px"
+                    height="30px"
+                    //  style =" width:30px  height:10px "
+                    className="round-img"
+                    src={user.avatar}
+                    alt=""
+                  /> */}
+                </div>
+              )}
               <span className="sr-only">(current)</span>
             </a>
           </li>
@@ -54,7 +61,7 @@ function navbar() {
           {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
           <Nav.Link href="/UserInterface" className="text-dark">
             <i className=" fas fa-cog  ml-5" />
-           Dashboard
+            Dashboard
           </Nav.Link>
           {/* //////////////////////////////////////////////////////////////////////////////////////////////////   */}
           <Nav.Link href="/message" className="text-dark">

@@ -1,82 +1,92 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
-import ProfileContext from '../../context/profile/profileContext';
-import { Link } from 'react-router-dom';
-import ReactPaginate from 'react-paginate';
-import SideNavBar from '../layout/SideNavBar';
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import ProfileContext from "../../context/profile/profileContext";
+import { Link } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, getProfile } = profileContext;
   const { _id, username, email, age, location, followers, following, stories } =
     user;
+
+  console.log(user.following);
+  console.log(user.stories);
+
   const [pageNumber, SetPageNumber] = useState(0);
   const friendsPerPage = 5;
   const pagesVisited = pageNumber * friendsPerPage;
+
   let displayfollowing;
+
   let pageCount;
   if (user.following) {
     displayfollowing = user.following.slice(
       pagesVisited,
       pagesVisited + friendsPerPage
     );
+
     pageCount = Math.ceil(user.following.length / friendsPerPage);
   }
+
   const changePage = ({ selected }) => {
     SetPageNumber(selected);
   };
+
   console.log(displayfollowing);
+
   useEffect(() => {
-    !user ? props.history.push('/') : getProfile(_id);
+    !user ? props.history.push("/") : getProfile(_id);
     // console.log (user)
     // eslint-disable-next-line
   }, []);
   return (
     <Fragment>
-      <div className='grid-container__friends'>
+      <div className="grid-container__friends">
         {displayfollowing &&
           displayfollowing.map((follow) => (
-            <div className='container mt-6 d-flex justify-content-center'>
-              <div className='card p-3 w-75 m-3'>
-                <div className='d-flex align-items-center'>
-                  <div className='image-follower'>
-                    {' '}
+            <div className="container mt-6 d-flex justify-content-center">
+              <div className="card p-3 w-75 m-3">
+                <div className="d-flex align-items-center">
+                  <div className="image-follower">
+                    {" "}
                     <img
                       src={follow.user.avatar}
-                      class='rounded'
-                      width='155'
-                    />{' '}
+                      class="rounded"
+                      width="155"
+                    />{" "}
                   </div>
-                  <div className='ml-3 w-100'>
-                    <h4 className='mb-0 mt-0'>{follow.user.username}</h4>{' '}
+                  <div className="ml-3 w-100">
+                    <h4 className="mb-0 mt-0">{follow.user.username}</h4>{" "}
                     <span>{follow.user.location} </span>
-                    <div className='p-2 mt-2 bg-light d-flex justify-content-between rounded text-white stats'>
-                      <div className='d-flex flex-column'>
-                        {' '}
-                        <span className='articles'>Followings</span>{' '}
-                        <span className='number1'>
+                    <div className="p-2 mt-2 bg-light d-flex justify-content-between rounded text-white stats">
+                      <div className="d-flex flex-column">
+                        {" "}
+                        <span className="articles">Followings</span>{" "}
+                        <span className="number1">
                           {follow.user.following.length}
-                        </span>{' '}
+                        </span>{" "}
                       </div>
-                      <div className='d-flex flex-column'>
-                        {' '}
-                        <span className='followers'>Followers</span>{' '}
-                        <span className='number2'>
+                      <div className="d-flex flex-column">
+                        {" "}
+                        <span className="followers">Followers</span>{" "}
+                        <span className="number2">
                           {follow.user.followers.length}
-                        </span>{' '}
+                        </span>{" "}
                       </div>
-                      <div className='d-flex flex-column'>
-                        {' '}
-                        <span className='rating'>Stories</span>{' '}
-                        <span className='number3'></span>{' '}
+                      <div className="d-flex flex-column">
+                        {" "}
+                        <span className="rating">Stories</span>{" "}
+                        <span className="number3"></span>{" "}
                       </div>
                     </div>
-                    <div ClassName='m-5'>
-                      {' '}
+                    <div ClassName="m-5">
+                      {" "}
                       <Link
                         to={`/friendStories/${follow.user._id}`}
-                        classNameName='link'>
-                        <button classNameName='btn btn-outline-secondary btn-lg btn-block '>
-                          Stories{' '}
+                        classNameName="link"
+                      >
+                        <button classNameName="btn btn-outline-secondary btn-lg btn-block ">
+                          Stories{" "}
                         </button>
                       </Link>
                     </div>

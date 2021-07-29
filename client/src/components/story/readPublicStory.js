@@ -1,9 +1,4 @@
-
-
-
-                      
-
-  import React, { useEffect, useContext, Fragment, useState } from 'react';
+import React, { useEffect, useContext, Fragment, useState } from 'react';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import StoryContext from '../../context/story/storyContext';
 import DOMPurify from 'dompurify';
@@ -170,7 +165,6 @@ const readPublicStory = () => {
                               </Link>
                             </div>
                             <div>
-
                               <p className="text-dark">{comment.text}</p>
                               <p className="post-date">
                                 Posted on{' '}
@@ -207,4 +201,66 @@ const readPublicStory = () => {
 };
 export default readPublicStory;
 
-             
+/* 
+
+{liked ? (
+                        <div className="pb-story__icon">
+                          {isAuthenticated ? (
+                            <div className="pb-story__size">
+                              <ipu
+                                className="fa fa-thumbs-up"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  addLike(singleStory._id);
+                                  setLiked(false);
+                                }}
+                              />
+                              {singleStory.likes && (
+                                <span className="pb-story__count">
+                                  {singleStory.likes.length}
+                                </span>
+                              )}
+                            </div>
+                          ) : (
+                            <div className="pb-story__size">
+                              <i className="fa fa-thumbs-up" />
+                              {singleStory.likes && (
+                                <span className="pb-story__count">
+                                  {singleStory.likes.length}
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="pb-story__icon ">
+                          {isAuthenticated ? (
+                            <div className="like pb-story__size">
+                              <i
+                                className="fa fa-thumbs-up"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  removeLike(singleStory._id);
+                                  setLiked(true);
+                                }}
+                              />
+                              {singleStory.likes && (
+                                <span className="pb-story__count">
+                                  {singleStory.likes.length}
+                                </span>
+                              )}
+                            </div>
+                          ) : (
+                            <div className="like pb-story__size">
+                              <i className="fa fa-thumbs-up" />
+                              {singleStory.likes && (
+                                <span className="pb-story__count">
+                                  {singleStory.likes.length}
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+*/

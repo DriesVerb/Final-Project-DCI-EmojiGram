@@ -7,9 +7,14 @@
 
   
 
+  &__logo {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+
   &__navbar {
     grid-row: 1/2;
-    grid-column: 2/4;
+    grid-column: 3/4;
   }
 
   &__navbar--side {

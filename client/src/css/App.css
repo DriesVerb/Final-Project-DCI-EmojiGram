@@ -312,9 +312,13 @@ a {
   grid-template-rows: 5rem 10rem 1fr;
   background-color: #a3a3a3;
 }
+.app-grid__logo {
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
 .app-grid__navbar {
   grid-row: 1/2;
-  grid-column: 2/4;
+  grid-column: 3/4;
 }
 .app-grid__navbar--side {
   grid-row: 2/4;
@@ -411,6 +415,75 @@ a {
   top: 0rem;
   padding: 20px;
   justify-content: center;
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.guest-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.guest-nav__item {
+  margin-left: 2rem;
+}
+.guest-nav__item:hover, .guest-nav__item:active {
+  color: #a3a3a3;
+  text-decoration: none;
+}
+
+.user-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-nav__user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.user-nav__loaded {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 1rem;
+}
+.user-nav__avatar {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+.user-nav__icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+}
+.user-nav__options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.user-nav__item {
+  margin-left: 2rem;
+}
+.user-nav__item:hover, .user-nav__item:active {
+  color: #a3a3a3;
+  text-decoration: none;
 }
 
 .alert-side {
@@ -579,6 +652,17 @@ a {
   align-items: center;
 }
 
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.logo__link:hover, .logo__link:active {
+  text-decoration: none;
+  color: #0a0a0a;
+}
+
 .pagination {
   display: flex;
   flex-direction: column;
@@ -627,6 +711,13 @@ a {
   font-size: 10rem;
   animation: spin 1s linear infinite;
   z-index: 50;
+}
+
+.icon > * {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon {
@@ -830,7 +921,7 @@ a {
 .story-card {
   cursor: pointer;
   z-index: 50;
-  height: 20rem;
+  height: 23rem;
   display: flex;
   flex-direction: row;
   justify-content: center;

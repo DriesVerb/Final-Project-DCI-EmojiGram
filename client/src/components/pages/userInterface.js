@@ -8,15 +8,15 @@ import Icon from '../utils/Icon';
 // Navbar user interface
 function userInterface(props) {
   return (
-    <div className='grid-container'>
-      <div className='grid-container__mid'>
-        <div className='grid-container'></div>
-        <div className='user-interface__cards'>
+    <div className="grid-container">
+      <div className="grid-container__mid">
+        <div className="user-interface__cards">
           <div
-            className='user-card'
+            className="user-card"
             onClick={(e) => {
               props.history.push(`/writestory`);
-            }}>
+            }}
+          >
             <Icon
               className='user-card__icons'
               name='quill'
@@ -35,10 +35,11 @@ function userInterface(props) {
             </Link>
           </div>
           <div
-            className='user-card'
+            className="user-card"
             onClick={(e) => {
               props.history.push(`/friendsWall`);
-            }}>
+            }}
+          >
             <Icon
               className='user-card__icons'
               name='users'
