@@ -320,7 +320,7 @@ a {
   grid-column: 3/4;
 }
 .app-grid__navbar--side {
-  grid-row: 2/4;
+  grid-row: 2/-1;
   grid-column: 2/3;
 }
 .app-grid__main {
@@ -337,7 +337,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding: 1rem;
+  padding: 1rem 0 1rem 1rem;
 }
 .grid-container__headerUser {
   display: flex;
@@ -387,9 +387,10 @@ a {
 
 .side-navbar {
   background-color: #ffffff;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .side-navbar__flex {
@@ -397,6 +398,12 @@ a {
   flex-direction: row;
   justify-content: start;
   align-items: end;
+}
+.side-navbar__links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .side-navbar__link {
   color: #0a0a0a;
@@ -416,6 +423,7 @@ a {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-left: 1rem;
 }
 
 .guest-nav {
@@ -924,7 +932,7 @@ a {
 
 .emoji-card {
   height: 100%;
-  background-color: #a3a3a3;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -972,7 +980,7 @@ a {
   border-radius: 50%;
   height: 3.5rem;
   width: 3.5rem;
-  background-color: #a3a3a3;
+  background-color: #ffffff;
 }
 .story-main__genre {
   padding: 0.5rem;
@@ -1140,7 +1148,7 @@ a {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #a3a3a3;
+  background-color: #ffffff;
   padding: 1.5rem;
 }
 .emoji__row {
