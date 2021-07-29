@@ -1,16 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 // components
-import Icon from "../utils/Icon";
+import Icon from '../utils/Icon';
 
 // Navbar user interface
 function userInterface(props) {
   return (
     <div className="grid-container">
       <div className="grid-container__mid">
-        <div className="grid-container"></div>
         <div className="user-interface__cards">
           <div
             className="user-card"

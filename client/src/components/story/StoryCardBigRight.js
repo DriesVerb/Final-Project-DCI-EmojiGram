@@ -55,10 +55,9 @@ const StoryCardBigRight = ({ story, show }) => {
       </div>
       <div className="story-main">
         <header className="story-main__header">
+        {story.user.username  && (
           <div className="story-main__author-info">
-            <div className="story-main__avatar">
-              <img></img>
-            </div>
+           
             <div>
               <div
                 className="story-main__author"
@@ -67,13 +66,20 @@ const StoryCardBigRight = ({ story, show }) => {
                   toProfile(story.user._id);
                 }}
               >
-                by - {story.user.username && story.user.username}
+                by - {story.user.username }
               </div>
             </div>
-          </div>
-          <div className={`story-main__genre ${classGenre(story.genre)}`}>
-            {story.genre}
-          </div>
+            <div className="story-main__avatar">
+            <img
+                    width="40px"
+                    height="40px"
+                    //  style =" width:30px  height:10px "
+                    className="round-img"
+                    src={story.user.avatar}
+                    alt=""
+                  />
+            </div>
+          </div>) }
         </header>
         <h2 className="story-main__title">{story.title}</h2>
         <p className="story-main__text">{trimString(story.text)}...</p>

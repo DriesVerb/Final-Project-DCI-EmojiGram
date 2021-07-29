@@ -1,0 +1,58 @@
+.top-nav {
+  @include flex(row, center, center);
+}
+
+.guest-nav {
+  width: 100%;
+  @include flex(row, flex-end, center);
+
+  &__item {
+    margin-left: 2rem;
+
+    &:hover,
+    &:active {
+      color: $main-l-grey;
+      text-decoration: none;
+    }
+  }
+}
+
+.user-nav {
+  width: 100%;
+  @include flex(row, space-between, center);
+
+  &__user {
+    @include flex(row, space-around, center);
+  }
+
+  &__loaded {
+    @include flex(row, space-around, center);
+    margin-left: 1rem;
+  }
+
+  &__avatar {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    margin-left: 1rem;
+  }
+
+  &__icon {
+    @include flex(row, center, center);
+    margin-left: 1rem;
+  }
+
+  &__options {
+    @include flex(row, space-around, center);
+  }
+
+  &__item {
+    margin-left: 2rem;
+
+    &:hover,
+    &:active {
+      color: $main-l-grey;
+      text-decoration: none;
+    }
+  }
+}
