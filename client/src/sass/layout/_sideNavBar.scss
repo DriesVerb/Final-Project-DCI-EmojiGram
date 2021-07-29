@@ -1,26 +1,27 @@
-.side-navbar{
-  margin-top: 1rem;
-  background-color: $main-blue;
-  padding: 1rem;
+.app-grid__navbar--side {
+ max-height: 950px;
+  background-color: $main-white;
+  top: 10rem;
   width: 150px;
-  height: 300px;
-  
+  border: 5px solid $main-l-grey;
+  // border-right: 1px solid $main-l-grey;
+  // border-top: 1px solid $main-l-grey;
+  // border-bottom: 1px solid $main-l-grey;
+  padding-top: 100px;
+}
 
-<<<<<<< HEAD
+.side-navbar {
+  @include flex(column, center, start);
 
-  @include flex(column, space-around, end);
-=======
-  @include flex(column, space-around, start);
->>>>>>> ec28ddaf05f36d17a5f0c71fb1ff18437cf76929
   &__flex {
-    @include flex(column, start, end
-    );
+    @include flex(row, start, end);
     height: 45px;
     margin: 0;
   }
 
   &__link {
-    color: $main-white;
+    color: $main-l-grey;
+    top: 0rem;
+    padding: 20px;
   }
-
 }

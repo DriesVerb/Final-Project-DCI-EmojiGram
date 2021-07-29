@@ -9,12 +9,9 @@ import Icon from '../utils/Icon';
 function userInterface(props) {
   return (
     <div className='grid-container'>
-      <h3 className='header-interface'>Read Different Think Different</h3>
       <div className='grid-container__mid'>
-        <div className='grid-container__interface'>
-          <sideNavBar>
-            <SideNavBar />
-          </sideNavBar>
+        <div className='grid-container'>
+
 
         </div>
         <div className='user-interface__cards'>
@@ -24,15 +21,15 @@ function userInterface(props) {
               props.history.push(`/writestory`);
             }}>
             <Icon
-              className='user-card__icons'
+              className='user-card__iconsOne'
               name='quill'
               color='blue'
-              size='large'
+              size='x-large'
             />
-            <p className='user-card__title'>CREATE YOUR STORY</p>
+            <p className='user-card__titleOne'>CREATE YOUR STORY</p>
 
             <Link to='/writestory' className='link'>
-              <button className='btn btn-success user-card__btn'>
+              <button className='btn btn-success user-card__btnOne'>
                 Click to Create
               </button>
             </Link>

@@ -73,9 +73,7 @@ function Login(props) {
   const avatarStyle = { backgroundColor: "#FB8500" };
   return (
     <Grid>
-      <sideNavBar>
-        <SideNavBar />
-      </sideNavBar>
+
       <Paper elevation={10} style={paperStyle}>
         <Grid align='center'>
           <Avatar style={avatarStyle} className='avatar mb-4'>

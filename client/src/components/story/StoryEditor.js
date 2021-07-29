@@ -65,9 +65,7 @@ const StoryEditor = () => {
 
   return (
     <Fragment>
-      <sideNavBar>
-        <SideNavBar />
-      </sideNavBar>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();

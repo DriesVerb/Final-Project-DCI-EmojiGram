@@ -39,7 +39,7 @@
 <symbol id="icon-load-balancer" viewBox="0 0 20 20">
 <path d="M17 12h-6v4h1v4h-4v-4h1v-4h-6v4h1v4h-4v-4h1v-4c0-1.105 0.895-2 2-2v0h6v-4h-2v-6h6v6h-2v4h6c1.105 0 2 0.895 2 2v0 4h1v4h-4v-4h1v-4z"></path>
 </symbol>
-<symbol id="icon-user" viewBox="0 0 20 20">
+<symbol id="icon-user" viewBox="0 0 32 32">
 <path d="M5 5c0-2.761 2.239-5 5-5s5 2.239 5 5v0 2c0 2.761-2.239 5-5 5s-5-2.239-5-5v0-2zM0 16.68c2.86-1.685 6.301-2.68 9.974-2.68 0.009 0 0.018 0 0.027 0h-0.001c3.64 0 7.060 0.97 10 2.68v3.32h-20v-3.32z"></path>
 </symbol>
 <symbol id="icon-user-solid-circle" viewBox="0 0 20 20">
@@ -51,7 +51,7 @@
 <symbol id="icon-quill" viewBox="0 0 32 32">
 <path d="M0 32c4-12 14.469-32 32-32-8.219 6.594-12 22-18 22s-6 0-6 0l-6 10h-2z"></path>
 </symbol>
-<symbol id="icon-books" viewBox="0 0 36 32">
+<symbol id="icon-books" viewBox="0 0 32 32">
 <path d="M7 4h-6c-0.55 0-1 0.45-1 1v22c0 0.55 0.45 1 1 1h6c0.55 0 1-0.45 1-1v-22c0-0.55-0.45-1-1-1zM6 10h-4v-2h4v2z"></path>
 <path d="M17 4h-6c-0.55 0-1 0.45-1 1v22c0 0.55 0.45 1 1 1h6c0.55 0 1-0.45 1-1v-22c0-0.55-0.45-1-1-1zM16 10h-4v-2h4v2z"></path>
 <path d="M23.909 5.546l-5.358 2.7c-0.491 0.247-0.691 0.852-0.443 1.343l8.999 17.861c0.247 0.491 0.852 0.691 1.343 0.443l5.358-2.7c0.491-0.247 0.691-0.852 0.443-1.343l-8.999-17.861c-0.247-0.491-0.852-0.691-1.343-0.443z"></path>
