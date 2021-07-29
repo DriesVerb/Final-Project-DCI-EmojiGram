@@ -6,7 +6,6 @@ import ReactPaginate from "react-paginate";
 const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, getProfile } = profileContext;
-
   const { _id, username, email, age, location, followers, following, stories } =
     user;
 
