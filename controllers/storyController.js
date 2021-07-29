@@ -284,15 +284,17 @@ exports.removeComment = async (req, res) => {
     const comment = story.comments.find(
       (comment) => comment.id === req.params.comment_id
     );
+    console.log (story)
     // Make sure comment exists
     if (!comment) {
       return res.status(404).json({ msg: 'Comment does not exist' });
     }
     // Check user
-    if (comment.user.toString() !== req.user.id) {
+    if (comment.user.toString() !== req.user.id  ) {
       return res.status(401).json({ msg: 'User not authorized' });
     }
-
+   
+ 
     story.comments = story.comments.filter(
       ({ id }) => id !== req.params.comment_id
     );
