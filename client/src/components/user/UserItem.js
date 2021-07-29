@@ -6,24 +6,29 @@ const UserItem = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
-
+  const {
+    _id,
+    username,
+    email,
+    age,
+    location,
+    occupation,
+    hobby,
+    followers,
+    following,
+  } = user;
   useEffect(() => {
     !user ? props.history.push("/") : getProfile(_id);
-
     // eslint-disable-next-line
   }, []);
-
   const onEdit = () => {
     setCurrent(user);
     props.history.push("/userform");
   };
-
   const onDelete = () => {
     deleteProfile(_id);
     clearCurrent();
   };
-  const { _id, username, email, age, location, followers, following } = user;
-
   return (
     <Fragment>
       <div className="col-md-7 mx-auto">
@@ -38,7 +43,6 @@ const UserItem = (props) => {
                   class="rounded mb-2 img-thumbnail"
                 />
               </div>
-
               <div className="media-body mb-5 text-dark  col">
                 {username && (
                   <h4>
@@ -53,15 +57,6 @@ const UserItem = (props) => {
                     {email}
                   </p>
                 )}
-                {/*         
-        {location && ( */}
-                {/* <p className="small mb-4">
-                  {" "}
-                  <i className="fas fa-map-marker-alt mr-2"></i> Berlin */}
-                {/* {location.charAt(0).toUpperCase() + location.slice(1)} */}
-                {/* </p> */}
-                {/* )} */}
-
                 {location && (
                   <p className="small mb-4">
                     {" "}
@@ -87,7 +82,6 @@ const UserItem = (props) => {
                   </button>
                 </div>
               </div>
-
               <div class="bg-light p-4 d-flex justify-content-end text-center col-4 mr-3 ">
                 <ul class="list-inline mb-0 ">
                   <li class="list-inline-item p-3">
@@ -101,27 +95,23 @@ const UserItem = (props) => {
                       <i class="fas fa-book mr-1"></i>Stories
                     </small>
                   </li>
-
                   <li class="list-inline-item p-4">
                     {followers && (
                       <h5 class="font-weight-bold mb-0 d-block">
                         {followers.length}
                       </h5>
                     )}
-
                     <small class="text-muted">
                       {" "}
                       <i class="fas fa-user mr-1"></i>Followers
                     </small>
                   </li>
-
                   <li class="list-inline-item">
                     {following && (
                       <h5 class="font-weight-bold mb-0 d-block">
                         {followers.length}
                       </h5>
                     )}
-
                     <small class="text-muted">
                       {" "}
                       <i class="fas fa-user mr-1"></i>Following
@@ -131,21 +121,34 @@ const UserItem = (props) => {
               </div>
             </div>
           </div>
-
           <div class="px-4 py-3">
             <h5 class="mb-0">About</h5>
             <div class="p-4 rounded shadow-sm bg-light">
-              <p class="font-italic mb-0">Web Developer</p>
-              <p class="font-italic mb-0">
+              {occupation && (
+                <p className="small mt-2">
+                  <i class="fas fa-briefcase"></i>
+                  <span className="mr-2"></span>
+                  {occupation.charAt(0).toUpperCase() + occupation.slice(1)}
+                </p>
+              )}
+              <p className="font-italic mb-1">
                 {location && (
                   <p className="small mt-2">
-                    {" "}
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span className="mr-2"></span>{" "}
                     {location.charAt(0).toUpperCase() + location.slice(1)}
                   </p>
                 )}
               </p>
-              <p class="font-italic mb-0 mt-2">Artist</p>
-              {age && <p class="font-italic mb-0"> {age}</p>}
+              <p class="font-italic mb-0">
+                {hobby && (
+                  <p className="small mt-2">
+                    <i class="fas fa-heading"></i>
+                    <span className="mr-2"></span>
+                    {hobby.charAt(0).toUpperCase() + hobby.slice(1)}
+                  </p>
+                )}
+              </p>
             </div>{" "}
             <Link to="/yourstories" className="link">
               <button className="btn btn-secondary btn-lg btn-block ">
@@ -158,5 +161,4 @@ const UserItem = (props) => {
     </Fragment>
   );
 };
-
 export default UserItem;
