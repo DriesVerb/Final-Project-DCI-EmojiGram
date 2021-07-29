@@ -65,7 +65,12 @@ const userForm = (props) => {
     <Fragment>
       <Card
         elevation={10}
-        style={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}
+        style={{
+          maxWidth: 450,
+          margin: "0 auto",
+          padding: "20px 5px",
+          marginTop: "50px",
+        }}
       >
         <Typography gutterBottom variant="h4" align="center">
           <i className="fas fa-user mr-2 " />

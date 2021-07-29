@@ -75,73 +75,75 @@ const SignUp = (props) => {
 
   return (
     <Grid>
-      <Paper elevation={10} style={paperStyle}>
-        <Grid align="center">
-          <h3 className="login mt-5 text-info">Welcome to Emoji-Tales</h3>
-          <h4 className="login mb-5 mt-3">Create an Account</h4>
-        </Grid>
-        <Formik>
-          <Form onSubmit={onSubmit}>
-            <Field
-              as={TextField}
-              className="field mb-5"
-              label="Username"
-              name="username"
-              variant="outlined"
-              placeholder="Enter Username"
-              fullWidth
-              onChange={onChange}
-              required
-            />
-            <Field
-              as={TextField}
-              className="field mb-5"
-              label="Email"
-              name="email"
-              variant="outlined"
-              placeholder="Enter Email"
-              type="email"
-              fullWidth
-              onChange={onChange}
-              required
-            />
-            <Field
-              as={TextField}
-              label="Password"
-              name="password"
-              variant="outlined"
-              placeholder="Enter Password"
-              type="password"
-              fullWidth
-              onChange={onChange}
-              required
-            />
+      <div style={{ marginTop: "50px" }}>
+        <Paper elevation={10} style={paperStyle}>
+          <Grid align="center">
+            <h3 className="login mt-5 text-info">Welcome to Emoji-Tales</h3>
+            <h4 className="login mb-5 mt-3">Create an Account</h4>
+          </Grid>
+          <Formik>
+            <Form onSubmit={onSubmit}>
+              <Field
+                as={TextField}
+                className="field mb-5"
+                label="Username"
+                name="username"
+                variant="outlined"
+                placeholder="Enter Username"
+                fullWidth
+                onChange={onChange}
+                required
+              />
+              <Field
+                as={TextField}
+                className="field mb-5"
+                label="Email"
+                name="email"
+                variant="outlined"
+                placeholder="Enter Email"
+                type="email"
+                fullWidth
+                onChange={onChange}
+                required
+              />
+              <Field
+                as={TextField}
+                label="Password"
+                name="password"
+                variant="outlined"
+                placeholder="Enter Password"
+                type="password"
+                fullWidth
+                onChange={onChange}
+                required
+              />
 
-            <Button
-              className="btn mt-5 bg-info"
-              type="submit"
-              variant="contained"
-              fullWidth
-            >
-              <Avatar className="avatar mb-4s">
-                <HttpsOutlinedIcon />
-              </Avatar>
-              <span className="ml-3 text-white "> Sign Up</span>
-            </Button>
-          </Form>
-        </Formik>
+              <Button
+                className="btn mt-5 bg-info"
+                type="submit"
+                variant="contained"
+                fullWidth
+              >
+                <Avatar className="avatar mb-4s">
+                  <HttpsOutlinedIcon />
+                </Avatar>
+                <span className="ml-3 text-white "> Sign Up</span>
+              </Button>
+            </Form>
+          </Formik>
 
-        <h4 className="signup mt-5">
-          Already have an account?
-          <Link className="link ml-3 mb-4 text-info" href="/login">
-            Log In
-          </Link>
-        </h4>
-        <h5 className="signup mt-5 font-italic">
-          By clicking SignUp you agree to our Terms and have read and
-          acknowledge our Privacy Statements.
-        </h5>
-      </Paper>
+          <h4 className="signup mt-5">
+            Already have an account?
+            <Link className="link ml-3 mb-4 text-info" href="/login">
+              Log In
+            </Link>
+          </h4>
+          <h5 className="signup mt-5 font-italic">
+            By clicking SignUp you agree to our Terms and have read and
+            acknowledge our Privacy Statements.
+          </h5>
+        </Paper>
+      </div>
     </Grid>
   );
 };
