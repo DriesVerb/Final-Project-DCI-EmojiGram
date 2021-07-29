@@ -1,21 +1,21 @@
-import React, { Fragment, useContext, useEffect } from "react";
-import ProfileContext from "../../context/profile/profileContext";
-import YourStories from "../story/yourStories";
-import { Link } from "react-router-dom";
+import React, { Fragment, useContext, useEffect } from 'react';
+import ProfileContext from '../../context/profile/profileContext';
+
+import { Link } from 'react-router-dom';
 const UserItem = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
     profileContext;
 
   useEffect(() => {
-    !user ? props.history.push("/") : getProfile(_id);
+    !user ? props.history.push('/') : getProfile(_id);
 
     // eslint-disable-next-line
   }, []);
 
   const onEdit = () => {
     setCurrent(user);
-    props.history.push("/userform");
+    props.history.push('/userform');
   };
 
   const onDelete = () => {
@@ -42,13 +42,13 @@ const UserItem = (props) => {
               <div className="media-body mb-5 text-dark  col">
                 {username && (
                   <h4>
-                    {" "}
+                    {' '}
                     {username.charAt(0).toUpperCase() + username.slice(1)}
                   </h4>
                 )}
                 {email && (
                   <p className="small mb-4 mt-3">
-                    {" "}
+                    {' '}
                     <i className="fas fa-paper-plane mr-2"></i>
                     {email}
                   </p>
@@ -64,7 +64,7 @@ const UserItem = (props) => {
 
                 {location && (
                   <p className="small mb-4">
-                    {" "}
+                    {' '}
                     <i className="fas fa-map-marker-alt mr-2"></i>
                     {location.charAt(0).toUpperCase() + location.slice(1)}
                   </p>
@@ -97,7 +97,7 @@ const UserItem = (props) => {
                       </h5>
                     )}
                     <small class="text-muted">
-                      {" "}
+                      {' '}
                       <i class="fas fa-book mr-1"></i>Stories
                     </small>
                   </li>
@@ -110,7 +110,7 @@ const UserItem = (props) => {
                     )}
 
                     <small class="text-muted">
-                      {" "}
+                      {' '}
                       <i class="fas fa-user mr-1"></i>Followers
                     </small>
                   </li>
@@ -123,7 +123,7 @@ const UserItem = (props) => {
                     )}
 
                     <small class="text-muted">
-                      {" "}
+                      {' '}
                       <i class="fas fa-user mr-1"></i>Following
                     </small>
                   </li>
@@ -139,17 +139,17 @@ const UserItem = (props) => {
               <p class="font-italic mb-0">
                 {location && (
                   <p className="small mt-2">
-                    {" "}
+                    {' '}
                     {location.charAt(0).toUpperCase() + location.slice(1)}
                   </p>
                 )}
               </p>
               <p class="font-italic mb-0 mt-2">Artist</p>
               {age && <p class="font-italic mb-0"> {age}</p>}
-            </div>{" "}
+            </div>{' '}
             <Link to="/yourstories" className="link">
               <button className="btn btn-secondary btn-lg btn-block ">
-                Stories{" "}
+                Stories{' '}
               </button>
             </Link>
           </div>
