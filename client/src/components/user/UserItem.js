@@ -1,9 +1,8 @@
-
-import React, { Fragment, useContext, useEffect, useState } from 'react';
-import ProfileContext from '../../context/profile/profileContext';
-import YourStories from '../story/yourStories';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import ProfileContext from "../../context/profile/profileContext";
+import YourStories from "../story/yourStories";
+import { Link } from "react-router-dom";
+import axios from "axios";
 const UserItem = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, deleteProfile, setCurrent, clearCurrent, getProfile } =
@@ -21,19 +20,19 @@ const UserItem = (props) => {
     // console.log(picture);
     // collect all data from  the form
     const formData = new FormData(); // create instance of a object for html form
-    formData.append('profilePics', picture); // add picture to formData object
+    formData.append("profilePics", picture); // add picture to formData object
     // configuaration for file type input
     const config = {
       headers: {
-        'content-type': 'multipart/form-data',
+        "content-type": "multipart/form-data",
       },
     };
-    axios.post('/profile/profile', formData, config).then((response) => {
-      //   const successMsg = response.data;
-      //   setSuccessMsg(response.data);
-      console.log(response.data.profilePics);
-      setNewPicture(response.data.profilePics);
-    });
+    // axios.post("/profile/profile", formData, config).then((response) => {
+    //   //   const successMsg = response.data;
+    //   //   setSuccessMsg(response.data);
+    //   console.log(response.data.profilePics);
+    //   setNewPicture(response.data.profilePics);
+    // });
   };
   const {
     _id,
@@ -48,12 +47,12 @@ const UserItem = (props) => {
     following,
   } = user;
   useEffect(() => {
-    !user ? props.history.push('/') : getProfile(_id);
+    !user ? props.history.push("/") : getProfile(_id);
     // eslint-disable-next-line
   }, []);
   const onEdit = () => {
     setCurrent(user);
-    props.history.push('/userform');
+    props.history.push("/userform");
   };
   const onDelete = () => {
     deleteProfile(_id);
@@ -71,12 +70,12 @@ const UserItem = (props) => {
               <div
                 Classname="profile-upload-image mr-3 col-3"
                 {...(avatar && (
-                   <img
-                  src={avatar}
-                  alt="..."
-                  width="160"
-                  class="rounded mb-2 img-thumbnail"
-                />
+                  <img
+                    src={avatar}
+                    alt="..."
+                    width="160"
+                    class="rounded mb-2 img-thumbnail"
+                  />
                 ))}
               ></div>
               <input
@@ -108,7 +107,7 @@ const UserItem = (props) => {
             {location && (
               <p className="small mt-2">
                 <i class="fas fa-map-marker-alt"></i>
-                <span className="mr-2"></span>{' '}
+                <span className="mr-2"></span>{" "}
                 {location.charAt(0).toUpperCase() + location.slice(1)}
               </p>
             )}
@@ -122,10 +121,10 @@ const UserItem = (props) => {
               </p>
             )}
           </p>
-        </div>{' '}
+        </div>{" "}
         <Link to="/yourstories" className="link">
           <button className="btn btn-secondary btn-lg btn-block ">
-            Stories{' '}
+            Stories{" "}
           </button>
           <button
             type="submit"
@@ -146,7 +145,7 @@ const UserItem = (props) => {
               </h5>
             )}
             <small className="text-muted">
-              {' '}
+              {" "}
               <i className="fas fa-book mr-1"></i>Stories
             </small>
           </li>
@@ -157,7 +156,7 @@ const UserItem = (props) => {
               </h5>
             )}
             <small className="text-muted">
-              {' '}
+              {" "}
               <i className="fas fa-user mr-1"></i>Followers
             </small>
           </li>
@@ -174,7 +173,7 @@ const UserItem = (props) => {
                     <h5 className="font-weight-bold mb-0 d-block">{stories}</h5>
                   )}
                   <small className="text-muted">
-                    {' '}
+                    {" "}
                     <i className="fas fa-book mr-1"></i>Stories
                   </small>
                 </li>
@@ -185,7 +184,7 @@ const UserItem = (props) => {
                     </h5>
                   )}
                   <small className="text-muted">
-                    {' '}
+                    {" "}
                     <i className="fas fa-user mr-1"></i>Followers
                   </small>
                 </li>
@@ -196,7 +195,7 @@ const UserItem = (props) => {
                     </h5>
                   )}
                   <small className="text-muted">
-                    {' '}
+                    {" "}
                     <i className="fas fa-user mr-1"></i>Following
                   </small>
                 </li>
@@ -210,10 +209,10 @@ const UserItem = (props) => {
             <p className="font-italic mb-0">Web Developer</p>
             <p className="font-italic mb-0">Lives in Berlin</p>
             <p className="font-italic mb-0">Artist</p>
-          </div>{' '}
+          </div>{" "}
           <Link to="/yourstories" className="link">
             <button className="btn btn-secondary btn-lg btn-block ">
-              Stories{' '}
+              Stories{" "}
             </button>
           </Link>
         </div>

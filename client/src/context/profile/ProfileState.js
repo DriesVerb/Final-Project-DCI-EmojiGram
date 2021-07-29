@@ -28,6 +28,8 @@ const ProfileState = (props) => {
         stories:"",
         password: "",
         location: "",
+        hobby: "",
+        occupation: "",
         age: "",
         followers: [],
         followeing: [],

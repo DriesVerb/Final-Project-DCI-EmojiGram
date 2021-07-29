@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import ReactPaginate from 'react-paginate';
+import React, { Fragment, useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
 
 // components
-import StoryCardBigRight from '../story/StoryCardBigRight';
-import StoryCardBigLeft from '../story/StoryCardBigLeft';
+import StoryCardBigRight from "../story/StoryCardBigRight";
+import StoryCardBigLeft from "../story/StoryCardBigLeft";
 
 const PaginateComponent = ({ data, perPage, show }) => {
   const [pageNumber, SetPageNumber] = useState(0);
@@ -21,7 +21,9 @@ const PaginateComponent = ({ data, perPage, show }) => {
   useEffect(() => {
     SetPageNumber(0);
   }, [data]);
-
+  // const { id } = useParams();
+  // console.log(id);
+  // console.log(displayStories);
   return (
     <Fragment>
       <div className="pagination">
@@ -50,15 +52,15 @@ const PaginateComponent = ({ data, perPage, show }) => {
         </div>
         <div className="pagination__buttons">
           <ReactPaginate
-            previousLabel={'Prev'}
-            nextLabel={'Next'}
+            previousLabel={"Prev"}
+            nextLabel={"Next"}
             pageCount={pageCount}
             onPageChange={changePage}
-            containerClassName={'pagination__btn'}
-            previousLinkClassName={'previosBttm'}
-            nextLinkClassName={'nextBttn'}
-            disabledClassName={'paginationDisabled'}
-            activeClassName={'pagination__active'}
+            containerClassName={"pagination__btn"}
+            previousLinkClassName={"previosBttm"}
+            nextLinkClassName={"nextBttn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"pagination__active"}
           />
         </div>
       </div>
