@@ -2,7 +2,7 @@
   @include flex(column, space-around, center);
   background-color: $main-white;
   padding: 1.5rem;
-  border-bottom: 1px solid  $main-l-grey;
+  border-bottom: 1px solid $main-l-grey;
   border-radius: 3rem;
 
   &__row {
@@ -44,7 +44,6 @@
     border: 1px solid $main-l-grey;
     padding: 0.5rem;
     background-color: $main-white;
-   
   }
 }
 
