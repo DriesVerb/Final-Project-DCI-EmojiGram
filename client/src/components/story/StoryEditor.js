@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 
 // store
-import { storyStore } from '../../store';
-import { emojiStore } from '../../store';
+import { storyStore } from "../../store";
+import { emojiStore } from "../../store";
 ///////////////////////////////////////////////////////////////////////////////
-import StoryContext from '../../context/story/storyContext';
+import StoryContext from "../../context/story/storyContext";
 //////////////////////////////////////////////////////////////////////////////
 // components
-import StoryEditorSubGenre from './StoryEditorSubGenre';
-import EmojiChar from './EmojiChar';
+import StoryEditorSubGenre from "./StoryEditorSubGenre";
+import EmojiChar from "./EmojiChar";
 
 const StoryEditor = () => {
   ////////////////////////////////////////////////////////////////////////////////
@@ -23,10 +23,10 @@ const StoryEditor = () => {
 
   // state of current inputs
   const [formData, setFromData] = useState({
-    title: '',
-    genre: 'default',
-    text: '',
-    _id: '',
+    title: "",
+    genre: "default",
+    text: "",
+    _id: "",
     emojis: [],
   });
 
@@ -40,9 +40,9 @@ const StoryEditor = () => {
     if (storyToEdit !== null) setFromData(storyToEdit);
     else
       setFromData({
-        title: '',
-        genre: 'default',
-        text: '',
+        title: "",
+        genre: "default",
+        text: "",
         emojis: emojisGlobal,
       });
   }, [StoryContext, storyToEdit, clearEditStory, emojisGlobal]);
@@ -59,7 +59,7 @@ const StoryEditor = () => {
 
   const onSubmit = () => {
     getValues(formData);
-    history.push('/previewstory');
+    history.push("/previewstory");
   };
 
   return (
@@ -72,7 +72,7 @@ const StoryEditor = () => {
     >
       <div className="story-editor">
         <div className="story-editor__prompt">
-          <p>You will be a writing a story inspired by these emojis:</p>
+          <p>You will be writing a story inspired by these emojis:</p>
           <div className="story-editor__emojis">
             {emojis.length > 0 ? (
               <div className="emoji__row">
@@ -144,7 +144,7 @@ const StoryEditor = () => {
       <div className="story-button">
         {storyToEdit ? (
           <button
-            style={{ backgroundColor: '#98DDCA', color: 'black' }}
+            style={{ backgroundColor: "#98DDCA", color: "black" }}
             type="submit"
           >
             Preview edited story
