@@ -558,9 +558,11 @@ a {
   align-items: justify-content;
   padding: 80px;
   top: 0;
+
   height: 89vh;
   background: #ffffff;
   /* height: 30rem; */
+
 }
 .user-interface__icons {
   margin-left: 3rem;
