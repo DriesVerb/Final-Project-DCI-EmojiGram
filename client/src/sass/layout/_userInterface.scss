@@ -1,55 +1,65 @@
 .user-interface {
   &__cards {
     @include flex(row, space-between, justify-content);
-    padding: 40px;
+    // padding: 80px;
     top: 0;
-    height: 100vh;
+    width:110%;
+    height: 99vh;
     background: $main-white;
     // width: 30rem;
+    margin-bottom: 10rem;
+    padding-bottom: 15rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
   &__icons {
     margin-left: 3rem;
   }
 }
 
-.user-card:nth-last-child(1) {
-  border-right: 0;
-}
+// .user-card:nth-last-child(1) {
+//   border-right: 0;
+// }
 
-.user-card__btnUser {
-  font-size: 2rem;
-  box-shadow: 5px 10px;
-  height: 4rem;
-  display: flex;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  justify-content: center;
-  border-style: none;
-  color: #ffffff;
-  background: rgb(2,0,36);
-	position: relative; /* This protects the inner element from being blurred */
+// .user-card__btnUser {
+//   font-size: 2rem;
+//   box-shadow: 5px 10px;
+//   height: 4rem;
+//   display: flex;
+//   font-family: "Roboto", sans-serif;
+//   font-weight: 300;
+//   justify-content: center;
+//   border-style: none;
+//   color: #ffffff;
+//   background: rgb(2,0,36);
+// 	position: relative; /* This protects the inner element from being blurred */
 	
-	background-color: rgb(177, 176, 176);
-  padding:5rem;
-  margin: 20px 40px 0px 40px; 
-	background-color: rgb(177, 176, 176);
-	box-shadow: 30px 30px 30px rgba(68,68,68,0.6);
+// 	background-color: rgb(177, 176, 176);
+//   padding:5rem;
+//   margin: 20px 40px 0px 40px; 
+// 	background-color: rgb(177, 176, 176);
+// 	box-shadow: 30px 30px 30px rgba(68,68,68,0.6);
 
-  box-shadow: 
-  inset 0px 11px 8px -10px #fff,
+//   box-shadow: 
+//   inset 0px 11px 8px -10px #fff,
   
-  inset 0px -11px 8px -10px #fff; 
+//   inset 0px -11px 8px -10px #fff; 
   
 
 
-}
+// }
 
 
 
 
 .user-card {
   // width: 30rem;
-  border-right: 0.2rem solid $main-l-grey;
+  // border-right: 0.2rem solid $main-l-grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 
   @include flex(column, center, center);
 
@@ -65,15 +75,29 @@
   }
 
   &__btnUser {
-    font-size: 2rem;
-    box-shadow: 5px 10px;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    border-style: none;
-    color: $main-white;
-    background: $main-l-grey;
+    border: .3px solid #c2c1c1; 
+     font-size: 2rem;
+  box-shadow: 5px 10px;
+  height: 4rem;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  justify-content: center;
+  border-style: none;
+  color: #ffffff;
+  background: rgb(2,0,36);
+  position: relative; /* This protects the inner element from being blurred */
+  
+  background-color: rgb(177, 176, 176);
+  // padding:5rem;
+  margin: 20px 40px 0px 40px; 
+  background-color: rgb(177, 176, 176);
+  box-shadow: 30px 30px 30px rgba(68,68,68,0.6);
 
-    width: fit-content;
+  box-shadow: 
+  inset 0px 11px 8px -10px #fff,
+  
+  inset 0px -11px 8px -10px #fff; 
+
   }
 }

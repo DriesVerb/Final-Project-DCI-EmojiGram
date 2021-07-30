@@ -1,8 +1,9 @@
 .side-navbar {
   background-color: $main-white;
-  height: 100vh;
+  border-radius: .5rem;
+  height: 118vh;
   @include flex(column, flex-start, center);
-
+padding-top: 15rem;
   &__flex {
     @include flex(row, start, end);
   }

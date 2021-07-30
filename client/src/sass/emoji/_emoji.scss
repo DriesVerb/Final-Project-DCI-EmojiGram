@@ -3,7 +3,8 @@
   background-color: $main-white;
   padding: 1.5rem;
   border-bottom: 1px solid  $main-l-grey;
-  border-radius: 3rem;
+ 
+  border-radius: .7rem;
 
   &__row {
     display: flex;
@@ -34,16 +35,34 @@
   }
 
   &__buttons {
-    width: 35%;
+    width: 45%;
     @include flex(row, space-between, center);
   }
 
   &__btn {
     cursor: pointer;
-    @include main-font(1.2rem, 500, $main-black);
-    border: 1px solid $main-l-grey;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: #0a0a0a;
+     
     padding: 0.5rem;
-    background-color: $main-white;
+    background-color: #ffffff;
+    padding-right: 3rem;
+    color: #577074;
+    background: rgb(2,0,36);
+    position: relative; /* This protects the inner element from being blurred */
+    border-radius: .5rem;
+    background-color: rgba(184, 197, 197, 0.603);
+    padding:.8rem 1rem .8rem 1rem;
+    /* margin: 20px 10px 0px 10px;  */
+    background-color: rgba(184, 197, 197, 0.603);
+    box-shadow: 30px 30px 30px rgba(68,68,68,0.6);
+  
+    box-shadow: 
+    inset 0px 11px 8px -10px #fff,
+    
+    inset 0px -11px 8px -10px #fff; 
    
   }
 }

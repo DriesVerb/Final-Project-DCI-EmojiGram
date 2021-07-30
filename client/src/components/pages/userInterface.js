@@ -45,7 +45,9 @@ function userInterface(props) {
       backgroundColor: "gray", 
       height: "50%", 
             float: "left",
-            margin: "5rem "     }}></div>
+            marginTop: "18rem ",
+            marginRight: "3.5rem",
+          marginLeft:"3.5rem"}}></div>
           <div
             className="user-card"
             onClick={(e) => {
@@ -75,7 +77,9 @@ function userInterface(props) {
       backgroundColor: "gray", 
       height: "50%", 
             float: "left",
-            margin: "3.5rem "}}></div>
+            marginTop: "18rem",
+            marginRight: "3.5rem",
+          marginLeft:"3.5rem"}}></div>
            
           <div className='user-card'>
            

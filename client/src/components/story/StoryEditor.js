@@ -72,7 +72,7 @@ const StoryEditor = () => {
     >
       <div className="story-editor">
         <div className="story-editor__prompt">
-          <p>You will be a writing a story inspired by these emojis:</p>
+          <h4>You will be a writing a story inspired by these emojis:</h4>
           <div className="story-editor__emojis">
             {emojis.length > 0 ? (
               <div className="emoji__row">
@@ -94,7 +94,7 @@ const StoryEditor = () => {
         <div className="story-options">
           <div className="story-options__items">
             <div className="story-options__title">
-              <label className="story-nave__label" htmlFor="title">
+              <label className="story-nav__label" htmlFor="title">
                 Title of the Piece:
               </label>
               <input
@@ -107,7 +107,7 @@ const StoryEditor = () => {
               />
             </div>
             <div className="story-options__genre">
-              <label htmlFor="genre">Genre:</label>
+              <label htmlFor="genre" className="story-nav__label">Genre:</label>
               <select
                 name="genre"
                 defaultValue={genre}
