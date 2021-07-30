@@ -1,0 +1,11 @@
+.comments {
+  margin-top: 2rem;
+  &__flex {
+    @include flex(column, start, start);
+  }
+
+  &__btn {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}

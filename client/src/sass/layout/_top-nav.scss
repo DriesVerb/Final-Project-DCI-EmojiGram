@@ -21,6 +21,7 @@
 }
 
 .user-nav {
+  margin-left: 2rem;
   width: 100%;
   @include flex(row, space-between, center);
 

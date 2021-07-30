@@ -8,8 +8,8 @@ const CommentForm = () => {
   useEffect(() => {}, []);
 
   return (
-    <div className="d-flex justify-content-start row-hl">
-      <div className="d-flex flex-column row-hl">
+    <div className="">
+      <div className="">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -18,11 +18,11 @@ const CommentForm = () => {
             console.log(singleStory.comments);
           }}
         >
-          <div className="form-group mt-5 ">
-            <div className="d-flex flex-column row-hl">
+          <div className="comments">
+            <div className="comments__flex">
               <textarea
                 name="text"
-                cols="86"
+                cols="20"
                 rows="2"
                 placeholder="Comment the story"
                 value={text}
@@ -34,7 +34,7 @@ const CommentForm = () => {
               />
               <input
                 type="submit"
-                className="btn btn-secondary my-1"
+                className="btn btn-secondary comments__btn"
                 value="Submit"
               />
             </div>

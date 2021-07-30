@@ -26,10 +26,8 @@
   top: 8px;
 }
 .comment-style {
-
-background-color: gray;
-margin: 4rem
-
+  background-color: gray;
+  margin: 4rem;
 }
 .pb-story {
   width: 100%;
@@ -61,13 +59,10 @@ margin: 4rem
   }
 
   &__text {
-    padding: 2rem;
+    margin-top: 2rem;
+    padding: 0 5rem;
     width: 100%;
     @include flex(row, start, center);
-  }
-
-  &__para {
-    margin-bottom: 2rem;
   }
 
   &__navbar {
@@ -106,6 +101,12 @@ margin: 4rem
 
   &__size {
     font-size: 2rem;
+  }
+
+  &__comments {
+    margin-left: 2rem;
+    width: 100%;
+    @include flex(column, start, start);
   }
 
   &__no-comment {

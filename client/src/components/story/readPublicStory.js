@@ -2,6 +2,7 @@ import React, { useEffect, useContext, Fragment, useState } from 'react';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import StoryContext from '../../context/story/storyContext';
 import DOMPurify from 'dompurify';
+
 // components
 import CommentForm from './CommentForm';
 import EmojiChar from './EmojiChar';
@@ -21,19 +22,21 @@ const readPublicStory = () => {
   const sanitizeData = () => ({
     __html: DOMPurify.sanitize(singleStory.richText),
   });
+
   const toProfile = (id) => {
     history.push(`/profile/${id}`);
   };
+
   const compareValue = (input) => {
     input.forEach((el) => {
       if (user._id === el.user) {
-        setLiked(true);
+        return true;
       }
     });
   };
   useEffect(() => {
     showSinglePublic(id);
-  }, []);
+  }, [setLiked]);
   return (
     <Fragment>
       <div className="grid-container">
@@ -93,97 +96,107 @@ const readPublicStory = () => {
               ></p>
             </div>
           )}
-        </div>
 
-        <div className=" mx-auto">
-          <div className="bg-white shadow rounded overflow-hidden">
-            <div className="px-4 py-3">
-              {singleStory && (
-                <div>
-                  <div className="pb-story d-flex  ">
-                    <div className="pb-story__likes pb-story__icon pr-3">
-                      {/* likes */}
-                      {!isAuthenticated ? (
-                        <div className="pb-story__size">
-                          <i className="fa fa-thumbs-up" />
-                          {singleStory.likes && (
-                            <span className="pb-story__count">
-                              {singleStory.likes.length}
-                            </span>
-                          )}
-                        </div>
-                      ) : null}
-                    </div>
-                    <div className="pb-story__comments pb-story__icon">
-                      <a href="#comment" className="pb-story__link">
-                        <span className="pb-story__size">
-                          <i className="fas fa-comment" />
-                          {singleStory.comments && (
-                            <span className="pb-story__count pb-story__link">
-                              {singleStory.comments.length}
-                            </span>
-                          )}
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                  {/* mid grid */}
-                  {isAuthenticated ? (
-                    <CommentForm />
-                  ) : (
-                    <div className="pb-story__no-comment">
-                      <p className="pb-story__no-comment--text">
-                        Log in to leave a comments
-                      </p>
-                    </div>
-                  )}
-                  <div>
-                    {singleStory.comments && (
-                      <div>
-                        {singleStory.comments.map((comment) => (
-                          <div className="comment-style p-1 my-1">
-                            <div >
-                              <Link to={`/profile/${singleStory.user._id}`} className="comment-user">
-                                <img
-                                  className="user-nav__avatar "
-                                  src={comment.avatar}
-                                  alt=""
-                                />
-                                <h4>{comment.username}</h4>
-                             </Link>
-                            </div>
-                            <div>
-                              <p className="text-dark">{comment.text}</p>
-                              <p className="post-date">
-                                Posted on{' '}
-                                {new Intl.DateTimeFormat().format(
-                                  new Date(comment.date)
-                                )}
-                              </p>
-                              {/* {!auth.loading && user === auth.user._id && ( */}
-
-                              <button
-                                onClick={() =>
-                                  deleteComment(singleStory._id, comment._id)
-                                }
-                                type="button"
-                                className="btn btn-dark btn-sm"
-                              >
-                                <i className="fas fa-times" />
-                              </button>
-                              {/* // )} */}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+          {singleStory && (
+            <div className="pb-story__comments">
+              <div className="pb-story__icon">
+                {isAuthenticated ? (
+                  <div className="pb-story__size">
+                    <ipu
+                      className="fa fa-thumbs-up"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        addLike(singleStory._id);
+                      }}
+                    />
+                    {singleStory.likes && (
+                      <span className="pb-story__count">
+                        {singleStory.likes.length}
+                      </span>
                     )}
                   </div>
-                </div>
-              )}
+                ) : (
+                  <div className="pb-story__size">
+                    <i className="fa fa-thumbs-up" />
+                    {singleStory.likes && (
+                      <span className="pb-story__count">
+                        {singleStory.likes.length}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div className="pb-story__comments pb-story__icon">
+                <a href="#comment" className="pb-story__link">
+                  <span className="pb-story__size">
+                    <i className="fas fa-comment" />
+                    {singleStory.comments && (
+                      <span className="pb-story__count pb-story__link">
+                        {singleStory.comments.length}
+                      </span>
+                    )}
+                  </span>
+                </a>
+
+                {isAuthenticated ? (
+                  <CommentForm />
+                ) : (
+                  <div className="pb-story__no-comment">
+                    <p className="pb-story__no-comment--text">
+                      Log in to leave a comments
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                {singleStory.comments && (
+                  <div>
+                    {singleStory.comments.map((comment) => (
+                      <div className="comment-style p-1 my-1">
+                        <div>
+                          <Link
+                            to={`/profile/${singleStory.user._id}`}
+                            className="comment-user"
+                          >
+                            <img
+                              className="user-nav__avatar "
+                              src={comment.avatar}
+                              alt=""
+                            />
+                            <h4>{comment.username}</h4>
+                          </Link>
+                        </div>
+                        <div>
+                          <p className="text-dark">{comment.text}</p>
+                          <p className="post-date">
+                            Posted on{' '}
+                            {new Intl.DateTimeFormat().format(
+                              new Date(comment.date)
+                            )}
+                          </p>
+                          {/* {!auth.loading && user === auth.user._id && ( */}
+
+                          <button
+                            onClick={() =>
+                              deleteComment(singleStory._id, comment._id)
+                            }
+                            type="button"
+                            className="btn btn-dark btn-sm"
+                          >
+                            <i className="fas fa-times" />
+                          </button>
+                          {/* // )} */}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
-        {/* ///////////////////////////////////////////////////////////////////////////////////////// */}
       </div>
     </Fragment>
   );
