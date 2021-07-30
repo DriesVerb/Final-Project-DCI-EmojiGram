@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState, Fragment } from "react";
-import StoryContext from "../../context/story/storyContext";
-import { useParams } from "react-router-dom";
-import PaginateComponent from "../utils/PaginateComponent";
-import AuthContext from "../../context/auth/authContext";
+import React, { useContext, useEffect, useState, Fragment } from 'react';
+import StoryContext from '../../context/story/storyContext';
+import { useParams } from 'react-router-dom';
+import PaginateComponent from '../utils/PaginateComponent';
+import AuthContext from '../../context/auth/authContext';
 // import NavBarSideLeft from "../layout/NavbarSideLeft";
 
 function YourStories(props) {
@@ -14,7 +14,7 @@ function YourStories(props) {
     publishStory(user._id);
     console.log(stories);
   }, [stories.length]);
-  const component = "showstory";
+  const component = 'showstory';
   return (
     <Fragment>
       <div className="grid-container">

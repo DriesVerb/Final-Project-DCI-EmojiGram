@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 exports.create = async (req, res) => {
   try {
-    const newStory = new Story({ ...req.body, user: req.user.id })
+    const newStory = new Story({ ...req.body, user: req.user.id });
     const story = await newStory.save();
     res.json({ msg: 'A new Story has been added :)' });
   } catch (err) {
@@ -145,7 +145,7 @@ exports.views = async (req, res) => {
       .limit(5);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -238,10 +238,8 @@ exports.unlikeStory = async (req, res) => {
     // remove the like
     story.likes = story.likes.filter(
       ({ user }) => user.toString() !== req.user.id
-     
     );
-   
-   
+
     await story.save();
 
     return res.json(story.likes);
@@ -256,7 +254,7 @@ exports.addComment = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     const story = await Story.findById(req.params.id).populate('user');
-console.log (user)
+    console.log(user);
     const newComment = {
       text: req.body.text,
       username: user.username,
@@ -284,17 +282,16 @@ exports.removeComment = async (req, res) => {
     const comment = story.comments.find(
       (comment) => comment.id === req.params.comment_id
     );
-    console.log (story)
+    console.log(story);
     // Make sure comment exists
     if (!comment) {
       return res.status(404).json({ msg: 'Comment does not exist' });
     }
     // Check user
-    if (comment.user.toString() !== req.user.id  ) {
+    if (comment.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'User not authorized' });
     }
-   
- 
+
     story.comments = story.comments.filter(
       ({ id }) => id !== req.params.comment_id
     );

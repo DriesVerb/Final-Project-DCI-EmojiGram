@@ -18,7 +18,7 @@ const readPublicStory = () => {
   const { singleStory, showSinglePublic, addLike, removeLike, deleteComment } =
     storyContext;
   const { id } = useParams();
-  const [liked, setLiked] = useState(true);
+
   const sanitizeData = () => ({
     __html: DOMPurify.sanitize(singleStory.richText),
   });
@@ -28,15 +28,13 @@ const readPublicStory = () => {
   };
 
   const compareValue = (input) => {
-    input.forEach((el) => {
-      if (user._id === el.user) {
-        return true;
-      }
-    });
+    if (user._id === input) return true;
   };
+
   useEffect(() => {
     showSinglePublic(id);
-  }, [setLiked]);
+  }, []);
+
   return (
     <Fragment>
       <div className="grid-container">
@@ -99,33 +97,71 @@ const readPublicStory = () => {
 
           {singleStory && (
             <div className="pb-story__comments">
-              <div className="pb-story__icon">
-                {isAuthenticated ? (
-                  <div className="pb-story__size">
-                    <ipu
-                      className="fa fa-thumbs-up"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        addLike(singleStory._id);
-                      }}
-                    />
-                    {singleStory.likes && (
-                      <span className="pb-story__count">
-                        {singleStory.likes.length}
-                      </span>
-                    )}
-                  </div>
-                ) : (
-                  <div className="pb-story__size">
-                    <i className="fa fa-thumbs-up" />
-                    {singleStory.likes && (
-                      <span className="pb-story__count">
-                        {singleStory.likes.length}
-                      </span>
-                    )}
-                  </div>
-                )}
-              </div>
+              {isAuthenticated ? (
+                <div>
+                  {singleStory.likes && singleStory.likes.length === 0 ? (
+                    <div className="pb-story__size">
+                      <i
+                        className="fa fa-thumbs-up"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          console.log(user._id);
+                          addLike(singleStory._id);
+                        }}
+                      />
+                      {singleStory.likes && (
+                        <span className="pb-story__count">
+                          THIS IS ZERO {singleStory.likes.length}
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div>
+                      {singleStory.likes &&
+                      compareValue(singleStory.user._id) ? (
+                        <div className="like pb-story__size">
+                          <i
+                            className="fa fa-thumbs-up"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              removeLike(singleStory._id);
+                            }}
+                          />
+                          {singleStory.likes && (
+                            <span className="pb-story__count">
+                              This is recognize like {singleStory.likes.length}
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="pb-story__size">
+                          <i
+                            className="fa fa-thumbs-up"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              addLike(user._id);
+                            }}
+                          />
+                          {singleStory.likes && (
+                            <span className="pb-story__count">
+                              This is not recog like {singleStory.likes.length}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="pb-story__size">
+                  <i className="fa fa-thumbs-up" />
+                  {singleStory.likes && (
+                    <span className="pb-story__count">
+                      {singleStory.likes.length}
+                    </span>
+                  )}
+                </div>
+              )}
 
               <div className="pb-story__comments pb-story__icon">
                 <a href="#comment" className="pb-story__link">

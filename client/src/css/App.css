@@ -1241,6 +1241,7 @@ a {
   text-decoration: none;
 }
 .pb-story__size {
+  cursor: pointer;
   font-size: 2rem;
 }
 .pb-story__comments {
