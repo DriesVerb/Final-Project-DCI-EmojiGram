@@ -28,7 +28,7 @@ const TopNavbar = () => {
             </div>
 
             {user.avatar ? (
-              <img className="user-nav__avatar" src={user.avatar} alt="" />
+              <img className="user-nav__avatar " src={user.avatar} alt="" />
             ) : (
               <div className="user-nav__icon">
                 <Icon name="user" color="grey" size="small" />

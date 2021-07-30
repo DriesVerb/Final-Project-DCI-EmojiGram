@@ -66,7 +66,7 @@ const StoryCardBigRight = ({ story, show }) => {
                   toProfile(story.user._id);
                 }}
               >
-                by - {story.user.username }
+              <h5> by: <span style={{color:"#577074"}}>{story.user.username }</span></h5>
               </div>
             </div>
             <div className="story-main__avatar">

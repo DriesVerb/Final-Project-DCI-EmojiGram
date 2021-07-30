@@ -567,6 +567,27 @@ a {
   border-right: 0;
 }
 
+.user-card__btnUser {
+  font-size: 2rem;
+  box-shadow: 5px 10px;
+  height: 4rem;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  justify-content: center;
+  border-style: none;
+  color: #ffffff;
+  background: #020024;
+  position: relative;
+  /* This protects the inner element from being blurred */
+  background-color: #b1b0b0;
+  padding: 5rem;
+  margin: 20px 40px 0px 40px;
+  background-color: #b1b0b0;
+  box-shadow: 30px 30px 30px rgba(68, 68, 68, 0.6);
+  box-shadow: inset 0px 11px 8px -10px #fff, inset 0px -11px 8px -10px #fff;
+}
+
 .user-card {
   border-right: 0.2rem solid #a3a3a3;
   display: flex;
@@ -583,8 +604,9 @@ a {
   margin-top: 1rem;
   margin-right: 1rem;
   margin-left: 1rem;
-  display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 5rem;
 }
 .user-card__btnUser {
   font-size: 2rem;
@@ -1113,6 +1135,11 @@ a {
   top: 8px;
 }
 
+.comment-style {
+  background-color: gray;
+  margin: 4rem;
+}
+
 .pb-story {
   width: 100%;
   display: flex;
@@ -1262,6 +1289,7 @@ a {
   background-color: #ffffff;
   padding: 1.5rem;
   border-bottom: 1px solid #a3a3a3;
+  border-radius: 3rem;
 }
 .emoji__row {
   display: flex;

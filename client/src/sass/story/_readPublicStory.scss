@@ -25,7 +25,12 @@
   position: relative;
   top: 8px;
 }
+.comment-style {
 
+background-color: gray;
+margin: 4rem
+
+}
 .pb-story {
   width: 100%;
   @include flex(column, center, center);
