@@ -289,7 +289,7 @@ a {
 .app-grid {
   display: grid;
   grid-template-columns: 40rem 15rem 1fr 40rem;
-  grid-template-rows: 7rem 10rem 1fr;
+  grid-template-rows: 5rem 10rem 1fr;
 }
 .app-grid__logo {
   grid-row: 1/2;
@@ -367,13 +367,17 @@ a {
 
 .side-navbar {
   background-color: #ffffff;
+
   border-radius: 0.5rem;
   height: 118vh;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
   padding-top: 15rem;
+
 }
 .side-navbar__flex {
   display: flex;
@@ -437,7 +441,9 @@ a {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+
   padding-left: 1rem;
+
 }
 .user-nav__loaded {
   display: flex;
@@ -554,6 +560,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   align-items: justify-content;
+
   top: 0;
   width: 110%;
   height: 99vh;
@@ -562,10 +569,12 @@ a {
   padding-bottom: 15rem;
   padding-left: 5rem;
   padding-right: 5rem;
+
 }
 .user-interface__icons {
   margin-left: 3rem;
 }
+
 
 .user-card {
   display: flex;
@@ -576,6 +585,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 .user-card__title {
   font-family: "Roboto", sans-serif;
@@ -596,11 +606,10 @@ a {
   box-shadow: 5px 10px;
   height: 4rem;
   display: flex;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
   justify-content: center;
   border-style: none;
   color: #ffffff;
+
   background: #020024;
   position: relative;
   /* This protects the inner element from being blurred */
@@ -609,6 +618,7 @@ a {
   background-color: #b1b0b0;
   box-shadow: 30px 30px 30px rgba(68, 68, 68, 0.6);
   box-shadow: inset 0px 11px 8px -10px #fff, inset 0px -11px 8px -10px #fff;
+
 }
 
 .genre__row {
@@ -676,30 +686,32 @@ a {
   align-items: center;
 }
 .pagination__buttons {
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 .pagination__btn {
   width: 100%;
-  height: 5rem;
+  height: 4rem;
   list-style: none;
   display: flex;
   justify-content: center;
 }
 .pagination__btn a {
+
   padding: 0.5rem;
+
   margin: 8px;
   border-radius: 5px;
-  /* border: 1px solid #023047; */
-  color: #577074;
+  border: 1px solid #023047;
+  color: #8ecae6;
   cursor: pointer;
 }
 .pagination__btn a:hover {
   color: #ffffff;
-  background-color: #577074;
+  background-color: #8ecae6;
 }
 .pagination__active a {
   color: #ffffff;
-  background-color: #577074;
+  background-color: #8ecae6;
 }
 
 .spinner {
@@ -1027,16 +1039,18 @@ a {
 }
 
 .emoji-card {
-  height: 110%;
-  background-color: rgba(194, 209, 209, 0.493);
+  height: 100%;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   border-radius: 0.7rem;
   margin-bottom: 2.3rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+
 }
 .emoji-card__rows {
   padding: 1rem;
@@ -1046,21 +1060,24 @@ a {
   align-items: center;
 }
 
+
 .round-img {
   border-radius: 50%;
 }
 
 .story-main {
-  height: 110%;
+  height: 100%;
   width: 100%;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
+
   background-color: #fff;
   border-radius: 0.7rem;
   margin-bottom: 2rem;
+
 }
 .story-main__header {
   display: flex;
@@ -1111,11 +1128,13 @@ a {
 .story-main__text {
   line-height: 1;
   font-family: "Roboto", sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 400;
   color: #0a0a0a;
   margin-bottom: 0.5rem;
+
   line-height: 19pt;
+
 }
 .story-main__footer {
   width: 100%;
@@ -1312,7 +1331,9 @@ a {
   background-color: #ffffff;
   padding: 1.5rem;
   border-bottom: 1px solid #a3a3a3;
+
   border-radius: 0.7rem;
+
 }
 .emoji__row {
   display: flex;
@@ -1337,7 +1358,7 @@ a {
   font-size: 8rem;
 }
 .emoji__buttons {
-  width: 45%;
+  width: 35%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1346,9 +1367,10 @@ a {
 .emoji__btn {
   cursor: pointer;
   font-family: "Roboto", sans-serif;
-  font-size: 1.7rem;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 500;
   color: #0a0a0a;
+  border: .3px solid #c2c1c1; 
   padding: 0.5rem;
   background-color: #ffffff;
   padding-right: 3rem;
@@ -1363,6 +1385,7 @@ a {
   background-color: rgba(184, 197, 197, 0.603);
   box-shadow: 30px 30px 30px rgba(68, 68, 68, 0.6);
   box-shadow: inset 0px 11px 8px -10px #fff, inset 0px -11px 8px -10px #fff;
+
 }
 
 .emoji-tooltip {

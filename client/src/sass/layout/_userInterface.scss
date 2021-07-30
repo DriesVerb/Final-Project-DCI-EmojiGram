@@ -3,6 +3,7 @@
     @include flex(row, space-between, justify-content);
     // padding: 80px;
     top: 0;
+
     width:110%;
     height: 99vh;
     background: $main-white;
@@ -11,6 +12,7 @@
     padding-bottom: 15rem;
     padding-left: 5rem;
     padding-right: 5rem;
+
   }
   &__icons {
     margin-left: 3rem;
@@ -53,6 +55,7 @@
 
 
 .user-card {
+
   // width: 30rem;
   // border-right: 0.2rem solid $main-l-grey;
   display: flex;
@@ -61,7 +64,11 @@
   align-items: center;
 
 
-  @include flex(column, center, center);
+  @include flex(column, center, justify-content);
+  height: 500px;
+  padding: 40px;
+  margin-top: 160px;
+
 
   &__title {
     @include main-font(2rem, 500, $main-black);

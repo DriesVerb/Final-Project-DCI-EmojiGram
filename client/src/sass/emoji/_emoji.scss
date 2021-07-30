@@ -2,9 +2,11 @@
   @include flex(column, space-around, center);
   background-color: $main-white;
   padding: 1.5rem;
+
   border-bottom: 1px solid  $main-l-grey;
  
   border-radius: .7rem;
+
 
   &__row {
     display: flex;
@@ -47,9 +49,11 @@
     color: #0a0a0a;
      
     padding: 0.5rem;
+
     background-color: #ffffff;
     padding-right: 3rem;
     color: #577074;
+     border: .3px solid #c2c1c1; 
     background: rgb(2,0,36);
     position: relative; /* This protects the inner element from being blurred */
     border-radius: .5rem;
@@ -64,6 +68,7 @@
     
     inset 0px -11px 8px -10px #fff; 
    
+
   }
 }
 
