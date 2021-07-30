@@ -35,6 +35,18 @@ function userInterface(props) {
               </button>
             </Link>
           </div>
+          {/* <hr width="1" size="5rem"></hr> */}
+          <div
+            style={{
+              width: '1px' /* Line width */,
+              backgroundColor: 'gray',
+              height: '50%',
+              float: 'left',
+              marginTop: '18rem ',
+              marginRight: '3.5rem',
+              marginLeft: '3.5rem',
+            }}
+          ></div>
           <div
             className="user-card"
             onClick={(e) => {
@@ -58,6 +70,18 @@ function userInterface(props) {
               </button>
             </Link>
           </div>
+          <div
+            style={{
+              width: '1px' /* Line width */,
+              backgroundColor: 'gray',
+              height: '50%',
+              float: 'left',
+              marginTop: '18rem',
+              marginRight: '3.5rem',
+              marginLeft: '3.5rem',
+            }}
+          ></div>
+
           <div className="user-card">
             <Icon
               className="user-card__icons"
