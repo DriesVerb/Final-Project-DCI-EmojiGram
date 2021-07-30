@@ -60,11 +60,7 @@ const TopNavbar = () => {
       </Link>
     </div>
   );
-  return (
-    <div className="app-grid__navbar top-nav">
-      {isAuthenticated ? userLinks : guestLinks}
-    </div>
-  );
+  return <div className="app-grid__navbar top-nav">{isAuthenticated ? userLinks : guestLinks}</div>;
 };
 
 export default TopNavbar;
