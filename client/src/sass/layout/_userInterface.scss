@@ -17,6 +17,37 @@
   border-right: 0;
 }
 
+.user-card__btnUser {
+  font-size: 2rem;
+  box-shadow: 5px 10px;
+  height: 4rem;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  justify-content: center;
+  border-style: none;
+  color: #ffffff;
+  background: rgb(2,0,36);
+	position: relative; /* This protects the inner element from being blurred */
+	
+	background-color: rgb(177, 176, 176);
+  padding:5rem;
+  margin: 20px 40px 0px 40px; 
+	background-color: rgb(177, 176, 176);
+	box-shadow: 30px 30px 30px rgba(68,68,68,0.6);
+
+  box-shadow: 
+  inset 0px 11px 8px -10px #fff,
+  
+  inset 0px -11px 8px -10px #fff; 
+  
+
+
+}
+
+
+
+
 .user-card {
 
   border-right: 0.2rem solid $main-l-grey;
@@ -33,8 +64,9 @@
     margin-top: 1rem;
     margin-right: 1rem;
     margin-left: 1rem;
-    display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 5rem ;
   }
 
   &__btnUser {
