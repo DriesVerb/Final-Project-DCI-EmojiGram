@@ -2,9 +2,10 @@
   display: grid;
 
 
-  grid-template-rows: 7rem 10rem 1fr;
+  // grid-template-rows: 7rem 10rem 1fr;
 
- 
+  grid-template-columns: 40rem 15rem 1fr 40rem;
+  grid-template-rows: 7rem 10rem 1fr;
 
 
   &__logo {
