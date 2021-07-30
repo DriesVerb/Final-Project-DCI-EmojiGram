@@ -42,10 +42,10 @@ const FriensdWall = (props) => {
   }, []);
   return (
     <Fragment>
-      <div className="grid-container__friends">
+      <div className="grid-container__friends ml-3  ">
         {displayfollowing &&
           displayfollowing.map((follow) => (
-            <div className="container__friends  d-flex justify-content-center">
+            <div className="container__friends  d-flex justify-content-center ">
               <div
                 className="card p-3 w-300 mt-3"
                 style={{ width: "400px", height: "450px" }}
@@ -64,7 +64,7 @@ const FriensdWall = (props) => {
                     style={{ top: "60px" }}
                   />
 
-                  <div className="ml-3 w-100">
+                  <div className="ml-2 w-100">
                     <h4 className="mb-0 mt-5 py-2 text-center">
                       {follow.user.username}
                     </h4>{" "}
