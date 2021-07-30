@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import ProfileContext from '../../context/profile/profileContext';
-
 import { Link } from 'react-router-dom';
 const UserItem = (props) => {
   const profileContext = useContext(ProfileContext);
@@ -10,7 +9,7 @@ const UserItem = (props) => {
     _id,
     username,
     email,
-    age,
+    avatar,
     location,
     occupation,
     hobby,
@@ -31,13 +30,13 @@ const UserItem = (props) => {
   };
   return (
     <Fragment>
-      <div className="col-md-7 mx-auto">
+      <div className="col-md-13  mt-5 ml-3">
         <div className="bg-white shadow rounded overflow-hidden">
           <div className="px-4 pt-5 pb-4 ">
             <div className="row align-items-start">
               <div className="profile mr-3 col-3 ">
                 <img
-                  src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+                  src={avatar}
                   alt="..."
                   width="160"
                   class="rounded mb-2 img-thumbnail"

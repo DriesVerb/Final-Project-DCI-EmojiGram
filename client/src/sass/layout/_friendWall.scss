@@ -1,1 +1,4 @@
-
+.container__friends {
+  @include flex(row, center, center);
+  flex-wrap: wrap;
+}

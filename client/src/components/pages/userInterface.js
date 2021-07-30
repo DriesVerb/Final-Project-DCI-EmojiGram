@@ -17,12 +17,7 @@ function userInterface(props) {
               props.history.push(`/writestory`);
             }}
           >
-            <Icon
-              className="user-card__icons"
-              name="quill"
-              color="blue"
-              size="large"
-            />
+            <Icon name="quill" color="blue" size="large" />
             <p className="user-card__title">CREATE YOUR STORY</p>
 
             <Link
@@ -36,29 +31,13 @@ function userInterface(props) {
             </Link>
           </div>
           {/* <hr width="1" size="5rem"></hr> */}
+
           <div
-            style={{
-              width: '1px' /* Line width */,
-              backgroundColor: 'gray',
-              height: '50%',
-              float: 'left',
-              marginTop: '18rem ',
-              marginRight: '3.5rem',
-              marginLeft: '3.5rem',
-            }}
-          ></div>
-          <div
-            className="user-card"
             onClick={(e) => {
               props.history.push(`/friendsWall`);
             }}
           >
-            <Icon
-              className="user-card__icons"
-              name="users"
-              color="blue"
-              size="large"
-            />
+            <Icon name="users" color="blue" size="large" />
             <p className="user-card__title">READ FRIENDS STORIES</p>
             <Link
               to="/friendsWall"
@@ -70,25 +49,9 @@ function userInterface(props) {
               </button>
             </Link>
           </div>
-          <div
-            style={{
-              width: '1px' /* Line width */,
-              backgroundColor: 'gray',
-              height: '50%',
-              float: 'left',
-              marginTop: '18rem',
-              marginRight: '3.5rem',
-              marginLeft: '3.5rem',
-            }}
-          ></div>
 
           <div className="user-card">
-            <Icon
-              className="user-card__icons"
-              name="collections_bookmark"
-              color="blue"
-              size="large"
-            />
+            <Icon name="collections_bookmark" color="blue" size="large" />
             <p className="user-card__title">ACCESS YOUR STORIES</p>
             <Link
               to="/yourstories"

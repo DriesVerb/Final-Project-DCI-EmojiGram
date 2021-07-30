@@ -9,6 +9,7 @@ const FriensdWall = (props) => {
   const { user, getProfile } = profileContext;
   const {
     _id,
+    avatar,
     username,
     email,
     age,
@@ -53,24 +54,13 @@ const FriensdWall = (props) => {
       <div className="grid-container__friends ml-3  ">
         {displayfollowing &&
           displayfollowing.map((follow) => (
-            <div className="container__friends  d-flex justify-content-center ">
+            <div className="container__friends  d-flex justify-content-center">
               <div
                 className="card p-3 w-300 mt-3"
                 style={{ width: '400px', height: '450px' }}
               >
                 <div className="d-flex flex-column align-items-center">
-                  {/* <img
-                      src={follow.user.avatar}
-                      class="rounded"
-                      width="155"
-                    />{" "} */}
-                  <img
-                    src={Pic}
-                    className="container__img rounded-circle d-flex align-item-center"
-                    alt="profile pic"
-                    width="200"
-                    style={{ top: '60px' }}
-                  />
+                  <img src={follow.user.avatar} class="rounded" width="155" />
 
                   <div className="ml-2 w-100">
                     <h4 className="mb-0 mt-5 py-2 text-center">

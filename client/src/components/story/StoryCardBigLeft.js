@@ -18,7 +18,6 @@ const StoryCardBigLeft = ({ story, show }) => {
   const toProfile = (id) => {
     history.push(`/profile/${id}`);
   };
-  console.log (story)
 
   const trimString = (text) => {
     const trimmedString = text.substring(0, 350);
@@ -39,11 +38,9 @@ const StoryCardBigLeft = ({ story, show }) => {
           <div className={`story-main__genre ${classGenre(story.genre)}`}>
             {story.genre}
           </div>
-          
-          {story.user.username  && (
-          <div className="story-main__author-info ">
-           
-            <div>
+
+          {story.user.username && (
+            <div className="story-main__author-info ">
               <div
                 className="story-main__author"
                 onClick={(e) => {
@@ -51,20 +48,26 @@ const StoryCardBigLeft = ({ story, show }) => {
                   toProfile(story.user._id);
                 }}
               >
-                <h5> by: <span style={{color:"#577074" }}>{story.user.username }</span></h5>
+                <h5>
+                  {' '}
+                  by:{' '}
+                  <span style={{ color: '#577074' }}>
+                    {story.user.username}
+                  </span>
+                </h5>
+              </div>
+              <div className="story-main__avatar">
+                <img
+                  width="40px"
+                  height="40px"
+                  //  style =" width:30px  height:10px "
+                  className="round-img"
+                  src={story.user.avatar}
+                  alt=""
+                />
               </div>
             </div>
-            <div className="story-main__avatar">
-            <img
-                    width="40px"
-                    height="40px"
-                    //  style =" width:30px  height:10px "
-                    className="round-img"
-                    src={story.user.avatar}
-                    alt=""
-                  />
-            </div>
-          </div>) }
+          )}
         </header>
         <h2 className="story-main__title">{story.title}</h2>
         <p className="story-main__text">{trimString(story.text)}...</p>

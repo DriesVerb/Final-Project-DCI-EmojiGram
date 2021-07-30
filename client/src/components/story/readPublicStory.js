@@ -120,7 +120,7 @@ const readPublicStory = () => {
                       />
                       {singleStory.likes && (
                         <span className="pb-story__count">
-                          THIS IS ZERO {singleStory.likes.length}
+                          {singleStory.likes.length}
                         </span>
                       )}
                     </div>
@@ -138,7 +138,7 @@ const readPublicStory = () => {
                           />
                           {singleStory.likes && (
                             <span className="pb-story__count">
-                              This is recognize like {singleStory.likes.length}
+                              {singleStory.likes.length}
                             </span>
                           )}
                         </div>
@@ -153,7 +153,7 @@ const readPublicStory = () => {
                           />
                           {singleStory.likes && (
                             <span className="pb-story__count">
-                              This is not recog like {singleStory.likes.length}
+                              {singleStory.likes.length}
                             </span>
                           )}
                         </div>
@@ -172,7 +172,7 @@ const readPublicStory = () => {
                 </div>
               )}
 
-              <div className="pb-story__comments pb-story__icon">
+              <div className="pb-story__icon">
                 <a href="#comment" className="pb-story__link">
                   <span className="pb-story__size">
                     <i className="fas fa-comment" />
