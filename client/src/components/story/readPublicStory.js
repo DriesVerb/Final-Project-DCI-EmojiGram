@@ -138,16 +138,16 @@ const readPublicStory = () => {
                     {singleStory.comments && (
                       <div>
                         {singleStory.comments.map((comment) => (
-                          <div className="post bg-white p-1 my-1">
-                            <div>
-                              <Link to={`/profile/${singleStory.user._id}`}>
+                          <div className="comment-style p-1 my-1">
+                            <div >
+                              <Link to={`/profile/${singleStory.user._id}`} className="comment-user">
                                 <img
-                                  className="round-img"
+                                  className="user-nav__avatar "
                                   src={comment.avatar}
                                   alt=""
                                 />
                                 <h4>{comment.username}</h4>
-                              </Link>
+                             </Link>
                             </div>
                             <div>
                               <p className="text-dark">{comment.text}</p>

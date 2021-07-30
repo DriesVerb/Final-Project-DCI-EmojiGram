@@ -41,7 +41,7 @@ const StoryCardBigLeft = ({ story, show }) => {
           </div>
           
           {story.user.username  && (
-          <div className="story-main__author-info">
+          <div className="story-main__author-info ">
            
             <div>
               <div
@@ -51,7 +51,7 @@ const StoryCardBigLeft = ({ story, show }) => {
                   toProfile(story.user._id);
                 }}
               >
-                by - {story.user.username }
+                <h5> by: <span style={{color:"#577074" }}>{story.user.username }</span></h5>
               </div>
             </div>
             <div className="story-main__avatar">
@@ -88,7 +88,7 @@ const StoryCardBigLeft = ({ story, show }) => {
           <div className="story-main__empty"></div>
         </footer>
       </div>
-      <div className="emoji-card">
+      <div className="emoji-card ">
         <div className="emoji-card__rows">
           {story.emojis.map((emoji, id) => {
             return id % 2 === 0 ? (

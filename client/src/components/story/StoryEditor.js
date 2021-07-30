@@ -103,6 +103,7 @@ const StoryEditor = () => {
                 name="title"
                 defaultValue={title}
                 onChange={(e) => onChange(e)}
+                class="preview-bottom"
               />
             </div>
             <div className="story-options__genre">
@@ -112,6 +113,7 @@ const StoryEditor = () => {
                 defaultValue={genre}
                 onChange={(e) => onChange(e)}
                 required
+                class="preview-bottom"
               >
                 <option value="default">- Choose a genre -</option>
                 <option value="Fantasy">Fantasy</option>
@@ -126,7 +128,7 @@ const StoryEditor = () => {
           </div>
         </div>
 
-        <div className="story-textarea">
+        <div className="story-textarea ">
           <label
             htmlFor="story editor
           "
@@ -150,7 +152,7 @@ const StoryEditor = () => {
             Preview edited story
           </button>
         ) : (
-          <button type="submit">Preview to Share</button>
+          <button type="submit" class="preview-bottom">Preview to Share</button>
         )}
       </div>
     </form>
