@@ -4,8 +4,7 @@
     padding: 40px;
     top: 0;
     background: $main-white;
-    height: 100vh;
-    width: 50vw;
+
     
 
   }
@@ -19,7 +18,7 @@
 }
 
 .user-card {
-  // width: 30rem;
+
   border-right: 0.2rem solid $main-l-grey;
 
   @include flex(column, center, justify-content);
