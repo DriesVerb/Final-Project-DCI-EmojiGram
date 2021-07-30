@@ -26,11 +26,11 @@ function YourStories(props) {
             My Stories
           </h3>
           <div className="your-stories__text mt-5mb-5">
-            <p className="ml-2 mr-3">
+            {/* <p className="ml-2 mr-3">
               A story is the telling of an event, either true or fictional, in
               such a way that the listener experiences or learns something just
               by the fact that he heard the story.
-            </p>
+            </p> */}
           </div>
         </div>
         <div className="your-stories__cards mt-3">

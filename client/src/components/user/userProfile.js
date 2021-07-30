@@ -20,6 +20,7 @@ const UserProfile = (props) => {
     hobby,
     occupation,
     stories,
+    storiesNum,
   } = users;
 
   const [follow, setFollow] = useState();
@@ -29,11 +30,14 @@ const UserProfile = (props) => {
   useEffect(() => {
     if (user || users) {
       getUserProfile(id);
-      if (followers) compareValue(followers);
-    } else if (!user && !users) {
-      getUserProfile(id);
+    } else {
+      if (followers) {
+        compareValue(followers);
+      } /* else {
+    getUserProfile(id);
+    } */
     }
-  }, [users._id, user]);
+  }, [user, users]);
 
   const compareValue = (input) => {
     input.forEach((el) => {
@@ -124,9 +128,9 @@ const UserProfile = (props) => {
                 <div className="bg-light p-4 d-flex justify-content-end text-center mr-3 ">
                   <ul className="list-inline mb-0 ">
                     <li className="list-inline-item p-3">
-                      {stories && (
+                      {storiesNum && (
                         <h5 className="font-weight-bold mb-0 d-block">
-                          {stories.length}
+                          {storiesNum}
                         </h5>
                       )}
                       <small className="text-muted">

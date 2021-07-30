@@ -289,6 +289,7 @@ a {
 .app-grid {
   display: grid;
   grid-template-rows: 7rem 10rem 1fr;
+  grid-template-columns: 40rem 15rem 1fr 40rem;
 }
 .app-grid__logo {
   grid-row: 1/2;

@@ -1,31 +1,31 @@
-const User = require("../models/User");
-const Story = require("../models/Story");
+const User = require('../models/User');
+const Story = require('../models/Story');
 // const Profile = require("../models/Profile");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 // test
 exports.test = (req, res) => {
-  res.json({ msg: "this route works" });
+  res.json({ msg: 'this route works' });
 };
 
 exports.testPrivate = (req, res) => {
-  res.json({ msg: "this route works in private" });
+  res.json({ msg: 'this route works in private' });
 };
 
 //User Profile
 exports.userProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id)
-      .populate({ path: "following", populate: { path: "user" } })
-      .populate({ path: "followers", populate: { path: "user" } });
+      .populate({ path: 'following', populate: { path: 'user' } })
+      .populate({ path: 'followers', populate: { path: 'user' } });
 
     if (!user) {
-      return res.status(400).json({ msg: "There is no profile for this user" });
+      return res.status(400).json({ msg: 'There is no profile for this user' });
     }
 
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -56,7 +56,7 @@ exports.editProfile = async (req, res) => {
     let profile = await User.findById(req.params.id);
     console.log(profile);
     // check if profile exits
-    if (!profile) return res.status(404).json({ msg: "User not found" });
+    if (!profile) return res.status(404).json({ msg: 'User not found' });
     // console.log(profile);
     // Making sure its the user profile
     // if (profile.user.toString() !== req.user.id) {
@@ -74,7 +74,7 @@ exports.editProfile = async (req, res) => {
     res.json(profile);
   } catch (err) {
     console.log(err.message);
-    res.status(500).send("Error");
+    res.status(500).send('Error');
   }
 };
 //////////////////////////////////////////////////////////////////////////////////////
@@ -87,11 +87,11 @@ exports.myStories = async (req, res) => {
     const num = stories.length;
 
     if (!stories) {
-      return res.status(404).json({ msg: "Stories not found" });
+      return res.status(404).json({ msg: 'Stories not found' });
     }
     const user = await User.findById(req.params.id);
 
-    user.stories = num;
+    user.storiesNum = num;
 
     user.save();
 
@@ -99,7 +99,7 @@ exports.myStories = async (req, res) => {
   } catch (err) {
     console.error(err.message);
 
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -112,7 +112,7 @@ exports.usersProfile = async (req, res) => {
     res.json(userProfile);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -123,16 +123,16 @@ exports.deleteProfile = async (req, res) => {
   try {
     let profile = await User.findById(req.params.id);
     // check if profile exits
-    if (!profile) return res.status(404).json({ msg: "User not found" });
+    if (!profile) return res.status(404).json({ msg: 'User not found' });
 
     //calling from User Model to update
     //setting the profileFields above
     await User.findByIdAndRemove(req.params.id);
     // delete User Profile
-    res.json({ msg: "User removed" });
+    res.json({ msg: 'User removed' });
   } catch (err) {
     console.log(err.message);
-    res.status(500).send("Error");
+    res.status(500).send('Error');
   }
 };
 //Sort By Followers
@@ -141,19 +141,19 @@ exports.followers = async (req, res) => {
     await Profile.find((err, follow) => {
       res.json(follow);
     })
-      .sort([["_id", -1]])
-      .select("followers");
+      .sort([['_id', -1]])
+      .select('followers');
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
 exports.followUser = async (req, res) => {
   try {
     const following = await User.findById(req.params.id)
-      .populate({ path: "following", populate: { path: "user" } })
-      .populate({ path: "followers", populate: { path: "user" } });
+      .populate({ path: 'following', populate: { path: 'user' } })
+      .populate({ path: 'followers', populate: { path: 'user' } });
 
     // Check if the post has already been liked
     //some is like filtere but return boolean
@@ -162,7 +162,7 @@ exports.followUser = async (req, res) => {
         (follower) => follower.user.toString() === req.user.id
       )
     ) {
-      return res.status(400).json({ msg: "User already  followed" });
+      return res.status(400).json({ msg: 'User already  followed' });
     }
     // unshhift is as push method but will put it on the begining
     following.followers.unshift({ user: req.user.id });
@@ -176,7 +176,7 @@ exports.followUser = async (req, res) => {
     return res.json(following);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
 
@@ -189,7 +189,7 @@ exports.unfollowUser = async (req, res) => {
         (follower) => follower.user.toString() === req.user.id
       )
     ) {
-      return res.status(400).json({ msg: "User has not yet been followed" });
+      return res.status(400).json({ msg: 'User has not yet been followed' });
     }
     // unshhift is as push method but will put it on the begining
     following.followers = following.followers.filter(
@@ -209,6 +209,6 @@ exports.unfollowUser = async (req, res) => {
     return res.json(following.followers);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 };
