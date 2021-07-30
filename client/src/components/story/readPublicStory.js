@@ -10,10 +10,17 @@ import Icon from '../utils/Icon';
 
 // context
 import AuthContext from '../../context/auth/authContext';
+import ProfileContext from '../../context/profile/profileContext';
+
 const readPublicStory = () => {
+  const profileContext = useContext(ProfileContext);
+
+  const { user, getProfile } = profileContext;
+  const { StoriesNum, _id } = user;
+
   let history = useHistory();
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, user } = authContext;
+  const { isAuthenticated } = authContext;
   const storyContext = useContext(StoryContext);
   const { singleStory, showSinglePublic, addLike, removeLike, deleteComment } =
     storyContext;
@@ -33,6 +40,7 @@ const readPublicStory = () => {
 
   useEffect(() => {
     showSinglePublic(id);
+    getProfile(_id);
   }, []);
 
   return (
@@ -78,10 +86,11 @@ const readPublicStory = () => {
                   <Icon name="heart" color="black" size="small" />
                 </div>
 
-                <div className="pb-story__symbol">
-                  <p className="">{singleStory.user.following.length}</p>
+                {/* <div className="pb-story__symbol">
+                  <p className="">{StoriesNum}</p>
+
                   <Icon name="books" color="black" size="small" />
-                </div>
+                </div> */}
               </div>
             </div>
           )}

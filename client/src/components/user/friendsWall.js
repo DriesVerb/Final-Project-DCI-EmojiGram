@@ -1,14 +1,22 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
-import ProfileContext from "../../context/profile/profileContext";
-import { Link } from "react-router-dom";
-import ReactPaginate from "react-paginate";
-import Pic from "./Pic.jpg";
+import React, { Fragment, useContext, useEffect, useState } from 'react';
+import ProfileContext from '../../context/profile/profileContext';
+import { Link } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
+import Pic from './Pic.jpg';
 
 const FriensdWall = (props) => {
   const profileContext = useContext(ProfileContext);
   const { user, getProfile } = profileContext;
-  const { _id, username, email, age, location, followers, following, stories } =
-    user;
+  const {
+    _id,
+    username,
+    email,
+    age,
+    location,
+    followers,
+    following,
+    storiesNum,
+  } = user;
 
   console.log(user.following);
   console.log(user.stories);
@@ -36,7 +44,7 @@ const FriensdWall = (props) => {
   console.log(displayfollowing);
 
   useEffect(() => {
-    !user ? props.history.push("/") : getProfile(_id);
+    !user ? props.history.push('/') : getProfile(_id);
     // console.log (user)
     // eslint-disable-next-line
   }, []);
@@ -48,7 +56,7 @@ const FriensdWall = (props) => {
             <div className="container__friends  d-flex justify-content-center ">
               <div
                 className="card p-3 w-300 mt-3"
-                style={{ width: "400px", height: "450px" }}
+                style={{ width: '400px', height: '450px' }}
               >
                 <div className="d-flex flex-column align-items-center">
                   {/* <img
@@ -61,46 +69,48 @@ const FriensdWall = (props) => {
                     className="container__img rounded-circle d-flex align-item-center"
                     alt="profile pic"
                     width="200"
-                    style={{ top: "60px" }}
+                    style={{ top: '60px' }}
                   />
 
                   <div className="ml-2 w-100">
                     <h4 className="mb-0 mt-5 py-2 text-center">
                       {follow.user.username}
-                    </h4>{" "}
+                    </h4>{' '}
                     <div className="text-center">
                       <span>{follow.user.location} </span>
                     </div>
                     <div className="p-2 mt-2 bg-light d-flex justify-content-between rounded text-white stats">
                       <div className="d-flex flex-column">
-                        {" "}
-                        <span className="articles">Followings</span>{" "}
+                        {' '}
+                        <span className="articles">Followings</span>{' '}
                         <span className="number1 text-center">
                           {follow.user.following.length}
-                        </span>{" "}
+                        </span>{' '}
                       </div>
                       <div className="d-flex flex-column">
-                        {" "}
-                        <span className="followers">Followers</span>{" "}
+                        {' '}
+                        <span className="followers">Followers</span>{' '}
                         <span className="number2 text-center">
                           {follow.user.followers.length}
-                        </span>{" "}
+                        </span>{' '}
                       </div>
                       <div className="d-flex flex-column">
-                        {" "}
-                        <span className="rating">Stories</span>{" "}
-                        <span className="number3 text-center"></span>{" "}
+                        {' '}
+                        <span className="rating">Stories</span>{' '}
+                        <span className="number3 text-center">
+                          {follow.user.storiesNum}
+                        </span>{' '}
                       </div>
                     </div>
                     <div ClassName="m-5">
-                      {" "}
+                      {' '}
                       <Link
                         to={`/friendStories/${follow.user._id}`}
                         classNameName="link"
                       >
                         <div className="text-info text-center mt-5 ">
                           <button className="btn btn-info btn-lg ">
-                            Stories{" "}
+                            Stories
                           </button>
                         </div>
                       </Link>

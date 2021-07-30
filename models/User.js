@@ -13,12 +13,10 @@ const userSchema = new Schema({
   message: String,
 
   avatar: {
-    type: String
+    type: String,
   },
 
-
-  stories: Number,
-
+  storiesNum: Number,
 
   following: [
     {

@@ -1,7 +1,7 @@
-import React, { useReducer } from "react";
-import axios from "axios";
-import ProfileContext from "./profileContext";
-import profileReducer from "./profileReducer";
+import React, { useReducer } from 'react';
+import axios from 'axios';
+import ProfileContext from './profileContext';
+import profileReducer from './profileReducer';
 // import setAuthToken from "../auth/setAuthToken";
 import {
   GET_PROFILE,
@@ -15,22 +15,22 @@ import {
   FOLLOW_USER,
   FOLLOW_ERROR,
   UNFOLLOW_USER,
-} from "../types";
+} from '../types';
 
 const ProfileState = (props) => {
   const initialState = {
     user: [],
     users: [
       {
-        username: "",
-        name: "",
-        email: "",
-        stories:"",
-        password: "",
-        location: "",
-        hobby: "",
-        occupation: "",
-        age: "",
+        username: '',
+        name: '',
+        email: '',
+        storiesNum: '',
+        password: '',
+        location: '',
+        hobby: '',
+        occupation: '',
+        age: '',
         followers: [],
         followeing: [],
       },
@@ -83,7 +83,7 @@ const ProfileState = (props) => {
   const editProfile = async (user) => {
     const config = {
       headers: {
-        "Content-Types": "application/json",
+        'Content-Types': 'application/json',
       },
     };
     try {

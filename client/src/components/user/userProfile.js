@@ -29,14 +29,11 @@ const UserProfile = (props) => {
   useEffect(() => {
     if (user || users) {
       getUserProfile(id);
-    } else {
-      if (followers) {
-        compareValue(followers);
-      } /* else {
-    getUserProfile(id);
-    } */
+      if (followers) compareValue(followers);
+    } else if (!user && !users) {
+      getUserProfile(id);
     }
-  }, [user, users]);
+  }, [users._id, user]);
 
   const compareValue = (input) => {
     input.forEach((el) => {
