@@ -35,16 +35,6 @@ function userInterface(props) {
               </button>
             </Link>
           </div>
-          {/* <hr width="1" size="5rem"></hr> */}
-          <div
-            style={{
-              width: '1px' /* Line width */,
-              backgroundColor: 'gray',
-              height: '50%',
-              float: 'left',
-              margin: '5rem ',
-            }}
-          ></div>
           <div
             className="user-card"
             onClick={(e) => {
