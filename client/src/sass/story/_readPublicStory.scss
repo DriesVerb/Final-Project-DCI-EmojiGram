@@ -61,12 +61,17 @@
     @include flex(row, start, center);
   }
 
+  &__para {
+    margin-bottom: 2rem;
+  }
+
   &__navbar {
     @include flex(column, start, center);
     margin-top: 0.5rem;
   }
 
   &__title {
+    margin-top: 2rem;
     @include flex(row, center, center);
   }
 

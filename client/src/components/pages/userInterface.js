@@ -9,7 +9,7 @@ import Icon from '../utils/Icon';
 function userInterface(props) {
   return (
     <div className="grid-container">
-      <div className="grid-container__mid">
+      <div className="user-interface">
         <div className="user-interface__cards">
           <div
             className="user-card"
@@ -18,18 +18,19 @@ function userInterface(props) {
             }}
           >
             <Icon
-              className='user-card__icons'
-              name='quill'
-              color='blue'
-              size='large'
+              className="user-card__icons"
+              name="quill"
+              color="blue"
+              size="large"
             />
-            <p className='user-card__title'>CREATE YOUR STORY</p>
+            <p className="user-card__title">CREATE YOUR STORY</p>
 
             <Link
-              to='/writestory'
-              className='user-card__linkuser'
-              style={{ textDecoration: 'none' }}>
-              <button className='btn user-card__btnUser'>
+              to="/writestory"
+              className="user-card__linkuser"
+              style={{ textDecoration: 'none' }}
+            >
+              <button className="btn user-card__btnUser">
                 Click to Create
               </button>
             </Link>
@@ -41,34 +42,36 @@ function userInterface(props) {
             }}
           >
             <Icon
-              className='user-card__icons'
-              name='users'
-              color='blue'
-              size='large'
+              className="user-card__icons"
+              name="users"
+              color="blue"
+              size="large"
             />
-            <p className='user-card__title'>READ FRIENDS STORIES</p>
+            <p className="user-card__title">READ FRIENDS STORIES</p>
             <Link
-              to='/friendsWall'
-              className='user-card__linkuser'
-              style={{ textDecoration: 'none' }}>
-              <button className='btn user-card__btnUser'>
+              to="/friendsWall"
+              className="user-card__linkuser"
+              style={{ textDecoration: 'none' }}
+            >
+              <button className="btn user-card__btnUser">
                 Click to Access
               </button>
             </Link>
           </div>
-          <div className='user-card'>
+          <div className="user-card">
             <Icon
-              className='user-card__icons'
-              name='collections_bookmark'
-              color='blue'
-              size='large'
+              className="user-card__icons"
+              name="collections_bookmark"
+              color="blue"
+              size="large"
             />
-            <p className='user-card__title'>ACCESS YOUR STORIES</p>
+            <p className="user-card__title">ACCESS YOUR STORIES</p>
             <Link
-              to='/yourstories'
-              className='user-card__linkuser'
-              style={{ textDecoration: 'none' }}>
-              <button className='btn user-card__btnUser'>
+              to="/yourstories"
+              className="user-card__linkuser"
+              style={{ textDecoration: 'none' }}
+            >
+              <button className="btn user-card__btnUser">
                 Click to Access
               </button>
             </Link>

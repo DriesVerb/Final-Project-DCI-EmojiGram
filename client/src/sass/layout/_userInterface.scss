@@ -1,10 +1,13 @@
 .user-interface {
+  width: 100%;
+  background: $main-white;
+  height: 100%;
+
   &__cards {
-    @include flex(row, space-between, justify-content);
+    @include flex(row, center, start);
     padding: 40px;
     top: 0;
     height: 100vh;
-    background: $main-white;
     // width: 30rem;
   }
   &__icons {

@@ -1,6 +1,6 @@
-import axios from "axios";
-import { storyStore } from "../store";
-import { emojiStore } from "../store";
+import axios from 'axios';
+import { storyStore } from '../store';
+import { emojiStore } from '../store';
 
 const storySlice = (set) => ({
   // state
@@ -18,10 +18,10 @@ const storySlice = (set) => ({
     set(() => formData);
     const { text } = formData;
     const richText = text
-      .replace(/[<>/{}]/g, "")
-      .replace(/[&*[]]/g, "")
-      .split("\n")
-      .join("<p/> <p className='mt-xl'>");
+      .replace(/[<>/{}]/g, '')
+      .replace(/[&*[]]/g, '')
+      .split('\n')
+      .join("<p/> <p class='mt-xl'>");
     set((state) => ({ richText: `<p>${richText}</p> ` }));
   },
   // get subGenre
@@ -31,7 +31,7 @@ const storySlice = (set) => ({
   // send all the values to DB
   sendToDb: async () => {
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     };
 
     const currentStore = storyStore.getState();
@@ -40,7 +40,7 @@ const storySlice = (set) => ({
 
   updateStory: async () => {
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     };
     const currentStore = storyStore.getState();
     await axios.put(

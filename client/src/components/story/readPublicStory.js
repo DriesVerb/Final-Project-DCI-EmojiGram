@@ -87,7 +87,10 @@ const readPublicStory = () => {
 
           {singleStory && (
             <div className="pb-story__text">
-              <div dangerouslySetInnerHTML={sanitizeData()}></div>
+              <p
+                className="pb-story__para"
+                dangerouslySetInnerHTML={sanitizeData()}
+              ></p>
             </div>
           )}
         </div>
